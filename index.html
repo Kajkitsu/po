@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Programowanie Obiektowe</title>
+
+	<meta name="description" content="PO LAB">
+	<meta name="author" content="Norbert Waszkowiak">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section data-background-gradient="linear-gradient(45deg, #33, #6754e8)">
+				<h2>Programowanie obiektowe</h2>
+				<br slyle="height: 600px;" />
+				<p style="text-align: left;">ppor. mgr inż. Norbert Waszkowiak</p>
+				<div class="fragment" style="text-align: left;">
+					<small>nr tel.: 261 839 060</small>
+					<br />
+					<small>e-mail: norbert.waszkowiak@wat.edu.pl</small>
+					<br />
+					<small>pomieszczenie: bud. 100 pok. 254B</small>
+					<br />
+					<small>konsultacje online i stacjanarnie: po wcześniejszym umówieniu</small>
+				</div>
+			</section>
+			<section data-background-gradient="linear-gradient(45deg, #c03090, #10a080)">
+				<section>
+					<h2>Wykłady</h2>
+				</section>
+				<section data-auto-animate>
+					<h3>Podstawowe pojęcia</h3>
+					<p>Jedną z barier w zrozumieniu techniki obiektowej jest specjalistyczne słownictwo, którym ta
+						technika obrosła.
+						W rzeczywistości można tym żargonem posługiwać się skutecznie stosując zaledwie kilka pojęć:</p>
+					<ul>
+						<li><b>obiekt, instancja</b></li>
+						<li><b>metoda</b></li>
+						<li><b>klasa</b></li>
+						<li><b>podklasa, (typ pochodny) (klasa dolna)</b> </li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>Podstawowe pojęcia</h3>
+					<ul>
+						<li><b>obiekt, instancja</b> - to konkretny egzemplarz lub wystąpienie struktury danych
+							zdefiniowanej w
+							programie. Może zawierać dane (znane również
+							jako właściwości lub atrybuty) oraz metody (funkcje działające na tych danych). Obiekt może
+							reprezentować rzeczywiste
+							lub abstrakcyjne elementy. Na przykład, obiekt "samochód" może mieć atrybuty takie jak
+							kolor, marka, rok produkcji i
+							metody takie jak "uruchom silnik" czy "zatrzymaj się". </li>
+						<li><b>metoda</b></li>
+						<li><b>klasa</b></li>
+						<li><b>podklasa, (typ pochodny) (klasa dolna)</b> </li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>Podstawowe pojęcia</h3>
+					<ul>
+						<li><b>obiekt, instancja</b></li>
+						<li><b>metoda</b></li>
+						<li><b>klasa</b></li>
+						<li><b>podklasa, (typ pochodny) (klasa dolna)</b> </li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>Podstawowe pojęcia</h3>
+					<ul>
+						<li><b>obiekt, instancja</b></li>
+						<li><b>metoda, (funkcja składowa klasy)</b> - a jest funkcją związaną z danym obiektem. Stanowi
+							zachowanie obiektu, czyli co może on zrobić. Metody umożliwiają
+							manipulację danymi obiektu i wykonują operacje na tych danych.</li>
+						<li><b>klasa</b></li>
+						<li><b>podklasa, (typ pochodny) (klasa dolna)</b> </li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>Podstawowe pojęcia</h3>
+					<ul>
+						<li><b>obiekt, instancja</b></li>
+						<li><b>metoda</b></li>
+						<li><b>klasa</b> - to szablon lub wzorzec, na podstawie którego tworzone są obiekty. Klasa
+							definiuje właściwości (atrybuty) oraz metody
+							(funkcje) obiektów. Może być traktowana jako abstrakcyjny pojemnik, który definiuje cechy
+							wspólne dla wszystkich
+							instancji (obiektów), które będą tworzone na jej podstawie.</li>
+						<li><b>podklasa, (typ pochodny) (klasa dolna)</b></li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>Co to jest PARADYGMAT?</h3>
+					<ul>
+						<p><b>Paradygmat</b> - zbiór wszystkich pojęć i teorii stanowiących podstawy danej nauki. Jest
+							rodzajem
+							uzgodnienia pomiędzy twórcami badań na zasadzie jego zgodności z dotychczasową wiedzą i
+							kierunkiem jej
+							rozwoju.</p>
+						<li>Musi być:
+							<ul>
+								<li>Spójny logicznie i pojęciowo.</li>
+								<li>Możliwie najprostszy czyli w formie definicji podstawowej.</li>
+								<li>Mieć cechy operacyjności czyli możliwego wykorzystania do budowania teorii
+									szczegółowych.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>Paradygmaty programowania obiektowego</h3>
+					<ul>
+						<li><b>Abstrakcja</b> - polega na wyodrębnieniu złożonego systemu jego najważniejszych cech i
+							pominięciu tych,
+							które nie są istotne dla danego problemu.</li>
+						<li><b>Dziedziczenie</b> - umożliwia tworzenie nowych klas na podstawie już istniejących,
+							dziedzicząc po nich
+							ich cechy (atrybuty i metody).</li>
+						<li><b>Polimorfizm</b> - umożliwia wykorzystanie jednej nazwy metody w różnych klasach, co
+							pozwala na bardziej
+							elastyczne i uniwersalne programowanie.</li>
+						<li><b>Enkapsulacja</b> - polega na ukrywaniu szczegółów implementacyjnych klasy i udostępnianiu
+							tylko jej
+							interfejsu, co zwiększa bezpieczeństwo i ułatwia utrzymanie kodu.</li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>O obiektach</h3>
+					<small>Koncepcje programowania obiektowego zostały pokazane w języku Simula. Zbudowano go do
+						symulacji złożonych systemów i
+						jako podstawę konstrukcji języka przyjęto, że każdy obiekt rzeczywisty charakteryzują jego
+						zachowania.</small>
+					<b>
+						<p style="margin: 10px;">Spróbowano więc tak układać komunikację pomiędzy procedurami (modułami)
+							i danymi aby były podporządkowane zachowaniom
+							symulowanych obiektów.</p>
+					</b>
+					<small>Obiekt był „pakunkiem” zawierającym procedury i dane powiązane razem tak, aby określały jego
+						możliwe zachowania.
+						Procedury w podejściu obiektowym nazywa się metodami. W odniesieniu do danych stosujemy nazwę
+						zmienne bo ich wartość
+						może się zmieniać w czasie. Nazywamy metody i zmienne atrybutami obiektu.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>O obiektach</h3>
+					<small>Rozważmy dla ilustracji jak moglibyśmy programować przenośnik fabryczny. Może on wykonywać
+						rozmaite czynności jak
+						przemieszczanie się, ładowanie, rozładowanie. Musi przechowywać informacje o nośności,
+						rozmiarach palety, prędkości,
+						aktualnego położenia, aktualnego ładunku, itp. Tak więc realny obiekt „coś robi” i „coś
+						wie”.</small>
+					<b>
+						<p style="margin: 10px;">Czynności obiektu opiszemy jako metody, a wielkości charakterystyczne,
+							którymi obiekt się posługuje wykonując czynności,
+							jako zmienne.
+							CZYNNOŚCI OBIEKTU => METODY
+							</br>
+							DANE DO METOD => ZMIENNE OBIEKTU</p>
+					</b>
+					<small>Obiekt jest idealnym modułem programu. Tworzy własny, zamknięty świat. Wszystko co „wie”
+						wyrażają jego zmienne. Wszystko
+						co może robić wyrażają jego metody.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Klasy obiektów</h3>
+					<small>Klasa jest nowym typem zmiennej w programie . Definiujemy ją jako:</small>
+					<pre style="font-size: 16px" data-id="code-animation">
+<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">
+class MyClass {
+//
+// ...
+//ciało klasy
+};
+</script>
+</code>
+</pre>
+					<small>Jeśli chcemy stworzyć konkretny element czyli obiekt tej klasy to zapisujemy :</small>
+					<pre style="font-size: 16px" data-id="code-animation">
+<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">
+MyClass myObject;
+</script>
+</code>
+</pre>
+					<small>Wtedy w pamięci operacyjnej powstanie obiekt klasy <b>MyClass</b>, który się nazywa
+						<b>myObject</b>. Przypomina zapis: <b>int a;</b>
+						ale nie jest całkowicie z nim równoważne. Jest znacznie bogatsze w treści i
+						możliwościach.</small>
+				</section>
+
+				<section data-auto-animate>
+					<h3>Klasy obiektów</h3>
+					<small>Kiedy już mamy typ <b>MyClass</b>, to możemy utworzyć obiekt pochodny, na przykład wskaźnik
+						do obiektu z <b>MyClass</b>:</small>
+					<pre style="font-size: 16px" data-id="code-animation">
+				<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">
+MyClass *pointer;
+				</script>
+				</code>
+				</pre>
+					<small>
+						albo:
+					</small>
+
+					<pre style="font-size: 16px" data-id="code-animation">
+									<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">
+MyClass &addObject = myObject;
+</script>
+									</code>
+									</pre>
+
+					<small>Utworzy to wskaźnik do obiektów klasy <b>MyClass</b> (czyli do każdego obiektu, który
+						utworzymy w tej klasie) albo
+						referencje do wybranego obiektu klasy <b>MyClass</b> o nazwie <b>name</b>, której przypiszemy
+						własności <b>myObject</b> w trybie dostępu
+						do adresu.</small>
+				</section>
+
+				<section data-auto-animate>
+					<h3>Klasy obiektów</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+													<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">
+	#include <iostream>
+	#include <cstring>
+	 
+	class Card {
+	public:
+	    char color[80]{};
+	    int value;
+	    
+	    Card(char* color, int value);
+	 
+	    void print();
+	};
+	 
+	int main() {
+	    Card k1("czarna", 5), k2("czerwona", 8);
+	    
+	    k1.print();
+	    k2.print();
+	    
+	    strcpy(k1.color, "czarno-czerwona");
+	    k2.value = 28;
+	    
+	    std::cout << std::endl;
+	    
+	    k1.print();
+	    k2.print();
+
+	    return 0;
+	}
+	 
+	Card::Card(char* color, int value) {
+					strcpy(this->color, color);
+					this->value = value;
+	}
+	void Card::print() {
+					std::cout << "Color: " << color << ", Value: " << value << std::endl;
+	}
+				</script>
+													</code>
+													</pre>
+					<small>Przykład: <em>program w C++, który przechowuje informację o kolorze i wartości punktowej
+							karty do gry. Wykorzystuje klasę o
+							nazwie Card.</em>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Klasy obiektów</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+																	<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="4-12|9"><script type="text/template">
+					#include <iostream>
+					#include <cstring>
+					 
+					class Card {
+					public:
+					    char color[80]{};
+					    int value;
+					    
+					    Card(char* color, int value);
+					 
+					    void print();
+					};
+					 
+					int main() {
+					    Card k1("czarna", 5), k2("czerwona", 8);
+					    
+					    k1.print();
+					    k2.print();
+					    
+					    strcpy(k1.color, "czarno-czerwona");
+					    k2.value = 28;
+					    
+					    std::cout << std::endl;
+					    
+					    k1.print();
+					    k2.print();
+				
+					    return 0;
+					}
+					 
+					Card::Card(char* color, int value) {
+									strcpy(this->color, color);
+									this->value = value;
+					}
+					void Card::print() {
+									std::cout << "Color: " << color << ", Value: " << value << std::endl;
+					}
+								</script>
+																	</code>
+																	</pre>
+					<small>
+						<ul>
+							<li>Opis klasy zawsze umieszczamy w nawiasie klamrowym, po którym jest średnik, tak, jak w
+								normalnych
+								deklaracjach typów
+								zmiennej.</li>
+							<li>Konstruktor obiektu Karta, o <b>ZAWSZE nazwie takiej samej jak klasa</b> jest w obszarze
+								opisu klasy
+								tylko deklarowany i
+								podawana jest lista jego argumentów. Nie podajemy typu pomimo, że jest funkcją (C++,
+								Javie, C#, PHP 4 iin.) - jest tometoda o nazwie zgodnej z nazwą klasy.</li>
+						</ul>
+
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Klasy obiektów</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+																	<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="14-29|15|9"><script type="text/template">
+					#include <iostream>
+					#include <cstring>
+					 
+					class Card {
+					public:
+					    char color[80]{};
+					    int value;
+					    
+					    Card(char* color, int value);
+					 
+					    void print();
+					};
+					 
+					int main() {
+					    Card k1("czarna", 5), k2("czerwona", 8);
+					    
+					    k1.print();
+					    k2.print();
+					    
+					    strcpy(k1.color, "czarno-czerwona");
+					    k2.value = 28;
+					    
+					    std::cout << std::endl;
+					    
+					    k1.print();
+					    k2.print();
+				
+					    return 0;
+					}
+					 
+					Card::Card(char* color, int value) {
+									strcpy(this->color, color);
+									this->value = value;
+					}
+					void Card::print() {
+									std::cout << "Color: " << color << ", Value: " << value << std::endl;
+					}
+								</script>
+																	</code>
+																	</pre>
+					<small>Blok main(), w którym powołane są dwa obiekty klasy <b>Card</b> o nazwach k1 i
+						k2. Obiekty mają
+						argumenty takie, jakie zadeklarowano w konstruktorze, czyli zmienna typu char oraz zmienna
+						integer.</small>
+					<small>WNIOSEK: deklaracja
+						konstruktora musi zawierać to, co potem jest potrzebne w funkcjonowaniu obiektów konstruowanych
+						w klasie. W każdym
+						obiekcie k1 oraz k2 wartości zmiennych deklarowanych są zainicjowane poprzez podanie konkretnych
+						wartości. Jest to
+						przykład przypisania przez wartość.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Klasy obiektów</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+																	<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="31-34|31|32-33"><script type="text/template">
+					#include <iostream>
+					#include <cstring>
+					 
+					class Card {
+					public:
+					    char color[80]{};
+					    int value;
+					    
+					    Card(char* color, int value);
+					 
+					    void print();
+					};
+					 
+					int main() {
+					    Card k1("czarna", 5), k2("czerwona", 8);
+					    
+					    k1.print();
+					    k2.print();
+					    
+					    strcpy(k1.color, "czarno-czerwona");
+					    k2.value = 28;
+					    
+					    std::cout << std::endl;
+					    
+					    k1.print();
+					    k2.print();
+				
+					    return 0;
+					}
+					 
+					Card::Card(char* color, int value) {
+									strcpy(this->color, color);
+									this->value = value;
+					}
+					void Card::print() {
+									std::cout << "Color: " << color << ", Value: " << value << std::endl;
+					}
+								</script>
+																	</code>
+																	</pre>
+					<small>Definicja konstruktora klasy. Najpierw nazwa <b>Card</b>, a potem operator <b>::</b> czyli
+						operator zakresu.
+						Teraz już na liście argumentów formalnych podane są nazwy argumentów <b>color</b> oraz
+						<b>value</b>. Po liście argumentów formalnych może (
+						ale nie musi) pojawić się dwukropek i lista inicjalizująca wartości argumentów, czyli argumenty
+						początkowe. Następnie w
+						nawiasie klamrowym, po którym nie ma średnika, umieszczamy ciało konstruktora. W ciele
+						konstruktora mamy kopiowanie
+						łańcucha nazwy koloru karty z <b>color</b> do <b>this->color</b>.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Klasy obiektów</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+																	<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="35-37|17-18,25-26|35|36"><script type="text/template">
+					#include <iostream>
+					#include <cstring>
+					 
+					class Card {
+					public:
+					    char color[80]{};
+					    int value;
+					    
+					    Card(char* color, int value);
+					 
+					    void print();
+					};
+					 
+					int main() {
+					    Card k1("czarna", 5), k2("czerwona", 8);
+					    
+					    k1.print();
+					    k2.print();
+					    
+					    strcpy(k1.color, "czarno-czerwona");
+					    k2.value = 28;
+					    
+					    std::cout << std::endl;
+					    
+					    k1.print();
+					    k2.print();
+				
+					    return 0;
+					}
+					 
+					Card::Card(char* color, int value) {
+									strcpy(this->color, color);
+									this->value = value;
+					}
+					void Card::print() {
+									std::cout << "Color: " << color << ", Value: " << value << std::endl;
+					}
+								</script>
+																	</code>
+																	</pre>
+					<small>Definicja funkcji własnej klasy <b>Card</b> o nazwie <b>print()</b>. Jest ona wykonywana w
+						bloku <b>main()</b> na rzecz obiektów <b>k1</b> oraz <b>k2</b>.
+						To, że jest ona funkcją własną klasy <b>Card</b> wskazuje nazwa klasy rozpoczynająca definicję i
+						operator zakresu :: , który
+						wskazuje, że funkcja działa w całym zakresie ważności obiektów klasy. Funkcja <b>print()</b>
+						wykonuje na ekranie wypisanie nazwy
+						koloru karty i jej wartości punktowej.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Klasy obiektów</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+																	<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="20|21"><script type="text/template">
+					#include <iostream>
+					#include <cstring>
+					 
+					class Card {
+					public:
+					    char color[80]{};
+					    int value;
+					    
+					    Card(char* color, int value);
+					 
+					    void print();
+					};
+					 
+					int main() {
+					    Card k1("czarna", 5), k2("czerwona", 8);
+					    
+					    k1.print();
+					    k2.print();
+					    
+					    strcpy(k1.color, "czarno-czerwona");
+					    k2.value = 28;
+					    
+					    std::cout << std::endl;
+					    
+					    k1.print();
+					    k2.print();
+				
+					    return 0;
+					}
+					 
+					Card::Card(char* color, int value) {
+									strcpy(this->color, color);
+									this->value = value;
+					}
+					void Card::print() {
+									std::cout << "Color: " << color << ", Value: " << value << std::endl;
+					}
+								</script>
+																	</code>
+																	</pre>
+					<small>Kolor obiektu k1 jest modyfikowany funkcją strcpy. W składni wymienia się nazwę obiektu, a po
+						kropce nazwę
+						argumentu zmienianego. Następnie modyfikowany jest argument value obiektu k2 poprzez zwykłą
+						operację przypisania nowej
+						wartości.
+					</small>
+					<small>WNIOSEK: Klasa a obiekt
+						Widać, że klasa nie definiuje konkretnych obiektów tylko ich typy!!! Jest ona typem obiektu jako
+						abstrakcyjnej zmiennej,
+						a nie obiektem lub zbiorem obiektów (C++, Java). Obiekty k1 i k2 w przykładzie mają typ
+						Karta.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Klasy obiektów</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+																					<code class="hljs java" data-trim data-line-numbers><script type="text/template">
+import java.util.*;
+
+public class Card {
+    private String color;
+    private int value;
+    
+    public Card(String color, int value) {
+        this.color = color;
+        this.value = value;
+    }
+    
+    public void print() {
+        System.out.println("Color: " + color + ", Value: " + value);
+    }
+    
+    public static void main(String[] args) {
+        Card k1 = new Card("czarna", 5);
+        Card k2 = new Card("czerwona", 8);
+        
+        k1.print();
+        k2.print();
+        
+        k1.color = "czarno-czerwona";
+        k2.value = 28;
+        
+        System.out.println();
+        
+        k1.print();
+        k2.print();
+    }
+}
+												</script>
+																					</code>
+																					</pre>
+					<small>Przykład w języku Java</small>
+				</section>
+				<section>
+					<h3>Konstruktory</h3>
+					<small>Konstruktor <b>NIE MUSI</b> wystąpić w opisie klasy, czyli obiekty nie muszą być wprowadzane
+						konstruktorem <B>jawnym</B>.</small>
+					<small><b>Nazwa konstruktora może być przeładowana bo jest on funkcją</b>, czyli może być ta nazwa
+						stosowana wielokrotnie w opisie
+						deklaracji klasy oraz w opisie funkcji konstruktora z różnymi listami argumentów. Wtedy
+						kompilator odróżnia konstruktory
+						po listach argumentów, tak, jak w przypadku przeładowanych nazw funkcji. Konstruktorów może wiec
+						być wiele.</small>
+					<small>Konstruktor <b>może być wywoływany ( a nie deklarowany!!) bez żadnych argumentów</b>. Jest to
+						tak zwany konstruktor domniemany.
+						Czasem nazywamy go domyślnym albo standardowym. Ze względu na istotę przeładowania nazwy
+						<b>konstruktor domniemany czyli
+							bezargumentowy może wystąpić tylko raz</b>. Jeśli nie deklarujemy w klasie żadnego
+						konstruktora, to kompilator sam ustanawia
+						właśnie konstruktor domniemany do obsługi obiektów klas deklarowanych w programie. Każdy
+						konstruktor z argumentami,
+						którym nadamy wartości domyślne czyli niedefiniowalne jest także konstruktorem
+						domniemanym.</small>
+				</section>
+				<section>
+					<h3>Konstruktory</h3>
+					<p>Co właściwie robi konstruktor? On <b>INICJALIZUJE</b> obiekty. Kompilator automatycznie wywołuje
+						konstruktor w miejscu
+						tworzenia obiektu zanim jeszcze obiekt podejmie jakiekolwiek działanie. <b>Czyli po pierwszym
+							komunikacie na obiekt
+							startuje konstruktor</b>. Nazwa konstruktora taka sama jak nazwa klasy (pomysł Stroustrupa)
+						pozwala na jednoznaczne
+						powiązanie konstruktora z typem zmiennej obiektowej (wykorzystano operator zakresu).</p>
+				</section>
+				<section>
+					<h3>Konstruktory</h3>
+					<small>
+						<b>Konstruktor jest zwykle deklarowany jako publiczny</b>, bo przecież wprowadzane nim obiekty
+						mogą być używane przez klasy
+						zewnętrzne. Możemy jednak dla konstruktora przewidzieć ochronę tak, jak dla klas za pomocą
+						etykiet <b>private</b> lub
+						<b>protected</b>. Wówczas jednak także konstruowane obiekty będą dostępne tylko w obrębie klasy
+						z tym konstruktorem jako
+						private albo jako protected tylko w zakresie klas dziedziczących.
+					</small>
+					<small>
+						Konstruktor może zamiast definiować obiekty podawać kopie obiektów zawartych w innej klasie lub
+						tworzyć kopie obiektów
+						istniejących. Wtedy jest to tak zwany <b>konstruktor kopiujący</b>.
+					</small>
+					<small>
+						Konstruktor może dokonywać konwersji typu obiekty z jednego w drugi. Nazywamy go wtedy
+						<b>konstruktorem konwertującym</b>.
+					</small>
+				</section>
+				<section>
+					<h3>Konstruktory</h3>
+					<p>
+						Destruktor (w naszym przykładzie <b>~Card</b>), zawsze wpisujemy w C++ do deklaracji klasy jako
+						bezargumentowy !!
+					</p>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktory</h3>
+					<p>Konstruktor domniemany (ang. default constructor)</p>
+					<pre style="font-size: 16px" data-id="code-animation">
+																												<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="9|15"><script type="text/template">
+	#include <iostream>
+	#include <cstring>
+	 
+	class Card {
+	public:
+	    char color[80]{};
+	    int value;
+	    
+	    Card(char* color = "czarna", int value = 4);
+	 
+	    void print();
+	};
+	 
+	int main() {
+	    Card k1, k2("czerwona");
+	    
+	    k1.print();
+	    k2.print();
+	    
+	    strcpy(k1.color, "czarno-czerwona");
+	    k2.value = 28;
+	    
+	    std::cout << std::endl;
+	    
+	    k1.print();
+	    k2.print();
+
+	    return 0;
+	}
+	 
+	Card::Card(char* color, int value) {
+					strcpy(this->color, color);
+					this->value = value;
+	}
+	void Card::print() {
+					std::cout << "Color: " << color << ", Value: " << value << std::endl;
+	}
+																			</script>
+																												</code>
+																												</pre>
+					<small>
+						Konstruktor domyślny (ang. default constructor) w języku C++ jest specjalnym rodzajem
+						konstruktora, który jest wywoływany bez
+						żadnych argumentów podczas tworzenia obiektu klasy. Gdy w klasie nie zdefiniowano żadnych
+						konstruktorów, kompilator
+						automatycznie generuje konstruktor domyślny. Jednakże, jeśli w klasie zdefiniowano jakikolwiek
+						inny konstruktor (np.
+						konstruktor z parametrami), konstruktor domyślny nie jest już automatycznie generowany, chyba że
+						został zdefiniowany
+						jawnie przez programistę.
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktory</h3>
+					<p>Konstruktor domniemany (ang. default constructor)</p>
+					<pre style="font-size: 16px" data-id="code-animation">
+																												<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="15"><script type="text/template">
+	#include <iostream>
+	#include <cstring>
+	 
+	class Card {
+	public:
+	    char color[80]{};
+	    int value;
+	    
+	    Card(char* color = "czarna", int value = 4);
+	 
+	    void print();
+	};
+	 
+	int main() {
+	    Card k1, k2("czerwona");
+	    
+	    k1.print();
+	    k2.print();
+	    
+	    strcpy(k1.color, "czarno-czerwona");
+	    k2.value = 28;
+	    
+	    std::cout << std::endl;
+	    
+	    k1.print();
+	    k2.print();
+
+	    return 0;
+	}
+	 
+	Card::Card(char* color, int value) {
+					strcpy(this->color, color);
+					this->value = value;
+	}
+	void Card::print() {
+					std::cout << "Color: " << color << ", Value: " << value << std::endl;
+	}
+																			</script>
+																												</code>
+																												</pre>
+					<small>
+						W przypadku, gdy konstruktor z parametrami zawiera domyślne wartości dla tych parametrów, mówimy
+						również o konstruktorze
+						z domyślnymi parametrami. Jednak sama idea konstruktora domyślnego polega na tworzeniu obiektu
+						bez konieczności
+						dostarczania jakichkolwiek parametrów w momencie jego inicjalizacji.
+					</small>
+				</section>
+
+				<section>
+					<h3>Cechy obiektów</h3>
+					<small>Poprzez sposób definiowania obiektu decydujemy o zakresie ważności jego nazwy czyli także o
+						czasie jego życia. Zakres
+						ważności obiektu definiują nawiasy klamrowe w deklaracji klasy. W javie i C++ jeśli przydzielimy
+						na obiekt pamięć
+						operatorem <b>new</b>, to obiekt istnieje także poza swoim zasięgiem. W C++ muszą być niszczone,
+						w javie następuje to
+						automatycznie (garbage collector). Kiedy <b>nie ma komunikatów</b> wiążących obiekt z
+						jakimkolwiek atrybutem klasy uznaje się,
+						że obiekt „wychodzi z zakresu ważności klasy” i może być usunięty.</small>
+					<small>Jeśli obiekt jest definiowany w dostępie publicznym to rozumiemy, że jest dostępny globalnie
+						czyli mogą z niego
+						korzystać wszystkie funkcje i obiekty oraz funkcje składowe innych klas w programie.</small>
+				</section>
+				<section>
+					<h3>Cechy obiektów</h3>
+					<small>Obiekt może funkcjonować lokalnie (obiekt prywatny) i wówczas automatycznie kończy się jego
+						zakres ważności wtedy, kiedy
+						fragment programu (klasa, blok) pozostaje zakończona faktycznie. Taki obiekt –podobnie jak
+						zmienna lokalna – traci swoje
+						cechy (pomimo hermetyzacji) w zakresie wartości jego zmiennych i metod. Taki obiekt, podobnie
+						jak zmienną lokalną,
+						będziemy uważać za zapisywany automatycznie.</small>
+					<small>Obiekt globalny jest inicjalizowany inaczej niż lokalny bo wstępnie (zanim zacznie
+						funkcjonować jako <b>konkret</b> (czyli
+						operować wartościami swoich atrybutów) jest inicjowany zerami.</small>
+				</section>
+				<section>
+					<h3>Cechy obiektów</h3>
+					<small>Obiekt można utworzyć jako obdarzony słowami sterującymi (moderatorami). W szczególności może
+						to być moderator <b>static</b>.
+						Taki obiekt, nawet jeśli jest lokalny, zachowa swoje wartości zmiennych i metod takie, jak przy
+						ostatnim komunikacie.
+						Inicjalizacja jest tu podobna jak obiektu globalnego – wartościami zerowymi. W javie taki
+						moderator służy do wskazania,
+						że metody (poprzedzonej słowem static) nie wiążemy z żadnym obiektem, czyli egzemplarzem
+						klasy.</small>
+					<small>Jeśli atrybutu static użyjemy do nazwy globalnej, to może ona być dostępna TYLKO W SWOIM
+						PLIKU. Oznacza to, że NIE MOGĘ
+						uzyskać dostępu do takiego obiektu wtedy, kiedy jest on w pliku dołączonym dyrektywą
+						preprocesora include jako plik
+						nagłówkowy.</small>
+				</section>
+
+				<section>
+					<h3>this - WSKAŹNIK SPECJALNY</h3>
+					<small>Każdej funkcji - metodzie zadeklarowanej wewnątrz klasy zostaje
+						<b>w momencie wywołania w niejawny sposób (ang. implicitly)
+							przekazany wskaźnik do obiektu</b> (w stosunku do którego funkcja ma
+						zadziałać). Pointer wskazuje funkcji w pamięci operacyjnej ten obiekt, którego atrybutem jest
+						dana funkcja. Bez
+						istnienia takiego
+						właśnie wskaźnika nie moglibyśmy stosować spokojnie funkcji, nie
+						moglibyśmy odwoływać się do pola obiektu, gdybyśmy nie wiedzieli
+						jednoznacznie, o który obiekt chodzi.</small>
+					<small><b>Wskaźnik this jest pierwszym argumentem konstruktora obiektu.</b>W konstruktorze wskazuje
+						on na nie zainicjalizowany fragment pamięci, a rolą konstruktora jest właśnie inicjalizacja na
+						rzecz konkretnego obiektu (konkretu).Wskaźnik this jest pierwszym argumentem konstruktora
+						obiektu. W konstruktorze
+						wskazuje on na nie zainicjalizowany fragment pamięci, a rolą konstruktora jest właśnie
+						inicjalizacja na rzecz
+						konkretnego obiektu (konkretu).</small>
+					<small><b>Wniosek: wskaźnik this jest narzędziem zapewniającym hermetyzację (czyli ochronę) danych w
+							obiekcie, bo każdy obiekt ma
+							swój i tylko swój wskaźnik this.</b></small>
+				</section>
+
+
+				<section>
+					<h3>this - WSKAŹNIK SPECJALNY</h3>
+					<small>Program posługuje się automatycznie niejawnym wskaźnikiem do obiektu (ang. implicit pointer).
+						Możemy wykorzystać ten
+						istniejący, choć do tej pory niewidoczny dla nas pointer posługując się słowem kluczowym
+						<b>this</b> (ten). This pointer
+						<b>wskazuje na obiekt</b>, do którego należy funkcja. Korzystając z tego wskaźnika funkcja może
+						bez cienia
+						wątpliwości zidentyfikować właśnie ten obiekt, z którym pracuje
+						a nie obiekt przypadkowy.</small>
+					<small>FUNKCJE KATEGORII static NIE OTRZYMUJĄ POINTERA this.
+						Należy pamiętać, że wskaźnik this istnieje wyłącznie podczas
+						wykonywania metod (ang. class member function execution), za
+						wyjątkiem funkcji statycznych.</small>
+				</section>
+
+				<section>
+					<h3>Tablica wirtualna</h3>
+					<small>W C++ tablica wirtualna jest specjalnym rodzajem tablicy, która pozwala na dynamiczne
+						dziedziczenie i rozstrzyganie
+						wywołań funkcji w czasie rzeczywistym podczas działania programu. Jest to związane z mechanizmem
+						dziedziczenia
+						wielokrotnego, w którym pochodna klasa dziedziczy zarówno po klasie bazowej, jak i po innej
+						klasie, która dziedziczy po
+						tej samej klasie bazowej.</small>
+					<small>Mechanizm ten wymaga użycia specyfikatora <b>virtual</b> podczas dziedziczenia, aby zapewnić
+						poprawne wywoływanie metod klasy
+						bazowej przez obiekty pochodne.</small>
+					<small>Ogólnie rzecz biorąc, tablica wirtualna pozwala na dynamiczne wiązanie metod w czasie
+						wykonania programu. Dzięki niej
+						możliwe jest zapewnienie poprawnego wywoływania metod z klasy bazowej, nawet gdy są one
+						nadpisywane w klasach
+						pochodnych.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Tablica wirtualna</h3>
+
+					<pre style="font-size: 14px" data-id="code-animation">
+																																						<code style="max-height: 250px;" class="hljs cpp" data-trim data-line-numbers><script type="text/template">
+class KlasaBazowa {
+public:
+    virtual void metoda() {
+        // Implementacja metody w klasie bazowej
+    }
+};
+
+class KlasaPochodna : public KlasaBazowa {
+public:
+    void metoda() override {
+        // Implementacja przesłoniętej metody w klasie pochodnej
+    }
+};
+
+int main() {
+    KlasaBazowa* wskaznik;
+
+    KlasaBazowa obiektBazowy;
+    KlasaPochodna obiektPochodny;
+
+    wskaznik = &obiektBazowy;
+    wskaznik->metoda(); // Wywołuje metodę z klasy bazowej
+
+    wskaznik = &obiektPochodny;
+    wskaznik->metoda(); // Wywołuje metodę z klasy pochodnej
+
+    return 0;
+}
+																													</script>
+																																						</code>
+																																						</pre>
+					<small>
+						W tym przykładzie, wykorzystując wirtualne funkcje w klasie bazowej i przesłonięcie tych funkcji
+						w klasie pochodnej,
+						możliwe jest dynamiczne wywoływanie odpowiednich metod w czasie działania programu. Używając
+						wskaźnika do obiektu klasy
+						bazowej, program może wywoływać metody zarówno z klasy bazowej, jak i pochodnej, w zależności od
+						rzeczywistego typu
+						obiektu wskazywanego przez wskaźnik.
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Tablica wirtualna</h3>
+
+					<pre style="font-size: 14px" data-id="code-animation">
+																																						<code style="max-height: 250px;" class="hljs cpp" data-trim data-line-numbers><script type="text/template">
+class KlasaBazowa {
+public:
+    virtual void metoda() {
+        // Implementacja metody w klasie bazowej
+    }
+};
+
+class KlasaPochodna : public KlasaBazowa {
+public:
+    void metoda() override {
+        // Implementacja przesłoniętej metody w klasie pochodnej
+    }
+};
+
+int main() {
+    KlasaBazowa* wskaznik;
+
+    KlasaBazowa obiektBazowy;
+    KlasaPochodna obiektPochodny;
+
+    wskaznik = &obiektBazowy;
+    wskaznik->metoda(); // Wywołuje metodę z klasy bazowej
+
+    wskaznik = &obiektPochodny;
+    wskaznik->metoda(); // Wywołuje metodę z klasy pochodnej
+
+    return 0;
+}
+																													</script>
+																																						</code>
+																																						</pre>
+					<small>
+						Ta elastyczność i zdolność do dynamicznego wiązania
+						nazywane są tablicą wirtualną
+						(ang. virtual table) - strukturą danych używaną do przechowywania wskaźników do funkcji
+						wirtualnych. Ta tabela umożliwia
+						wywołanie odpowiednich metod w zależności od rzeczywistego typu obiektu w czasie wykonania
+						programu.
+					</small>
+				</section>
+
+				<section>
+					<h3>Tworzenie obiektów</h3>
+					<p>
+						Kiedy w C++ tworzony jest obiekt zachodzą dwa procesy:
+					<ul>
+						<li>alokacja pamięci na obiekt</li>
+						<li>inicjalizacja obiektu</li>
+						</p>
+				</section>
+				<section>
+					<h3>Tworzenie obiektów</h3>
+					<small>
+						Pierwszy proces może być wykonany na różne sposoby i w różnym czasie:
+						<ul>
+							<li>Pamięć może zostać przydzielona, zanim zacznie się praca programu –w obrębie obszaru
+								danych
+								statycznych. Obszar ten
+								istnieje przez cały czas działania programu.</li>
+							<li>Pamięć może zostać przydzielona na stosie kiedy zostanie osiągnięty określony punkt
+								realizacji programu (klamrowy nawias
+								otwierający). Jest ona zwalniana po pojawieniu się klamrowego nawiasu zamykającego.
+								Tutaj
+								potrzebna jest wiedza o
+								liczbie i rozmiarze wykorzystywanych zmiennych aby nie przekroczyć rozmiaru stosu.</li>
+							<li>Pamięć jest przydzielana na stercie. Jest to proces dynamiczny. Jest on obsługiwany
+								odpowiednią funkcją. Czyli
+								przydziela ją i zwalnia program (czytaj programista) [malloc(), free() w <cstdlib>, new,
+									delete w standardowej
+									bibliotece poprzez przestrzeń nazw (namespace)]</li>
+					</small>
+				</section>
+				<section>
+					<h3>Klasy abstrakcyjne i interfejsy</h3>
+					<small>Zwykle po to tworzymy klasy by tworzyć ich egzemplarze (instancje/obiekty). Okazuje się
+						jednak
+						często, że definiujemy
+						klasy, które z założenia nie będą nigdy miały swoich obiektów. Takie klasy nazywamy klasami
+						abstrakcyjnymi. <br />Wbrew temu,
+						co mogłoby się wydawać na pierwszy rzut oka, te klasy pełnią bardzo ważną rolę przy
+						projektowaniu hierarchii klas.
+						Pozwalają bowiem na wyodrębnienie wspólnych cech wielu definiowanych pojęć (klas) i jawne
+						wskazanie, że wszystkie
+						dziedziczące klasy muszą te cechy posiadać.</small>
+				</section>
+				<section>
+					<h3>Klasy abstrakcyjne i interfejsy</h3>
+					<p>Czasami w klasie abstrakcyjnej chcemy opisać tylko interfejs, bez żadnych danych ani
+						implementacji metod. Ponieważ takie
+						wydzielenie samego interfejsu jest bardzo ważne w Javie nadano mu specjalną postać składniową i
+						nazwano ją interfejsem
+						(klasa interfejsu).</p>
+				</section>
+
+				<section>
+					<h2>Podsumowanie</h2>
+					<p>Poznaliśmy:
+					<ol>
+						<li>Sposób deklarowania klasy i to, że jest ona TYPEM ZMIENNEJ OBIEKTOWEJ.</li>
+						<li>Rolę konstruktora obiektów.</li>
+						<li>Różnicę pomiędzy typem wbudowanym, a typem własnym (obiektowym).</li>
+						<li>Rolę wskaźnika this</li>
+						<li>Ulokowanie tych pojęć w ogólnej idei ochrony (kapsułkowaniu lub inaczej hermetyzacji) danych
+							, którymi będzie operował
+							obiekt</li>
+					</ol>
+					</p>
+				</section>
+
+			</section>
+
+
+			<footer style="position: absolute; bottom: 0; width: 100%;">
+				<small style="font-size: 9px;">
+					Materiały do tej sekcji zostały opracowane w oparciu o skrót materiałów wykładowych przedmiotu Programowanie
+					Obiektowe prowadzonego na WAT. Autor materiałów źródłowych prof. Andrzej Walczak<br>
+					Copyrights Military University of Technology in Warsaw
+				</small>
+			</footer>
+
+		</div>
+
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/search/search.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+
+		// Also available as an ES module, see:
+		// https://revealjs.com/initialization/
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
+		});
+
+	</script>
+
+</body>
+
+</html>
