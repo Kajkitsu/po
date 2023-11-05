@@ -1388,9 +1388,13 @@ int main() {
 							};
 								</code></pre>
 				</section>
-				<section>
+				<section data-auto-anmiate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
-					<pre style="font-size: 16px"><code style="max-height: 250px;" class="hljs cpp" data-trim contenteditable data-line-numbers><script type="text/template">
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
 #include<iostream>
 #include<string>
 #include<conio.h>
@@ -1443,206 +1447,783 @@ Y::Y(Y &y) {
     if (p) strcpy(p, y.p);
 }
 			</script></code></pre>
-					<small>Omówienie przykładu:</small>
-					<small>(Treść omówienia przykładu może być długa i tutaj umieszczona w formie skróconej lub jako
-						punkty, aby ułatwić
-						czytanie.)</small>
 				</section>
-				<section>
-					<h3>Omówienie przykładu: Klasa X</h3>
-					<ul style="font-size: 0.75em;">
-						<li>Klasyfikacja <code>public</code>, wskaźnik <code>p</code> i konstruktor
-							<code>X(char*)</code>.
-						</li>
-						<li>Wskaźnik <code>p</code> wskazuje na znaki.</li>
-						<li>Konstruktor przyjmuje <code>char*</code> jako argument.</li>
-					</ul>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable data-line-numbers="1-5">
-							class X {
-							public:
-								char* p;
-								X(char*);
-							};
-								</code></pre>
+
+				<section data-auto-animate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="5-10">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<small>Omówienie przykładu: Klasa X</small>
+					<small>
+						<ul>
+							<li>Klasyfikacja <code>public</code>, wskaźnik <code>p</code> i konstruktor
+								<code>X(char*)</code>.
+							</li>
+							<li>Wskaźnik <code>p</code> wskazuje na znaki.</li>
+							<li>Konstruktor przyjmuje <code>char*</code> jako argument.</li>
+						</ul>
+					</small>
 				</section>
-				<section>
-					<h3>Omówienie przykładu: Konstruktor X</h3>
-					<ul style="font-size: 0.75em;">
-						<li>Definicja konstruktora klasy <code>X</code>.</li>
-						<li>Alokacja pamięci i kopiowanie argumentu.</li>
-					</ul>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable data-line-numbers="26-28">
-							X::X(char* s) {
-								p = new char[80];
-								if(p) strcpy(p, s);
-							}
-								</code></pre>
+
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="38-41">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<small>Omówienie przykładu: Konstruktor X</small>
+					<br />
+					<small>
+						<ul>
+							<li>Definicja konstruktora klasy <code>X</code>.</li>
+							<li>Alokacja pamięci i kopiowanie argumentu.</li>
+						</ul>
+					</small>
 				</section>
-				<section>
-					<h3>Omówienie przykładu: Klasa Y</h3>
-					<ul style="font-size: 0.75em;">
-						<li>Analogiczna struktura do klasy <code>X</code> dla klasy <code>Y</code>.</li>
-					</ul>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable data-line-numbers="8-9">
-							class Y {
-							public:
-								char* p;
-								Y(char*);
-							};
-								</code></pre>
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="43-46">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<small>Omówienie przykładu: Klasa Y</small>
+					<small>Analogiczna struktura do klasy X dla klasy Y.</small>
 				</section>
-				<section>
-					<h3>Analiza konstruktora kopiującego klasy Y</h3>
-					<small>Konstruktor kopiujący w klasie <code>Y</code> kopiuje wskaźnik do
-						zmiennej
-						znakowej.</small>
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 150px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="48-51">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<small>Konstruktor kopiujący w klasie Y kopiuje wskaźnik do zmiennej znakowej.</small>
 					<small>
 						<ul>
 							<li>Możliwe jest kopiowanie z innej klasy, co jest podstawą kopiowania głębokiego.</li>
-							<li>W klasie <code>X</code>, domyślny konstruktor kopiujący (utworzony w trakcie kompilacji)
-								umożliwia
+							<li>W klasie X, domyślny konstruktor kopiujący (utworzony w trakcie kompilacji) umożliwia
 								kopiowanie płytkie.</li>
-							<li>Kopiowanie płytkie obejmuje tylko składniki klasy <code>X</code>.</li>
+							<li>Kopiowanie płytkie obejmuje tylko składniki klasy X.</li>
 						</ul>
 					</small>
+					<small>Konstruktor kopiujący klasy Y umożliwia kopiowanie głębokie, w przeciwieństwie do
+						konstruktora kopiującego klasy X,
+						który jest domyślny i wykonuje kopiowanie płytkie.</small>
+				</section>
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="21,22,23">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
 
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable data-line-numbers="9">
-						<script type="text/template">	  
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
 class Y {
 public:
-    char* p;
-    Y(char*);
-    Y(Y&); // Konstruktor kopiujący
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
 };
-								</script></code></pre>
-					<small>Konstruktor kopiujący klasy <code>Y</code> umożliwia kopiowanie
-						głębokie, w
-						przeciwieństwie do konstruktora kopiującego klasy <code>X</code>, który jest domyślny i
-						wykonuje kopiowanie
-						płytkie.</small>
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<small>Inicjalizacja obiektów klasy X</small>
+					<small>Tworzymy dwa obiekty klasy X, x i j, gdzie j jest inicjowany przez skopiowanie x.</small>
+					<small>
+						<ul>
+							<li>x jest inicjowany z ciągiem "xxx".</li>
+							<li>Konstruktor kopiujący klasy X jest używany do stworzenia j jako kopii x.</li>
+						</ul>
+					</small>
 				</section>
-				<section>
-					<h3>Inicjalizacja obiektów klasy X</h3>
-					<p>Tworzymy dwa obiekty klasy <code>X</code>, <code>x</code> i
-						<code>j</code>, gdzie
-						<code>j</code> jest inicjowany przez skopiowanie <code>x</code>.
-					</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="13-14">
-							  void main() {
-								X x("xxx"); // Inicjalizacja x
-								X j = x;    // j jest kopią x
-								// ...
-							  }
-								</code></pre>
-					<ul>
-						<li><code>x</code> jest inicjowany z ciągiem "xxx".</li>
-						<li>Konstruktor kopiujący klasy <code>X</code> jest używany do stworzenia <code>j</code>
-							jako kopii
-							<code>x</code>.
-						</li>
-					</ul>
+
+
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="24-26">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<small>Współdzielenie pamięci przez obiekty</small>
+					<small>Wskaźnik p w obu obiektach, x i j, wskazuje na to samo miejsce w pamięci.</small>
+					<small>
+						<ul>
+							<li>Modyfikacja <code>j.p</code> za pomocą <code>strcpy</code> zmienia również wartość
+								wskazywaną przez <code>x.p.</code></li>
+							<li>Wydruk adresów wskaźników obiektów <code>x</code> i <code>j</code> pokaże ten sam adres.
+							</li>
+						</ul>
+					</small>
 				</section>
-				<section>
-					<h3>Współdzielenie pamięci przez obiekty</h3>
-					<p style="font-size: 0.6em;">Wskaźnik <code>p</code> w obu obiektach, <code>x</code> i
-						<code>j</code>, wskazuje
-						na to samo miejsce w pamięci.
-					</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="15-17">
-								// Kontynuacja main()
-								cout << "\nx=" << x.p << ", j=" << j.p; // Wydruk współdzielonego adresu
-								strcpy(j.p, "111"); // Modyfikacja przez j wpływa również na x
-								cout << "\nx=" << x.p << ", j=" << j.p; // Wydruk po modyfikacji
-								// ...
-								</code></pre>
-					<ul style="font-size: 0.6em;">
-						<li>Modyfikacja <code>j.p</code> za pomocą <code>strcpy</code> zmienia również wartość
-							wskazywaną przez
-							<code>x.p</code>.
-						</li>
-						<li>Wydruk adresów wskaźników obiektów <code>x</code> i <code>j</code> pokaże ten sam adres.
-						</li>
-					</ul>
-				</section>
-				<section>
-					<h3>Modyfikacja i wydruk wartości wskaźnika</h3>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="15-17">
-							  cout << "\nx=" << x.p << ", j=" << j.p; // Wydruk adresów
-							  strcpy(j.p, "111"); // Kopiowanie do p za pośrednictwem j
-							  cout << "\nx=" << x.p << ", j=" << j.p; // Wydruk po modyfikacji
-								</code></pre>
-					<p style="font-size: 0.6em;">Poprzez wskaźnik <code>p</code> wpisujemy wartość "111" do obiektu
+
+
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="24-26">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<p>Modyfikacja i wydruk wartości wskaźnika</p>
+					<small>Poprzez wskaźnik <code>p</code> wpisujemy wartość "111" do obiektu
 						<code>j</code>,
 						a zmiany widoczne są również w <code>x</code> ze względu na współdzieloną pamięć. Wydruk
 						adresów po
 						modyfikacji wskaźnika <code>p</code> w obiekcie <code>j</code> powinien pokazać identyczne
 						adresy dla obu
 						obiektów.
-					</p>
+					</small>
 				</section>
-				<section>
-					<h3>Konstruktor kopiujący w praktyce - klasa Y</h3>
-					<p style="font-size: 0.6em;">Powtórzenie operacji dla klasy <code>Y</code>, podobne do klasy
+
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="29-33">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<p>Konstruktor kopiujący w praktyce - klasa Y</p>
+					<small>
+						Powtórzenie operacji dla klasy <code>Y</code>, podobne do klasy
 						<code>X</code>.
-					</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="18-20">
-							  cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
-							  Y y("yyy"); 
-							  Y d = y; // Konstruktor kopiujący klasy Y
-							  cout << "\ny=" << y.p << ", d=" << d.p;
-								</code></pre>
-					<p style="font-size: 0.6em;">Inicjacja obiektów <code>y</code> i <code>d</code> klasy
+						Inicjacja obiektów <code>y</code> i <code>d</code> klasy
 						<code>Y</code>, które są
 						odpowiednikami <code>x</code> i <code>j</code> z klasy <code>X</code>.
-					</p>
+					</small>
 				</section>
-				<section>
-					<h3>Modifikacja i weryfikacja obiektów klasy Y</h3>
-					<p style="font-size: 0.6em;">Modifikacja i sprawdzenie obiektów klasy <code>Y</code>.</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="21-22">
-							  strcpy(y.p, "222");
-							  cout << "\ny=" << y.p << ", d=" << d.p;
-								</code></pre>
-					<p style="font-size: 0.6em;">Modyfikacja łańcucha w obiekcie <code>d</code> nie wpływa na obiekt
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="32-33">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<p>Modifikacja i sprawdzenie obiektów klasy Y.</p>
+					<small>Modyfikacja łańcucha w obiekcie <code>d</code> nie wpływa na obiekt
 						<code>y</code>
-						dzięki kopiowaniu głębokiemu realizowanemu przez konstruktor klasy <code>Y</code>.
-					</p>
-					<p style="font-size: 0.6em;">Adresy obiektów <code>y</code> i <code>d</code> powinny być różne,
+						dzięki kopiowaniu głębokiemu realizowanemu przez konstruktor klasy <code>Y</code>.</small>
+					<small>Adresy obiektów <code>y</code> i <code>d</code> powinny być różne,
 						w
-						przeciwieństwie do obiektów klasy <code>X</code>.</p>
+						przeciwieństwie do obiektów klasy <code>X</code>.</small>
 				</section>
-				<section>
-					<h3>Implementacja konstruktora klasy X</h3>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="26-28">
-							  X::X(char* s) {
-								p = new char[80];
-								if(p) strcpy(p, s);
-							  }
-								</code></pre>
-					<p style="font-size: 0.6em;">Definicja konstruktora klasy <code>X</code>. Przydziela on pamięć
+
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="38-41">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<p>Implementacja konstruktora klasy X.</p>
+					<small>Definicja konstruktora klasy <code>X</code>. Przydziela on pamięć
 						dla tablicy
 						znaków i kopiuje łańcuch przekazany jako argument tylko jeśli alokacja pamięci się
-						powiedzie.</p>
+						powiedzie.</small>
 				</section>
-				<section>
-					<h3>Konstruktory klasy Y</h3>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="29-34">
-							  Y::Y(char* s) {
-								p = new char[80];
-								if(p) strcpy(this->p, s);
-							  }
-							  
-							  Y::Y(Y& y) {
-								p = new char[80];
-								if(p) strcpy(p, y.p);
-							  }
-								</code></pre>
-					<p style="font-size: 0.6em;">Konstruktor klasy <code>Y</code>, przydziela pamięć dla tablicy
+
+				<section data-auto-anmiate>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code 
+						style="max-height: 250px;" 
+						data-id="code"
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers="43-51">
+						<script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<p>Implementacja konstruktorów klasy Y.</p>
+					<small>Konstruktor klasy <code>Y</code>, przydziela pamięć dla tablicy
 						znaków i kopiuje
-						łańcuch przekazany jako argument.</p>
-					<p style="font-size: 0.6em;">Konstruktor kopiujący klasy <code>Y</code>, tworzy nową tablicę
+						łańcuch przekazany jako argument.</small>
+					<small>Konstruktor kopiujący klasy <code>Y</code>, tworzy nową tablicę
 						znaków i kopiuje do
-						niej zawartość z innego obiektu klasy <code>Y</code>, umożliwiając kopiowanie głębokie.</p>
+						niej zawartość z innego obiektu klasy <code>Y</code>, umożliwiając kopiowanie głębokie.</small>
 				</section>
 				<section>
 					<h3>Wyniki działania programu</h3>
@@ -1804,7 +2385,7 @@ int main() {
 
 				</section>
 				<section data-auto-animate>
-					<h3>Elementy składowe klas i 3truktur</h2>
+					<h3>Elementy składowe klas i struktur</h3>
 					<small>Klasa i struktura (Struct) są bardzo podobne. Struktury z
 						definicji mają wszystkie
 						składowe dostępne (publiczne), a klasy z definicji mają wszystkie składowe prywatne, ukryte
@@ -1820,7 +2401,7 @@ int main() {
 						jak zwalnianie pamięci i zwalnianie zasobów, są wykonywane przez destruktory.</small>
 				</section>
 				<section data-auto-animate>
-					<h3>Elementy składowe klas i 3truktur</h2>
+					<h3>Elementy składowe klas i struktur</h3>
 					<small>W języku C++11 lub nowszym składowe danych mogą (i zwykle powinny)
 						być
 						zainicjowane w punkcie deklaracji. Konstruktory niejawne, kopiujące, konwertujące,
