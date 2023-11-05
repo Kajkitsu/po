@@ -29,10 +29,19 @@
 		<!-- Any section element inside of this container is displayed as a slide -->
 		<div class="slides">
 			<section data-background-gradient="linear-gradient(45deg, #33, #6754e8)">
-				<h2>Programowanie obiektowe</h2>
-				<br slyle="height: 600px;" />
-				<p style="text-align: left;">ppor. mgr inż. Norbert Waszkowiak</p>
-				<div class="fragment" style="text-align: left;">
+				<section style="text-align: left;" data-auto-animate
+					data-background-gradient="linear-gradient(45deg, #33, #6754e8)">
+					<h2>Programowanie obiektowe</h2>
+					<br slyle="height: 600px;" />
+					<a href="#/zimon">por. mgr inż. Michał Zimoń</a>
+					<br />
+					<a href="#/waszkowiak">ppor. mgr inż. Norbert Waszkowiak</a>
+				</section>
+				<section style="text-align: left;" data-auto-animate id="waszkowiak"
+					data-background-gradient="linear-gradient(45deg, #33, #6754e8)">
+					<h2>Programowanie obiektowe</h2>
+					<br slyle="height: 600px;" />
+					<p style="text-align: left;">ppor. mgr inż. Norbert Waszkowiak</p>
 					<small>nr tel.: 261 839 060</small>
 					<br />
 					<small>e-mail: norbert.waszkowiak@wat.edu.pl</small>
@@ -40,11 +49,30 @@
 					<small>pomieszczenie: bud. 100 pok. 254B</small>
 					<br />
 					<small>konsultacje online i stacjanarnie: po wcześniejszym umówieniu</small>
-				</div>
+					<br />
+					<a href="#/start">Wyklady</a>
+				</section>
+				<section style="text-align: left;" data-auto-animate id="zimon"
+					data-background-gradient="linear-gradient(45deg, #33, #6754e8)">
+					<h2>Programowanie obiektowe</h2>
+					<br slyle="height: 600px;" />
+					<p style="text-align: left;">por. mgr inż. Michał Zimoń</p>
+					<small>nr tel.: 261 839 060</small>
+					<br />
+					<small>e-mail: michal.zimon@wat.edu.pl</small>
+					<br />
+					<small>pomieszczenie: bud. 100 pok. 254B</small>
+					<br />
+					<small>konsultacje online i stacjanarnie: po wcześniejszym umówieniu</small>
+					<br />
+					<a href="#/start">Wyklady</a>
+				</section>
 			</section>
-			<section data-background-gradient="linear-gradient(45deg, #c03090, #10a080)">
+
+
+			<section id="start" data-background-gradient="linear-gradient(13deg, #3a6935, #b5b170)">
 				<section>
-					<h2>Wykłady</h2>
+					<h2>Wstęp do programowania obiektowego</h2>
 				</section>
 				<section data-auto-animate>
 					<h3>Podstawowe pojęcia</h3>
@@ -138,7 +166,7 @@
 								uzgodnienia pomiędzy twórcami badań na zasadzie jego zgodności z dotychczasową wiedzą i
 								kierunkiem jej
 								rozwoju.</p>
-								Musi być:
+							Musi być:
 							<li>
 								<ul>
 									<li>Spójny logicznie i pojęciowo.</li>
@@ -1095,6 +1123,737 @@ int main() {
 				</section>
 
 			</section>
+
+
+			<section data-background-gradient="linear-gradient(45deg, #c03090, #10a080)">
+				<section>
+					<h2>Konstruktor - cechy główne</h2>
+				</section>
+				<section data-auto-animate>
+					<h3>Co robi konstruktor?</h3>
+					<small>
+						Wywołanie konstruktora powoduje wykonanie następujących zadań:
+						<ul>
+							<li>obliczenie rozmiaru obiektu</li>
+							<li>alokacja obiektu w pamięci</li>
+							<li>wyczyszczenie (zerowanie) obszaru pamięci zarezerwowanej dla obiektu (tylko w
+								niektórych językach)
+							</li>
+							<li>wpisanie do obiektu informacji łączącej go z odpowiadającą mu klasą (połączenie z
+								metodami klasy)
+								poprzez wskaźnik <code>this</code> (w C++)</li>
+							<li>wykonanie kodu klasy bazowej (w niektórych językach nie wymagane)</li>
+							<li>wykonanie kodu wywołanego konstruktora</li>
+						</ul>
+						<p>Z wyjątkiem ostatniego punktu powyższe zadania są wykonywane wewnętrznie i są wszyte w
+							kompilator lub
+							interpreter języka, lub w niektórych językach stanowią kod klasy bazowej.</p>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Nazywanie konstruktora</h3>
+					<small>
+						W językach programowania w różny sposób oznacza się konstruktor:
+						<ul>
+							<li>w C++, PHP4, Javie i in. - jest to metoda o nazwie zgodnej z nazwą klasy</li>
+							<li>w Pascalu - metoda, której nazwę poprzedzono słowem kluczowym
+								<code>constructor</code>.
+							</li>
+							<li>w PHP 5 - metoda o nazwie <code>__construct</code></li>
+						</ul>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Uwagi ogólne do konstruktorów</h3>
+					<small>
+						<ul>
+							<li>Konstruktor <b>NIE MUSI</b> wystąpić w opisie klasy, czyli obiekty nie muszą być
+								jawnie wprowadzane
+								konstruktorem. Wtedy uruchomi się konstruktor domniemany.</li>
+							<li>Nazwa konstruktora może być przeładowana, czyli stosowana wielokrotnie w opisie
+								klasy z różnymi
+								listami argumentów. Wtedy kompilator odróżnia konstruktory po listach argumentów,
+								tak, jak w
+								przypadku przeładowanych nazw funkcji. Konstruktorów może więc być wiele.</li>
+							<li>Konstruktor może być wywoływany (a nie definiowany!!) bez żadnych argumentów. Jest
+								to również tak
+								zwany konstruktor domniemany. Czasem nazywamy go domyślnym albo standardowym. Ze
+								względu na istotę
+								przeładowania nazwy konstruktor domniemany czyli bezargumentowy może wystąpić tylko
+								raz. Jeśli nie
+								deklarujemy w klasie żadnego konstruktora, to kompilator sam ustanawia właśnie
+								konstruktor
+								domniemany do obsługi obiektów w programie. Każdy konstruktor z argumentami, którym
+								nadamy
+								początkowe wartości domyślne czyli już niedefiniowalne jest także konstruktorem
+								domniemanym.</li>
+						</ul>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktor i jego właściwości</h3>
+					<small>
+						<ul>
+							<li>Konstruktor jest zwykle deklarowany jako publiczny, bo obiekty wprowadzane nim mogą
+								być używane
+								przez klasy zewnętrzne, a ponadto jest funkcją, która <b>MUSI</b> być dostępna dla
+								wszystkich
+								składników klasy.</li>
+							<li>Dla konstruktora można przewidzieć ochronę za pomocą etykiet <code>private</code>
+								lub
+								<code>protected</code>. Wówczas konstruowane obiekty będą dostępne tylko w obrębie
+								klasy z tym
+								konstruktorem jako <code>private</code> albo jako <code>protected</code> tylko w
+								zakresie klas
+								dziedziczących.
+							</li>
+							<li>Konstruktor kopiujący zamiast definiować nowe obiekty, podaje kopie obiektów
+								zawartych w innej
+								klasie.</li>
+							<li>Konstruktor konwertujący dokonuje konwersji typu obiektu z jednego w drugi.</li>
+						</ul>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktor przenoszący</h3>
+					<small>
+						<p>Został wprowadzony w standardzie języka C++11 ma na celu możliwie jak najszybsze
+							przeniesienie danych z
+							innego obiektu bez ich kopiowania. Konstruktor przenoszący przyjmuje referencje
+							prawostronną na obiekt
+							do przeniesienia:</p>
+						<pre><code data-trim class="cpp">
+							class Klasa
+							{
+							public:
+								Klasa(Klasa &&) { }
+							};
+									</code></pre>
+						<p>Przykład użycia:</p>
+						<pre><code data-trim class="cpp">
+							#include &lt;utility&gt;
+							
+							Klasa k1;
+							Klasa k2(std::move(k1));
+									</code></pre>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktor kopiujący</h3>
+					<small>
+						<p>Przyjrzyjmy się wywołaniu konstruktora klasy o nazwie <code>klasa</code>:</p>
+						<pre><code data-trim class="cpp">
+							klasa::klasa(klasa&)
+									</code></pre>
+						<p>Jego argumentem jest referencja do obiektu danej klasy. Czyli do elementu, który w chwili
+							uruchomienia
+							tego konstruktora już istnieje. Taki konstruktor nie konstruuje obiektu tylko tworzy
+							kopię innego, który
+							już istnieje.</p>
+						<p>Przykłady zapisu konstruktora kopiującego:</p>
+						<pre><code data-trim class="cpp">
+							X::X(X&)
+									</code></pre>
+						<p>lub</p>
+						<pre><code data-trim class="cpp">
+							X::X(X&, float=3.1415, int=0)
+									</code></pre>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktor kopiujący c.d.</h3>
+					<small>
+						<p>Taki konstruktor wprowadza obiekty identyczne z już istniejącymi, czyli ich kopie. Może
+							być wywołany
+							przez program niejawnie:</p>
+						<ol>
+							<li>W sytuacji, gdy do funkcji jest przez wartość przesyłany obiekt klasy X. Wówczas
+								tworzona jest kopia
+								tego obiektu, co jest znanym jako kopiowanie płytkie.</li>
+							<li>W sytuacji, kiedy funkcja zwraca przez wartość obiekt klasy X. Również wtedy
+								tworzona jest kopia
+								obiektu, co także jest kopiowaniem płytkim.</li>
+						</ol>
+						<p>To, że konstruktor kopiujący podaje obiekt kopiowany przez referencję, daje mu możliwość
+							zmiany
+							zawartości obiektu klasy (np. przesyłanie argumentu do funkcji przez wartość).</p>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktor kopiujący c.d.</h3>
+					<small>
+						<p>Nie można pominąć referencji w konstruktorze kopiującym, ponieważ gdyby konstruktor
+							<code>X</code>
+							wywoływał obiekty swojej klasy <code>X</code> przez wartość, to powstawałaby
+							nieskończona pętla
+							tworzenia kopii.
+						</p>
+						<p>Konstruktor, z przyczyn logiki języka, otrzymuje więc warunki do tego, aby potencjalnie
+							uszkodzić
+							oryginał. Aby się przed tym zabezpieczyć, stosujemy następujący zapis (w trybie
+							domyślnym):</p>
+						<pre><code data-trim class="cpp">
+							X::X(const X& obiekt)
+									</code></pre>
+						<p>Teraz konstruktor <code>X</code> wie, że obiekt klasy <code>X</code> musi być wywoływany
+							jako stały.
+							Konstruktor kopiujący jest domyślnie obdarzony moderatorem <code>const</code>, czyli nie
+							może zmienić
+							sam siebie.</p>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Kopiowanie płytkie i głębokie</h3>
+					<small>
+						<p>Wyróżniamy dwa typy kopiowania obiektów zawierających pola będące wskaźnikami:</p>
+						<h4>Kopiowanie płytkie</h4>
+						<ul>
+							<li>Kopiowanie wszystkich składowych (w tym wskaźników).</li>
+							<li>Kopiowane są wskaźniki, a nie to, na co wskazują.</li>
+						</ul>
+						<h4>Kopiowanie głębokie</h4>
+						<ul>
+							<li>Alokacja nowej pamięci dla wskaźników.</li>
+							<li>Kopiowanie zawartości wskazywanej przez wskaźniki w nowe miejsce.</li>
+							<li>Kopiowanie pozostałych pól, nie będących wskaźnikami.</li>
+						</ul>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Głębokie kopiowanie</h3>
+					<small>
+						<p>Kiedy obiekt zawiera wskaźnik do dynamicznie zaalokowanego obszaru, należy zdefiniować
+							operator
+							przypisania wykonujący głębokie kopiowanie. Dla rozważanej klasy zdefiniowanie operatora
+							przypisania
+							może wyglądać następująco:</p>
+						<pre><code data-trim class="cpp">
+							AType&amp; AType::operator=(const AType&amp; otherObj) {
+								// Sprawdzić przypisanie obiektu do samego siebie
+								if (this == &amp;otherObj) {
+									return *this; // do nothing
+								}
+							
+								// Skasować zawartość obiektu docelowego
+								delete this->...; // Właściwe czyszczenie zasobów
+							
+								// Zaalokować pamięć dla kopiowanych wartości
+								// ... kod alokacji ...
+							
+								// Przepisać kopiowane wartości
+								// ... kod kopiowania ...
+							
+								// Zwrócić *this
+								return *this;
+							}
+									</code></pre>
+						<p>Operator przypisania powinien uwzględnić przypadki szczególne, takie jak przypisanie
+							obiektu do samego
+							siebie oraz zarządzanie zasobami.</p>
+					</small>
+				</section>
+				<section>
+					<h3>Konstruktor kopiujący vs Operator przypisania</h3>
+					<p>Konstruktor kopiujący i operator przypisania mają różne zastosowania i zachowania.</p>
+				</section>
+
+				<section>
+					<h4>Konstruktor kopiujący</h4>
+					<p>Używany do stworzenia nowego obiektu z istniejącego, bez konieczności sprawdzania przypisania
+						do samego
+						siebie oraz zwalniania poprzedniej zawartości. Jest wywoływany:</p>
+					<ul>
+						<li>Przy przekazywaniu obiektu przez wartość.</li>
+						<li>Przy inicjalizacji nowego obiektu istniejącym.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Operator przypisania</h4>
+					<p>Używany do kopiowania wartości między już istniejącymi obiektami, z dodatkowymi krokami jak:
+					</p>
+					<ul>
+						<li>Sprawdzenie przypisania obiektu do samego siebie.</li>
+						<li>Zarządzanie zwalnianiem zasobów przed przypisaniem.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Konstruktor kopiujący vs Operator przypisania c.d.</h3>
+					<pre><code data-trim contenteditable>
+							int main() {
+								list a;
+								// ...
+								list b(a); // copy constructor is called
+								list c = a; // copy constructor is called
+							};
+								</code></pre>
+				</section>
+				<section>
+					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
+					<pre style="font-size: 16px"><code style="max-height: 250px;" class="hljs cpp" data-trim contenteditable data-line-numbers><script type="text/template">
+#include<iostream>
+#include<string>
+#include<conio.h>
+
+class X {
+public:
+    char *p;
+
+    X(char *);
+};
+
+class Y {
+public:
+    char *p;
+
+    Y(char *);
+
+    Y(Y &); // deklaracja konstruktora kopiującego
+};
+
+void main() {
+    X x("xxx");
+    X j = x; // wywołanie konstruktora kopiującego
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    strcpy(j.p, "111");
+    cout << "\nx=" << x.p << ", j=" << j.p;
+    cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+
+    Y y("yyy");
+    Y d = y; // wywołanie konstruktora kopiującego
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    strcpy(y.p, "222");
+    cout << "\ny=" << y.p << ", d=" << d.p;
+    cprintf("\n\ry.p=%p, d.p=%p", y.p, d.p);
+    getch();
+}
+
+X::X(char *s) {
+    p = new char[80];
+    if (p) strcpy(p, s);
+}
+
+Y::Y(char *s) {
+    p = new char[80];
+    if (p) strcpy(this->p, s);
+}
+
+Y::Y(Y &y) {
+    p = new char[80];
+    if (p) strcpy(p, y.p);
+}
+			</script></code></pre>
+					<small>Omówienie przykładu:</small>
+					<small>(Treść omówienia przykładu może być długa i tutaj umieszczona w formie skróconej lub jako
+						punkty, aby ułatwić
+						czytanie.)</small>
+				</section>
+				<section>
+					<h3>Omówienie przykładu: Klasa X</h3>
+					<ul style="font-size: 0.75em;">
+						<li>Klasyfikacja <code>public</code>, wskaźnik <code>p</code> i konstruktor
+							<code>X(char*)</code>.
+						</li>
+						<li>Wskaźnik <code>p</code> wskazuje na znaki.</li>
+						<li>Konstruktor przyjmuje <code>char*</code> jako argument.</li>
+					</ul>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable data-line-numbers="1-5">
+							class X {
+							public:
+								char* p;
+								X(char*);
+							};
+								</code></pre>
+				</section>
+				<section>
+					<h3>Omówienie przykładu: Konstruktor X</h3>
+					<ul style="font-size: 0.75em;">
+						<li>Definicja konstruktora klasy <code>X</code>.</li>
+						<li>Alokacja pamięci i kopiowanie argumentu.</li>
+					</ul>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable data-line-numbers="26-28">
+							X::X(char* s) {
+								p = new char[80];
+								if(p) strcpy(p, s);
+							}
+								</code></pre>
+				</section>
+				<section>
+					<h3>Omówienie przykładu: Klasa Y</h3>
+					<ul style="font-size: 0.75em;">
+						<li>Analogiczna struktura do klasy <code>X</code> dla klasy <code>Y</code>.</li>
+					</ul>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable data-line-numbers="8-9">
+							class Y {
+							public:
+								char* p;
+								Y(char*);
+							};
+								</code></pre>
+				</section>
+				<section>
+					<h3>Analiza konstruktora kopiującego klasy Y</h3>
+					<small>Konstruktor kopiujący w klasie <code>Y</code> kopiuje wskaźnik do
+						zmiennej
+						znakowej.</small>
+					<small>
+						<ul>
+							<li>Możliwe jest kopiowanie z innej klasy, co jest podstawą kopiowania głębokiego.</li>
+							<li>W klasie <code>X</code>, domyślny konstruktor kopiujący (utworzony w trakcie kompilacji)
+								umożliwia
+								kopiowanie płytkie.</li>
+							<li>Kopiowanie płytkie obejmuje tylko składniki klasy <code>X</code>.</li>
+						</ul>
+					</small>
+
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable data-line-numbers="9">
+						<script type="text/template">	  
+class Y {
+public:
+    char* p;
+    Y(char*);
+    Y(Y&); // Konstruktor kopiujący
+};
+								</script></code></pre>
+					<small>Konstruktor kopiujący klasy <code>Y</code> umożliwia kopiowanie
+						głębokie, w
+						przeciwieństwie do konstruktora kopiującego klasy <code>X</code>, który jest domyślny i
+						wykonuje kopiowanie
+						płytkie.</small>
+				</section>
+				<section>
+					<h3>Inicjalizacja obiektów klasy X</h3>
+					<p>Tworzymy dwa obiekty klasy <code>X</code>, <code>x</code> i
+						<code>j</code>, gdzie
+						<code>j</code> jest inicjowany przez skopiowanie <code>x</code>.
+					</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="13-14">
+							  void main() {
+								X x("xxx"); // Inicjalizacja x
+								X j = x;    // j jest kopią x
+								// ...
+							  }
+								</code></pre>
+					<ul>
+						<li><code>x</code> jest inicjowany z ciągiem "xxx".</li>
+						<li>Konstruktor kopiujący klasy <code>X</code> jest używany do stworzenia <code>j</code>
+							jako kopii
+							<code>x</code>.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Współdzielenie pamięci przez obiekty</h3>
+					<p style="font-size: 0.6em;">Wskaźnik <code>p</code> w obu obiektach, <code>x</code> i
+						<code>j</code>, wskazuje
+						na to samo miejsce w pamięci.
+					</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="15-17">
+								// Kontynuacja main()
+								cout << "\nx=" << x.p << ", j=" << j.p; // Wydruk współdzielonego adresu
+								strcpy(j.p, "111"); // Modyfikacja przez j wpływa również na x
+								cout << "\nx=" << x.p << ", j=" << j.p; // Wydruk po modyfikacji
+								// ...
+								</code></pre>
+					<ul style="font-size: 0.6em;">
+						<li>Modyfikacja <code>j.p</code> za pomocą <code>strcpy</code> zmienia również wartość
+							wskazywaną przez
+							<code>x.p</code>.
+						</li>
+						<li>Wydruk adresów wskaźników obiektów <code>x</code> i <code>j</code> pokaże ten sam adres.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Modyfikacja i wydruk wartości wskaźnika</h3>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="15-17">
+							  cout << "\nx=" << x.p << ", j=" << j.p; // Wydruk adresów
+							  strcpy(j.p, "111"); // Kopiowanie do p za pośrednictwem j
+							  cout << "\nx=" << x.p << ", j=" << j.p; // Wydruk po modyfikacji
+								</code></pre>
+					<p style="font-size: 0.6em;">Poprzez wskaźnik <code>p</code> wpisujemy wartość "111" do obiektu
+						<code>j</code>,
+						a zmiany widoczne są również w <code>x</code> ze względu na współdzieloną pamięć. Wydruk
+						adresów po
+						modyfikacji wskaźnika <code>p</code> w obiekcie <code>j</code> powinien pokazać identyczne
+						adresy dla obu
+						obiektów.
+					</p>
+				</section>
+				<section>
+					<h3>Konstruktor kopiujący w praktyce - klasa Y</h3>
+					<p style="font-size: 0.6em;">Powtórzenie operacji dla klasy <code>Y</code>, podobne do klasy
+						<code>X</code>.
+					</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="18-20">
+							  cprintf("\n\rx.p=%p, j.p=%p", x.p, j.p);
+							  Y y("yyy"); 
+							  Y d = y; // Konstruktor kopiujący klasy Y
+							  cout << "\ny=" << y.p << ", d=" << d.p;
+								</code></pre>
+					<p style="font-size: 0.6em;">Inicjacja obiektów <code>y</code> i <code>d</code> klasy
+						<code>Y</code>, które są
+						odpowiednikami <code>x</code> i <code>j</code> z klasy <code>X</code>.
+					</p>
+				</section>
+				<section>
+					<h3>Modifikacja i weryfikacja obiektów klasy Y</h3>
+					<p style="font-size: 0.6em;">Modifikacja i sprawdzenie obiektów klasy <code>Y</code>.</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="21-22">
+							  strcpy(y.p, "222");
+							  cout << "\ny=" << y.p << ", d=" << d.p;
+								</code></pre>
+					<p style="font-size: 0.6em;">Modyfikacja łańcucha w obiekcie <code>d</code> nie wpływa na obiekt
+						<code>y</code>
+						dzięki kopiowaniu głębokiemu realizowanemu przez konstruktor klasy <code>Y</code>.
+					</p>
+					<p style="font-size: 0.6em;">Adresy obiektów <code>y</code> i <code>d</code> powinny być różne,
+						w
+						przeciwieństwie do obiektów klasy <code>X</code>.</p>
+				</section>
+				<section>
+					<h3>Implementacja konstruktora klasy X</h3>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="26-28">
+							  X::X(char* s) {
+								p = new char[80];
+								if(p) strcpy(p, s);
+							  }
+								</code></pre>
+					<p style="font-size: 0.6em;">Definicja konstruktora klasy <code>X</code>. Przydziela on pamięć
+						dla tablicy
+						znaków i kopiuje łańcuch przekazany jako argument tylko jeśli alokacja pamięci się
+						powiedzie.</p>
+				</section>
+				<section>
+					<h3>Konstruktory klasy Y</h3>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="29-34">
+							  Y::Y(char* s) {
+								p = new char[80];
+								if(p) strcpy(this->p, s);
+							  }
+							  
+							  Y::Y(Y& y) {
+								p = new char[80];
+								if(p) strcpy(p, y.p);
+							  }
+								</code></pre>
+					<p style="font-size: 0.6em;">Konstruktor klasy <code>Y</code>, przydziela pamięć dla tablicy
+						znaków i kopiuje
+						łańcuch przekazany jako argument.</p>
+					<p style="font-size: 0.6em;">Konstruktor kopiujący klasy <code>Y</code>, tworzy nową tablicę
+						znaków i kopiuje do
+						niej zawartość z innego obiektu klasy <code>Y</code>, umożliwiając kopiowanie głębokie.</p>
+				</section>
+				<section>
+					<h3>Wyniki działania programu</h3>
+					<pre style="font-size: 16px"><code class="hljs" data-trim>
+							  x=xxx, j=xxx
+							  x=111, j=111
+							  x.p=2707:0004, j.p=2707:0004
+							  y=yyy, d=yyy
+							  y=yyy, d=222
+							  y.p=270D:0004, d.p=2713:0004
+								</code></pre>
+					<p style="font-size: 0.75em;">Powysze linie demonstrują rezultaty wykonania programu. Zauważamy,
+						że obiekty
+						<code>x</code> i <code>j</code> dzielą tę samą przestrzeń pamięci, podczas gdy
+						<code>y</code> i
+						<code>d</code> mają oddzielne lokalizacje, co jest wynikiem kopiowania głębokiego
+						zaimplementowanego w
+						konstruktorze klasy <code>Y</code>.
+					</p>
+				</section>
+				<section>
+					<h3>Metody tworzenia obiektów</h3>
+					<div class="row">
+						<div class="col" style="float: left; width: 50%; font-size: 0.65em;">
+							<ul>
+								<li>Zmienne automatyczne:
+									<pre
+										style="font-size: 16px"><code class="hljs cpp" data-trim>Atype a; // konstruktor domyślny</code></pre>
+								</li>
+								<li>Zmienne z argumentami:
+									<pre
+										style="font-size: 16px"><code class="hljs cpp" data-trim>Atype a(3); // konstruktor z parametrem int</code></pre>
+								</li>
+								<li>Przekazywanie parametrów przez wartość:
+									<pre style="font-size: 16px"><code class="hljs cpp" data-trim>void f(Atype b) { ... }
+							  f(a); // konstruktor kopiujący</code></pre>
+								</li>
+							</ul>
+						</div>
+						<div class="col" style="float: right; width: 50%; font-size: 0.65em;">
+							<ul>
+								<li>Przypisanie wartości zmiennym:
+									<pre style="font-size: 16px"><code class="hljs cpp" data-trim>Atype a, b;
+							  a = b; // operator przypisania</code></pre>
+								</li>
+								<li>Inicjalizacja nowych obiektów:
+									<pre
+										style="font-size: 16px"><code class="hljs cpp" data-trim>Atype a = b; // konstruktor kopiujący</code></pre>
+								</li>
+								<li>Zwracanie wartości z funkcji:
+									<pre style="font-size: 16px"><code class="hljs cpp" data-trim>Atype f() {
+								Atype a;
+								return a; // konstruktor kopiujący
+							  }</code></pre>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+				</section>
+				<section>
+					<h3>Cechy poprawnie napisanej klasy</h3>
+					<small>Jawny konstruktor gwarantuje, że każdy zadeklarowany egzemplarz
+						obiektu zostanie w
+						kontrolowany sposób zainicjalizowany.</small>
+					<small>Jeżeli obiekt zawiera wskaźniki do dynamicznie zaalokowanej
+						pamięci, powinien
+						zawierać:</small>
+					<small>
+						<ul>
+							<li><strong>Jawny destruktor:</strong> Zapobiega wyciekom pamięci i zwalnia zasoby podczas
+								usuwania obiektu.
+							</li>
+							<li><strong>Jawny operator przypisania:</strong> Używany przy przypisywaniu nowej wartości
+								do istniejącego
+								obiektu, zapewniając, że obiekt jest istotnie kopią innego obiektu, a nie jego aliasem.
+							</li>
+							<li><strong>Jawny konstruktor kopiujący:</strong> Używany podczas kopiowania obiektu przy
+								przekazywaniu
+								parametrów, zwracaniu wartości i inicjalizacji, zapewniając, że obiekt jest istotnie
+								kopią innego
+								obiektu, a nie jego aliasem.</li>
+						</ul>
+					</small>
+
+				</section>
+				<section>
+					<h3>Lista inicjalizacyjna konstruktora</h3>
+					<p>Rozpatrzmy kod:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+							  class Klasa {
+								  const int stala;
+								  int& ref;
+							  
+							  public:
+								  Klasa() : stala(1), ref(stala) {
+									  // Puste ciało konstruktora
+								  }
+							  };
+								</code></pre>
+					<small class="fragment">error: uninitialized member 'Klasa::stala' with
+						'const' type
+						'const int' [-fpermissive]</small>
+					<small class="fragment">error: uninitialized reference member
+						'Klasa::ref' [-fpermissive]
+					</small>
+					<small class="fragment">error: assignment of read-only member
+						'Klasa::stala'</small>
+				</section>
+				<section>
+					<h3>Lista inicjalizacyjna konstruktora</h3>
+					<small>Niektóre zmienne wymagają inicjalizacji, ponieważ nie można im
+						przypisać wartości
+						później (np. gdy są to stałe).</small>
+					<small>Lista inicjalizacyjna konstruktora służy do nadawania wartości tym
+						składowym w
+						momencie ich tworzenia, jeszcze przed wejściem do ciała konstruktora.</small>
+					<pre><code class="hljs cpp" data-trim contenteditable>
+							  class Klasa {
+								  const int stala;
+								  int& ref;
+							  
+							  public:
+								  Klasa() : stala(1), ref(stala) {
+									  // Puste ciało konstruktora
+								  }
+							  };
+								</code></pre>
+					<small>Tutaj, zaraz po dwukropku, znajdują się jawne wywołania
+						konstruktorów oddzielone
+						przecinkami, które inicjalizują składowe klasy.</small>
+				</section>
+				<section>
+					<h3>Składowe tworzone przez kompilator</h3>
+					<p>Kompilator może, zwykle dla prostych klas, utworzyć konstruktor
+						domyślny,
+						kopiujący i operator przypisania (jeśli nie zostały już utworzone):</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+	<script type="text/template">
+#include <iostream>
+
+class Klasa {
+public:
+    int x;
+};
+
+int main() {
+    Klasa k1;
+    k1.x = 5;
+
+    Klasa k2(k1); // Konstruktor kopiujący
+    std::cout << k1.x << " " << k2.x << std::endl;
+
+    k2.x = 2;
+    k1 = k2; // Operator przypisania
+    std::cout << k1.x << " " << k2.x << std::endl;
+}
+</script></code></pre>
+
+				</section>
+				<section data-auto-animate>
+					<h3>Elementy składowe klas i 3truktur</h2>
+					<small>Klasa i struktura (Struct) są bardzo podobne. Struktury z
+						definicji mają wszystkie
+						składowe dostępne (publiczne), a klasy z definicji mają wszystkie składowe prywatne, ukryte
+						pod wskaźnikiem
+						<code>this</code> (C++) albo odpowiednio zarządzaną referencją (Java).
+					</small>
+					<small>Klasa lub struktura składa się z jej składowych. Praca wykonywana
+						przez klasę jest
+						wykonywana przez jej funkcje członkowskie. Stan, który utrzymuje, jest przechowywany w jego
+						składowych
+						danych. Inicjowanie elementów członkowskich jest wykonywane przez konstruktory, a prace
+						oczyszczania, takie
+						jak zwalnianie pamięci i zwalnianie zasobów, są wykonywane przez destruktory.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Elementy składowe klas i 3truktur</h2>
+					<small>W języku C++11 lub nowszym składowe danych mogą (i zwykle powinny)
+						być
+						zainicjowane w punkcie deklaracji. Konstruktory niejawne, kopiujące, konwertujące,
+						przemieszczające oraz
+						destruktory definiowane są specjalnie, często niejawnie i nazywane są specjalnymi funkcjami
+						składowymi klas.
+					</small>
+					<small>Funkcje składowe są statyczne lub niestatyczne. Zachowanie
+						statycznych funkcji
+						członkowskich różni się od innych funkcji członkowskich, ponieważ statyczne funkcje
+						członkowskie nie mają
+						niejawnego argumentu <code>this</code>. Niestatyczne funkcje członkowskie mają wskaźnik
+						<code>this</code>.
+						Funkcje członkowskie, zarówno statyczne, jak i niestatyczne, można zdefiniować w obrębie lub
+						poza deklaracją
+						klasy.
+					</small>
+
+				</section>
+				<section>
+					<h2>Podsumowanie</h2>
+					<p>Poznaliśmy:</p>
+					<ol>
+						<li>Podstawową rolę i działanie konstruktora obiektów.</li>
+						<li>Działanie konstruktora kopiującego i podział na kopiowanie płytkie i głębokie.</li>
+						<li>Inicjalizacje zmiennych w konstruktorze.</li>
+					</ol>
+				</section>
+
+			</section>
+
+
+
 
 
 			<footer style="position: absolute; bottom: 0; width: 100%;">
