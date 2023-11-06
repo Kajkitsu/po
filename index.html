@@ -2189,26 +2189,36 @@ Y::Y(Y &y) {
 										style="font-size: 16px"><code class="hljs cpp" data-trim>Atype a(3); // konstruktor z parametrem int</code></pre>
 								</li>
 								<li>Przekazywanie parametrów przez wartość:
-									<pre style="font-size: 16px"><code class="hljs cpp" data-trim>void f(Atype b) { ... }
-							  f(a); // konstruktor kopiujący</code></pre>
+									<pre style="font-size: 16px"><code class="hljs cpp" data-trim>
+										<script type="text/template">
+void f(Atype b) { ... }
+f(a); // konstruktor kopiujący
+								</script></code></pre>
 								</li>
 							</ul>
 						</div>
 						<div class="col" style="float: right; width: 50%; font-size: 0.65em;">
 							<ul>
 								<li>Przypisanie wartości zmiennym:
-									<pre style="font-size: 16px"><code class="hljs cpp" data-trim>Atype a, b;
-							  a = b; // operator przypisania</code></pre>
+									<pre style="font-size: 16px"><code class="hljs cpp" data-trim>
+										<script type="text/template">
+Atype a, b;
+a = b; // operator przypisania
+										</script>
+										</code></pre>
 								</li>
 								<li>Inicjalizacja nowych obiektów:
 									<pre
 										style="font-size: 16px"><code class="hljs cpp" data-trim>Atype a = b; // konstruktor kopiujący</code></pre>
 								</li>
 								<li>Zwracanie wartości z funkcji:
-									<pre style="font-size: 16px"><code class="hljs cpp" data-trim>Atype f() {
-								Atype a;
-								return a; // konstruktor kopiujący
-							  }</code></pre>
+									<pre style="font-size: 16px"><code class="hljs cpp" data-trim><script type="text/template">
+Atype f() {
+    Atype a;
+    return a; // konstruktor kopiujący
+}
+</script>
+								</code></pre>
 								</li>
 							</ul>
 						</div>
