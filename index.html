@@ -317,7 +317,7 @@ MyClass &addObject = myObject;
 
 					<small>Utworzy to wskaźnik do obiektów klasy <b>MyClass</b> (czyli do każdego obiektu, który
 						utworzymy w tej klasie) albo
-						referencje do wybranego obiektu klasy <b>MyClass</b> o nazwie <b>name</b>, której przypiszemy
+						referencje do wybranego obiektu klasy <b>MyClass</b> o nazwie <b>myObject</b>, której przypiszemy
 						własności <b>myObject</b> w trybie dostępu
 						do adresu.</small>
 				</section>
@@ -1223,18 +1223,18 @@ int main() {
 							prawostronną na obiekt
 							do przeniesienia:</p>
 						<pre><code data-trim class="cpp">
-							class Klasa
+							class MyClass
 							{
 							public:
-								Klasa(Klasa &&) { }
+								MyClass(MyClass &&) { }
 							};
 									</code></pre>
 						<p>Przykład użycia:</p>
 						<pre><code data-trim class="cpp">
 							#include &lt;utility&gt;
 							
-							Klasa k1;
-							Klasa k2(std::move(k1));
+							MyClass k1;
+							MyClass k2(std::move(k1));
 									</code></pre>
 					</small>
 				</section>
@@ -1243,7 +1243,7 @@ int main() {
 					<small>
 						<p>Przyjrzyjmy się wywołaniu konstruktora klasy o nazwie <code>klasa</code>:</p>
 						<pre><code data-trim class="cpp">
-							klasa::klasa(klasa&)
+							MyClass::MyClass(MyClass&)
 									</code></pre>
 						<p>Jego argumentem jest referencja do obiektu danej klasy. Czyli do elementu, który w chwili
 							uruchomienia
@@ -1599,7 +1599,7 @@ Y::Y(Y &y) {
 						data-id="code"
 						class="hljs cpp" 
 						data-trim 
-						data-line-numbers="43-46">
+						data-line-numbers="13-19">
 						<script type="text/template">
 #include<iostream>
 #include<string>
