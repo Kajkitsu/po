@@ -317,7 +317,8 @@ MyClass &addObject = myObject;
 
 					<small>Utworzy to wskaźnik do obiektów klasy <b>MyClass</b> (czyli do każdego obiektu, który
 						utworzymy w tej klasie) albo
-						referencje do wybranego obiektu klasy <b>MyClass</b> o nazwie <b>myObject</b>, której przypiszemy
+						referencje do wybranego obiektu klasy <b>MyClass</b> o nazwie <b>myObject</b>, której
+						przypiszemy
 						własności <b>myObject</b> w trybie dostępu
 						do adresu.</small>
 				</section>
@@ -1121,6 +1122,15 @@ int main() {
 						</ol>
 					</small>
 				</section>
+				<footer style="position: absolute; bottom: 0; width: 100%;">
+					<small style="font-size: 9px;">
+						Materiały do tej prezentacji zostały opracowane w oparciu o skrót materiałów wykładowych
+						przedmiotu
+						Programowanie
+						Obiektowe prowadzonego na WAT. Autor materiałów źródłowych: prof. Andrzej Walczak<br>
+						Copyrights Military University of Technology in Warsaw
+					</small>
+				</footer>
 
 			</section>
 
@@ -1388,7 +1398,7 @@ int main() {
 							};
 								</code></pre>
 				</section>
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code  
 						class="hljs cpp" 
@@ -1522,7 +1532,7 @@ Y::Y(Y &y) {
 					</small>
 				</section>
 
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code 
 						style="max-height: 250px;" 
@@ -1583,14 +1593,14 @@ Y::Y(Y &y) {
     if (p) strcpy(p, y.p);
 }
 			</script></code></pre>
-			<small>Omówienie przykładu: Konstruktor X</small>
-			<br />
-			<small>Definicja konstruktora klasy <code>X</code>. Przydziela on pamięć
-				dla tablicy
-				znaków i kopiuje łańcuch przekazany jako argument tylko jeśli alokacja pamięci się
-				powiedzie.</small>
+					<small>Omówienie przykładu: Konstruktor X</small>
+					<br />
+					<small>Definicja konstruktora klasy <code>X</code>. Przydziela on pamięć
+						dla tablicy
+						znaków i kopiuje łańcuch przekazany jako argument tylko jeśli alokacja pamięci się
+						powiedzie.</small>
 				</section>
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code 
 						style="max-height: 250px;" 
@@ -1654,7 +1664,7 @@ Y::Y(Y &y) {
 					<small>Omówienie przykładu: Klasa Y</small>
 					<small>Analogiczna struktura do klasy X dla klasy Y.</small>
 				</section>
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code 
 														style="max-height: 250px;" 
@@ -1723,7 +1733,7 @@ Y::Y(Y &y) {
 						znaków i kopiuje do
 						niej zawartość z innego obiektu klasy <code>Y</code>, umożliwiając kopiowanie głębokie.</small>
 				</section>
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code 
 						style="max-height: 150px;" 
@@ -1797,7 +1807,7 @@ Y::Y(Y &y) {
 						konstruktora kopiującego klasy X,
 						który jest domyślny i wykonuje kopiowanie płytkie.</small>
 				</section>
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code 
 						style="max-height: 250px;" 
@@ -1869,7 +1879,7 @@ Y::Y(Y &y) {
 				</section>
 
 
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code 
 						style="max-height: 250px;" 
@@ -1943,7 +1953,7 @@ Y::Y(Y &y) {
 				</section>
 
 
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code 
 						style="max-height: 250px;" 
@@ -2015,7 +2025,7 @@ Y::Y(Y &y) {
 					</small>
 				</section>
 
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code 
 						style="max-height: 250px;" 
@@ -2085,7 +2095,7 @@ Y::Y(Y &y) {
 						odpowiednikami <code>x</code> i <code>j</code> z klasy <code>X</code>.
 					</small>
 				</section>
-				<section data-auto-anmiate>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący: kopiowanie płytkie vs głębokie</h3>
 					<pre style="font-size: 16px"><code 
 						style="max-height: 250px;" 
@@ -2371,6 +2381,135 @@ int main() {
 						<li>Inicjalizacje zmiennych w konstruktorze.</li>
 					</ol>
 				</section>
+				<footer style="position: absolute; bottom: 0; width: 100%;">
+					<small style="font-size: 9px;">
+						Materiały do tej prezentacji zostały opracowane w oparciu o skrót materiałów wykładowych
+						przedmiotu
+						Programowanie
+						Obiektowe prowadzonego na WAT. Autor materiałów źródłowych: prof. Andrzej Walczak<br>
+						Copyrights Military University of Technology in Warsaw
+					</small>
+				</footer>
+
+
+			</section>
+			<section data-background-gradient="linear-gradient(67deg, #749c19, #bf3045)">
+				<section>
+					<h2>Zadanie 1: konstruktory</h2>
+				</section>
+				<section data-auto-animate>
+					<h3>Diagram klas</h3>
+					<img style="max-height: 600px;" src="assets/class_diagram_Zad1.png">
+				</section>
+				<section data-auto-animate>
+					<h3>Jak czytać diagramy klas?</h3>
+					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
+					<small>
+						<ul>
+							<li><b>Klasy</b>: Prostokąty reprezentują klasy. Nazwa klasy jest umieszczona na górze
+								prostokąta.
+							</li>
+							<li><b>Atrybuty</b>: Poniżej nazwy klasy znajdują się atrybuty (pola, zmienne), które
+								przechowują
+								dane. Są
+								one zazwyczaj oznaczone
+								symbolem + dla publicznych lub - dla prywatnych.</li>
+							<li><b>Metody</b>: Jeszcze niżej umieszczone są metody (funkcje), które definiują zachowanie
+								klasy.
+								Podobnie jak atrybuty, metody
+								mogą być oznaczone jako publiczne (+) lub prywatne (-).</li>
+						</ul>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Jak czytać diagramy klas?</h3>
+					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
+					<small>
+						<ul>
+							<li><b>Relacje</b>: Linie łączące klasy reprezentują różne typy relacji między nimi. Na
+								przykład:
+							</li>
+							<li><b>Asocjacja</b>: Zwykła linia oznacza, że dwie klasy są w jakiś sposób powiązane.
+								Strzałki
+								mogą
+								wskazywać kierunek asocjacji,
+								a liczby (np. "1" lub "*") określają krotność (ile obiektów jednej klasy może być
+								powiązanych z
+								obiektem drugiej klasy).</li>
+						</ul>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Jak czytać diagramy klas?</h3>
+					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
+					<small>
+						<ul>
+							<li><b>Dziedziczenie</b>: Linia zakończona pustym trójkątem wskazuje na dziedziczenie lub
+								relację
+								typu
+								"jest rodzajem".</li>
+							<li><b>Krotność</b>: Przy relacjach, liczby takie jak "1" lub "" określają, ile instancji
+								jednej
+								klasy może
+								być powiązanych z
+								instancją drugiej klasy. Na przykład "1" oznacza pojedynczą instancję, a "" oznacza
+								wiele
+								instancji.</li>
+						</ul>
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Jak czytać diagramy klas?</h3>
+					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
+					<small>
+						Na podstawie tego diagramu możemy zobaczyć, że klasa Article zawiera prywatne atrybuty takie jak
+						title, author,
+						publicationYear, journal i publiczne metody takie jak konstruktory, displayInfo(), getTitle(),
+						getAuthor(),
+						getPublicationYear(), getJournal(). Podobnie dla klas Author, Book i Chapter. Ponadto, relacje
+						między klasami wskazują,
+						że Article, Book i Chapter zawierają obiekty klasy Author, a Book zawiera również kolekcję
+						obiektów Chapter.
+					</small>
+				</section>
+				<section>
+					<h3><b>&&&</b> ?</h3>
+					<small>
+						W języku C++ symbol <b>&</b> w kontekście parametru funkcji oznacza referencję. Referencje
+						pozwalają funkcjom na dostęp do
+						obiektów przekazanych do nich bez konieczności kopiowania tych obiektów. To znaczy, że funkcja
+						może operować
+						bezpośrednio na oryginalnym obiekcie, a nie na jego kopii, co jest wydajniejsze, szczególnie dla
+						dużych obiektów.
+					</small>
+					<small>
+						W kontekście diagramu klas UML, który przedstawiono, <b>&other</b> w konstruktorze kopiującym
+						oznacza, że konstruktor przyjmuje
+						referencję do innego obiektu tej samej klasy. Na przykład:
+					</small>
+					<pre style="font-size: 16px" data-id="code-animation">
+						<code class="hljs cpp"><script type="text/template">
+						Article::Article(const Article &other)
+						</script>
+						</code>
+						</pre>
+					<small>
+						Ten konstruktor kopiujący Article przyjmuje referencję do innego obiektu Article i używa jego
+						wartości do zainicjowania
+						nowego obiektu. To jest standardowy sposób implementacji konstruktora kopiującego w C++, który
+						zapewnia, że nowy obiekt
+						jest kopią istniejącego obiektu.
+					</small>
+				</section>
+				<section data-background-color="black">
+					<h3><b>Zadanie</b></h3>
+					<small>
+						Zaimplementuj klasy Article, Book, Chapter i Author zgodnie z przedstawionym wcześniej diagramem klas.
+					</small>
+				</section>
+			</section>
+
+
 
 			</section>
 
@@ -2378,14 +2517,6 @@ int main() {
 
 
 
-			<footer style="position: absolute; bottom: 0; width: 100%;">
-				<small style="font-size: 9px;">
-					Materiały do tej prezentacji zostały opracowane w oparciu o skrót materiałów wykładowych przedmiotu
-					Programowanie
-					Obiektowe prowadzonego na WAT. Autor materiałów źródłowych: prof. Andrzej Walczak<br>
-					Copyrights Military University of Technology in Warsaw
-				</small>
-			</footer>
 
 		</div>
 
