@@ -20,6 +20,24 @@
 
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<style>
+		.row {
+			display: flex;
+		}
+		
+		.column {
+			flex: 50%;
+			padding: 10px;
+		}
+	</style>
+	<style>
+		.small-font pre {
+			font-size: 13px; /* Zmniejszenie czcionki */
+			margin-left: 0; /* Usunięcie marginesu z lewej strony */
+			white-space: pre-wrap; /* Zapobieganie przepełnieniu tekstu */
+		}
+	</style>
+	
 </head>
 
 <body>
@@ -2392,6 +2410,244 @@ int main() {
 				</footer>
 
 
+			</section>
+
+			<section data-background-gradient="linear-gradient(67deg, #749c19, #bf3045)">
+				<section>
+					<h2>Klasa i obiekt dla zielonych</h2>
+				</section>
+				<section>
+					<h2>Co to jest Klasa i Obiekt?</h2>
+					<p>Klasa to szablon lub projekt, który określa, jakie właściwości (dane) i działania (funkcje/metody) będzie miał obiekt.</p>
+					<p>Obiekt to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie zdefiniowanych działań.</p>
+				</section>
+				<section>
+					<h2>Implementacja</h2>
+	
+					<div class="row">
+						<div class="column">
+							<h3>Python:</h3>
+							<pre><code class="python">#class Author:
+def __init__(self, name, surname):
+	self.name = name
+	self.surname = surname
+
+# tworzenie obiektu 'author1'
+author1 = Author("Jan", "Kowalski")
+												</code></pre>
+						</div>
+	
+						<div class="column">
+							<h3>C++:</h3>
+							<pre><code class="cpp">//class Author {
+public:
+    std::string name;
+    std::string surname;
+};
+
+// tworzenie obiektu 'author1'
+Author author1;
+author1.name = "Jan";
+author1.surname = "Kowalski";
+                    </code></pre>
+						</div>
+					</div>
+				</section>	
+				<section>
+					<h2>Klasy vs Obiekty - Przykład</h2>
+					<p>Klasa Author określa, że każdy autor ma imię i nazwisko.</p>
+					<p>Obiekt klasy Author, np. author1, ma konkretne imię i nazwisko.</p>
+				</section>
+				<section>
+					<h2>Implementacja</h2>
+	
+					<div class="row">
+						<div class="column">
+							<h3>Python:</h3>
+							<pre><code class="python"># Klasa Author
+class Author:
+	def __init__(self, name, surname):
+		self.name = name
+		self.surname = surname
+
+# Obiekt author1 klasy Author
+author1 = Author("Jan", "Kowalski")
+							</code></pre>
+						</div>
+	
+						<div class="column">
+							<h3>C++:</h3>
+							<pre><code class="cpp">// Klasa Author
+class Author {
+public:
+	std::string name;
+	std::string surname;
+};
+
+// Obiekt author1 klasy Author
+Author author1;
+author1.name = "Jan";
+author1.surname = "Kowalski";
+							</code></pre>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Zmienne i Typy w Programowaniu</h2>
+					<p style="font-size: 0.75em;">Typ zmiennej określa, jakiego rodzaju wartości może przechowywać zmienna.</p>
+					<p style="font-size: 0.75em;">Klasa jest jak niestandardowy typ danych, który sami definiujemy.</p>
+					<p style="font-size: 0.75em;">Obiekt to zmienna, która przechowuje dane typu klasy.</p>
+					<pre><code class="cpp">// int to typ, a number to zmienna
+int number = 5;
+
+// Author to klasa (typ), a author1 to obiekt (zmienna)
+Author author1;
+author1.name = "Jan";
+author1.surname = "Kowalski";					
+												</code></pre>
+				</section>
+				<section>
+					<h2>Po co nam ta obiektowość?</h2>
+					<p style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co zapewnia bezpieczeństwo i integralność informacji.</p>
+					<p style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</p>  
+					<p style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują tych zaawansowanych funkcji.</p> 
+					<p style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</p>
+				</section>
+				<section>
+					<h2>Struktura vs Klasa dla Samochodu</h2>
+					<div class="row">
+						<div class="column small-font">
+							<h3>Struktura:</h3>
+							<pre><code class="python">// Definicja struktury Car
+struct Car {
+	std::string brand;
+	int year;
+};
+
+int main() {
+	// Tworzenie i inicjalizacja obiektu Car
+	Car myCar;
+	myCar.brand = "Toyota";
+	myCar.year = 2020;
+
+	// Wyświetlanie danych
+	std::cout << "Samochód: " << myCar.brand << ", Rok: " << myCar.year << std::endl;
+
+	return 0;
+}
+							</code></pre>
+						</div>
+	
+						<div class="column small-font">
+							<h3>Klasa:</h3>
+							<pre><code class="cpp">// Definicja klasy Car
+class Car {
+private:
+	std::string brand;
+	int year;
+
+public:
+	Car(const std::string &brand, int year)
+		: brand(brand), year(year) {}
+
+	void print() const {
+		std::cout << "Samochód: " << brand << ", Rok: " << year << std::endl;
+	}
+};
+
+int main() {
+	// Tworzenie i inicjalizacja obiektu Car
+	Car myCar("Toyota", 2020);
+
+	// Wywołanie metody print
+	myCar.print();
+
+	return 0;
+}	
+							</code></pre>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Różnice i Kiedy Używać</h2>
+	
+					<div class="row">
+						<div class="column small-font">
+							<h3>Struktury:</h3>
+							<p style="font-size: 0.85em;"></p>Proste przechowywanie danych.</p>
+							<p style="font-size: 0.85em;"></p>Brak hermetyzacji; wszystkie pola są publiczne i dostępne bezpośrednio.</p>
+							<p style="font-size: 0.85em;"></p>Brak metod; służy głównie jako kontener danych.</p>
+						</div>
+						<div class="column small-font">
+							<h3>Klasy:</h3>
+							<p style="font-size: 0.85em;">Zawiera metody (np. print) do interakcji z danymi.</p>
+							<p style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest kontrolowany przez publiczne metody.</p>
+							<p style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest kontrola i rozszerzalność.</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>"Profesjonalna" klasa</h2>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+
+class Player {
+private:
+	std::string name;
+	int health;
+	int mana;
+	std::map<std::string, int> inventory; // Przechowuje przedmioty i ich ilość
+	std::vector<std::string> skills; // Lista umiejętności
+
+public:
+	Player(const std::string &name, int health, int mana)
+		: name(name), health(health), mana(mana) {}
+
+	void takeDamage(int amount) {
+		health -= amount;
+		if (health < 0) health = 0;
+	}
+
+	void useItem(const std::string &item) {
+		if (inventory[item] > 0) {
+			// Logika używania przedmiotu
+			inventory[item]--;
+		} else {
+			std::cout << "Nie masz " << item << std::endl;
+		}
+	}
+
+	void learnSkill(const std::string &skill) {
+		skills.push_back(skill);
+	}
+
+	void printStatus() const {
+		std::cout << "Gracz: " << name << "\n"
+					<< "Zdrowie: " << health << "\n"
+					<< "Mana: " << mana << std::endl;
+	}
+
+	// Dodatkowe metody...
+};
+
+int main() {
+	Player hero("Arthas", 100, 50);
+	hero.learnSkill("Fireball");
+	hero.takeDamage(20);
+	hero.useItem("Health Potion");
+	hero.printStatus();
+
+	return 0;
+}		
+</script></code></pre>
+				</section>	
 			</section>
 			<section data-background-gradient="linear-gradient(67deg, #749c19, #bf3045)">
 				<section>
