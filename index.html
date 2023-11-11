@@ -24,7 +24,7 @@
 		.row {
 			display: flex;
 		}
-		
+
 		.column {
 			flex: 50%;
 			padding: 10px;
@@ -32,12 +32,15 @@
 	</style>
 	<style>
 		.small-font pre {
-			font-size: 13px; /* Zmniejszenie czcionki */
-			margin-left: 0; /* Usunięcie marginesu z lewej strony */
-			white-space: pre-wrap; /* Zapobieganie przepełnieniu tekstu */
+			font-size: 13px;
+			/* Zmniejszenie czcionki */
+			margin-left: 0;
+			/* Usunięcie marginesu z lewej strony */
+			white-space: pre-wrap;
+			/* Zapobieganie przepełnieniu tekstu */
 		}
 	</style>
-	
+
 </head>
 
 <body>
@@ -89,7 +92,7 @@
 
 
 			<section id="start" data-background-gradient="linear-gradient(13deg, #3a6935, #b5b170)">
-				<section>
+				<section data-auto-animate>
 					<h2>Wstęp do programowania obiektowego</h2>
 				</section>
 				<section data-auto-animate>
@@ -706,7 +709,7 @@ public class Card {
 																					</pre>
 					<small>Przykład w języku Java</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Konstruktory</h3>
 					<small>Konstruktor <b>NIE MUSI</b> wystąpić w opisie klasy, czyli obiekty nie muszą być wprowadzane
 						konstruktorem <B>jawnym</B>.</small>
@@ -727,7 +730,7 @@ public class Card {
 						którym nadamy wartości domyślne czyli niedefiniowalne jest także konstruktorem
 						domniemanym.</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Konstruktory</h3>
 					<p>Co właściwie robi konstruktor? On <b>INICJALIZUJE</b> obiekty. Kompilator automatycznie wywołuje
 						konstruktor w miejscu
@@ -737,7 +740,7 @@ public class Card {
 						pozwala na jednoznaczne
 						powiązanie konstruktora z typem zmiennej obiektowej (wykorzystano operator zakresu).</p>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Konstruktory</h3>
 					<small>
 						<b>Konstruktor jest zwykle deklarowany jako publiczny</b>, bo przecież wprowadzane nim obiekty
@@ -758,7 +761,7 @@ public class Card {
 						<b>konstruktorem konwertującym</b>.
 					</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Konstruktory</h3>
 					<p>
 						Destruktor (w naszym przykładzie <b>~Card</b>), zawsze wpisujemy w C++ do deklaracji klasy jako
@@ -876,7 +879,7 @@ public class Card {
 					</small>
 				</section>
 
-				<section>
+				<section data-auto-animate>
 					<h3>Cechy obiektów</h3>
 					<small>Poprzez sposób definiowania obiektu decydujemy o zakresie ważności jego nazwy czyli także o
 						czasie jego życia. Zakres
@@ -891,7 +894,7 @@ public class Card {
 						czyli mogą z niego
 						korzystać wszystkie funkcje i obiekty oraz funkcje składowe innych klas w programie.</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Cechy obiektów</h3>
 					<small>Obiekt może funkcjonować lokalnie (obiekt prywatny) i wówczas automatycznie kończy się jego
 						zakres ważności wtedy, kiedy
@@ -904,7 +907,7 @@ public class Card {
 						funkcjonować jako <b>konkret</b> (czyli
 						operować wartościami swoich atrybutów) jest inicjowany zerami.</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Cechy obiektów</h3>
 					<small>Obiekt można utworzyć jako obdarzony słowami sterującymi (moderatorami). W szczególności może
 						to być moderator <b>static</b>.
@@ -921,7 +924,7 @@ public class Card {
 						nagłówkowy.</small>
 				</section>
 
-				<section>
+				<section data-auto-animate>
 					<h3>this - WSKAŹNIK SPECJALNY</h3>
 					<small>Każdej funkcji - metodzie zadeklarowanej wewnątrz klasy zostaje
 						<b>w momencie wywołania w niejawny sposób (ang. implicitly)
@@ -945,7 +948,7 @@ public class Card {
 				</section>
 
 
-				<section>
+				<section data-auto-animate>
 					<h3>this - WSKAŹNIK SPECJALNY</h3>
 					<small>Program posługuje się automatycznie niejawnym wskaźnikiem do obiektu (ang. implicit pointer).
 						Możemy wykorzystać ten
@@ -961,7 +964,7 @@ public class Card {
 						wyjątkiem funkcji statycznych.</small>
 				</section>
 
-				<section>
+				<section data-auto-animate>
 					<h3>Tablica wirtualna</h3>
 					<small>W C++ tablica wirtualna jest specjalnym rodzajem tablicy, która pozwala na dynamiczne
 						dziedziczenie i rozstrzyganie
@@ -1071,7 +1074,7 @@ int main() {
 					</small>
 				</section>
 
-				<section>
+				<section data-auto-animate>
 					<h3>Tworzenie obiektów</h3>
 					<p>
 						Kiedy w C++ tworzony jest obiekt zachodzą dwa procesy:
@@ -1080,7 +1083,7 @@ int main() {
 						<li>inicjalizacja obiektu</li>
 						</p>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Tworzenie obiektów</h3>
 					<small>
 						Pierwszy proces może być wykonany na różne sposoby i w różnym czasie:
@@ -1102,7 +1105,7 @@ int main() {
 									bibliotece poprzez przestrzeń nazw (namespace)]</li>
 					</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Klasy abstrakcyjne i interfejsy</h3>
 					<small>Zwykle po to tworzymy klasy by tworzyć ich egzemplarze (instancje/obiekty). Okazuje się
 						jednak
@@ -1115,7 +1118,7 @@ int main() {
 						wskazanie, że wszystkie
 						dziedziczące klasy muszą te cechy posiadać.</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Klasy abstrakcyjne i interfejsy</h3>
 					<p>Czasami w klasie abstrakcyjnej chcemy opisać tylko interfejs, bez żadnych danych ani
 						implementacji metod. Ponieważ takie
@@ -1124,7 +1127,7 @@ int main() {
 						(klasa interfejsu).</p>
 				</section>
 
-				<section>
+				<section data-auto-animate>
 					<h2>Podsumowanie</h2>
 					<p>Poznaliśmy:</p>
 					<small>
@@ -1154,7 +1157,7 @@ int main() {
 
 
 			<section data-background-gradient="linear-gradient(45deg, #c03090, #10a080)">
-				<section>
+				<section data-auto-animate>
 					<h2>Konstruktor - cechy główne</h2>
 				</section>
 				<section data-auto-animate>
@@ -1380,12 +1383,12 @@ int main() {
 							siebie oraz zarządzanie zasobami.</p>
 					</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący vs Operator przypisania</h3>
 					<p>Konstruktor kopiujący i operator przypisania mają różne zastosowania i zachowania.</p>
 				</section>
 
-				<section>
+				<section data-auto-animate>
 					<h4>Konstruktor kopiujący</h4>
 					<p>Używany do stworzenia nowego obiektu z istniejącego, bez konieczności sprawdzania przypisania
 						do samego
@@ -1396,7 +1399,7 @@ int main() {
 					</ul>
 				</section>
 
-				<section>
+				<section data-auto-animate>
 					<h4>Operator przypisania</h4>
 					<p>Używany do kopiowania wartości między już istniejącymi obiektami, z dodatkowymi krokami jak:
 					</p>
@@ -1405,7 +1408,7 @@ int main() {
 						<li>Zarządzanie zwalnianiem zasobów przed przypisaniem.</li>
 					</ul>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Konstruktor kopiujący vs Operator przypisania c.d.</h3>
 					<pre><code data-trim contenteditable>
 							int main() {
@@ -2184,7 +2187,7 @@ Y::Y(Y &y) {
 				</section>
 
 
-				<section>
+				<section data-auto-animate>
 					<h3>Wyniki działania programu</h3>
 					<pre style="font-size: 16px"><code class="hljs" data-trim>
 							  x=xxx, j=xxx
@@ -2203,7 +2206,7 @@ Y::Y(Y &y) {
 						konstruktorze klasy <code>Y</code>.
 					</p>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Metody tworzenia obiektów</h3>
 					<div class="row">
 						<div class="col" style="float: left; width: 50%; font-size: 0.65em;">
@@ -2253,7 +2256,7 @@ Atype f() {
 					</div>
 					<div style="clear: both;"></div>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Cechy poprawnie napisanej klasy</h3>
 					<small>Jawny konstruktor gwarantuje, że każdy zadeklarowany egzemplarz
 						obiektu zostanie w
@@ -2279,7 +2282,7 @@ Atype f() {
 					</small>
 
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Lista inicjalizacyjna konstruktora</h3>
 					<p>Rozpatrzmy kod:</p>
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
@@ -2302,7 +2305,7 @@ Atype f() {
 					<small class="fragment">error: assignment of read-only member
 						'Klasa::stala'</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Lista inicjalizacyjna konstruktora</h3>
 					<small>Niektóre zmienne wymagają inicjalizacji, ponieważ nie można im
 						przypisać wartości
@@ -2325,7 +2328,7 @@ Atype f() {
 						konstruktorów oddzielone
 						przecinkami, które inicjalizują składowe klasy.</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3>Składowe tworzone przez kompilator</h3>
 					<p>Kompilator może, zwykle dla prostych klas, utworzyć konstruktor
 						domyślny,
@@ -2390,7 +2393,7 @@ int main() {
 					</small>
 
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h2>Podsumowanie</h2>
 					<p>Poznaliśmy:</p>
 					<ol>
@@ -2412,22 +2415,24 @@ int main() {
 
 			</section>
 
-			<section data-background-gradient="linear-gradient(67deg, #749c19, #bf3045)">
-				<section>
+			<section data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
+				<section data-auto-animate>
 					<h2>Klasa i obiekt dla zielonych</h2>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h2>Co to jest Klasa i Obiekt?</h2>
-					<p>Klasa to szablon lub projekt, który określa, jakie właściwości (dane) i działania (funkcje/metody) będzie miał obiekt.</p>
-					<p>Obiekt to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie zdefiniowanych działań.</p>
+					<p>Klasa to szablon lub projekt, który określa, jakie właściwości (dane) i działania
+						(funkcje/metody) będzie miał obiekt.</p>
+					<p>Obiekt to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie
+						zdefiniowanych działań.</p>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h2>Implementacja</h2>
-	
+
 					<div class="row">
 						<div class="column">
 							<h3>Python:</h3>
-							<pre><code class="python">#class Author:
+							<pre style="font-size: 16px;"><code class="python">#class Author:
 def __init__(self, name, surname):
 	self.name = name
 	self.surname = surname
@@ -2436,10 +2441,10 @@ def __init__(self, name, surname):
 author1 = Author("Jan", "Kowalski")
 												</code></pre>
 						</div>
-	
+
 						<div class="column">
 							<h3>C++:</h3>
-							<pre><code class="cpp">//class Author {
+							<pre style="font-size: 16px;"><code class="cpp">//class Author {
 public:
     std::string name;
     std::string surname;
@@ -2452,19 +2457,19 @@ author1.surname = "Kowalski";
                     </code></pre>
 						</div>
 					</div>
-				</section>	
-				<section>
+				</section>
+				<section data-auto-animate>
 					<h2>Klasy vs Obiekty - Przykład</h2>
 					<p>Klasa Author określa, że każdy autor ma imię i nazwisko.</p>
 					<p>Obiekt klasy Author, np. author1, ma konkretne imię i nazwisko.</p>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h2>Implementacja</h2>
-	
+
 					<div class="row">
 						<div class="column">
 							<h3>Python:</h3>
-							<pre><code class="python"># Klasa Author
+							<pre style="font-size: 16px;"><code class="python"># Klasa Author
 class Author:
 	def __init__(self, name, surname):
 		self.name = name
@@ -2474,10 +2479,11 @@ class Author:
 author1 = Author("Jan", "Kowalski")
 							</code></pre>
 						</div>
-	
+
 						<div class="column">
 							<h3>C++:</h3>
-							<pre><code class="cpp">// Klasa Author
+							<pre style="font-size: 16px;"><code class="cpp">
+// Klasa Author
 class Author {
 public:
 	std::string name;
@@ -2492,9 +2498,10 @@ author1.surname = "Kowalski";
 						</div>
 					</div>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h2>Zmienne i Typy w Programowaniu</h2>
-					<p style="font-size: 0.75em;">Typ zmiennej określa, jakiego rodzaju wartości może przechowywać zmienna.</p>
+					<p style="font-size: 0.75em;">Typ zmiennej określa, jakiego rodzaju wartości może przechowywać
+						zmienna.</p>
 					<p style="font-size: 0.75em;">Klasa jest jak niestandardowy typ danych, który sami definiujemy.</p>
 					<p style="font-size: 0.75em;">Obiekt to zmienna, która przechowuje dane typu klasy.</p>
 					<pre><code class="cpp">// int to typ, a number to zmienna
@@ -2506,19 +2513,23 @@ author1.name = "Jan";
 author1.surname = "Kowalski";					
 												</code></pre>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h2>Po co nam ta obiektowość?</h2>
-					<p style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co zapewnia bezpieczeństwo i integralność informacji.</p>
-					<p style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</p>  
-					<p style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują tych zaawansowanych funkcji.</p> 
-					<p style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</p>
+					<p style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co
+						zapewnia bezpieczeństwo i integralność informacji.</p>
+					<p style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność
+						kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</p>
+					<p style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują
+						tych zaawansowanych funkcji.</p>
+					<p style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu
+						systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</p>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h2>Struktura vs Klasa dla Samochodu</h2>
 					<div class="row">
 						<div class="column small-font">
 							<h3>Struktura:</h3>
-							<pre><code class="python">// Definicja struktury Car
+							<pre style="max-width: 600px;"><code class="python">// Definicja struktury Car
 struct Car {
 	std::string brand;
 	int year;
@@ -2531,16 +2542,18 @@ int main() {
 	myCar.year = 2020;
 
 	// Wyświetlanie danych
-	std::cout << "Samochód: " << myCar.brand << ", Rok: " << myCar.year << std::endl;
+	std::cout << "Samochód: " << myCar.brand << 
+	  ", Rok: " << myCar.year << std::endl;
 
 	return 0;
 }
 							</code></pre>
 						</div>
-	
+
 						<div class="column small-font">
 							<h3>Klasa:</h3>
-							<pre><code class="cpp">// Definicja klasy Car
+							<pre style="max-width: 600px;">
+								<code class="cpp">// Definicja klasy Car
 class Car {
 private:
 	std::string brand;
@@ -2551,7 +2564,8 @@ public:
 		: brand(brand), year(year) {}
 
 	void print() const {
-		std::cout << "Samochód: " << brand << ", Rok: " << year << std::endl;
+		std::cout << "Samochód: " << brand << 
+		  ", Rok: " << year << std::endl;
 	}
 };
 
@@ -2568,25 +2582,28 @@ int main() {
 						</div>
 					</div>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h2>Różnice i Kiedy Używać</h2>
-	
+
 					<div class="row">
 						<div class="column small-font">
 							<h3>Struktury:</h3>
 							<p style="font-size: 0.85em;"></p>Proste przechowywanie danych.</p>
-							<p style="font-size: 0.85em;"></p>Brak hermetyzacji; wszystkie pola są publiczne i dostępne bezpośrednio.</p>
+							<p style="font-size: 0.85em;"></p>Brak hermetyzacji; wszystkie pola są publiczne i dostępne
+							bezpośrednio.</p>
 							<p style="font-size: 0.85em;"></p>Brak metod; służy głównie jako kontener danych.</p>
 						</div>
 						<div class="column small-font">
 							<h3>Klasy:</h3>
 							<p style="font-size: 0.85em;">Zawiera metody (np. print) do interakcji z danymi.</p>
-							<p style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest kontrolowany przez publiczne metody.</p>
-							<p style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest kontrola i rozszerzalność.</p>
+							<p style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest
+								kontrolowany przez publiczne metody.</p>
+							<p style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest
+								kontrola i rozszerzalność.</p>
 						</div>
 					</div>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h2>"Profesjonalna" klasa</h2>
 					<pre style="font-size: 16px"><code  
 						class="hljs cpp" 
@@ -2647,10 +2664,10 @@ int main() {
 	return 0;
 }		
 </script></code></pre>
-				</section>	
+				</section>
 			</section>
 			<section data-background-gradient="linear-gradient(67deg, #749c19, #bf3045)">
-				<section>
+				<section data-auto-animate>
 					<h2>Zadanie 1: konstruktory</h2>
 				</section>
 				<section data-auto-animate>
@@ -2728,7 +2745,7 @@ int main() {
 						obiektów Chapter.
 					</small>
 				</section>
-				<section>
+				<section data-auto-animate>
 					<h3><b>&&&</b> ?</h3>
 					<small>
 						W języku C++ symbol <b>&</b> w kontekście parametru funkcji oznacza referencję. Referencje
@@ -2760,18 +2777,446 @@ int main() {
 				<section data-background-color="black">
 					<h3><b>Zadanie</b></h3>
 					<small>
-						Zaimplementuj klasy Article, Book, Chapter i Author zgodnie z przedstawionym wcześniej diagramem klas.
+						Zaimplementuj klasy Article, Book, Chapter i Author zgodnie z przedstawionym wcześniej diagramem
+						klas.
 					</small>
 				</section>
 			</section>
 
+			<section data-background-gradient="linear-gradient(175deg, #327fa8, #a87532)" data-auto-animate>
+				<section data-auto-animate>
+					<h2>Zarządzanie pamięcią w programowaniu obiektowym:<h2>
+							</h3>Wprowadzenie do operatorów new i delete</h3>
+				</section>
+				<section data-auto-animate>
+					<h3>Alokacja pamięci dynamicznej</h3>
+					<p>
+						Alokacja pamięci dynamicznej to proces przydzielania pamięci w trakcie działania programu. W
+						przeciwieństwie do
+						pamięci statycznej, która jest przydzielana na etapie kompilacji, pamięć dynamiczna jest
+						przydzielana na żądanie
+						i może być zwalniana, gdy nie jest już potrzebna. Pozwala to na tworzenie struktur danych, które
+						mogą zmieniać
+						rozmiar w trakcie działania programu, takich jak listy dynamiczne i drzewa.
+					</p>
+				</section>
+				<section data-auto-animate>
+					<h3>Zwalnianie pamięci dynamicznej</h3>
+					<ul>
+						<li>
+							<small>Zwalnianie pamięci dynamicznej to proces odzyskiwania pamięci, która została
+								wcześniej zaalokowana
+								dynamicznie. Jest to ważne, ponieważ pamięć, która nie jest zwolniona po użyciu, może
+								prowadzić do
+								wycieków pamięci.</small>
+						</li>
+						<li>
+							<small>W programowaniu obiektowym, zwalnianie pamięci jest często związane z destruktorami -
+								specjalnymi
+								funkcjami, które są wywoływane, gdy obiekt jest niszczony. Destruktory są odpowiedzialne
+								za zwalnianie
+								wszelkich zasobów, które obiekt mógł zaalokować podczas swojego istnienia.</small>
+						</li>
+					</ul>
+				</section>
+
+				<section data-auto-animate>
+					<h3>Wprowadzenie do zarządzania pamięcią</h3>
+					<p>
+						Zarządzanie pamięcią to kluczowy aspekt programowania, który polega na kontrolowaniu i
+						koordynowaniu dostępu do
+						pamięci komputera. W programowaniu obiektowym, zarządzanie pamięcią jest szczególnie
+						ważne, ponieważ obiekty
+						często wymagają alokacji i zwalniania pamięci dynamicznej.
+					</p>
+				</section>
+
+				<section data-auto-animate>
+					<h3>Znaczenie zarządzania pamięcią w programowaniu obiektowym</h3>
+					<ul>
+						<li>
+							<small>Poprawne zarządzanie pamięcią pomaga zapobiegać błędom, takim jak wycieki
+								pamięci, które mogą
+								prowadzić do problemów z wydajnością lub awarii programu.</small>
+						</li>
+						<li>
+							<small>Zarządzanie pamięcią pozwala na efektywne wykorzystanie dostępnej
+								pamięci, co jest szczególnie
+								ważne w przypadku programów, które muszą obsługiwać duże ilości
+								danych.</small>
+						</li>
+						<li>
+							<small>W kontekście programowania obiektowego, zarządzanie pamięcią jest
+								niezbędne do prawidłowego
+								tworzenia i niszczenia obiektów.</small>
+						</li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>Operator new</h3>
+					<p>
+						Operator <b>new</b> jest używany w programowaniu obiektowym do alokacji, czyli przydzielania
+						pamięci dla
+						nowych obiektów. Jest to specjalna funkcja, która tworzy miejsce w pamięci komputera na
+						przechowywanie danych
+						obiektu.
+					</p>
+					<p>
+						Kiedy tworzysz nowy obiekt za pomocą operatora <b>new</b>, system najpierw znajduje
+						wystarczająco dużo
+						pamięci, aby pomieścić obiekt, a następnie zwraca adres tego miejsca w pamięci. Możesz następnie
+						użyć tego
+						adresu do odwoływania się do obiektu.
+					</p>
+				</section>
+				<section data-auto-animate>
+					<h3>Operator delete</h3>
+					<p>
+						Operator <b>delete</b> jest używany do zwalniania, czyli odzyskiwania pamięci, która została
+						wcześniej
+						zaalokowana za pomocą operatora <b>new</b>. Kiedy obiekt nie jest już potrzebny, możesz użyć
+						operatora
+						<b>delete</b>, aby zwolnić pamięć, którą obiekt zajmuje, co pozwala na jej ponowne użycie.
+					</p>
+					<p>
+						Jest to ważne, ponieważ niezwolnienie pamięci, której już nie potrzebujesz, może prowadzić do
+						wycieków pamięci.
+						Wycieki pamięci mogą spowodować, że program będzie działał wolniej, a w skrajnych przypadkach
+						może nawet
+						doprowadzić do awarii programu.
+					</p>
+				</section>
+				<section data-auto-animate>
+					<h3>Korzyści z tworzenia obiektów za pomocą operatora new</h3>
+					<ul>
+						<li>
+							<small>Dynamiczna alokacja pamięci: Operator <code>new</code> pozwala na dynamiczną alokację
+								pamięci, co
+								oznacza, że pamięć jest przydzielana w trakcie działania programu. Dzięki temu możemy
+								tworzyć obiekty o
+								rozmiarze nieznanych nam na etapie kompilacji.</small>
+						</li>
+						<li>
+							<small>Żywotność obiektu: Obiekty utworzone za pomocą operatora <code>new</code> istnieją do
+								momentu ich
+								usunięcia za pomocą operatora <code>delete</code>. To oznacza, że obiekt utworzony za
+								pomocą
+								<code>new</code> może przetrwać dłużej niż obiekt utworzony za pomocą klasycznego
+								konstruktora, który
+								jest zniszczony, gdy opuszcza swój zakres (scope).</small>
+						</li>
+						<li>
+							<small>Flexybilność: Operator <code>new</code> daje większą kontrolę nad procesem tworzenia
+								obiektów, co
+								może być przydatne w niektórych zaawansowanych scenariuszach programowania.</small>
+						</li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>Przykład użycia operatorów new i delete</h3>
+					<small>
+						Poniżej znajduje się przykład kodu w języku C++, który pokazuje, jak używać operatorów
+						<code>new</code> i
+						<code>delete</code>:
+					</small>
+					<pre style="font-size: 16px;"><code>
+// Definicja klasy
+class MyClass {
+public:
+		MyClass() {
+				std::cout << "Obiekt MyClass został utworzony.\n";
+		}
+		~MyClass() {
+				std::cout << "Obiekt MyClass został zniszczony.\n";
+		}
+};
+
+int main() {
+  // Użycie operatora new do utworzenia obiektu MyClass
+  MyClass* myObject = new MyClass();
+
+  // Użycie operatora delete do zniszczenia obiektu MyClass
+  delete myObject;
+};
+
+					    </code></pre>
+					<small>
+						W tym przykładzie, najpierw definiujemy klasę <code>MyClass</code> z konstruktorem i
+						destruktorem. Następnie
+						używamy operatora <code>new</code> do utworzenia nowego obiektu <code>MyClass</code> i
+						zapisujemy adres tego
+						obiektu w zmiennej <code>myObject</code>. Na końcu używamy operatora <code>delete</code> do
+						zniszczenia obiektu
+						i zwolnienia pamięci.
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Zaawansowany przykład użycia operatorów new i delete</h3>
+					<small>
+						Poniżej znajduje się zaawansowany przykład kodu w języku C++, który pokazuje, jak używać
+						operatorów
+						<code>new</code> i <code>delete</code> do dynamicznego zarządzania tablicą obiektów:
+					</small>
+					<pre style="font-size: 16px;"><code>
+// Definicja klasy
+class MyClass {
+public:
+		MyClass() {
+				std::cout << "Obiekt MyClass został utworzony.\n";
+		}
+		~MyClass() {
+				std::cout << "Obiekt MyClass został zniszczony.\n";
+		}
+};
+int main() {
+		// Użycie operatora new do utworzenia tablicy obiektów MyClass
+		MyClass* myObjects = new MyClass[10];
+
+		// Użycie operatora delete[] do zniszczenia tablicy obiektów MyClass
+		delete[] myObjects;
+};
+					    </code></pre>
+					<small>
+						W tym przykładzie, najpierw definiujemy klasę <code>MyClass</code> z konstruktorem i
+						destruktorem. Następnie
+						używamy operatora <code>new</code> do utworzenia tablicy 10 obiektów <code>MyClass</code> i
+						zapisujemy adres tej
+						tablicy w zmiennej <code>myObjects</code>. Na końcu używamy operatora <code>delete[]</code> do
+						zniszczenia
+						tablicy obiektów i zwolnienia pamięci.
+					</small>
+					<small>
+						Ten przykład pokazuje, jak operator <code>new</code> może być używany do dynamicznego tworzenia
+						tablic obiektów,
+						co jest jednym z kluczowych aspektów programowania obiektowego.
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Zaawansowany przykład użycia destruktora</h3>
+					<small>
+						Poniżej znajduje się zaawansowany przykład kodu w języku C++, który pokazuje, jak używać
+						destruktora do
+						zwalniania zasobów:
+					</small>
+					<div>
+						<pre style="font-size: 16px;"><code style="max-height: 300px;">
+// Definicja klasy
+class MyClass {
+public:
+		int* myArray;
+
+		MyClass() {
+				myArray = new int[10];
+				std::cout << "Obiekt MyClass został utworzony i pamięć została zaalokowana.\n";
+		}
+
+		~MyClass() {
+				delete[] myArray;
+				std::cout << "Obiekt MyClass został zniszczony i pamięć została zwolniona.\n";
+		}
+};
+
+int	main() {
+		// Użycie operatora new do utworzenia obiektu MyClass
+		MyClass* myObject = new MyClass();
+
+		// Użycie operatora delete do zniszczenia obiektu MyClass
+		delete myObject;
+};
+    </code></pre>
+					</div>
+					<small>
+						W tym przykładzie, klasa <code>MyClass</code> ma konstruktor, który alokuje pamięć dla tablicy
+						10 liczb
+						całkowitych, i destruktor, który zwalnia tę pamięć. Kiedy tworzymy nowy obiekt
+						<code>MyClass</code> za pomocą
+						operatora <code>new</code>, konstruktor jest wywoływany i pamięć jest alokowana. Kiedy niszczymy
+						obiekt za
+						pomocą operatora <code>delete</code>, destruktor jest wywoływany i pamięć jest zwalniana.
+						Ten przykład pokazuje, jak destruktor może być używany do automatycznego zwalniania zasobów, co
+						jest kluczowym
+						aspektem zarządzania pamięcią w programowaniu obiektowym.
+					</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Przykład użycia wzorca projektowego Singleton</h3>
+					<small>
+						Poniżej znajduje się przykład kodu w języku C++, który pokazuje, jak używać wzorca projektowego
+						Singleton:
+					</small>
+					<pre style="font-size: 16px;"><code>class Singleton {
+private:
+		// Prywatny konstruktor, aby zapobiec 
+		// tworzeniu instancji za pomocą operatora new
+		Singleton() {}
+
+		// Prywatny destruktor
+		~Singleton() {}
+
+		// Usunięcie możliwości kopiowania i przypisywania
+		Singleton(const Singleton&) = delete;
+		Singleton& operator=(const Singleton&) = delete;
+
+public:
+		// Metoda do uzyskania instancji Singleton
+		static Singleton& getInstance() {
+				static Singleton instance;
+				return instance;
+		}
+};
+    </code></pre>
+					<small>
+						W tym przykładzie, klasa <code>Singleton</code> ma prywatny konstruktor i destruktor, co
+						zapobiega tworzeniu
+						nowych instancji za pomocą operatora <code>new</code> lub <code>delete</code>. Metoda
+						<code>getInstance</code>
+						zapewnia globalny dostęp do jednej instancji klasy.
+					</small>
+					<small>
+						Ten przykład pokazuje, jak wzorzec Singleton może być używany do zapewnienia, że klasa ma tylko
+						jedną instancję,
+						a dostęp do tej instancji jest globalny.
+					</small>
+				</section>
+
+				<section data-auto-animate>
+					<h3>Klasy zaprzyjaźnione w C++</h3>
+					<small>
+						Słowo kluczowe <code>friend</code> w C++ jest używane do nadania pewnym funkcjom lub klasom
+						dostępu do
+						prywatnych i chronionych członków klasy. Jeśli klasa jest zadeklarowana jako <code>friend</code>
+						wewnątrz
+						definicji innej klasy, ta zaprzyjaźniona klasa może bezpośrednio dostępować do prywatnych i
+						chronionych członków
+						tej klasy.
+					</small>
+					<small>
+						Przykład użycia <code>friend</code> z klasą:
+					</small>
+					<pre style="font-size: 16px;"><code>
+class MyClass {
+private:
+		int myPrivateVar;
+
+friend class MyFriendClass;
+};
+
+class MyFriendClass {
+public:
+		void changeMyClass(MyClass& obj) {
+			// Dostęp do prywatnej zmiennej jest możliwy dzięki deklaracji friend
+				obj.myPrivateVar = 42;  
+		}
+};
+    </code></pre>
+					<small>
+						W powyższym przykładzie, klasa <code>MyFriendClass</code> ma dostęp do prywatnej zmiennej
+						<code>myPrivateVar</code> klasy <code>MyClass</code>, ponieważ jest zadeklarowana jako
+						<code>friend</code> w tej
+						klasie.
+					</small>
+				</section>
 
 
+				<section data-auto-animate>
+					<h3>Ćwiczenie praktyczne: Rozbudowane zarządzanie pamięcią</h3>
+					<small>
+						Teraz, gdy zapoznałeś się z użyciem operatorów <code>new</code> i <code>delete</code> oraz
+						wzorcem Singleton,
+						spróbuj samodzielnie zaimplementować poniższe zadania:
+					</small>
+					<ul>
+						<li>
+							<small>
+								Zaimplementuj klasę <code>MyArray</code> w C++, która ma prywatny konstruktor alokujący
+								pamięć dla
+								tablicy o określonym rozmiarze, prywatny destruktor zwalniający tę pamięć i publiczną
+								metodę
+								<code>getSize</code>, która zwraca rozmiar tablicy. Dodatkowo, dodaj metody
+								<code>setValue</code> i
+								<code>getValue</code> do ustawiania i pobierania wartości na określonym indeksie
+								tablicy.
+							</small>
+						</li>
+						<li>
+							<small>
+								Zaimplementuj klasę <code>MySingleton</code>, która jest Singletonem i przechowuje
+								instancję klasy
+								<code>MyArray</code>. Klasa powinna mieć metodę <code>getArray</code>, która zwraca
+								referencję do
+								przechowywanej instancji <code>MyArray</code>.
+							</small>
+						</li>
+						<li>
+							<small>
+								Zaimplementuj funkcję <code>main</code>, która tworzy instancję klasy
+								<code>MySingleton</code> za pomocą
+								metody <code>getInstance</code>, a następnie używa metody <code>getArray</code> do
+								manipulacji tablicą.
+								Spróbuj dodać, odczytać i zmienić wartości w tablicy. Obserwuj, jak konstruktor i
+								destruktor są
+								wywoływane.
+							</small>
+						</li>
+					</ul>
+					<small>
+						Pamiętaj, że kluczowym aspektem zarządzania pamięcią w programowaniu obiektowym jest
+						zapewnienie, że pamięć jest
+						odpowiednio alokowana i zwalniana. Operatorzy <code>new</code> i <code>delete</code> są
+						podstawowymi narzędziami
+						do tego celu w języku C++, a wzorzec Singleton pomaga zarządzać instancjami klas.
+					</small>
+				</section>
+
+				<section data-background-color="black">
+					<h3>Zadanie domowe: Klasa do sortowania z dynamiczną alokacją pamięci</h3>
+					<small>
+						Twoim zadaniem jest zaimplementować klasę, która przyjmuje tablicę liczb do posortowania w
+						konstruktorze,
+						dynamicznie alokuje pamięć dla tej tablicy, a następnie zawiera metodę do jej sortowania. Metoda
+						sortująca
+						powinna zwracać wynik sortowania, jeśli jest wywołana po raz pierwszy, lub zwracać poprzedni
+						wynik, jeśli
+						sortowanie już zostało wykonane.
+					</small>
+					<ul>
+						<li>
+							<small>
+								Użyj operatora <code>new</code> w konstruktorze klasy do dynamicznego alokowania pamięci
+								dla tablicy.
+							</small>
+						</li>
+						<li>
+							<small>
+								Zaimplementuj dowolny algorytm sortowania (oprócz sortowania bąbelkowego) jako metodę
+								klasy do
+								posortowania tablicy.
+							</small>
+						</li>
+						<li>
+							<small>
+								Metoda sortująca powinna zwracać wynik sortowania, jeśli jest wywołana po raz pierwszy,
+								lub zwracać
+								poprzedni wynik, jeśli sortowanie już zostało wykonane.
+							</small>
+						</li>
+						<li>
+							<small>
+								Użyj operatora <code>delete</code> w destruktorze klasy do zwolnienia pamięci po
+								zakończeniu sortowania.
+							</small>
+						</li>
+					</ul>
+					<small>
+						Pamiętaj, że kluczowym aspektem zarządzania pamięcią w programowaniu obiektowym jest
+						zapewnienie, że pamięć jest
+						odpowiednio alokowana i zwalniana. Operatorzy <code>new</code> i <code>delete</code> są
+						podstawowymi narzędziami
+						do tego celu w języku C++.
+					</small>
+				</section>
+				
 			</section>
-
-
-
-
 
 
 		</div>
