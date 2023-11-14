@@ -2414,7 +2414,143 @@ int main() {
 
 
 			</section>
+			<section data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
+				<section>
+					<h2>Bonus: Podstawy C/C++</h2>
+				</section>
+				<section>
+					<h2>Tablice w C/C++</h2>
+					<p>Tablice to zbiory podobnych elementów danych, umożliwiające grupowanie typów danych, takich jak liczby całkowite lub zmiennoprzecinkowe, pod jedną nazwą.</p>
+					<p>Aby zadeklarować tablice liczb całkowitych:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+						<script type="text/template">
+							int A[5];
+					</script></code></pre>
+					<p>Tworzy to tablicę A z 5 elementami typu integer.</p>
+				</section>
+				<section>
+					<h2>Gdzie lądują tablice</h2>
+					<p>W programie C/C++ tablica jest zwykle alokowana w segmencie stosu głównej pamięci.</p>
+					<p>Tablice można deklarować i inicjować jednocześnie:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+                            int A[5] = {1, 2, 3, 4, 5};
+                    </script></code></pre>
+					<p>Można też manualnie modyfikować wartości w określonych indeksach:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+A[0] = 27;
+A[1] = 10;
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Struktura pamięci</h2>
+					<p>Gdy tablica jest deklarowana w funkcji, pojawia się w stosie głównej pamięci i jest bezpośrednio dostępna dla funkcji main.</p>
+					<p>Aby uzyskać dostęp do wszystkich elementów tablicy, często używa się pętli for. Na przykład:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+for (int i = 0; i < 5; i++) {
+    printf("%d ", B[i]);
+}
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Wskaźniki w C/C++</h2>
+					<p>Wskaźnik to zmienna adresowa przeznaczona do przechowywania adresu danych, a nie samych danych. Zmienne zwykłe przechowują dane, natomiast wskaźniki - adresy. Wskaźniki są używane do pośredniego dostępu do danych.</p>
+				</section>
+				<section>
+					<h2>Po co używać wskaźników?</h2>
+					<p>Wskaźniki są potrzebne do dostępu do pamięci poza programem, takiej jak pamięć sterty (heap).</p>
+				</section>
+				<section>
+					<p>Deklarowanie i Inicjalizacja wskaźników</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+int a = 10; // Zmienna danych
+int *p;     // Wskaźnik
+p = &a;     // Inicjalizacja wskaźnika adresem zmiennej 'a'							
+                    </script></code></pre>
+					<p>Dereferencja to proces uzyskiwania dostępu do wartości, na którą wskazuje wskaźnik:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+printf("%d", *p); // Wydrukuje wartość zmiennej 'a' poprzez wskaźnik 'p'						
+                    </script></code></pre>
+					<p>Wskaźniki umożliwiają dynamiczne alokowanie pamięci:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+p = (int *)malloc(5 * sizeof(int)); // Alokacja 5 intów w C						
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Zastosowanie Wskaźników</h2>
+					<p>Dostęp do pamięci sterty.</p>
+					<p>Dostęp do zasobów zewnętrznych (np. plików, urządzeń).</p>
+					<p>Przekazywanie parametrów przez wskaźniki.</p>
+				</section>
+				<section>
+					<h2>Wskaźniki w C++</h2>
+					<p>W C++, wskaźniki i dynamiczna alokacja pamięci są kluczowe dla zarządzania zasobami. Alokacja dynamiczna jest prostsza dzięki operatorowi `new`:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+int *p = new int[5]; // Alokacja tablicy 5 całkowitych liczb						
+                    </script></code></pre>
+					<p>Ta linijka kodu alokuje miejsce dla 5 liczb całkowitych w pamięci sterty i przypisuje adres pierwszego elementu do wskaźnika p.</p>
+				</section>
+				<section>
+					<p>Możliwy jest też dostęp do elementów tablicy z użyciem wskaźnika `p` jako tablicy do zapisywania wartości:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+for(int i = 0; i < 5; i++) {
+	p[i] = i * 10; // Ustawienie wartości elementów tablicy
+}													
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Zwalnianie pamięci</h2>
+					<p>Pamięć zaalokowana przez `new` musi być zwolniona za pomocą `delete`, a pamięć zaalokowana przez `malloc` jest zwalniana przez `free`.</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+free(tablica);
+delete[] p; // Zwolnienie zaalokowanej pamięci						
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Wskaźniki i Struktury</h2>
+					<p>Wskaźniki mogą być również używane do dostępu do struktur:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+struct Rectangle {
+	int length;
+	int breadth;
+};
 
+Rectangle *ptr = new Rectangle; // Alokacja pamięci dla struktury
+ptr->length = 10; // Ustawienie wartości składowej za pomocą wskaźnika
+ptr->breadth = 20;
+delete ptr; // Zwolnienie pamięci												
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Co nam to daje?</h2>
+					<p>Wskaźniki są używane do przekazywania dużych struktur lub tablic do funkcji bez konieczności ich kopiowania, co jest efektywne pod względem pamięci:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+void updateValue(int *pValue) {
+	*pValue = 100; // Modyfikacja wartości przez wskaźnik
+}
+int value = 5;
+updateValue(&value); // Przekazanie adresu zmiennej																	
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Zaawansowane wskaźniki</h2>
+					<p>Wskaźniki mogą być również używane do tworzenia bardziej złożonych struktur danych, takich jak listy połączone, drzewa, grafy itd., i są niezbędne do zaawansowanych technik programowania w C++. O tym może kiedyś...</p>
+				</section>
+				<section>
+					<h2>Zadanie: Dynamiczna Alokacja dla Tablicy</h2>
+					<p>Napisz program, który prosi użytkownika o podanie rozmiaru tablicy, a następnie dynamicznie alokuje pamięć dla tej tablicy. Program powinien następnie pozwolić użytkownikowi wprowadzić wartości do tablicy i wypisać je.</p>
+				</section>
+			</section>
 			<section data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
 				<section>
 					<h2>Klasa i obiekt dla zielonych</h2>
