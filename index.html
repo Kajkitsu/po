@@ -2966,28 +2966,6 @@ int main() {
 						często wymagają alokacji i zwalniania pamięci dynamicznej.
 					</p>
 				</section>
-
-				<section>
-					<h3>Znaczenie zarządzania pamięcią w programowaniu obiektowym</h3>
-					<ul>
-						<li>
-							<small>Poprawne zarządzanie pamięcią pomaga zapobiegać błędom, takim jak wycieki
-								pamięci, które mogą
-								prowadzić do problemów z wydajnością lub awarii programu.</small>
-						</li>
-						<li>
-							<small>Zarządzanie pamięcią pozwala na efektywne wykorzystanie dostępnej
-								pamięci, co jest szczególnie
-								ważne w przypadku programów, które muszą obsługiwać duże ilości
-								danych.</small>
-						</li>
-						<li>
-							<small>W kontekście programowania obiektowego, zarządzanie pamięcią jest
-								niezbędne do prawidłowego
-								tworzenia i niszczenia obiektów.</small>
-						</li>
-					</ul>
-				</section>
 				<section>
 					<h3>Operator new</h3>
 					<p>
@@ -2998,9 +2976,9 @@ int main() {
 						obiektu.
 					</p>
 					<p>
-						Kiedy tworzysz nowy obiekt za pomocą operatora <b>new</b>, system najpierw znajduje
+						Kiedy tworzony jest nowy obiekt za pomocą operatora <b>new</b>, system najpierw znajduje
 						wystarczająco dużo
-						pamięci, aby pomieścić obiekt, a następnie zwraca adres tego miejsca w pamięci. Możesz następnie
+						pamięci, aby pomieścić obiekt, a następnie zwraca adres tego miejsca w pamięci. Można następnie
 						użyć tego
 						adresu do odwoływania się do obiektu.
 					</p>
@@ -3010,12 +2988,12 @@ int main() {
 					<p>
 						Operator <b>delete</b> jest używany do zwalniania, czyli odzyskiwania pamięci, która została
 						wcześniej
-						zaalokowana za pomocą operatora <b>new</b>. Kiedy obiekt nie jest już potrzebny, możesz użyć
+						zaalokowana za pomocą operatora <b>new</b>. Kiedy obiekt nie jest już potrzebny, można użyć
 						operatora
-						<b>delete</b>, aby zwolnić pamięć, którą obiekt zajmuje, co pozwala na jej ponowne użycie.
+						<b>delete</b>, który zwalnia pamięć, którą obiekt zajmuje, co pozwala na jej ponowne użycie.
 					</p>
 					<p>
-						Jest to ważne, ponieważ niezwolnienie pamięci, której już nie potrzebujesz, może prowadzić do
+						Jest to ważne, ponieważ niezwolnienie pamięci, która nie jest już potrzebna, może prowadzić do
 						wycieków pamięci.
 						Wycieki pamięci mogą spowodować, że program będzie działał wolniej, a w skrajnych przypadkach
 						może nawet
