@@ -2420,7 +2420,8 @@ int main() {
 				</section>
 				<section>
 					<h2>Tablice w C/C++</h2>
-					<p>Tablice to zbiory podobnych elementów danych, umożliwiające grupowanie typów danych, takich jak liczby całkowite lub zmiennoprzecinkowe, pod jedną nazwą.</p>
+					<p>Tablice to zbiory podobnych elementów danych, umożliwiające grupowanie typów danych, takich jak
+						liczby całkowite lub zmiennoprzecinkowe, pod jedną nazwą.</p>
 					<p>Aby zadeklarować tablice liczb całkowitych:</p>
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
 						<script type="text/template">
@@ -2445,7 +2446,8 @@ A[1] = 10;
 				</section>
 				<section>
 					<h2>Struktura pamięci</h2>
-					<p>Gdy tablica jest deklarowana w funkcji, pojawia się w stosie głównej pamięci i jest bezpośrednio dostępna dla funkcji main.</p>
+					<p>Gdy tablica jest deklarowana w funkcji, pojawia się w stosie głównej pamięci i jest bezpośrednio
+						dostępna dla funkcji main.</p>
 					<p>Aby uzyskać dostęp do wszystkich elementów tablicy, często używa się pętli for. Na przykład:</p>
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
                         <script type="text/template">
@@ -2456,7 +2458,9 @@ for (int i = 0; i < 5; i++) {
 				</section>
 				<section>
 					<h2>Wskaźniki w C/C++</h2>
-					<p>Wskaźnik to zmienna adresowa przeznaczona do przechowywania adresu danych, a nie samych danych. Zmienne zwykłe przechowują dane, natomiast wskaźniki - adresy. Wskaźniki są używane do pośredniego dostępu do danych.</p>
+					<p>Wskaźnik to zmienna adresowa przeznaczona do przechowywania adresu danych, a nie samych danych.
+						Zmienne zwykłe przechowują dane, natomiast wskaźniki - adresy. Wskaźniki są używane do
+						pośredniego dostępu do danych.</p>
 				</section>
 				<section>
 					<h2>Po co używać wskaźników?</h2>
@@ -2489,15 +2493,18 @@ p = (int *)malloc(5 * sizeof(int)); // Alokacja 5 intów w C
 				</section>
 				<section>
 					<h2>Wskaźniki w C++</h2>
-					<p>W C++, wskaźniki i dynamiczna alokacja pamięci są kluczowe dla zarządzania zasobami. Alokacja dynamiczna jest prostsza dzięki operatorowi `new`:</p>
+					<p>W C++, wskaźniki i dynamiczna alokacja pamięci są kluczowe dla zarządzania zasobami. Alokacja
+						dynamiczna jest prostsza dzięki operatorowi `new`:</p>
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
                         <script type="text/template">
 int *p = new int[5]; // Alokacja tablicy 5 całkowitych liczb						
                     </script></code></pre>
-					<p>Ta linijka kodu alokuje miejsce dla 5 liczb całkowitych w pamięci sterty i przypisuje adres pierwszego elementu do wskaźnika p.</p>
+					<p>Ta linijka kodu alokuje miejsce dla 5 liczb całkowitych w pamięci sterty i przypisuje adres
+						pierwszego elementu do wskaźnika p.</p>
 				</section>
 				<section>
-					<p>Możliwy jest też dostęp do elementów tablicy z użyciem wskaźnika `p` jako tablicy do zapisywania wartości:</p>
+					<p>Możliwy jest też dostęp do elementów tablicy z użyciem wskaźnika `p` jako tablicy do zapisywania
+						wartości:</p>
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
                         <script type="text/template">
 for(int i = 0; i < 5; i++) {
@@ -2507,7 +2514,8 @@ for(int i = 0; i < 5; i++) {
 				</section>
 				<section>
 					<h2>Zwalnianie pamięci</h2>
-					<p>Pamięć zaalokowana przez `new` musi być zwolniona za pomocą `delete`, a pamięć zaalokowana przez `malloc` jest zwalniana przez `free`.</p>
+					<p>Pamięć zaalokowana przez `new` musi być zwolniona za pomocą `delete`, a pamięć zaalokowana przez
+						`malloc` jest zwalniana przez `free`.</p>
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
                         <script type="text/template">
 free(tablica);
@@ -2532,7 +2540,8 @@ delete ptr; // Zwolnienie pamięci
 				</section>
 				<section>
 					<h2>Co nam to daje?</h2>
-					<p>Wskaźniki są używane do przekazywania dużych struktur lub tablic do funkcji bez konieczności ich kopiowania, co jest efektywne pod względem pamięci:</p>
+					<p>Wskaźniki są używane do przekazywania dużych struktur lub tablic do funkcji bez konieczności ich
+						kopiowania, co jest efektywne pod względem pamięci:</p>
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
                         <script type="text/template">
 void updateValue(int *pValue) {
@@ -2544,11 +2553,15 @@ updateValue(&value); // Przekazanie adresu zmiennej
 				</section>
 				<section>
 					<h2>Zaawansowane wskaźniki</h2>
-					<p>Wskaźniki mogą być również używane do tworzenia bardziej złożonych struktur danych, takich jak listy połączone, drzewa, grafy itd., i są niezbędne do zaawansowanych technik programowania w C++. O tym może kiedyś...</p>
+					<p>Wskaźniki mogą być również używane do tworzenia bardziej złożonych struktur danych, takich jak
+						listy połączone, drzewa, grafy itd., i są niezbędne do zaawansowanych technik programowania w
+						C++. O tym może kiedyś...</p>
 				</section>
 				<section>
 					<h2>Zadanie: Dynamiczna Alokacja dla Tablicy</h2>
-					<p>Napisz program, który prosi użytkownika o podanie rozmiaru tablicy, a następnie dynamicznie alokuje pamięć dla tej tablicy. Program powinien następnie pozwolić użytkownikowi wprowadzić wartości do tablicy i wypisać je.</p>
+					<p>Napisz program, który prosi użytkownika o podanie rozmiaru tablicy, a następnie dynamicznie
+						alokuje pamięć dla tej tablicy. Program powinien następnie pozwolić użytkownikowi wprowadzić
+						wartości do tablicy i wypisać je.</p>
 				</section>
 			</section>
 			<section data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
@@ -3193,18 +3206,21 @@ public:
 					</small>
 				</section>
 
-<section>
-	<h3>Klasy zaprzyjaźnione w C++</h3>
-	<small>
-		Słowo kluczowe <code>friend</code> w C++ jest używane do nadania pewnym funkcjom lub klasom dostępu do
-		prywatnych i chronionych członków klasy. Jeśli klasa jest zadeklarowana jako <code>friend</code> wewnątrz
-		definicji innej klasy, ta zaprzyjaźniona klasa może bezpośrednio dostępować do prywatnych i chronionych członków
-		tej klasy.
-	</small>
-	<small>
-		Przykład użycia <code>friend</code> z klasą:
-	</small>
-	<pre style="font-size: 16px;"><code>
+				<section>
+					<h3>Klasy zaprzyjaźnione w C++</h3>
+					<small>
+						Słowo kluczowe <code>friend</code> w C++ jest używane do nadania pewnym funkcjom lub klasom
+						dostępu do
+						prywatnych i chronionych członków klasy. Jeśli klasa jest zadeklarowana jako <code>friend</code>
+						wewnątrz
+						definicji innej klasy, ta zaprzyjaźniona klasa może bezpośrednio dostępować do prywatnych i
+						chronionych członków
+						tej klasy.
+					</small>
+					<small>
+						Przykład użycia <code>friend</code> z klasą:
+					</small>
+					<pre style="font-size: 16px;"><code>
 class MyClass {
 private:
 		int myPrivateVar;
@@ -3220,51 +3236,64 @@ public:
 		}
 };
     </code></pre>
-	<small>
-		W powyższym przykładzie, klasa <code>MyFriendClass</code> ma dostęp do prywatnej zmiennej
-		<code>myPrivateVar</code> klasy <code>MyClass</code>, ponieważ jest zadeklarowana jako <code>friend</code> w tej
-		klasie.
-	</small>
-</section>
+					<small>
+						W powyższym przykładzie, klasa <code>MyFriendClass</code> ma dostęp do prywatnej zmiennej
+						<code>myPrivateVar</code> klasy <code>MyClass</code>, ponieważ jest zadeklarowana jako
+						<code>friend</code> w tej
+						klasie.
+					</small>
+				</section>
 
 
-<section>
-	<h3>Ćwiczenie praktyczne: Rozbudowane zarządzanie pamięcią</h3>
-	<small>
-		Teraz, gdy zapoznałeś się z użyciem operatorów <code>new</code> i <code>delete</code> oraz wzorcem Singleton,
-		spróbuj samodzielnie zaimplementować poniższe zadania:
-	</small>
-	<ul>
-		<li>
-			<small>
-				Zaimplementuj klasę <code>MyArray</code> w C++, która ma prywatny konstruktor alokujący pamięć dla
-				tablicy o określonym rozmiarze, prywatny destruktor zwalniający tę pamięć i publiczną metodę
-				<code>getSize</code>, która zwraca rozmiar tablicy. Dodatkowo, dodaj metody <code>setValue</code> i
-				<code>getValue</code> do ustawiania i pobierania wartości na określonym indeksie tablicy.
-			</small>
-		</li>
-		<li>
-			<small>
-				Zaimplementuj klasę <code>MySingleton</code>, która jest Singletonem i przechowuje instancję klasy
-				<code>MyArray</code>. Klasa powinna mieć metodę <code>getArray</code>, która zwraca referencję do
-				przechowywanej instancji <code>MyArray</code>.
-			</small>
-		</li>
-		<li>
-			<small>
-				Zaimplementuj funkcję <code>main</code>, która tworzy instancję klasy <code>MySingleton</code> za pomocą
-				metody <code>getInstance</code>, a następnie używa metody <code>getArray</code> do manipulacji tablicą.
-				Spróbuj dodać, odczytać i zmienić wartości w tablicy. Obserwuj, jak konstruktor i destruktor są
-				wywoływane.
-			</small>
-		</li>
-	</ul>
-	<small>
-		Pamiętaj, że kluczowym aspektem zarządzania pamięcią w programowaniu obiektowym jest zapewnienie, że pamięć jest
-		odpowiednio alokowana i zwalniana. Operatorzy <code>new</code> i <code>delete</code> są podstawowymi narzędziami
-		do tego celu w języku C++, a wzorzec Singleton pomaga zarządzać instancjami klas.
-	</small>
-</section>
+				<section>
+					<h3>Ćwiczenie praktyczne: Rozbudowane zarządzanie pamięcią</h3>
+					<small>
+						Teraz, gdy zapoznałeś się z użyciem operatorów <code>new</code> i <code>delete</code> oraz
+						wzorcem Singleton,
+						spróbuj samodzielnie zaimplementować poniższe zadania:
+					</small>
+					<ul>
+						<li>
+							<small>
+								Zaimplementuj klasę <code>MyArray</code> w C++, która ma prywatny konstruktor alokujący
+								pamięć dla
+								tablicy o określonym rozmiarze, prywatny destruktor zwalniający tę pamięć i publiczną
+								metodę
+								<code>getSize</code>, która zwraca rozmiar tablicy. Dodatkowo, dodaj metody
+								<code>setValue</code> i
+								<code>getValue</code> do ustawiania i pobierania wartości na określonym indeksie
+								tablicy.
+							</small>
+						</li>
+						<li>
+							<small>
+								Zaimplementuj klasę <code>MySingleton</code>, która jest Singletonem i przechowuje
+								instancję klasy
+								<code>MyArray</code>. Klasa powinna mieć metodę <code>getArray</code>, która zwraca
+								referencję do
+								przechowywanej instancji <code>MyArray</code>.
+							</small>
+						</li>
+						<li>
+							<small>
+								Zaimplementuj funkcję <code>main</code>, która tworzy instancję klasy
+								<code>MySingleton</code> za pomocą
+								metody <code>getInstance</code>, a następnie używa metody <code>getArray</code> do
+								manipulacji tablicą.
+								Spróbuj dodać, odczytać i zmienić wartości w tablicy. Obserwuj, jak konstruktor i
+								destruktor są
+								wywoływane.
+							</small>
+						</li>
+					</ul>
+					<small>
+						Pamiętaj, że kluczowym aspektem zarządzania pamięcią w programowaniu obiektowym jest
+						zapewnienie, że pamięć jest
+						odpowiednio alokowana i zwalniana. Operatorzy <code>new</code> i <code>delete</code> są
+						podstawowymi narzędziami
+						do tego celu w języku C++, a wzorzec Singleton pomaga zarządzać instancjami klas.
+					</small>
+				</section>
 
 				<section data-background-color="black" data-auto-animate="">
 					<h3>Zadanie domowe: Klasa do sortowania z dynamiczną alokacją pamięci</h3>
@@ -3313,10 +3342,153 @@ public:
 						do tego celu w języku C++.
 					</small>
 				</section>
-				
+
+
+
 			</section>
 
+			<section data-background-gradient="linear-gradient(175deg, #497a7a, #3e309c)">
+				<section>
+					<h2>Pliki nagłówkowe</h2>
+				</section>
+				<section>
+					<p>
+						W języku C++, koncepcja podziału klasy na dwie części: plik nagłówkowy (header file) i plik
+						źródłowy (source
+						file) ma kilka korzyści:
+					</p>
+					<small>
+						<ol>
+							<li>
+								<strong>Modularność:</strong> Dzięki rozdzieleniu definicji klasy (deklaracji) od jej
+								implementacji, możliwe
+								jest tworzenie modułów kodu, które można łatwo łączyć. Plik nagłówkowy zawiera zazwyczaj
+								deklaracje klas,
+								funkcji i innych elementów interfejsu, natomiast plik źródłowy zawiera implementację
+								tych
+								elementów.
+							</li>
 
+							<li>
+								<strong>Hermetyzacja:</strong> Dzięki rozdzieleniu interfejsu od implementacji, można
+								ukryć
+								szczegóły
+								implementacyjne przed użytkownikiem klasy. Użytkownicy mogą korzystać z interfejsu
+								dostępnego w pliku
+								nagłówkowym, nie będąc zaznajomieni z tym, jak dokładnie działa implementacja, co
+								ułatwia
+								utrzymanie
+								tajemnicy implementacyjnej (hermetyzację).
+							</li>
+
+							<li>
+								<strong>Szybsze kompilacje:</strong> W przypadku zmian w implementacji klasy, konieczne
+								jest
+								ponowne
+								skompilowanie tylko pliku źródłowego, co pozwala na zaoszczędzenie czasu kompilacji.
+								Jeśli
+								wszystko
+								zostałoby umieszczone w jednym pliku, nawet najmniejsza zmiana wymagałaby ponownego
+								kompilowania całego
+								programu.
+							</li>
+						</ol>
+					</small>
+
+				</section>
+
+				<section>
+					<small>
+						Przykładowo, rozdzielenie klasy "MojaKlasa" na plik nagłówkowy (MojaKlasa.h) i plik źródłowy
+						(MojaKlasa.cpp)
+						może wyglądać tak:
+					</small>
+					<div class="row">
+						<div class="col" style="float: left; width: 60%;">
+							<pre style="font-size: 16px;"><code><script type="text/template">#ifndef MOJA_KLASA_H
+#define MOJA_KLASA_H
+
+class MojaKlasa {
+public:
+    MojaKlasa(); // deklaracja konstruktora
+    void metoda(); // deklaracja metody
+private:
+    int zmienna; // deklaracja prywatnej zmiennej
+};
+
+#endif // MOJA_KLASA_H</script></code></pre>
+							<small><b>MojaKlasa.h</b></small>
+
+						</div>
+						<div class="col" style="float: right; width: 40%;">
+
+							<pre style="font-size: 16px;"><code>
+						<script type="text/template">#include "MojaKlasa.h"
+
+MojaKlasa::MojaKlasa() {
+    // implementacja konstruktora
+}
+
+void MojaKlasa::metoda() {
+    // implementacja metody
+}</script></code></pre>
+							<small><b>MojaKlasa.cpp</b></small>
+
+						</div>
+					</div>
+
+
+
+					<small>
+						Następnie, w pliku, w którym chcemy użyć klasy, importuje się plik nagłówkowy (<b>#include
+							"MojaKlasa.h"</b>) i
+						korzysta z
+						zadeklarowanego interfejsu. W przypadku kompilacji, konieczne jest dostarczenie zarówno pliku
+						nagłówkowego, jak i
+						pliku
+						źródłowego do kompilatora.
+					</small>
+				</section>
+				<section>
+					<h3>Kod preprocesora</h3>
+					<small>
+						W języku C++, w plikach nagłówkowych, często używa się dyrektyw preprocesora takich jak
+						<b>#ifndef</b>,
+						<b>#define</b> i <b>#endif</b>
+					</small>
+					<small>
+						<ul>
+							<li><b><em>#ifndef</em>(if not defined):</b> - Ten fragment kodu preprocesora sprawdza, czy
+								dany symbol lub makro nie został wcześniej zdefiniowany. Jeśli symbol nie
+								jest zdefiniowany, to wykonuje się kod znajdujący się między <b>#ifndef</b> a
+								odpowiadającym mu <b>#endif</b>. Jeśli symbol jest już
+								zdefiniowany, kod pomiędzy tymi dyrektywami jest pomijany. </li>
+							<li><b><em>#define</em></b> - Jeśli warunek w #ifndef jest spełniony (symbol nie jest
+								zdefiniowany), to <b>#define</b> służy do zdefiniowania tego symbolu. W
+								praktyce jest to najczęściej używane do stworzenia tzw. "strażnika wielokrotnego
+								dołączania" (include guard). Działa to
+								jako swoisty klucz, który uniemożliwia wielokrotne dołączanie tego samego pliku
+								nagłówkowego podczas kompilacji.</li>
+							<li><b><em>#endif</em></b> - Oznacza koniec bloku warunkowego rozpoczętego przez
+								<b>#ifndef</b>. Kody umieszczone między <b>#ifndef</b> a <b>#endif</b> są kompilowane
+								tylko wtedy, gdy warunek nie został spełniony (symbol nie jest zdefiniowany). To zamyka
+								blok warunkowy.
+							</li>
+						</ul>
+					</small>
+				</section>
+			</section>
+			<section data-background-color="dark-grey">
+				<section>
+					<h2>Zadanie 2: Koła i kwadraty</h2>
+				</section>
+				<section>
+										<img src="assets/kolaikwadraty_w.png">
+										<small>
+											Zaimplementuj klasy zgodnie z diagramem UML
+										</small>
+				</section>
+			</section>
 
 
 		</div>
