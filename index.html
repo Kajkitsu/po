@@ -3784,6 +3784,48 @@ int main() {
 					</small>
 				</section>
 			</section>
+			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
+								<section>
+									<h2>Zadanie 3: Sklep</h2>
+								</section>
+				<section>
+									<h3>Zaimplementuj klasy wg diagramu</h3>
+									<img src="assets/sklep.png">
+				</section>
+				<section>
+					<h3>Program sprawdzający</h3>
+										<pre style="font-size: 16px;"><code class="hljs cpp"><script type="text/template">int main()
+{
+ Shop *shop = new Shop();
+ Supplier *supplier = new Supplier(shop);
+ Notepad *notepad = new Notepad();
+ supplier->deliverProduct(notepad);
+ Bread *bread = new Bread();
+ supplier->deliverProduct(bread);
+ Pen *pen = new Pen();
+ supplier->deliverProduct(pen);
+ MineralWater *mineralWater = new MineralWater();
+ supplier->deliverProduct(mineralWater);
+ shop->displayProducts();
+
+ if (shop->checkAvailability("Bread"))
+ {
+  shop->sellFoodProduct("Bread");
+ }
+
+ if (shop->checkAvailability(notepad))
+ {
+  shop->sellStationeryProduct(notepad->getName());
+  shop->displayProducts();
+  return 0;
+ }
+
+ return 0;
+}</script></code></pre>
+				</section>
+
+				
+			</section>
 		</div>
 	</div>
 
