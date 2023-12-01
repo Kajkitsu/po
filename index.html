@@ -2931,7 +2931,230 @@ int main() {
 					</small>
 				</section>
 			</section>
+			<section data-background-gradient="linear-gradient(175deg, #09bc8a, #565896)" data-auto-animate>
+				<section>
+					<h2>Zadania do samodzielnego rozwiązania<h2>
+				</section>
+				<section>
+					<h2>Implementacja klasy Stack</h2>
 
+					<div class="row">
+						<div class="column small-font">
+							<p style="font-size: 0.85em;"></p>Utwórz klasę Stack, która będzie implementacją stosu dla elementów typu int. Stos powinien być zaimplementowany za pomocą dynamicznej tablicy, z wykorzystaniem wskaźników.</p>
+						</div>
+						<div class="column small-font">
+							<img src="assets/stack.png">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Funkcja push (Dodawanie Elementu do Stosu)</h3>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+Funkcja push(value: int)
+Jeśli topIndex < capacity - 1
+	Zwiększ topIndex o 1
+	Umieść value na pozycji topIndex w stackArray
+W przeciwnym przypadku
+	Wydrukuj "Stos jest pełny!"
+</script></code></pre>
+<p style="font-size: 24px">Funkcja push dodaje element (value) na szczyt stosu.</p>
+<p style="font-size: 24px">Sprawdza, czy na stosie jest jeszcze miejsce. Jeśli tak, zwiększa topIndex (co przesuwa szczyt stosu) i umieszcza wartość na nowym szczycie.</p>
+<p style="font-size: 24px">Jeśli stos jest pełny (topIndex osiągnął capacity - 1), wyświetla komunikat o pełnym stosie.</p>
+				</section>
+				<section>
+					<h3>Funkcja pop (Usuwanie Elementu ze Stosu)</h3>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+Funkcja pop() zwraca int
+Jeśli stos nie jest pusty (!isEmpty())
+	Przechowaj wartość na topIndex
+	Zmniejsz topIndex o 1
+	Zwróć przechowywaną wartość
+W przeciwnym przypadku
+	Wydrukuj "Stos jest pusty!"
+	Zwróć -1						
+</script></code></pre>
+<p style="font-size: 24px">Funkcja pop usuwa element ze szczytu stosu i zwraca jego wartość.</p>
+<p style="font-size: 24px">Jeśli stos nie jest pusty, wartość na szczycie stosu jest przechowywana, a topIndex jest zmniejszany (co usuwa element ze szczytu).</p>
+<p style="font-size: 24px">Jeśli stos jest pusty, wyświetla komunikat i zwraca wartość błędu -1.</p>
+				</section>
+				<section>
+					<h3>Funkcja top (Sprawdzanie Elementu na Szczycie Stosu)</h3>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+Funkcja top() zwraca int
+Jeśli stos nie jest pusty (!isEmpty())
+	Zwróć wartość na topIndex
+W przeciwnym przypadku
+	Wydrukuj "Stos jest pusty!"
+	Zwróć -1										
+</script></code></pre>
+<p style="font-size: 24px">Funkcja top zwraca wartość elementu znajdującego się na szczycie stosu bez jego usuwania.</p>
+<p style="font-size: 24px">Jeśli stos nie jest pusty, zwraca wartość na topIndex.</p>
+<p style="font-size: 24px">Jeśli stos jest pusty, wyświetla komunikat i zwraca wartość błędu -1.</p>
+				</section>
+				<section>
+					<h3>Funkcja isEmpty (Sprawdzanie, czy Stos jest Pusty)</h3>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+Funkcja isEmpty() zwraca bool
+	Zwróć topIndex == -1															
+</script></code></pre>
+<p style="font-size: 24px">Funkcja isEmpty sprawdza, czy stos jest pusty.</p>
+<p style="font-size: 24px">Jeśli topIndex jest równy -1, oznacza to, że na stosie nie ma żadnych elementów, więc stos jest pusty.</p>
+<p style="font-size: 24px">Zwraca wartość true, jeśli stos jest pusty, i false, jeśli na stosie są elementy.</p>
+				</section>
+				<section>
+					<h3>Program sprawdzający</h3>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+int main() {
+	Stack stack(3); // Stos z maksymalną pojemnością 3 elementów
+
+	// Dodanie elementów do stosu
+	stack.push(5);
+	stack.push(10);
+	stack.push(15);
+
+	// Próba dodania elementu do pełnego stosu
+	std::cout << "Próba dodania elementu do pełnego stosu:" << std::endl;
+	stack.push(20); // Stos jest już pełny, więc powinno wyświetlić komunikat
+
+	// Wyświetlanie i usuwanie elementów ze stosu
+	while (!stack.isEmpty()) {
+		std::cout << "Element na szczycie stosu: " << stack.top() << std::endl;
+		std::cout << "Usuwam element: " << stack.pop() << std::endl;
+	}
+
+	// Próba usunięcia elementu ze stosu pustego
+	std::cout << "Próba usunięcia elementu ze stosu pustego:" << std::endl;
+	stack.pop(); // Stos jest już pusty, więc powinno wyświetlić komunikat
+
+	return 0;
+}															
+</script></code></pre>
+				</section>
+				<section>
+					<h2>Implementacja klasy Queue</h2>
+					<div class="row">
+						<div class="column small-font">
+							<p style="font-size: 0.85em;"></p>Utwórz klasę Queue, która będzie implementacją kolejki dla elementów typu int. Kolejka powinna być zaimplementowana za pomocą dynamicznej tablicy, z wykorzystaniem wskaźników.</p>
+						</div>
+						<div class="column small-font">
+							<img src="assets/queue.png">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Funkcja enqueue (Dodawanie Elementu do Kolejki)</h3>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+Funkcja enqueue(value: int)
+Jeśli count < capacity
+	Zwiększ rearIndex o 1 (mod capacity)
+	Umieść value na pozycji rearIndex w queueArray
+	Zwiększ count o 1
+W przeciwnym przypadku
+	Wydrukuj "Kolejka jest pełna!"																					
+</script></code></pre>
+<p style="font-size: 24px">Funkcja enqueue dodaje nowy element (value) na koniec kolejki.</p>
+<p style="font-size: 24px">Jeśli w kolejce jest miejsce (sprawdzane przez count < capacity), indeks końca kolejki (rearIndex) jest zwiększany o jeden z użyciem modulo capacity, aby zapewnić cykliczny charakter kolejki.</p>
+<p style="font-size: 24px">Następnie wartość jest umieszczana na nowo obliczonej pozycji końca kolejki.</p>
+<p style="font-size: 24px">Jeśli kolejka jest pełna, funkcja wyświetla komunikat.</p>
+				</section>
+				<section>
+					<h3>Funkcja dequeue (Usuwanie Elementu z Kolejki)</h3>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+Funkcja dequeue() zwraca int
+Jeśli kolejka nie jest pusta (!isEmpty())
+	Przechowaj wartość na frontIndex
+	Zwiększ frontIndex o 1 (mod capacity)
+	Zmniejsz count o 1
+	Zwróć przechowywaną wartość
+W przeciwnym przypadku
+	Wydrukuj "Kolejka jest pusta!"
+	Zwróć -1																										
+</script></code></pre>
+<p style="font-size: 24px">Funkcja dequeue usuwa element z początku kolejki.</p>
+<p style="font-size: 24px">Jeśli kolejka nie jest pusta, wartość na początku kolejki jest przechowywana, a frontIndex jest zwiększany.</p>
+<p style="font-size: 24px">Liczba elementów w kolejce (count) jest zmniejszana.</p>
+<p style="font-size: 24px">Zwracana jest wartość usunięta z kolejki.</p>
+<p style="font-size: 24px">Jeśli kolejka jest pusta, wyświetlany jest komunikat i zwracana jest wartość błędu -1.</p>
+				</section>
+				<section>
+					<h3>Funkcja front (Sprawdzanie Elementu na Początku Kolejki)</h3>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+Funkcja front() zwraca int
+Jeśli kolejka nie jest pusta (!isEmpty())
+	Zwróć wartość na frontIndex
+W przeciwnym przypadku
+	Wydrukuj "Kolejka jest pusta!"
+	Zwróć -1																												
+</script></code></pre>
+<p style="font-size: 24px">Funkcja front zwraca wartość elementu znajdującego się na początku kolejki bez usuwania go.</p>
+<p style="font-size: 24px">Jeśli kolejka nie jest pusta, zwracana jest wartość znajdująca się na frontIndex.</p>
+<p style="font-size: 24px">Jeśli kolejka jest pusta, wyświetlany jest komunikat i zwracana jest wartość błędu -1.</p>
+				</section>
+				<section>
+					<h3>Program sprawdzający</h3>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+int main() {
+	Queue queue(3); // Kolejka z maksymalną pojemnością 3 elementów
+
+	// Dodanie elementów do kolejki
+	queue.enqueue(5);
+	queue.enqueue(10);
+	queue.enqueue(15);
+
+	// Próba dodania elementu do pełnej kolejki
+	std::cout << "Próba dodania elementu do pełnej kolejki:" << std::endl;
+	queue.enqueue(20);
+
+	// Usuwanie elementów z kolejki
+	while (!queue.isEmpty()) {
+		std::cout << "Usuwam element z kolejki: " << queue.dequeue() << std::endl;
+	}
+
+	// Próba usunięcia elementu z pustej kolejki
+	std::cout << "Próba usunięcia elementu z pustej kolejki:" << std::endl;
+	queue.dequeue();
+
+	return 0;
+}														
+</script></code></pre>
+				</section>
+			</section>
 			<section data-background-gradient="linear-gradient(175deg, #09bc8a, #565896)" data-auto-animate>
 				<section>
 					<h2>Zarządzanie pamięcią w programowaniu obiektowym:<h2>
