@@ -2940,7 +2940,9 @@ int main() {
 
 					<div class="row">
 						<div class="column small-font">
-							<p style="font-size: 0.85em;"></p>Utwórz klasę Stack, która będzie implementacją stosu dla elementów typu int. Stos powinien być zaimplementowany za pomocą dynamicznej tablicy, z wykorzystaniem wskaźników.</p>
+							<p style="font-size: 0.85em;"></p>Utwórz klasę Stack, która będzie implementacją stosu dla
+							elementów typu int. Stos powinien być zaimplementowany za pomocą dynamicznej tablicy, z
+							wykorzystaniem wskaźników.</p>
 						</div>
 						<div class="column small-font">
 							<img src="assets/stack.png">
@@ -2961,9 +2963,11 @@ Jeśli topIndex < capacity - 1
 W przeciwnym przypadku
 	Wydrukuj "Stos jest pełny!"
 </script></code></pre>
-<p style="font-size: 24px">Funkcja push dodaje element (value) na szczyt stosu.</p>
-<p style="font-size: 24px">Sprawdza, czy na stosie jest jeszcze miejsce. Jeśli tak, zwiększa topIndex (co przesuwa szczyt stosu) i umieszcza wartość na nowym szczycie.</p>
-<p style="font-size: 24px">Jeśli stos jest pełny (topIndex osiągnął capacity - 1), wyświetla komunikat o pełnym stosie.</p>
+					<p style="font-size: 24px">Funkcja push dodaje element (value) na szczyt stosu.</p>
+					<p style="font-size: 24px">Sprawdza, czy na stosie jest jeszcze miejsce. Jeśli tak, zwiększa
+						topIndex (co przesuwa szczyt stosu) i umieszcza wartość na nowym szczycie.</p>
+					<p style="font-size: 24px">Jeśli stos jest pełny (topIndex osiągnął capacity - 1), wyświetla
+						komunikat o pełnym stosie.</p>
 				</section>
 				<section>
 					<h3>Funkcja pop (Usuwanie Elementu ze Stosu)</h3>
@@ -2981,9 +2985,10 @@ W przeciwnym przypadku
 	Wydrukuj "Stos jest pusty!"
 	Zwróć -1						
 </script></code></pre>
-<p style="font-size: 24px">Funkcja pop usuwa element ze szczytu stosu i zwraca jego wartość.</p>
-<p style="font-size: 24px">Jeśli stos nie jest pusty, wartość na szczycie stosu jest przechowywana, a topIndex jest zmniejszany (co usuwa element ze szczytu).</p>
-<p style="font-size: 24px">Jeśli stos jest pusty, wyświetla komunikat i zwraca wartość błędu -1.</p>
+					<p style="font-size: 24px">Funkcja pop usuwa element ze szczytu stosu i zwraca jego wartość.</p>
+					<p style="font-size: 24px">Jeśli stos nie jest pusty, wartość na szczycie stosu jest przechowywana,
+						a topIndex jest zmniejszany (co usuwa element ze szczytu).</p>
+					<p style="font-size: 24px">Jeśli stos jest pusty, wyświetla komunikat i zwraca wartość błędu -1.</p>
 				</section>
 				<section>
 					<h3>Funkcja top (Sprawdzanie Elementu na Szczycie Stosu)</h3>
@@ -2999,9 +3004,10 @@ W przeciwnym przypadku
 	Wydrukuj "Stos jest pusty!"
 	Zwróć -1										
 </script></code></pre>
-<p style="font-size: 24px">Funkcja top zwraca wartość elementu znajdującego się na szczycie stosu bez jego usuwania.</p>
-<p style="font-size: 24px">Jeśli stos nie jest pusty, zwraca wartość na topIndex.</p>
-<p style="font-size: 24px">Jeśli stos jest pusty, wyświetla komunikat i zwraca wartość błędu -1.</p>
+					<p style="font-size: 24px">Funkcja top zwraca wartość elementu znajdującego się na szczycie stosu
+						bez jego usuwania.</p>
+					<p style="font-size: 24px">Jeśli stos nie jest pusty, zwraca wartość na topIndex.</p>
+					<p style="font-size: 24px">Jeśli stos jest pusty, wyświetla komunikat i zwraca wartość błędu -1.</p>
 				</section>
 				<section>
 					<h3>Funkcja isEmpty (Sprawdzanie, czy Stos jest Pusty)</h3>
@@ -3013,9 +3019,11 @@ W przeciwnym przypadku
 Funkcja isEmpty() zwraca bool
 	Zwróć topIndex == -1															
 </script></code></pre>
-<p style="font-size: 24px">Funkcja isEmpty sprawdza, czy stos jest pusty.</p>
-<p style="font-size: 24px">Jeśli topIndex jest równy -1, oznacza to, że na stosie nie ma żadnych elementów, więc stos jest pusty.</p>
-<p style="font-size: 24px">Zwraca wartość true, jeśli stos jest pusty, i false, jeśli na stosie są elementy.</p>
+					<p style="font-size: 24px">Funkcja isEmpty sprawdza, czy stos jest pusty.</p>
+					<p style="font-size: 24px">Jeśli topIndex jest równy -1, oznacza to, że na stosie nie ma żadnych
+						elementów, więc stos jest pusty.</p>
+					<p style="font-size: 24px">Zwraca wartość true, jeśli stos jest pusty, i false, jeśli na stosie są
+						elementy.</p>
 				</section>
 				<section>
 					<h3>Program sprawdzający</h3>
@@ -3054,7 +3062,9 @@ int main() {
 					<h2>Implementacja klasy Queue</h2>
 					<div class="row">
 						<div class="column small-font">
-							<p style="font-size: 0.85em;"></p>Utwórz klasę Queue, która będzie implementacją kolejki dla elementów typu int. Kolejka powinna być zaimplementowana za pomocą dynamicznej tablicy, z wykorzystaniem wskaźników.</p>
+							<p style="font-size: 0.85em;"></p>Utwórz klasę Queue, która będzie implementacją kolejki dla
+							elementów typu int. Kolejka powinna być zaimplementowana za pomocą dynamicznej tablicy, z
+							wykorzystaniem wskaźników.</p>
 						</div>
 						<div class="column small-font">
 							<img src="assets/queue.png">
@@ -3076,10 +3086,13 @@ Jeśli count < capacity
 W przeciwnym przypadku
 	Wydrukuj "Kolejka jest pełna!"																					
 </script></code></pre>
-<p style="font-size: 24px">Funkcja enqueue dodaje nowy element (value) na koniec kolejki.</p>
-<p style="font-size: 24px">Jeśli w kolejce jest miejsce (sprawdzane przez count < capacity), indeks końca kolejki (rearIndex) jest zwiększany o jeden z użyciem modulo capacity, aby zapewnić cykliczny charakter kolejki.</p>
-<p style="font-size: 24px">Następnie wartość jest umieszczana na nowo obliczonej pozycji końca kolejki.</p>
-<p style="font-size: 24px">Jeśli kolejka jest pełna, funkcja wyświetla komunikat.</p>
+					<p style="font-size: 24px">Funkcja enqueue dodaje nowy element (value) na koniec kolejki.</p>
+					<p style="font-size: 24px">Jeśli w kolejce jest miejsce (sprawdzane przez count < capacity), indeks
+							końca kolejki (rearIndex) jest zwiększany o jeden z użyciem modulo capacity, aby zapewnić
+							cykliczny charakter kolejki.</p>
+							<p style="font-size: 24px">Następnie wartość jest umieszczana na nowo obliczonej pozycji
+								końca kolejki.</p>
+							<p style="font-size: 24px">Jeśli kolejka jest pełna, funkcja wyświetla komunikat.</p>
 				</section>
 				<section>
 					<h3>Funkcja dequeue (Usuwanie Elementu z Kolejki)</h3>
@@ -3098,11 +3111,13 @@ W przeciwnym przypadku
 	Wydrukuj "Kolejka jest pusta!"
 	Zwróć -1																										
 </script></code></pre>
-<p style="font-size: 24px">Funkcja dequeue usuwa element z początku kolejki.</p>
-<p style="font-size: 24px">Jeśli kolejka nie jest pusta, wartość na początku kolejki jest przechowywana, a frontIndex jest zwiększany.</p>
-<p style="font-size: 24px">Liczba elementów w kolejce (count) jest zmniejszana.</p>
-<p style="font-size: 24px">Zwracana jest wartość usunięta z kolejki.</p>
-<p style="font-size: 24px">Jeśli kolejka jest pusta, wyświetlany jest komunikat i zwracana jest wartość błędu -1.</p>
+					<p style="font-size: 24px">Funkcja dequeue usuwa element z początku kolejki.</p>
+					<p style="font-size: 24px">Jeśli kolejka nie jest pusta, wartość na początku kolejki jest
+						przechowywana, a frontIndex jest zwiększany.</p>
+					<p style="font-size: 24px">Liczba elementów w kolejce (count) jest zmniejszana.</p>
+					<p style="font-size: 24px">Zwracana jest wartość usunięta z kolejki.</p>
+					<p style="font-size: 24px">Jeśli kolejka jest pusta, wyświetlany jest komunikat i zwracana jest
+						wartość błędu -1.</p>
 				</section>
 				<section>
 					<h3>Funkcja front (Sprawdzanie Elementu na Początku Kolejki)</h3>
@@ -3118,9 +3133,12 @@ W przeciwnym przypadku
 	Wydrukuj "Kolejka jest pusta!"
 	Zwróć -1																												
 </script></code></pre>
-<p style="font-size: 24px">Funkcja front zwraca wartość elementu znajdującego się na początku kolejki bez usuwania go.</p>
-<p style="font-size: 24px">Jeśli kolejka nie jest pusta, zwracana jest wartość znajdująca się na frontIndex.</p>
-<p style="font-size: 24px">Jeśli kolejka jest pusta, wyświetlany jest komunikat i zwracana jest wartość błędu -1.</p>
+					<p style="font-size: 24px">Funkcja front zwraca wartość elementu znajdującego się na początku
+						kolejki bez usuwania go.</p>
+					<p style="font-size: 24px">Jeśli kolejka nie jest pusta, zwracana jest wartość znajdująca się na
+						frontIndex.</p>
+					<p style="font-size: 24px">Jeśli kolejka jest pusta, wyświetlany jest komunikat i zwracana jest
+						wartość błędu -1.</p>
 				</section>
 				<section>
 					<h3>Program sprawdzający</h3>
@@ -3714,7 +3732,8 @@ void MojaKlasa::metoda() {
 
 				<section>
 					<h2>Polimorfizm</h2>
-					<h3>Przeciązanie funkcji i metod</h3><h3> Dziedziczenie</h3>
+					<h3>Przeciązanie funkcji i metod</h3>
+					<h3> Dziedziczenie</h3>
 				</section>
 				<section data-auto-animate>
 					<h3>Przeciążanie funkcji</h3>
@@ -4008,16 +4027,16 @@ int main() {
 				</section>
 			</section>
 			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
-								<section>
-									<h2>Zadanie 3: Sklep</h2>
-								</section>
 				<section>
-									<h3>Zaimplementuj klasy wg diagramu</h3>
-									<img src="assets/sklep.png">
+					<h2>Zadanie 3: Sklep</h2>
+				</section>
+				<section>
+					<h3>Zaimplementuj klasy wg diagramu</h3>
+					<img src="assets/sklep.png">
 				</section>
 				<section>
 					<h3>Program sprawdzający</h3>
-										<pre style="font-size: 16px;"><code class="hljs cpp"><script type="text/template">int main()
+					<pre style="font-size: 16px;"><code class="hljs cpp"><script type="text/template">int main()
 {
  Shop *shop = new Shop();
  Supplier *supplier = new Supplier(shop);
@@ -4046,8 +4065,220 @@ int main() {
  return 0;
 }</script></code></pre>
 				</section>
+			</section>
+			<section data-auto-animate data-background-gradient="linear-gradient(90deg, #aFB486, #F46267)">
+				<section>
+					<h1>Dziedziczenie wielobazowe</h1>
+				</section>
+				<section data-auto-animate>
+					<pre style="font-size: 16px" data-id="code-animation">
+					<code class="hljs cpp" data-trim data-line-numbers="3,12,21"><script type="text/template">#include <iostream>
 
-				
+class BazowaA {
+protected:
+    int licznik;
+public:
+    void wyswietl() {
+        std::cout << "A::wyswietl()" << '\n';
+    }
+};
+
+class BazowaB {
+protected:
+    int licznik;
+public:
+    void wyswietl() {
+        std::cout << "B::wyswietl()" << '\n';
+    }
+};
+
+class Klasa: public BazowaA, public BazowaB {
+public:
+    void wyzeruj() {
+        BazowaA::licznik = 0;
+        BazowaB::licznik = 0;
+    }
+};
+
+int main() {
+    Klasa k;
+
+    k.BazowaA::wyswietl();
+    k.BazowaB::wyswietl();
+}</script>
+					</code>
+					</pre>
+					<small>
+						Język C++, w odróżnieniu od wielu popularnych języków, np. Javy, dopuszcza dziedziczenie
+						wielobazowe (dziedziczenie
+						wielokrotne), tj. klasa może dziedziczyć po więcej niż jednej klasie. To powoduje, że w ogólnym
+						przypadku nie mamy do
+						czynienia z drzewiastą hierarchią klas, lecz skierowanym grafem acyklicznym dziedziczenia.
+					</small>
+				</section>
+				<section data-auto-animate>
+					<pre style="font-size: 16px" data-id="code-animation">
+					<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">#include <iostream>
+
+class BazowaA {
+protected:
+    int licznik;
+public:
+    void wyswietl() {
+        std::cout << "A::wyswietl()" << '\n';
+    }
+};
+
+class BazowaB {
+protected:
+    int licznik;
+public:
+    void wyswietl() {
+        std::cout << "B::wyswietl()" << '\n';
+    }
+};
+
+class Klasa: public BazowaA, public BazowaB {
+public:
+    void wyzeruj() {
+        BazowaA::licznik = 0;
+        BazowaB::licznik = 0;
+    }
+};
+
+int main() {
+    Klasa k;
+
+    k.BazowaA::wyswietl();
+    k.BazowaB::wyswietl();
+}</script>
+					</code>
+					</pre>
+					<small>
+						Klasa pochodna ma dostęp do wszystkich pól z klas bazowych oraz udostępnia pola i metody zgodnie
+						z podanymi regułami
+						widoczności (private/protected/public). Jeśli pola lub metody w klasach bazowych powtarzają się,
+						wówczas konieczna jest
+						dodatkowa klasyfikacja nazwą klasy, jak w przykładzie poniżej.
+					</small>
+
+				</section>
+				<section>
+					<h3>Dziedziczenie wirtualne</h3>
+					<small>
+						Dziedzicznie wirtualne jest specjalnym przypadkiem w dziedziczeniu wielobazowym, które stosuje
+						się, gdy z jakiegoś
+						powodu jedna z klas staje się wielokrotnie przodkiem (bezpośrednio lub pośrednio) innej klasy.
+						Np.
+					</small>
+					<pre style="font-size: 16px" data-id="code-animation">
+										<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
+protected:
+    void wyswietl() {};
+};
+
+class Posrednia: public Bazowa {};
+
+class Klasa: public Bazowa, public Posrednia {};</script>
+										</code>
+										</pre>
+				</section>
+				<section>
+					<small>
+						Tutaj to klasa Bazowa jest przodkiem Klasy: raz bezpośrednio, raz poprzez klasę Pośrednią.
+						Oczywiście nie jest to błąd,
+						ale niesie ze sobą następujące niedogodności:
+						<ul>
+							<li>
+								Pola z klasy <b>Bazowa</b> powtarzają się 2 razy, skutkiem czego <b>sizeof(Klasa) > 2 *
+									sizeof(Bazowa)</b>. To na pierwszy rzut oka
+								może wydawać się mało istotne, bo zwykle rozmiar klasy jest niewielki. Jednak co gdy
+								przechowujemy tysiące lub miliony
+								instancji? Wówczas ten narzut może okazać się znaczący.
+							</li>
+							<li>
+								Zwykle też chcemy, aby to właśnie klasa Bazowa dostarczała pewnych metod lub pól dla
+								klas pochodnych, a w tym przypadku
+								odwołanie do metody <b>Wyswietl</b> musi być kwalifikowane nazwą klasy nadrzędnej, co
+								jest mało wygodne.
+							</li>
+						</ul>
+					</small>
+				</section>
+				<section>
+					<small>
+						Zatem jeśli chcemy wyraźnie wskazać, że jakaś klasa jest bazową dla wszystkich potomków, to przy
+						w deklaracji musimy
+						dodać słowo kluczowe virtual przy nazwie klasy z której dziedziczymy. Wówczas zniknie
+						niejednoznaczność odwołań do jej
+						składowych, natomiast jej pola zostaną umieszczone w klasie pochodnej tylko raz. W przykładzie
+						poniżej rozmiar Klasy to
+						1kB + kilka bajtów, bez dziedziczenia wirtualnego byłoby to ponad 2kB, oraz oczywiście wywołanie
+						metody wyswietl
+						(używając takiego zapisu) byłoby niemożliwe.
+					</small>
+					<pre style="font-size: 16px" data-id="code-animation">
+																				<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
+    char bufor1kB[1024];
+public:
+    void wyswietl() {}
+};
+
+class Posrednia1: public virtual Bazowa {};
+
+class Posrednia2: public virtual Bazowa {};
+
+class Klasa: public Posrednia1, public Posrednia2 {};
+
+int main() {
+    Klasa k;
+    std::cout << sizeof(Klasa) << '\n';
+    k.wyswietl();
+}</script>
+																				</code>
+																				</pre>
+				</section>
+				<section data-background-color="#262626">
+					<h3>Zadanie</h3>
+										<small>
+											Zaimplementuj klasy zgodnie z przedstawionym diagramem
+											klas.
+										</small>
+					<img style="max-height: 600px;" src="assets/vampire2.png">
+				</section>
+				<section data-background-color="#262626">
+					<h3>Kod sprawdzający</h3>
+
+					<pre style="font-size: 16px" data-id="code-animation">
+																				<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">int main() {
+		Creature creature("Generic Creature");
+		creature.introduce();
+		std::cout << std::endl;
+
+		Human person("John Doe", "Engineer", 30);
+		person.introduce();
+		person.work();
+		person.getOlder();
+		std::cout << std::endl;
+
+		Bat batman("Bruce Wayne", 150, 200);
+		batman.introduce();
+		batman.fly();
+		batman.changeFlightSpeed(300);
+		std::cout << std::endl;
+
+		Vampire dracula("Count Dracula", "Nobleman", 180, 250);
+		dracula.introduce();
+		dracula.work();
+		dracula.getOlder();
+		dracula.fly();
+		dracula.changeFlightSpeed(400);
+		dracula.suckBlood();
+
+		return 0;
+}</script></code></pre>
+				</section>
+
 			</section>
 		</div>
 	</div>
