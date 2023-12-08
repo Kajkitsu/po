@@ -4042,6 +4042,63 @@ int main() {
 			</section>
 			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
 				<section>
+					<h2>Zadania</h2>
+				</section>
+				<section>
+					<h3>Pojazdy</h3>
+					<p style="font-size: 24px">Zaimplementować hierarchię klas reprezentujących różne typy pojazdów, takie jak Car (Samochód) i Bike (Rower), które będą dziedziczyć z abstrakcyjnej klasy bazowej Vehicle (Pojazd).</p>
+					<p style="font-size: 24px">Struktura Plików</p>
+					<p style="font-size: 24px">Vehicle.h: Plik nagłówkowy zawierający deklarację abstrakcyjnej klasy bazowej Vehicle.</p>
+					<p style="font-size: 24px">Car.h i Bike.h: Pliki nagłówkowe dla klas pochodnych Car i Bike.</p>
+					<p style="font-size: 24px">Vehicle.cpp, Car.cpp, Bike.cpp: Pliki źródłowe z definicjami metod klas.</p>
+					<p style="font-size: 24px">main.cpp: Plik źródłowy z funkcją main do testowania klas.</p>
+				</section>
+				<section>
+					<img style="max-height: 600px;" src="assets/vehicle.png">
+				</section>
+				<section>
+					<h3>Biblioteka</h3>
+					<p style="font-size: 24px">Zaimplementować system zarządzania biblioteką, w którym różne typy materiałów (książki, czasopisma, artykuły) będą reprezentowane przez oddzielne klasy pochodne klasy bazowej LibraryItem. Każda klasa pochodna będzie miała swoje unikalne atrybuty i metody.</p>
+					<p style="font-size: 24px">Struktura Plików</p>
+					<p style="font-size: 24px">LibraryItem.h: Plik nagłówkowy zawierający abstrakcyjną klasę bazową LibraryItem.</p>
+					<p style="font-size: 24px">Book.h, Magazine.h, Article.h: Pliki nagłówkowe dla klas pochodnych.</p>
+					<p style="font-size: 24px">LibraryItem.cpp, Book.cpp, Magazine.cpp, Article.cpp: Pliki źródłowe z definicjami metod klas.</p>
+					<p style="font-size: 24px">main.cpp: Plik źródłowy z funkcją main do testowania systemu.</p>
+				</section>
+				<section>
+					<img style="max-height: 600px;" src="assets/library.png">
+				</section>
+				<section>
+					<h3>Program sprawdzający</h3>
+					<pre style="font-size: 16px;"><code class="hljs cpp"><script type="text/template">// main.cpp
+#include "Book.h"
+#include "Magazine.h"
+#include "Article.h"
+#include <vector>
+
+int main() {
+	std::vector<LibraryItem*> library;
+
+	library.push_back(new Book("1984", "George Orwell"));
+	library.push_back(new Magazine("National Geographic"));
+	library.push_back(new Article("Exploring C++ Polymorphism", "Jane Doe"));
+
+	for (LibraryItem* item : library) {
+		item->display();
+	}
+
+	// Oczyszczanie pamięci
+	for (LibraryItem* item : library) {
+		delete item;
+	}
+
+	return 0;
+}
+</script></code></pre>
+				</section>
+			</section>
+			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
+				<section>
 					<h2>Zadanie 3: Sklep</h2>
 				</section>
 				<section>
