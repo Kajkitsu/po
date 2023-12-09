@@ -4351,6 +4351,175 @@ int main() {
 				</section>
 
 			</section>
+			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
+				<section>
+					<h2>Zadanie: System Zarządzania Pracownikami</h2>
+				</section>
+				<section>
+					<h2>Diagram klas</h2>
+					<img style="max-height: 800px;" src="assets/workers.png">
+				</section>
+				<section>
+					<h3>Kod sprawdzający</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">#include "EmployeeManager.h"
+#include "Programmer.h"
+#include "Manager.h"
+
+int main() {
+	// Tworzenie managera pracowników
+	EmployeeManager employeeManager;
+
+	// Tworzenie pracowników na stosie
+	Programmer john("John Doe", 1, "C++");
+	Manager jane("Jane Smith", 2, 5);
+
+	// Dodanie pracowników na stosie do managera
+	employeeManager.addEmployee(&john);
+	employeeManager.addEmployee(&jane);
+
+	// Wyświetlenie informacji o pracownikach
+	employeeManager.displayAllEmployees();
+
+	// Tworzenie pracowników na stercie
+	Programmer* mike = new Programmer("Mike Johnson", 3, "Java");
+	Manager* lisa = new Manager("Lisa Ray", 4, 10);
+
+	// Dodanie pracowników na stercie do managera
+	employeeManager.addEmployee(mike, true);
+	employeeManager.addEmployee(lisa, true);
+
+	// Wyświetlenie informacji o wszystkich pracownikach
+	employeeManager.displayAllEmployees();
+
+	// Wywołanie specyficznych dla klasy metod
+	john.writeCode();
+	jane.organizeMeeting();
+
+	// Bezpośrednie wywołanie metod dla obiektów na stercie
+	mike->writeCode();
+	lisa->organizeMeeting();
+	lisa->leadTeam();
+
+	// Usunięcie pracowników na stercie
+	employeeManager.removeEmployee(3);
+	employeeManager.removeEmployee(4);
+
+	// Ponowne wyświetlenie pracowników po usunięciu
+	employeeManager.displayAllEmployees();
+
+	return 0;
+}</script></code></pre>
+				</section>
+				<section>
+					<h2>Przykładowy wynik</h2>
+					<img style="max-height: 800px;" src="assets/workers_result.png">
+				</section>
+				<section>
+					<h3>Pseudokod Klasy Employee</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">Konstruktor(name: String, id: Integer)
+	Ustaw name = name
+	Ustaw id = id
+Destruktor()
+Metoda getId(): Integer
+	Zwróć id
+Metoda getName(): String
+	Zwróć name</script></code></pre>
+<p style="font-size: 24px">Konstruktor: Inicjalizuje obiekt Employee, przyjmując name i id jako parametry i przypisując te wartości do odpowiednich atrybutów w klasie.</p>
+<p style="font-size: 24px">Destruktor: Usuwa obiekt Employee. W tym pseudokodzie nie wykonuje dodatkowych działań, ponieważ jest pusty.</p>
+<p style="font-size: 24px">Metoda getId: Zwraca wartość id pracownika.</p>
+<p style="font-size: 24px">Metoda getName: Zwraca wartość name pracownika.</p>
+				</section>
+				<section>
+					<h3>Pseudokod Klasy EmployeeManager</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">Destruktor()
+	Dla każdego emp w employees:
+		Jeśli emp.second jest prawdziwe:
+			Usuń emp.first
+Metoda addEmployee(employee: Wskaźnik na Employee, isDynamic: Boolean)
+	Dodaj do employees parę (employee, isDynamic)
+Metoda removeEmployee(id: Integer)
+	Dla każdego it w employees:
+		Jeśli it.first.getId() równa się id:
+			Jeśli it.second jest prawdziwe:
+				Usuń it.first
+			Usuń it z employees
+Metoda displayAllEmployees()
+	Dla każdego emp w employees:
+		Wywołaj emp.first.displayInfo()</script></code></pre>
+<p style="font-size: 17px">Destruktor: Zwalnia pamięć pracowników przechowywanych w employees, jeśli ich flaga isDynamic jest ustawiona na true. Jest to ważne dla uniknięcia wycieków pamięci.</p>
+<p style="font-size: 17px">Metoda addEmployee: Dodaje pracownika do listy employees wraz z flagą isDynamic, która wskazuje, czy pracownik został utworzony dynamicznie (czyli czy powinien być usunięty przez menedżera).</p>
+<p style="font-size: 17px">Metoda removeEmployee: Usuwa pracownika o podanym id z listy employees. Jeśli pracownik jest dynamiczny (flaga isDynamic ustawiona na true), zwalnia jego pamięć.</p>
+<p style="font-size: 17px">Metoda displayAllEmployees: Wyświetla informacje o wszystkich pracownikach w employees.</p>
+<p style="font-size: 17px">W naszym kodzie employees jest listą par, gdzie każda para składa się z wskaźnika na Employee (first) oraz wartości logicznej (second).</p>
+				</section>
+				<section>
+					<h3>Pseudokod Klasy Manager</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">Konstruktor(name: String, id: Integer, teamSize: Integer)
+	Wywołaj konstruktor Employee z name i id
+	Ustaw teamSize = teamSize
+Metoda work()
+	Wyświetl name + " zarządza zespołem o wielkości " + teamSize + " członków."
+Metoda displayInfo()
+	Wyświetl "Menedżer: " + name + ", ID: " + id + ", Wielkość zespołu: " + teamSize
+Metoda organizeMeeting()
+	Wyświetl name + " organizuje spotkanie."
+Metoda leadTeam()
+	Wyświetl name + " prowadzi zespół."</script></code></pre>
+<p style="font-size: 17px">Konstruktor Manager: Inicjalizuje menedżera, ustawiając jego imię, identyfikator oraz wielkość zarządzanego zespołu. Wykorzystuje konstruktor klasy bazowej Employee do ustawienia name i id.</p>
+<p style="font-size: 17px">Metoda work: Wyświetla informację o zarządzaniu zespołem o określonej wielkości przez menedżera.</p>
+<p style="font-size: 17px">Metoda displayInfo: Wyświetla szczegółowe informacje o menedżerze, włączając jego nazwę, identyfikator oraz wielkość zarządzanego zespołu.</p>
+<p style="font-size: 17px">Metoda organizeMeeting: Prezentuje, że menedżer organizuje spotkanie.</p>
+<p style="font-size: 17px">Metoda leadTeam: Pokazuje, że menedżer prowadzi zespół.</p>
+				</section>
+				<section>
+					<h3>Pseudokod Klasy Programmer</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">Konstruktor(name: String, id: Integer, programmingLanguage: String)
+	Wywołaj konstruktor Employee z name i id
+	Ustaw programmingLanguage = programmingLanguage
+
+Metoda work()
+	Wyświetl name + " programuje w języku " + programmingLanguage
+
+Metoda displayInfo()
+	Wyświetl "Programista: " + name + ", ID: " + id + ", Język: " + programmingLanguage
+
+Metoda writeCode()
+	Wyświetl name + " pisze kod."</script></code></pre>
+<p style="font-size: 17px">Konstruktor Programmer: Inicjalizuje programistę, ustawiając jego imię, identyfikator oraz język programowania. Wykorzystuje konstruktor klasy bazowej Employee do ustawienia name i id.</p>
+<p style="font-size: 17px">Metoda work: Wyświetla informację o tym, że programista pisze kod w określonym języku programowania.</p>
+<p style="font-size: 17px">Metoda displayInfo: Wyświetla szczegółowe informacje o programiście, włączając jego nazwę, identyfikator oraz język programowania.</p>
+<p style="font-size: 17px">Metoda writeCode: Prezentuje, że programista pisze kod.</p>
+				</section>
+				<section style="font-size: 0.55em;">
+					<h2>Podsumowanie funkcji main</h2>
+					<ol>
+					<li>Zarządzanie pracownikami:</li>
+						<ul>
+							<li>Funkcja main demonstruje, jak klasa EmployeeManager może być używana do efektywnego zarządzania różnymi typami pracowników w systemie, takimi jak programiści i menedżerowie.</li>
+						</ul>
+					<li>Tworzenie Pracowników na Stosie i Stercie:</li>
+						<ul>
+							<li>Pracownicy są tworzeni na dwa sposoby: na stosie i na stercie.</li>
+							<li>Pracownicy na stosie (john, jane) są zarządzani automatycznie przez system i ich pamięć jest zwalniana po zakończeniu funkcji main.</li>
+							<li>Pracownicy na stercie (mike, lisa) wymagają ręcznego zarządzania pamięcią, co umożliwia dłuższe przechowywanie ich w programie.</li>
+						</ul>
+					<li>Znaczenie w Rzeczywistych Aplikacjach:</li>
+						<ul>
+							<li>Ten model znajduje zastosowanie w prawdziwych aplikacjach, gdzie wymagane jest zarządzanie dynamicznymi zasobami, np. w aplikacjach baz danych, systemach zarządzania pracownikami czy w grach komputerowych.</li>
+							<li>Umożliwia elastyczność w zarządzaniu różnymi typami obiektów i zasobami, oferując kontrolę nad czasem życia i sposobem zarządzania pamięcią obiektów.</li>
+						</ul>
+					<li>Wywoływanie Specyficznych Metod:</li>
+						<ul>
+							<li>Funkcja main pokazuje również, jak wywoływać specyficzne metody dla różnych typów pracowników, co jest przykładem polimorfizmu w programowaniu obiektowym.</li>
+						</ul>
+					</ol>
+				</section>
+			</section>
 		</div>
 	</div>
 
