@@ -4111,25 +4111,25 @@ int main() {
 {
  Shop *shop = new Shop();
  Supplier *supplier = new Supplier(shop);
- Notepad *notepad = new Notepad();
- supplier->deliverProduct(notepad);
+ Notebook *notebook = new Notebook();
+ supplier->deliverProduct(notebook);
  Bread *bread = new Bread();
  supplier->deliverProduct(bread);
  Pen *pen = new Pen();
  supplier->deliverProduct(pen);
  MineralWater *mineralWater = new MineralWater();
  supplier->deliverProduct(mineralWater);
- shop->displayProducts();
+ shop->printProductList();
 
  if (shop->checkAvailability("Bread"))
  {
   shop->sellFoodProduct("Bread");
  }
 
- if (shop->checkAvailability(notepad))
+ if (shop->checkAvailability(notebook))
  {
-  shop->sellStationeryProduct(notepad->getName());
-  shop->displayProducts();
+  shop->sellPaperProduct(notebook->getName());
+  shop->printProductList();
   return 0;
  }
 
@@ -4349,6 +4349,14 @@ int main() {
 		return 0;
 }</script></code></pre>
 				</section>
+								<section data-background-color="#262626">
+									<h3>Zadanie</h3>
+									<small>
+										Zaimplementuj klasy zgodnie z przedstawionym diagramem
+										klas.
+									</small>
+									<img style="max-height: 550px;" src="assets/vampire2Extended.drawio.png">
+								</section>
 
 			</section>
 			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
