@@ -2,8 +2,8 @@
 // Created by nwaszkowiak on 11/22/23.
 //
 
-#include "Figure.h"
+#include "Product.h"
 
-int Figure::getSurface() {
+int Product::getSurface() {
     return 0;
 }
