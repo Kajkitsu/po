@@ -4319,6 +4319,46 @@ int main() {
 				</section>
 				<section data-background-color="#262626">
 					<h3>Kod sprawdzający</h3>
+				
+					<pre style="font-size: 16px" data-id="code-animation">
+																								<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">int main() {
+						Creature creature("Generic Creature");
+						creature.introduce();
+						std::cout << std::endl;
+				
+						Human person("John Doe", "Engineer", 30);
+						person.introduce();
+						person.work();
+						person.getOlder();
+						std::cout << std::endl;
+				
+						Bat batman("Bruce Wayne", 150, 200);
+						batman.introduce();
+						batman.fly();
+						batman.changeFlightSpeed(300);
+						std::cout << std::endl;
+				
+						Vampire dracula("Count Dracula", "Nobleman", 180, 250);
+						dracula.introduce();
+						dracula.work();
+						dracula.getOlder();
+						dracula.fly();
+						dracula.changeFlightSpeed(400);
+						dracula.suckBlood();
+				
+						return 0;
+				}</script></code></pre>
+				</section>
+				<section data-background-color="#262626">
+					<h3>Zadanie</h3>
+					<small>
+						Zaimplementuj klasy zgodnie z przedstawionym diagramem
+						klas.
+					</small>
+					<img style="max-height: 600px;" src="assets/vampire2Extended.drawio.png">
+				</section>
+				<section data-background-color="#262626">
+					<h3>Kod sprawdzający</h3>
 
 					<pre style="font-size: 16px" data-id="code-animation">
 																				<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">int main() {
