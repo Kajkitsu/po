@@ -4326,7 +4326,7 @@ int main() {
     Human *person = new Human("John Doe", "Engineer", 1997);
     person->introduce();
     person->work();
-    person->age();
+    person->getOlder();
     std::cout << std::endl;
 
     Bat *batman = new Bat("Bruce Wayne", 150, 200);
@@ -4338,7 +4338,7 @@ int main() {
     Vampire *dracula = new Vampire("Count Dracula", "Nobleman", 180, 250);
     dracula->introduce();
     dracula->work();
-    dracula->age();
+    dracula->getOlder();
     dracula->fly();
     dracula->changeFlightSpeed(400);
     dracula->suckBlood();
@@ -4359,7 +4359,7 @@ int main() {
             if (creatures[i]->isAlive()) {
                 cout << "Atakuje" << endl;
                 for (int j = 0; j < creatures.size(); j++) {
-                    if (j != i) { // stworzenie nie może atakować samego siebie
+                    if (j != i && creatures[j]->isAlive()) { // stworzenie nie może atakować samego siebie ani nieżywego stworzenia
                         creatures[i]->attack(creatures[j]);
                     }
                 }
@@ -4372,8 +4372,8 @@ int main() {
                 numberOfAliveCreatures++;
             }
         }
-    } while (numberOfAliveCreatures > 0);
-    
+    } while (numberOfAliveCreatures > 1);
+
     cout<<endl<<"Wygrał:"<<endl;
     for (int i = 0; i < creatures.size(); i++) {
         if (creatures[i]->isAlive()) {
