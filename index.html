@@ -4434,7 +4434,7 @@ int main() {
 			</section>
 			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
 				<section>
-					<h2>Zadanie: System Zarządzania Pracownikami</h2>
+					<h2>Zadanie 1: System Zarządzania Pracownikami</h2>
 				</section>
 				<section>
 					<h2>Diagram klas</h2>
@@ -4600,6 +4600,138 @@ Metoda writeCode()
 						</ul>
 					</ol>
 				</section>
+				<section>
+					<h2>Zadanie 2</h2>
+				  </section>
+				  <section>
+					<h2>Diagram klas</h2>
+					<img style="max-height: 800px;" src="assets/simplecompany.png">
+				  </section>
+				  <section>
+					<h3>Kod sprawdzający</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">#include "Person.h"
+#include "Employee.h"
+#include "Manager.h"
+#include "HRManager.h"
+#include "Company.h"
+#include <iostream>
+
+int main() {
+	// Utworzenie Person
+	Person person("John Doe", "123 Main St", 30);
+	person.displayInfo();
+
+	// Utworzenie Employee
+	Employee employee("Jane Smith", "456 Elm St", 28, 1, "Engineering");
+	employee.displayInfo();
+	employee.work();
+
+	// Utworzenie Manager
+	Manager manager("Bob Johnson", "789 Oak St", 35, 2, "Sales", 5);
+	manager.displayInfo();
+	manager.manage();
+
+	// Utworzenie HRManager
+	HRManager hrManager("Alice Brown", "101 Maple St", 32, 3, "Human Resources", "Recruiting");
+	hrManager.displayInfo();
+	hrManager.recruitEmployee();
+
+	// Utworzenie Company i dodanie Employees
+	Company company;
+	company.addEmployee(new Employee("Carl Sagan", "202 Skyway Ave", 40, 4, "Research and Development"));
+	company.addEmployee(new Manager("Margaret Hamilton", "303 Apollo Dr", 50, 5, "Software", 10));
+	company.addEmployee(new HRManager("Tim Berners-Lee", "404 Web St", 45, 6, "Information Technology", "Web Development"));
+
+	// Wyswietlenie wszystkich pracownikow
+	std::cout << "\nDisplaying all employees:\n";
+	company.displayAllEmployees();
+
+	// Usuwanie employee
+	company.removeEmployee(4);
+	std::cout << "\nAfter removing an employee:\n";
+	company.displayAllEmployees();
+
+	return 0;
+}</script></code></pre>
+				  </section>
+				  <section>
+					<h3>Pseudokod Klasy Person</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+					  <code class="hljs cpp" data-trim data-line-numbers>
+						Konstruktor(name: String, address: String, age: Integer)
+						  Ustaw name = name
+						  Ustaw address = address
+						  Ustaw age = age
+						Metoda displayInfo()
+						  Wyświetl name, address, age
+					  </code>
+					</pre>
+				  </section>
+				  <section>
+					<h3>Pseudokod Klasy Employee</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+					  <code class="hljs cpp" data-trim data-line-numbers>
+						Konstruktor(name: String, address: String, age: Integer, employeeId: Integer, department: String)
+						  Wywołaj konstruktor klasy bazowej Person
+						  Ustaw employeeId = employeeId
+						  Ustaw department = department
+						Metoda displayInfo()
+						  Wywołaj displayInfo() z klasy bazowej
+						  Wyświetl employeeId, department
+						Metoda work()
+						  Wyświetl "Pracownik pracuje w dziale" + department
+					  </code>
+					</pre>
+				  </section>
+				  <section>
+					<h3>Pseudokod Klasy Manager</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+					  <code class="hljs cpp" data-trim data-line-numbers>
+						Konstruktor(name: String, address: String, age: Integer, employeeId: Integer, department: String, numberOfSubordinates: Integer)
+						  Wywołaj konstruktor klasy bazowej Employee
+						  Ustaw numberOfSubordinates = numberOfSubordinates
+						Metoda displayInfo()
+						  Wywołaj displayInfo() z klasy bazowej
+						  Wyświetl numberOfSubordinates
+						Metoda manage()
+						  Wyświetl "Kierownik zarządza " + numberOfSubordinates + " podwładnymi"
+					  </code>
+					</pre>
+				  </section>
+				  <section>
+					<h3>Pseudokod Klasy HRManager</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+					  <code class="hljs cpp" data-trim data-line-numbers>
+						Konstruktor(name: String, address: String, age: Integer, employeeId: Integer, department: String, specialization: String)
+						  Wywołaj konstruktor klasy bazowej Employee
+						  Ustaw specialization = specialization
+						Metoda displayInfo()
+						  Wywołaj displayInfo() z klasy bazowej
+						  Wyświetl specialization
+						Metoda recruitEmployee()
+						  Wyświetl "HRManager rekrutuje pracowników do działu " + department
+					  </code>
+					</pre>
+				  </section>
+				  <section>
+					<h3>Pseudokod Klasy Company</h3>
+					<pre style="font-size: 16px" data-id="code-animation">
+					  <code class="hljs cpp" data-trim data-line-numbers>
+						Konstruktor()
+						Destruktor()
+						  Dla każdego pracownika w employees
+							Usuń pracownika
+						Metoda addEmployee(employee: Wskaźnik na Employee)
+						  Dodaj employee do listy employees
+						Metoda removeEmployee(employeeId: Integer)
+						  Znajdź i usuń pracownika o identyfikatorze employeeId z listy employees
+						Metoda displayAllEmployees()
+						  Dla każdego pracownika w employees
+							Wywołaj displayInfo() pracownika
+					  </code>
+					</pre>
+				  </section>				  
 			</section>
 		</div>
 	</div>
