@@ -50,14 +50,6 @@
 		<!-- Any section element inside of this container is displayed as a slide -->
 		<div class="slides">
 			<section data-background-gradient="linear-gradient(45deg, #33, #6754e8)">
-				<section style="text-align: left;" data-auto-animate
-					data-background-gradient="linear-gradient(45deg, #33, #6754e8)">
-					<h2>Programowanie obiektowe</h2>
-					<br slyle="height: 600px;" />
-					<a href="#/zimon">por. mgr inż. Michał Zimoń</a>
-					<br />
-					<a href="#/waszkowiak">ppor. mgr inż. Norbert Waszkowiak</a>
-				</section>
 				<section style="text-align: left;" data-auto-animate id="waszkowiak"
 					data-background-gradient="linear-gradient(45deg, #33, #6754e8)">
 					<h2>Programowanie obiektowe</h2>
@@ -71,22 +63,402 @@
 					<br />
 					<small>konsultacje online i stacjanarnie: po wcześniejszym umówieniu</small>
 					<br />
-					<a href="#/start">Wykłady</a>
 				</section>
-				<section style="text-align: left;" data-auto-animate id="zimon"
-					data-background-gradient="linear-gradient(45deg, #33, #6754e8)">
-					<h2>Programowanie obiektowe</h2>
-					<br slyle="height: 600px;" />
-					<p style="text-align: left;">por. mgr inż. Michał Zimoń</p>
-					<small>nr tel.: 261 839 060</small>
-					<br />
-					<small>e-mail: michal.zimon@wat.edu.pl</small>
-					<br />
-					<small>pomieszczenie: bud. 100 pok. 254B</small>
-					<br />
-					<small>konsultacje online i stacjanarnie: po wcześniejszym umówieniu</small>
-					<br />
-					<a href="#/start">Wykłady</a>
+			</section>
+			<section data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
+				<section>
+					<h2>Powtórka: Podstawy C/C++</h2>
+				</section>
+				<section>
+					<h2>Tablice w C/C++</h2>
+					<p>Tablice to zbiory podobnych elementów danych, umożliwiające grupowanie typów danych, takich jak
+						liczby całkowite lub zmiennoprzecinkowe, pod jedną nazwą.</p>
+					<p>Aby zadeklarować tablice liczb całkowitych:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+						<script type="text/template">
+							int A[5];
+					</script></code></pre>
+					<p>Tworzy to tablicę A z 5 elementami typu integer.</p>
+				</section>
+				<section>
+					<h2>Gdzie lądują tablice</h2>
+					<p>W programie C/C++ tablica jest zwykle alokowana w segmencie stosu głównej pamięci.</p>
+					<p>Tablice można deklarować i inicjować jednocześnie:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+                            int A[5] = {1, 2, 3, 4, 5};
+                    </script></code></pre>
+					<p>Można też manualnie modyfikować wartości w określonych indeksach:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+A[0] = 27;
+A[1] = 10;
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Struktura pamięci</h2>
+					<p>Gdy tablica jest deklarowana w funkcji, pojawia się w stosie głównej pamięci i jest bezpośrednio
+						dostępna dla funkcji main.</p>
+					<p>Aby uzyskać dostęp do wszystkich elementów tablicy, często używa się pętli for. Na przykład:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+for (int i = 0; i < 5; i++) {
+    printf("%d ", B[i]);
+}
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Wskaźniki w C/C++</h2>
+					<p>Wskaźnik to zmienna adresowa przeznaczona do przechowywania adresu danych, a nie samych danych.
+						Zmienne zwykłe przechowują dane, natomiast wskaźniki - adresy. Wskaźniki są używane do
+						pośredniego dostępu do danych.</p>
+				</section>
+				<section>
+					<h2>Po co używać wskaźników?</h2>
+					<p>Wskaźniki są potrzebne do dostępu do pamięci poza programem, takiej jak pamięć sterty (heap).</p>
+				</section>
+				<section>
+					<p>Deklarowanie i Inicjalizacja wskaźników</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+int a = 10; // Zmienna danych
+int *p;     // Wskaźnik
+p = &a;     // Inicjalizacja wskaźnika adresem zmiennej 'a'							
+                    </script></code></pre>
+					<p>Dereferencja to proces uzyskiwania dostępu do wartości, na którą wskazuje wskaźnik:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+printf("%d", *p); // Wydrukuje wartość zmiennej 'a' poprzez wskaźnik 'p'						
+                    </script></code></pre>
+					<p>Wskaźniki umożliwiają dynamiczne alokowanie pamięci:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+p = (int *)malloc(5 * sizeof(int)); // Alokacja 5 intów w C						
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Zastosowanie Wskaźników</h2>
+					<p>Dostęp do pamięci sterty.</p>
+					<p>Dostęp do zasobów zewnętrznych (np. plików, urządzeń).</p>
+					<p>Przekazywanie parametrów przez wskaźniki.</p>
+				</section>
+				<section>
+					<h2>Wskaźniki w C++</h2>
+					<p>W C++, wskaźniki i dynamiczna alokacja pamięci są kluczowe dla zarządzania zasobami. Alokacja
+						dynamiczna jest prostsza dzięki operatorowi `new`:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+int *p = new int[5]; // Alokacja tablicy 5 całkowitych liczb						
+                    </script></code></pre>
+					<p>Ta linijka kodu alokuje miejsce dla 5 liczb całkowitych w pamięci sterty i przypisuje adres
+						pierwszego elementu do wskaźnika p.</p>
+				</section>
+				<section>
+					<p>Możliwy jest też dostęp do elementów tablicy z użyciem wskaźnika `p` jako tablicy do zapisywania
+						wartości:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+for(int i = 0; i < 5; i++) {
+	p[i] = i * 10; // Ustawienie wartości elementów tablicy
+}													
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Zwalnianie pamięci</h2>
+					<p>Pamięć zaalokowana przez `new` musi być zwolniona za pomocą `delete`, a pamięć zaalokowana przez
+						`malloc` jest zwalniana przez `free`.</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+free(tablica);
+delete[] p; // Zwolnienie zaalokowanej pamięci						
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Wskaźniki i Struktury</h2>
+					<p>Wskaźniki mogą być również używane do dostępu do struktur:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+struct Rectangle {
+	int length;
+	int breadth;
+};
+
+Rectangle *ptr = new Rectangle; // Alokacja pamięci dla struktury
+ptr->length = 10; // Ustawienie wartości składowej za pomocą wskaźnika
+ptr->breadth = 20;
+delete ptr; // Zwolnienie pamięci												
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Co nam to daje?</h2>
+					<p>Wskaźniki są używane do przekazywania dużych struktur lub tablic do funkcji bez konieczności ich
+						kopiowania, co jest efektywne pod względem pamięci:</p>
+					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+                        <script type="text/template">
+void updateValue(int *pValue) {
+	*pValue = 100; // Modyfikacja wartości przez wskaźnik
+}
+int value = 5;
+updateValue(&value); // Przekazanie adresu zmiennej																	
+                    </script></code></pre>
+				</section>
+				<section>
+					<h2>Zaawansowane wskaźniki</h2>
+					<p>Wskaźniki mogą być również używane do tworzenia bardziej złożonych struktur danych, takich jak
+						listy połączone, drzewa, grafy itd., i są niezbędne do zaawansowanych technik programowania w
+						C++. O tym może kiedyś...</p>
+				</section>
+			</section>
+			<section data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
+				<section>
+					<h2>Klasa i obiekt dla zielonych</h2>
+				</section>
+				<section>
+					<h2>Co to jest Klasa i Obiekt?</h2>
+					<p>Klasa to szablon lub projekt, który określa, jakie właściwości (dane) i działania
+						(funkcje/metody) będzie miał obiekt.</p>
+					<p>Obiekt to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie
+						zdefiniowanych działań.</p>
+				</section>
+				<section>
+					<h2>Implementacja</h2>
+
+					<div class="row">
+						<div class="column">
+							<h3>Python:</h3>
+							<pre style="font-size: 16px;"><code class="python">
+class Author:
+	def __init__(self, name, surname):
+		self.name = name
+		self.surname = surname
+
+# tworzenie obiektu 'author1'
+author1 = Author("Jan", "Kowalski")
+												</code></pre>
+						</div>
+
+						<div class="column">
+							<h3>C++:</h3>
+							<pre style="font-size: 16px;"><code class="cpp">class Author {
+public:
+    std::string name;
+    std::string surname;
+};
+
+// tworzenie obiektu 'author1'
+Author author1;
+author1.name = "Jan";
+author1.surname = "Kowalski";
+                    </code></pre>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Klasy vs Obiekty - Przykład</h2>
+					<p>Klasa Author określa, że każdy autor ma imię i nazwisko.</p>
+					<p>Obiekt klasy Author, np. author1, ma konkretne imię i nazwisko.</p>
+				</section>
+				<section>
+					<h2>Implementacja</h2>
+
+					<div class="row">
+						<div class="column">
+							<h3>Python:</h3>
+							<pre style="font-size: 16px;"><code class="python"># Klasa Author
+class Author:
+	def __init__(self, name, surname):
+		self.name = name
+		self.surname = surname
+
+# Obiekt author1 klasy Author
+author1 = Author("Jan", "Kowalski")
+							</code></pre>
+						</div>
+
+						<div class="column">
+							<h3>C++:</h3>
+							<pre style="font-size: 16px;"><code class="cpp">
+// Klasa Author
+class Author {
+public:
+	std::string name;
+	std::string surname;
+};
+
+// Obiekt author1 klasy Author
+Author author1;
+author1.name = "Jan";
+author1.surname = "Kowalski";
+							</code></pre>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Zmienne i Typy w Programowaniu</h2>
+					<p style="font-size: 0.75em;">Typ zmiennej określa, jakiego rodzaju wartości może przechowywać
+						zmienna.</p>
+					<p style="font-size: 0.75em;">Klasa jest jak niestandardowy typ danych, który sami definiujemy.</p>
+					<p style="font-size: 0.75em;">Obiekt to zmienna, która przechowuje dane typu klasy.</p>
+					<pre><code class="cpp">// int to typ, a number to zmienna
+int number = 5;
+
+// Author to klasa (typ), a author1 to obiekt (zmienna)
+Author author1;
+author1.name = "Jan";
+author1.surname = "Kowalski";					
+												</code></pre>
+				</section>
+				<section>
+					<h2>Po co nam ta obiektowość?</h2>
+					<p style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co
+						zapewnia bezpieczeństwo i integralność informacji.</p>
+					<p style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność
+						kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</p>
+					<p style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują
+						tych zaawansowanych funkcji.</p>
+					<p style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu
+						systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</p>
+				</section>
+				<section>
+					<h2>Struktura vs Klasa dla Samochodu</h2>
+					<div class="row">
+						<div class="column small-font">
+							<h3>Struktura:</h3>
+							<pre style="max-width: 600px;"><code class="python">// Definicja struktury Car
+struct Car {
+	std::string brand;
+	int year;
+};
+
+int main() {
+	// Tworzenie i inicjalizacja obiektu Car
+	Car myCar;
+	myCar.brand = "Toyota";
+	myCar.year = 2020;
+
+	// Wyświetlanie danych
+	std::cout << "Samochód: " << myCar.brand << 
+	  ", Rok: " << myCar.year << std::endl;
+
+	return 0;
+}
+							</code></pre>
+						</div>
+
+						<div class="column small-font">
+							<h3>Klasa:</h3>
+							<pre style="max-width: 600px;">
+								<code class="cpp">// Definicja klasy Car
+class Car {
+private:
+	std::string brand;
+	int year;
+
+public:
+	Car(const std::string &brand, int year)
+		: brand(brand), year(year) {}
+
+	void print() const {
+		std::cout << "Samochód: " << brand << 
+		  ", Rok: " << year << std::endl;
+	}
+};
+
+int main() {
+	// Tworzenie i inicjalizacja obiektu Car
+	Car myCar("Toyota", 2020);
+
+	// Wywołanie metody print
+	myCar.print();
+
+	return 0;
+}	
+							</code></pre>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>Różnice i Kiedy Używać</h2>
+
+					<div class="row">
+						<div class="column small-font">
+							<h3>Struktury:</h3>
+							<p style="font-size: 0.85em;"></p>Proste przechowywanie danych.</p>
+							<p style="font-size: 0.85em;"></p>Brak hermetyzacji; wszystkie pola są publiczne i dostępne
+							bezpośrednio.</p>
+							<p style="font-size: 0.85em;"></p>Brak metod; służy głównie jako kontener danych.</p>
+						</div>
+						<div class="column small-font">
+							<h3>Klasy:</h3>
+							<p style="font-size: 0.85em;">Zawiera metody (np. print) do interakcji z danymi.</p>
+							<p style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest
+								kontrolowany przez publiczne metody.</p>
+							<p style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest
+								kontrola i rozszerzalność.</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h2>"Profesjonalna" klasa</h2>
+					<pre style="font-size: 16px"><code  
+						class="hljs cpp" 
+						data-trim 
+						data-line-numbers>
+						<script type="text/template">
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+
+class Player {
+private:
+	std::string name;
+	int health;
+	int mana;
+	std::map<std::string, int> inventory; // Przechowuje przedmioty i ich ilość
+	std::vector<std::string> skills; // Lista umiejętności
+
+public:
+	Player(const std::string &name, int health, int mana)
+		: name(name), health(health), mana(mana) {}
+
+	void takeDamage(int amount) {
+		health -= amount;
+		if (health < 0) health = 0;
+	}
+
+	void useItem(const std::string &item) {
+		if (inventory[item] > 0) {
+			// Logika używania przedmiotu
+			inventory[item]--;
+		} else {
+			std::cout << "Nie masz " << item << std::endl;
+		}
+	}
+
+	void learnSkill(const std::string &skill) {
+		skills.push_back(skill);
+	}
+
+	void printStatus() const {
+		std::cout << "Gracz: " << name << "\n"
+					<< "Zdrowie: " << health << "\n"
+					<< "Mana: " << mana << std::endl;
+	}
+
+	// Dodatkowe metody...
+};
+
+int main() {
+	Player hero("Arthas", 100, 50);
+	hero.learnSkill("Fireball");
+	hero.takeDamage(20);
+	hero.useItem("Health Potion");
+	hero.printStatus();
+
+	return 0;
+}		
+</script></code></pre>
 				</section>
 			</section>
 
@@ -2413,2325 +2785,6 @@ int main() {
 				</footer>
 
 
-			</section>
-			<section data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
-				<section>
-					<h2>Bonus: Podstawy C/C++</h2>
-				</section>
-				<section>
-					<h2>Tablice w C/C++</h2>
-					<p>Tablice to zbiory podobnych elementów danych, umożliwiające grupowanie typów danych, takich jak
-						liczby całkowite lub zmiennoprzecinkowe, pod jedną nazwą.</p>
-					<p>Aby zadeklarować tablice liczb całkowitych:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-						<script type="text/template">
-							int A[5];
-					</script></code></pre>
-					<p>Tworzy to tablicę A z 5 elementami typu integer.</p>
-				</section>
-				<section>
-					<h2>Gdzie lądują tablice</h2>
-					<p>W programie C/C++ tablica jest zwykle alokowana w segmencie stosu głównej pamięci.</p>
-					<p>Tablice można deklarować i inicjować jednocześnie:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-                            int A[5] = {1, 2, 3, 4, 5};
-                    </script></code></pre>
-					<p>Można też manualnie modyfikować wartości w określonych indeksach:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-A[0] = 27;
-A[1] = 10;
-                    </script></code></pre>
-				</section>
-				<section>
-					<h2>Struktura pamięci</h2>
-					<p>Gdy tablica jest deklarowana w funkcji, pojawia się w stosie głównej pamięci i jest bezpośrednio
-						dostępna dla funkcji main.</p>
-					<p>Aby uzyskać dostęp do wszystkich elementów tablicy, często używa się pętli for. Na przykład:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-for (int i = 0; i < 5; i++) {
-    printf("%d ", B[i]);
-}
-                    </script></code></pre>
-				</section>
-				<section>
-					<h2>Wskaźniki w C/C++</h2>
-					<p>Wskaźnik to zmienna adresowa przeznaczona do przechowywania adresu danych, a nie samych danych.
-						Zmienne zwykłe przechowują dane, natomiast wskaźniki - adresy. Wskaźniki są używane do
-						pośredniego dostępu do danych.</p>
-				</section>
-				<section>
-					<h2>Po co używać wskaźników?</h2>
-					<p>Wskaźniki są potrzebne do dostępu do pamięci poza programem, takiej jak pamięć sterty (heap).</p>
-				</section>
-				<section>
-					<p>Deklarowanie i Inicjalizacja wskaźników</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-int a = 10; // Zmienna danych
-int *p;     // Wskaźnik
-p = &a;     // Inicjalizacja wskaźnika adresem zmiennej 'a'							
-                    </script></code></pre>
-					<p>Dereferencja to proces uzyskiwania dostępu do wartości, na którą wskazuje wskaźnik:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-printf("%d", *p); // Wydrukuje wartość zmiennej 'a' poprzez wskaźnik 'p'						
-                    </script></code></pre>
-					<p>Wskaźniki umożliwiają dynamiczne alokowanie pamięci:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-p = (int *)malloc(5 * sizeof(int)); // Alokacja 5 intów w C						
-                    </script></code></pre>
-				</section>
-				<section>
-					<h2>Zastosowanie Wskaźników</h2>
-					<p>Dostęp do pamięci sterty.</p>
-					<p>Dostęp do zasobów zewnętrznych (np. plików, urządzeń).</p>
-					<p>Przekazywanie parametrów przez wskaźniki.</p>
-				</section>
-				<section>
-					<h2>Wskaźniki w C++</h2>
-					<p>W C++, wskaźniki i dynamiczna alokacja pamięci są kluczowe dla zarządzania zasobami. Alokacja
-						dynamiczna jest prostsza dzięki operatorowi `new`:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-int *p = new int[5]; // Alokacja tablicy 5 całkowitych liczb						
-                    </script></code></pre>
-					<p>Ta linijka kodu alokuje miejsce dla 5 liczb całkowitych w pamięci sterty i przypisuje adres
-						pierwszego elementu do wskaźnika p.</p>
-				</section>
-				<section>
-					<p>Możliwy jest też dostęp do elementów tablicy z użyciem wskaźnika `p` jako tablicy do zapisywania
-						wartości:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-for(int i = 0; i < 5; i++) {
-	p[i] = i * 10; // Ustawienie wartości elementów tablicy
-}													
-                    </script></code></pre>
-				</section>
-				<section>
-					<h2>Zwalnianie pamięci</h2>
-					<p>Pamięć zaalokowana przez `new` musi być zwolniona za pomocą `delete`, a pamięć zaalokowana przez
-						`malloc` jest zwalniana przez `free`.</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-free(tablica);
-delete[] p; // Zwolnienie zaalokowanej pamięci						
-                    </script></code></pre>
-				</section>
-				<section>
-					<h2>Wskaźniki i Struktury</h2>
-					<p>Wskaźniki mogą być również używane do dostępu do struktur:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-struct Rectangle {
-	int length;
-	int breadth;
-};
-
-Rectangle *ptr = new Rectangle; // Alokacja pamięci dla struktury
-ptr->length = 10; // Ustawienie wartości składowej za pomocą wskaźnika
-ptr->breadth = 20;
-delete ptr; // Zwolnienie pamięci												
-                    </script></code></pre>
-				</section>
-				<section>
-					<h2>Co nam to daje?</h2>
-					<p>Wskaźniki są używane do przekazywania dużych struktur lub tablic do funkcji bez konieczności ich
-						kopiowania, co jest efektywne pod względem pamięci:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-void updateValue(int *pValue) {
-	*pValue = 100; // Modyfikacja wartości przez wskaźnik
-}
-int value = 5;
-updateValue(&value); // Przekazanie adresu zmiennej																	
-                    </script></code></pre>
-				</section>
-				<section>
-					<h2>Zaawansowane wskaźniki</h2>
-					<p>Wskaźniki mogą być również używane do tworzenia bardziej złożonych struktur danych, takich jak
-						listy połączone, drzewa, grafy itd., i są niezbędne do zaawansowanych technik programowania w
-						C++. O tym może kiedyś...</p>
-				</section>
-				<section>
-					<h2>Zadanie: Dynamiczna Alokacja dla Tablicy</h2>
-					<p>Napisz program, który prosi użytkownika o podanie rozmiaru tablicy, a następnie dynamicznie
-						alokuje pamięć dla tej tablicy. Program powinien następnie pozwolić użytkownikowi wprowadzić
-						wartości do tablicy i wypisać je.</p>
-				</section>
-			</section>
-			<section data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
-				<section>
-					<h2>Klasa i obiekt dla zielonych</h2>
-				</section>
-				<section>
-					<h2>Co to jest Klasa i Obiekt?</h2>
-					<p>Klasa to szablon lub projekt, który określa, jakie właściwości (dane) i działania
-						(funkcje/metody) będzie miał obiekt.</p>
-					<p>Obiekt to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie
-						zdefiniowanych działań.</p>
-				</section>
-				<section>
-					<h2>Implementacja</h2>
-
-					<div class="row">
-						<div class="column">
-							<h3>Python:</h3>
-							<pre style="font-size: 16px;"><code class="python">#class Author:
-def __init__(self, name, surname):
-	self.name = name
-	self.surname = surname
-
-# tworzenie obiektu 'author1'
-author1 = Author("Jan", "Kowalski")
-												</code></pre>
-						</div>
-
-						<div class="column">
-							<h3>C++:</h3>
-							<pre style="font-size: 16px;"><code class="cpp">//class Author {
-public:
-    std::string name;
-    std::string surname;
-};
-
-// tworzenie obiektu 'author1'
-Author author1;
-author1.name = "Jan";
-author1.surname = "Kowalski";
-                    </code></pre>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h2>Klasy vs Obiekty - Przykład</h2>
-					<p>Klasa Author określa, że każdy autor ma imię i nazwisko.</p>
-					<p>Obiekt klasy Author, np. author1, ma konkretne imię i nazwisko.</p>
-				</section>
-				<section>
-					<h2>Implementacja</h2>
-
-					<div class="row">
-						<div class="column">
-							<h3>Python:</h3>
-							<pre style="font-size: 16px;"><code class="python"># Klasa Author
-class Author:
-	def __init__(self, name, surname):
-		self.name = name
-		self.surname = surname
-
-# Obiekt author1 klasy Author
-author1 = Author("Jan", "Kowalski")
-							</code></pre>
-						</div>
-
-						<div class="column">
-							<h3>C++:</h3>
-							<pre style="font-size: 16px;"><code class="cpp">
-// Klasa Author
-class Author {
-public:
-	std::string name;
-	std::string surname;
-};
-
-// Obiekt author1 klasy Author
-Author author1;
-author1.name = "Jan";
-author1.surname = "Kowalski";
-							</code></pre>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h2>Zmienne i Typy w Programowaniu</h2>
-					<p style="font-size: 0.75em;">Typ zmiennej określa, jakiego rodzaju wartości może przechowywać
-						zmienna.</p>
-					<p style="font-size: 0.75em;">Klasa jest jak niestandardowy typ danych, który sami definiujemy.</p>
-					<p style="font-size: 0.75em;">Obiekt to zmienna, która przechowuje dane typu klasy.</p>
-					<pre><code class="cpp">// int to typ, a number to zmienna
-int number = 5;
-
-// Author to klasa (typ), a author1 to obiekt (zmienna)
-Author author1;
-author1.name = "Jan";
-author1.surname = "Kowalski";					
-												</code></pre>
-				</section>
-				<section>
-					<h2>Po co nam ta obiektowość?</h2>
-					<p style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co
-						zapewnia bezpieczeństwo i integralność informacji.</p>
-					<p style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność
-						kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</p>
-					<p style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują
-						tych zaawansowanych funkcji.</p>
-					<p style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu
-						systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</p>
-				</section>
-				<section>
-					<h2>Struktura vs Klasa dla Samochodu</h2>
-					<div class="row">
-						<div class="column small-font">
-							<h3>Struktura:</h3>
-							<pre style="max-width: 600px;"><code class="python">// Definicja struktury Car
-struct Car {
-	std::string brand;
-	int year;
-};
-
-int main() {
-	// Tworzenie i inicjalizacja obiektu Car
-	Car myCar;
-	myCar.brand = "Toyota";
-	myCar.year = 2020;
-
-	// Wyświetlanie danych
-	std::cout << "Samochód: " << myCar.brand << 
-	  ", Rok: " << myCar.year << std::endl;
-
-	return 0;
-}
-							</code></pre>
-						</div>
-
-						<div class="column small-font">
-							<h3>Klasa:</h3>
-							<pre style="max-width: 600px;">
-								<code class="cpp">// Definicja klasy Car
-class Car {
-private:
-	std::string brand;
-	int year;
-
-public:
-	Car(const std::string &brand, int year)
-		: brand(brand), year(year) {}
-
-	void print() const {
-		std::cout << "Samochód: " << brand << 
-		  ", Rok: " << year << std::endl;
-	}
-};
-
-int main() {
-	// Tworzenie i inicjalizacja obiektu Car
-	Car myCar("Toyota", 2020);
-
-	// Wywołanie metody print
-	myCar.print();
-
-	return 0;
-}	
-							</code></pre>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h2>Różnice i Kiedy Używać</h2>
-
-					<div class="row">
-						<div class="column small-font">
-							<h3>Struktury:</h3>
-							<p style="font-size: 0.85em;"></p>Proste przechowywanie danych.</p>
-							<p style="font-size: 0.85em;"></p>Brak hermetyzacji; wszystkie pola są publiczne i dostępne
-							bezpośrednio.</p>
-							<p style="font-size: 0.85em;"></p>Brak metod; służy głównie jako kontener danych.</p>
-						</div>
-						<div class="column small-font">
-							<h3>Klasy:</h3>
-							<p style="font-size: 0.85em;">Zawiera metody (np. print) do interakcji z danymi.</p>
-							<p style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest
-								kontrolowany przez publiczne metody.</p>
-							<p style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest
-								kontrola i rozszerzalność.</p>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h2>"Profesjonalna" klasa</h2>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-
-class Player {
-private:
-	std::string name;
-	int health;
-	int mana;
-	std::map<std::string, int> inventory; // Przechowuje przedmioty i ich ilość
-	std::vector<std::string> skills; // Lista umiejętności
-
-public:
-	Player(const std::string &name, int health, int mana)
-		: name(name), health(health), mana(mana) {}
-
-	void takeDamage(int amount) {
-		health -= amount;
-		if (health < 0) health = 0;
-	}
-
-	void useItem(const std::string &item) {
-		if (inventory[item] > 0) {
-			// Logika używania przedmiotu
-			inventory[item]--;
-		} else {
-			std::cout << "Nie masz " << item << std::endl;
-		}
-	}
-
-	void learnSkill(const std::string &skill) {
-		skills.push_back(skill);
-	}
-
-	void printStatus() const {
-		std::cout << "Gracz: " << name << "\n"
-					<< "Zdrowie: " << health << "\n"
-					<< "Mana: " << mana << std::endl;
-	}
-
-	// Dodatkowe metody...
-};
-
-int main() {
-	Player hero("Arthas", 100, 50);
-	hero.learnSkill("Fireball");
-	hero.takeDamage(20);
-	hero.useItem("Health Potion");
-	hero.printStatus();
-
-	return 0;
-}		
-</script></code></pre>
-				</section>
-			</section>
-			<section data-background-gradient="linear-gradient(67deg, #749c19, #bf3045)">
-				<section>
-					<h2>Zadanie 1: konstruktory</h2>
-				</section>
-				<section data-auto-animate>
-					<h3>Diagram klas</h3>
-					<img style="max-height: 600px;" src="assets/class_diagram_Zad1.png">
-				</section>
-				<section data-auto-animate>
-					<h3>Jak czytać diagramy klas?</h3>
-					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
-					<small>
-						<ul>
-							<li><b>Klasy</b>: Prostokąty reprezentują klasy. Nazwa klasy jest umieszczona na górze
-								prostokąta.
-							</li>
-							<li><b>Atrybuty</b>: Poniżej nazwy klasy znajdują się atrybuty (pola, zmienne), które
-								przechowują
-								dane. Są
-								one zazwyczaj oznaczone
-								symbolem + dla publicznych lub - dla prywatnych.</li>
-							<li><b>Metody</b>: Jeszcze niżej umieszczone są metody (funkcje), które definiują zachowanie
-								klasy.
-								Podobnie jak atrybuty, metody
-								mogą być oznaczone jako publiczne (+) lub prywatne (-).</li>
-						</ul>
-					</small>
-				</section>
-				<section data-auto-animate>
-					<h3>Jak czytać diagramy klas?</h3>
-					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
-					<small>
-						<ul>
-							<li><b>Relacje</b>: Linie łączące klasy reprezentują różne typy relacji między nimi. Na
-								przykład:
-							</li>
-							<li><b>Asocjacja</b>: Zwykła linia oznacza, że dwie klasy są w jakiś sposób powiązane.
-								Strzałki
-								mogą
-								wskazywać kierunek asocjacji,
-								a liczby (np. "1" lub "*") określają krotność (ile obiektów jednej klasy może być
-								powiązanych z
-								obiektem drugiej klasy).</li>
-						</ul>
-					</small>
-				</section>
-				<section data-auto-animate>
-					<h3>Jak czytać diagramy klas?</h3>
-					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
-					<small>
-						<ul>
-							<li><b>Dziedziczenie</b>: Linia zakończona pustym trójkątem wskazuje na dziedziczenie lub
-								relację
-								typu
-								"jest rodzajem".</li>
-							<li><b>Krotność</b>: Przy relacjach, liczby takie jak "1" lub "" określają, ile instancji
-								jednej
-								klasy może
-								być powiązanych z
-								instancją drugiej klasy. Na przykład "1" oznacza pojedynczą instancję, a "" oznacza
-								wiele
-								instancji.</li>
-						</ul>
-					</small>
-				</section>
-				<section data-auto-animate>
-					<h3>Jak czytać diagramy klas?</h3>
-					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
-					<small>
-						Na podstawie tego diagramu możemy zobaczyć, że klasa Article zawiera prywatne atrybuty takie jak
-						title, author,
-						publicationYear, journal i publiczne metody takie jak konstruktory, displayInfo(), getTitle(),
-						getAuthor(),
-						getPublicationYear(), getJournal(). Podobnie dla klas Author, Book i Chapter. Ponadto, relacje
-						między klasami wskazują,
-						że Article, Book i Chapter zawierają obiekty klasy Author, a Book zawiera również kolekcję
-						obiektów Chapter.
-					</small>
-				</section>
-				<section>
-					<h3><b>&&&</b> ?</h3>
-					<small>
-						W języku C++ symbol <b>&</b> w kontekście parametru funkcji oznacza referencję. Referencje
-						pozwalają funkcjom na dostęp do
-						obiektów przekazanych do nich bez konieczności kopiowania tych obiektów. To znaczy, że funkcja
-						może operować
-						bezpośrednio na oryginalnym obiekcie, a nie na jego kopii, co jest wydajniejsze, szczególnie dla
-						dużych obiektów.
-					</small>
-					<small>
-						W kontekście diagramu klas UML, który przedstawiono, <b>&other</b> w konstruktorze kopiującym
-						oznacza, że konstruktor przyjmuje
-						referencję do innego obiektu tej samej klasy. Na przykład:
-					</small>
-					<pre style="font-size: 16px" data-id="code-animation">
-						<code class="hljs cpp"><script type="text/template">
-						Article::Article(const Article &other)
-						</script>
-						</code>
-						</pre>
-					<small>
-						Ten konstruktor kopiujący Article przyjmuje referencję do innego obiektu Article i używa jego
-						wartości do zainicjowania
-						nowego obiektu. To jest standardowy sposób implementacji konstruktora kopiującego w C++, który
-						zapewnia, że nowy obiekt
-						jest kopią istniejącego obiektu.
-					</small>
-				</section>
-				<section data-background-color="black">
-					<h3><b>Zadanie</b></h3>
-					<small>
-						Zaimplementuj klasy Article, Book, Chapter i Author zgodnie z przedstawionym wcześniej diagramem
-						klas.
-					</small>
-				</section>
-			</section>
-			<section data-background-gradient="linear-gradient(175deg, #09bc8a, #565896)" data-auto-animate>
-				<section>
-					<h2>Zadania do samodzielnego rozwiązania<h2>
-				</section>
-				<section>
-					<h2>Implementacja klasy Stack</h2>
-
-					<div class="row">
-						<div class="column small-font">
-							<p style="font-size: 0.85em;"></p>Utwórz klasę Stack, która będzie implementacją stosu dla
-							elementów typu int. Stos powinien być zaimplementowany za pomocą dynamicznej tablicy, z
-							wykorzystaniem wskaźników.</p>
-						</div>
-						<div class="column small-font">
-							<img src="assets/stack.png">
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Funkcja push (Dodawanie Elementu do Stosu)</h3>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-Funkcja push(value: int)
-Jeśli topIndex < capacity - 1
-	Zwiększ topIndex o 1
-	Umieść value na pozycji topIndex w stackArray
-W przeciwnym przypadku
-	Wydrukuj "Stos jest pełny!"
-</script></code></pre>
-					<p style="font-size: 24px">Funkcja push dodaje element (value) na szczyt stosu.</p>
-					<p style="font-size: 24px">Sprawdza, czy na stosie jest jeszcze miejsce. Jeśli tak, zwiększa
-						topIndex (co przesuwa szczyt stosu) i umieszcza wartość na nowym szczycie.</p>
-					<p style="font-size: 24px">Jeśli stos jest pełny (topIndex osiągnął capacity - 1), wyświetla
-						komunikat o pełnym stosie.</p>
-				</section>
-				<section>
-					<h3>Funkcja pop (Usuwanie Elementu ze Stosu)</h3>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-Funkcja pop() zwraca int
-Jeśli stos nie jest pusty (!isEmpty())
-	Przechowaj wartość na topIndex
-	Zmniejsz topIndex o 1
-	Zwróć przechowywaną wartość
-W przeciwnym przypadku
-	Wydrukuj "Stos jest pusty!"
-	Zwróć -1						
-</script></code></pre>
-					<p style="font-size: 24px">Funkcja pop usuwa element ze szczytu stosu i zwraca jego wartość.</p>
-					<p style="font-size: 24px">Jeśli stos nie jest pusty, wartość na szczycie stosu jest przechowywana,
-						a topIndex jest zmniejszany (co usuwa element ze szczytu).</p>
-					<p style="font-size: 24px">Jeśli stos jest pusty, wyświetla komunikat i zwraca wartość błędu -1.</p>
-				</section>
-				<section>
-					<h3>Funkcja top (Sprawdzanie Elementu na Szczycie Stosu)</h3>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-Funkcja top() zwraca int
-Jeśli stos nie jest pusty (!isEmpty())
-	Zwróć wartość na topIndex
-W przeciwnym przypadku
-	Wydrukuj "Stos jest pusty!"
-	Zwróć -1										
-</script></code></pre>
-					<p style="font-size: 24px">Funkcja top zwraca wartość elementu znajdującego się na szczycie stosu
-						bez jego usuwania.</p>
-					<p style="font-size: 24px">Jeśli stos nie jest pusty, zwraca wartość na topIndex.</p>
-					<p style="font-size: 24px">Jeśli stos jest pusty, wyświetla komunikat i zwraca wartość błędu -1.</p>
-				</section>
-				<section>
-					<h3>Funkcja isEmpty (Sprawdzanie, czy Stos jest Pusty)</h3>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-Funkcja isEmpty() zwraca bool
-	Zwróć topIndex == -1															
-</script></code></pre>
-					<p style="font-size: 24px">Funkcja isEmpty sprawdza, czy stos jest pusty.</p>
-					<p style="font-size: 24px">Jeśli topIndex jest równy -1, oznacza to, że na stosie nie ma żadnych
-						elementów, więc stos jest pusty.</p>
-					<p style="font-size: 24px">Zwraca wartość true, jeśli stos jest pusty, i false, jeśli na stosie są
-						elementy.</p>
-				</section>
-				<section>
-					<h3>Program sprawdzający</h3>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-int main() {
-	Stack stack(3); // Stos z maksymalną pojemnością 3 elementów
-
-	// Dodanie elementów do stosu
-	stack.push(5);
-	stack.push(10);
-	stack.push(15);
-
-	// Próba dodania elementu do pełnego stosu
-	std::cout << "Próba dodania elementu do pełnego stosu:" << std::endl;
-	stack.push(20); // Stos jest już pełny, więc powinno wyświetlić komunikat
-
-	// Wyświetlanie i usuwanie elementów ze stosu
-	while (!stack.isEmpty()) {
-		std::cout << "Element na szczycie stosu: " << stack.top() << std::endl;
-		std::cout << "Usuwam element: " << stack.pop() << std::endl;
-	}
-
-	// Próba usunięcia elementu ze stosu pustego
-	std::cout << "Próba usunięcia elementu ze stosu pustego:" << std::endl;
-	stack.pop(); // Stos jest już pusty, więc powinno wyświetlić komunikat
-
-	return 0;
-}															
-</script></code></pre>
-				</section>
-				<section>
-					<h2>Implementacja klasy Queue</h2>
-					<div class="row">
-						<div class="column small-font">
-							<p style="font-size: 0.85em;"></p>Utwórz klasę Queue, która będzie implementacją kolejki dla
-							elementów typu int. Kolejka powinna być zaimplementowana za pomocą dynamicznej tablicy, z
-							wykorzystaniem wskaźników.</p>
-						</div>
-						<div class="column small-font">
-							<img src="assets/queue.png">
-						</div>
-					</div>
-				</section>
-				<section>
-					<h3>Funkcja enqueue (Dodawanie Elementu do Kolejki)</h3>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-Funkcja enqueue(value: int)
-Jeśli count < capacity
-	Zwiększ rearIndex o 1 (mod capacity)
-	Umieść value na pozycji rearIndex w queueArray
-	Zwiększ count o 1
-W przeciwnym przypadku
-	Wydrukuj "Kolejka jest pełna!"																					
-</script></code></pre>
-					<p style="font-size: 24px">Funkcja enqueue dodaje nowy element (value) na koniec kolejki.</p>
-					<p style="font-size: 24px">Jeśli w kolejce jest miejsce (sprawdzane przez count < capacity), indeks
-							końca kolejki (rearIndex) jest zwiększany o jeden z użyciem modulo capacity, aby zapewnić
-							cykliczny charakter kolejki.</p>
-							<p style="font-size: 24px">Następnie wartość jest umieszczana na nowo obliczonej pozycji
-								końca kolejki.</p>
-							<p style="font-size: 24px">Jeśli kolejka jest pełna, funkcja wyświetla komunikat.</p>
-				</section>
-				<section>
-					<h3>Funkcja dequeue (Usuwanie Elementu z Kolejki)</h3>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-Funkcja dequeue() zwraca int
-Jeśli kolejka nie jest pusta (!isEmpty())
-	Przechowaj wartość na frontIndex
-	Zwiększ frontIndex o 1 (mod capacity)
-	Zmniejsz count o 1
-	Zwróć przechowywaną wartość
-W przeciwnym przypadku
-	Wydrukuj "Kolejka jest pusta!"
-	Zwróć -1																										
-</script></code></pre>
-					<p style="font-size: 24px">Funkcja dequeue usuwa element z początku kolejki.</p>
-					<p style="font-size: 24px">Jeśli kolejka nie jest pusta, wartość na początku kolejki jest
-						przechowywana, a frontIndex jest zwiększany.</p>
-					<p style="font-size: 24px">Liczba elementów w kolejce (count) jest zmniejszana.</p>
-					<p style="font-size: 24px">Zwracana jest wartość usunięta z kolejki.</p>
-					<p style="font-size: 24px">Jeśli kolejka jest pusta, wyświetlany jest komunikat i zwracana jest
-						wartość błędu -1.</p>
-				</section>
-				<section>
-					<h3>Funkcja front (Sprawdzanie Elementu na Początku Kolejki)</h3>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-Funkcja front() zwraca int
-Jeśli kolejka nie jest pusta (!isEmpty())
-	Zwróć wartość na frontIndex
-W przeciwnym przypadku
-	Wydrukuj "Kolejka jest pusta!"
-	Zwróć -1																												
-</script></code></pre>
-					<p style="font-size: 24px">Funkcja front zwraca wartość elementu znajdującego się na początku
-						kolejki bez usuwania go.</p>
-					<p style="font-size: 24px">Jeśli kolejka nie jest pusta, zwracana jest wartość znajdująca się na
-						frontIndex.</p>
-					<p style="font-size: 24px">Jeśli kolejka jest pusta, wyświetlany jest komunikat i zwracana jest
-						wartość błędu -1.</p>
-				</section>
-				<section>
-					<h3>Program sprawdzający</h3>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
-int main() {
-	Queue queue(3); // Kolejka z maksymalną pojemnością 3 elementów
-
-	// Dodanie elementów do kolejki
-	queue.enqueue(5);
-	queue.enqueue(10);
-	queue.enqueue(15);
-
-	// Próba dodania elementu do pełnej kolejki
-	std::cout << "Próba dodania elementu do pełnej kolejki:" << std::endl;
-	queue.enqueue(20);
-
-	// Usuwanie elementów z kolejki
-	while (!queue.isEmpty()) {
-		std::cout << "Usuwam element z kolejki: " << queue.dequeue() << std::endl;
-	}
-
-	// Próba usunięcia elementu z pustej kolejki
-	std::cout << "Próba usunięcia elementu z pustej kolejki:" << std::endl;
-	queue.dequeue();
-
-	return 0;
-}														
-</script></code></pre>
-				</section>
-			</section>
-			<section data-background-gradient="linear-gradient(175deg, #09bc8a, #565896)" data-auto-animate>
-				<section>
-					<h2>Zarządzanie pamięcią w programowaniu obiektowym:<h2>
-							</h3>Wprowadzenie do operatorów new i delete</h3>
-				</section>
-				<section>
-					<h3>Alokacja pamięci dynamicznej</h3>
-					<p>
-						Alokacja pamięci dynamicznej to proces przydzielania pamięci w trakcie działania programu. W
-						przeciwieństwie do
-						pamięci statycznej, która jest przydzielana na etapie kompilacji, pamięć dynamiczna jest
-						przydzielana na żądanie
-						i może być zwalniana, gdy nie jest już potrzebna. Pozwala to na tworzenie struktur danych, które
-						mogą zmieniać
-						rozmiar w trakcie działania programu, takich jak listy dynamiczne i drzewa.
-					</p>
-				</section>
-				<section>
-					<h3>Zwalnianie pamięci dynamicznej</h3>
-					<ul>
-						<li>
-							<small>Zwalnianie pamięci dynamicznej to proces odzyskiwania pamięci, która została
-								wcześniej zaalokowana
-								dynamicznie. Jest to ważne, ponieważ pamięć, która nie jest zwolniona po użyciu, może
-								prowadzić do
-								wycieków pamięci.</small>
-						</li>
-						<li>
-							<small>W programowaniu obiektowym, zwalnianie pamięci jest często związane z destruktorami -
-								specjalnymi
-								funkcjami, które są wywoływane, gdy obiekt jest niszczony. Destruktory są odpowiedzialne
-								za zwalnianie
-								wszelkich zasobów, które obiekt mógł zaalokować podczas swojego istnienia.</small>
-						</li>
-					</ul>
-				</section>
-
-				<section>
-					<h3>Wprowadzenie do zarządzania pamięcią</h3>
-					<p>
-						Zarządzanie pamięcią to kluczowy aspekt programowania, który polega na kontrolowaniu i
-						koordynowaniu dostępu do
-						pamięci komputera. W programowaniu obiektowym, zarządzanie pamięcią jest szczególnie
-						ważne, ponieważ obiekty
-						często wymagają alokacji i zwalniania pamięci dynamicznej.
-					</p>
-				</section>
-				<section>
-					<h3>Operator new</h3>
-					<p>
-						Operator <b>new</b> jest używany w programowaniu obiektowym do alokacji, czyli przydzielania
-						pamięci dla
-						nowych obiektów. Jest to specjalna funkcja, która tworzy miejsce w pamięci komputera na
-						przechowywanie danych
-						obiektu.
-					</p>
-					<p>
-						Kiedy tworzony jest nowy obiekt za pomocą operatora <b>new</b>, system najpierw znajduje
-						wystarczająco dużo
-						pamięci, aby pomieścić obiekt, a następnie zwraca adres tego miejsca w pamięci. Można następnie
-						użyć tego
-						adresu do odwoływania się do obiektu.
-					</p>
-				</section>
-				<section>
-					<h3>Operator delete</h3>
-					<p>
-						Operator <b>delete</b> jest używany do zwalniania, czyli odzyskiwania pamięci, która została
-						wcześniej
-						zaalokowana za pomocą operatora <b>new</b>. Kiedy obiekt nie jest już potrzebny, można użyć
-						operatora
-						<b>delete</b>, który zwalnia pamięć, którą obiekt zajmuje, co pozwala na jej ponowne użycie.
-					</p>
-					<p>
-						Jest to ważne, ponieważ niezwolnienie pamięci, która nie jest już potrzebna, może prowadzić do
-						wycieków pamięci.
-						Wycieki pamięci mogą spowodować, że program będzie działał wolniej, a w skrajnych przypadkach
-						może nawet
-						doprowadzić do awarii programu.
-					</p>
-				</section>
-				<section>
-					<h3>Korzyści z tworzenia obiektów za pomocą operatora new</h3>
-					<ul>
-						<li>
-							<small>Dynamiczna alokacja pamięci: Operator <code>new</code> pozwala na dynamiczną alokację
-								pamięci, co
-								oznacza, że pamięć jest przydzielana w trakcie działania programu. Dzięki temu możemy
-								tworzyć obiekty o
-								rozmiarze nieznanych nam na etapie kompilacji.</small>
-						</li>
-						<li>
-							<small>Żywotność obiektu: Obiekty utworzone za pomocą operatora <code>new</code> istnieją do
-								momentu ich
-								usunięcia za pomocą operatora <code>delete</code>. To oznacza, że obiekt utworzony za
-								pomocą
-								<code>new</code> może przetrwać dłużej niż obiekt utworzony za pomocą klasycznego
-								konstruktora, który
-								jest zniszczony, gdy opuszcza swój zakres (scope).</small>
-						</li>
-						<li>
-							<small>Flexybilność: Operator <code>new</code> daje większą kontrolę nad procesem tworzenia
-								obiektów, co
-								może być przydatne w niektórych zaawansowanych scenariuszach programowania.</small>
-						</li>
-					</ul>
-				</section>
-				<section>
-					<h3>Przykład użycia operatorów new i delete</h3>
-					<small>
-						Poniżej znajduje się przykład kodu w języku C++, który pokazuje, jak używać operatorów
-						<code>new</code> i
-						<code>delete</code>:
-					</small>
-					<pre style="font-size: 16px;"><code>
-// Definicja klasy
-class MyClass {
-public:
-		MyClass() {
-				std::cout << "Obiekt MyClass został utworzony.\n";
-		}
-		~MyClass() {
-				std::cout << "Obiekt MyClass został zniszczony.\n";
-		}
-};
-
-int main() {
-  // Użycie operatora new do utworzenia obiektu MyClass
-  MyClass* myObject = new MyClass();
-
-  // Użycie operatora delete do zniszczenia obiektu MyClass
-  delete myObject;
-};
-
-					    </code></pre>
-					<small>
-						W tym przykładzie, najpierw definiujemy klasę <code>MyClass</code> z konstruktorem i
-						destruktorem. Następnie
-						używamy operatora <code>new</code> do utworzenia nowego obiektu <code>MyClass</code> i
-						zapisujemy adres tego
-						obiektu w zmiennej <code>myObject</code>. Na końcu używamy operatora <code>delete</code> do
-						zniszczenia obiektu
-						i zwolnienia pamięci.
-					</small>
-				</section>
-				<section>
-					<h3>Zaawansowany przykład użycia operatorów new i delete</h3>
-					<small>
-						Poniżej znajduje się zaawansowany przykład kodu w języku C++, który pokazuje, jak używać
-						operatorów
-						<code>new</code> i <code>delete</code> do dynamicznego zarządzania tablicą obiektów:
-					</small>
-					<pre style="font-size: 16px;"><code>
-// Definicja klasy
-class MyClass {
-public:
-		MyClass() {
-				std::cout << "Obiekt MyClass został utworzony.\n";
-		}
-		~MyClass() {
-				std::cout << "Obiekt MyClass został zniszczony.\n";
-		}
-};
-int main() {
-		// Użycie operatora new do utworzenia tablicy obiektów MyClass
-		MyClass* myObjects = new MyClass[10];
-
-		// Użycie operatora delete[] do zniszczenia tablicy obiektów MyClass
-		delete[] myObjects;
-};
-					    </code></pre>
-					<small>
-						W tym przykładzie, najpierw definiujemy klasę <code>MyClass</code> z konstruktorem i
-						destruktorem. Następnie
-						używamy operatora <code>new</code> do utworzenia tablicy 10 obiektów <code>MyClass</code> i
-						zapisujemy adres tej
-						tablicy w zmiennej <code>myObjects</code>. Na końcu używamy operatora <code>delete[]</code> do
-						zniszczenia
-						tablicy obiektów i zwolnienia pamięci.
-					</small>
-					<small>
-						Ten przykład pokazuje, jak operator <code>new</code> może być używany do dynamicznego tworzenia
-						tablic obiektów,
-						co jest jednym z kluczowych aspektów programowania obiektowego.
-					</small>
-				</section>
-				<section>
-					<h3>Zaawansowany przykład użycia destruktora</h3>
-					<small>
-						Poniżej znajduje się zaawansowany przykład kodu w języku C++, który pokazuje, jak używać
-						destruktora do
-						zwalniania zasobów:
-					</small>
-					<div>
-						<pre style="font-size: 16px;"><code style="max-height: 300px;">
-// Definicja klasy
-class MyClass {
-public:
-		int* myArray;
-
-		MyClass() {
-				myArray = new int[10];
-				std::cout << "Obiekt MyClass został utworzony i pamięć została zaalokowana.\n";
-		}
-
-		~MyClass() {
-				delete[] myArray;
-				std::cout << "Obiekt MyClass został zniszczony i pamięć została zwolniona.\n";
-		}
-};
-
-int	main() {
-		// Użycie operatora new do utworzenia obiektu MyClass
-		MyClass* myObject = new MyClass();
-
-		// Użycie operatora delete do zniszczenia obiektu MyClass
-		delete myObject;
-};
-    </code></pre>
-					</div>
-					<small>
-						W tym przykładzie, klasa <code>MyClass</code> ma konstruktor, który alokuje pamięć dla tablicy
-						10 liczb
-						całkowitych, i destruktor, który zwalnia tę pamięć. Kiedy tworzymy nowy obiekt
-						<code>MyClass</code> za pomocą
-						operatora <code>new</code>, konstruktor jest wywoływany i pamięć jest alokowana. Kiedy niszczymy
-						obiekt za
-						pomocą operatora <code>delete</code>, destruktor jest wywoływany i pamięć jest zwalniana.
-						Ten przykład pokazuje, jak destruktor może być używany do automatycznego zwalniania zasobów, co
-						jest kluczowym
-						aspektem zarządzania pamięcią w programowaniu obiektowym.
-					</small>
-				</section>
-				<section>
-					<h3>Przykład użycia wzorca projektowego Singleton</h3>
-					<small>
-						Poniżej znajduje się przykład kodu w języku C++, który pokazuje, jak używać wzorca projektowego
-						Singleton:
-					</small>
-					<pre style="font-size: 16px;"><code>class Singleton {
-private:
-		// Prywatny konstruktor, aby zapobiec 
-		// tworzeniu instancji za pomocą operatora new
-		Singleton() {}
-
-		// Prywatny destruktor
-		~Singleton() {}
-
-		// Usunięcie możliwości kopiowania i przypisywania
-		Singleton(const Singleton&) = delete;
-		Singleton& operator=(const Singleton&) = delete;
-
-public:
-		// Metoda do uzyskania instancji Singleton
-		static Singleton& getInstance() {
-				static Singleton instance;
-				return instance;
-		}
-};
-    </code></pre>
-					<small>
-						W tym przykładzie, klasa <code>Singleton</code> ma prywatny konstruktor i destruktor, co
-						zapobiega tworzeniu
-						nowych instancji za pomocą operatora <code>new</code> lub <code>delete</code>. Metoda
-						<code>getInstance</code>
-						zapewnia globalny dostęp do jednej instancji klasy.
-					</small>
-					<small>
-						Ten przykład pokazuje, jak wzorzec Singleton może być używany do zapewnienia, że klasa ma tylko
-						jedną instancję,
-						a dostęp do tej instancji jest globalny.
-					</small>
-				</section>
-
-				<section>
-					<h3>Klasy zaprzyjaźnione w C++</h3>
-					<small>
-						Słowo kluczowe <code>friend</code> w C++ jest używane do nadania pewnym funkcjom lub klasom
-						dostępu do
-						prywatnych i chronionych członków klasy. Jeśli klasa jest zadeklarowana jako <code>friend</code>
-						wewnątrz
-						definicji innej klasy, ta zaprzyjaźniona klasa może bezpośrednio dostępować do prywatnych i
-						chronionych członków
-						tej klasy.
-					</small>
-					<small>
-						Przykład użycia <code>friend</code> z klasą:
-					</small>
-					<pre style="font-size: 16px;"><code>
-class MyClass {
-private:
-		int myPrivateVar;
-
-friend class MyFriendClass;
-};
-
-class MyFriendClass {
-public:
-		void changeMyClass(MyClass& obj) {
-			// Dostęp do prywatnej zmiennej jest możliwy dzięki deklaracji friend
-				obj.myPrivateVar = 42;  
-		}
-};
-    </code></pre>
-					<small>
-						W powyższym przykładzie, klasa <code>MyFriendClass</code> ma dostęp do prywatnej zmiennej
-						<code>myPrivateVar</code> klasy <code>MyClass</code>, ponieważ jest zadeklarowana jako
-						<code>friend</code> w tej
-						klasie.
-					</small>
-				</section>
-
-
-				<section>
-					<h3>Ćwiczenie praktyczne: Rozbudowane zarządzanie pamięcią</h3>
-					<small>
-						Teraz, gdy zapoznałeś się z użyciem operatorów <code>new</code> i <code>delete</code> oraz
-						wzorcem Singleton,
-						spróbuj samodzielnie zaimplementować poniższe zadania:
-					</small>
-					<ul>
-						<li>
-							<small>
-								Zaimplementuj klasę <code>MyArray</code> w C++, która ma prywatny konstruktor alokujący
-								pamięć dla
-								tablicy o określonym rozmiarze, prywatny destruktor zwalniający tę pamięć i publiczną
-								metodę
-								<code>getSize</code>, która zwraca rozmiar tablicy. Dodatkowo, dodaj metody
-								<code>setValue</code> i
-								<code>getValue</code> do ustawiania i pobierania wartości na określonym indeksie
-								tablicy.
-							</small>
-						</li>
-						<li>
-							<small>
-								Zaimplementuj klasę <code>MySingleton</code>, która jest Singletonem i przechowuje
-								instancję klasy
-								<code>MyArray</code>. Klasa powinna mieć metodę <code>getArray</code>, która zwraca
-								referencję do
-								przechowywanej instancji <code>MyArray</code>.
-							</small>
-						</li>
-						<li>
-							<small>
-								Zaimplementuj funkcję <code>main</code>, która tworzy instancję klasy
-								<code>MySingleton</code> za pomocą
-								metody <code>getInstance</code>, a następnie używa metody <code>getArray</code> do
-								manipulacji tablicą.
-								Spróbuj dodać, odczytać i zmienić wartości w tablicy. Obserwuj, jak konstruktor i
-								destruktor są
-								wywoływane.
-							</small>
-						</li>
-					</ul>
-					<small>
-						Pamiętaj, że kluczowym aspektem zarządzania pamięcią w programowaniu obiektowym jest
-						zapewnienie, że pamięć jest
-						odpowiednio alokowana i zwalniana. Operatorzy <code>new</code> i <code>delete</code> są
-						podstawowymi narzędziami
-						do tego celu w języku C++, a wzorzec Singleton pomaga zarządzać instancjami klas.
-					</small>
-				</section>
-
-				<section data-background-color="black" data-auto-animate="">
-					<h3>Zadanie domowe: Klasa do sortowania z dynamiczną alokacją pamięci</h3>
-					<small>
-						Twoim zadaniem jest zaimplementować klasę, która przyjmuje tablicę liczb do posortowania w
-						konstruktorze,
-						dynamicznie alokuje pamięć dla tej tablicy, a następnie zawiera metodę do jej sortowania. Metoda
-						sortująca
-						powinna zwracać wynik sortowania, jeśli jest wywołana po raz pierwszy, lub zwracać poprzedni
-						wynik, jeśli
-						sortowanie już zostało wykonane.
-					</small>
-					<ul>
-						<li>
-							<small>
-								Użyj operatora <code>new</code> w konstruktorze klasy do dynamicznego alokowania pamięci
-								dla tablicy.
-							</small>
-						</li>
-						<li>
-							<small>
-								Zaimplementuj dowolny algorytm sortowania (oprócz sortowania bąbelkowego) jako metodę
-								klasy do
-								posortowania tablicy.
-							</small>
-						</li>
-						<li>
-							<small>
-								Metoda sortująca powinna zwracać wynik sortowania, jeśli jest wywołana po raz pierwszy,
-								lub zwracać
-								poprzedni wynik, jeśli sortowanie już zostało wykonane.
-							</small>
-						</li>
-						<li>
-							<small>
-								Użyj operatora <code>delete</code> w destruktorze klasy do zwolnienia pamięci po
-								zakończeniu sortowania.
-							</small>
-						</li>
-					</ul>
-					<small>
-						Pamiętaj, że kluczowym aspektem zarządzania pamięcią w programowaniu obiektowym jest
-						zapewnienie, że pamięć jest
-						odpowiednio alokowana i zwalniana. Operatorzy <code>new</code> i <code>delete</code> są
-						podstawowymi narzędziami
-						do tego celu w języku C++.
-					</small>
-				</section>
-
-
-
-			</section>
-
-			<section data-background-gradient="linear-gradient(175deg, #08415c, #202155)">
-				<section>
-					<h2>Pliki nagłówkowe</h2>
-				</section>
-				<section>
-					<p>
-						W języku C++, koncepcja podziału klasy na dwie części: plik nagłówkowy (header file) i plik
-						źródłowy (source
-						file) ma kilka korzyści:
-					</p>
-					<small>
-						<ol>
-							<li>
-								<strong>Modularność:</strong> Dzięki rozdzieleniu definicji klasy (deklaracji) od jej
-								implementacji, możliwe
-								jest tworzenie modułów kodu, które można łatwo łączyć. Plik nagłówkowy zawiera zazwyczaj
-								deklaracje klas,
-								funkcji i innych elementów interfejsu, natomiast plik źródłowy zawiera implementację
-								tych
-								elementów.
-							</li>
-
-							<li>
-								<strong>Hermetyzacja:</strong> Dzięki rozdzieleniu interfejsu od implementacji, można
-								ukryć
-								szczegóły
-								implementacyjne przed użytkownikiem klasy. Użytkownicy mogą korzystać z interfejsu
-								dostępnego w pliku
-								nagłówkowym, nie będąc zaznajomieni z tym, jak dokładnie działa implementacja, co
-								ułatwia
-								utrzymanie
-								tajemnicy implementacyjnej (hermetyzację).
-							</li>
-
-							<li>
-								<strong>Szybsze kompilacje:</strong> W przypadku zmian w implementacji klasy, konieczne
-								jest
-								ponowne
-								skompilowanie tylko pliku źródłowego, co pozwala na zaoszczędzenie czasu kompilacji.
-								Jeśli
-								wszystko
-								zostałoby umieszczone w jednym pliku, nawet najmniejsza zmiana wymagałaby ponownego
-								kompilowania całego
-								programu.
-							</li>
-						</ol>
-					</small>
-
-				</section>
-
-				<section>
-					<small>
-						Przykładowo, rozdzielenie klasy "MojaKlasa" na plik nagłówkowy (MojaKlasa.h) i plik źródłowy
-						(MojaKlasa.cpp)
-						może wyglądać tak:
-					</small>
-					<div class="row">
-						<div class="col" style="float: left; width: 60%;">
-							<pre style="font-size: 16px;"><code><script type="text/template">#ifndef MOJA_KLASA_H
-#define MOJA_KLASA_H
-
-class MojaKlasa {
-public:
-    MojaKlasa(); // deklaracja konstruktora
-    void metoda(); // deklaracja metody
-private:
-    int zmienna; // deklaracja prywatnej zmiennej
-};
-
-#endif // MOJA_KLASA_H</script></code></pre>
-							<small><b>MojaKlasa.h</b></small>
-
-						</div>
-						<div class="col" style="float: right; width: 40%;">
-
-							<pre style="font-size: 16px;"><code>
-						<script type="text/template">#include "MojaKlasa.h"
-
-MojaKlasa::MojaKlasa() {
-    // implementacja konstruktora
-}
-
-void MojaKlasa::metoda() {
-    // implementacja metody
-}</script></code></pre>
-							<small><b>MojaKlasa.cpp</b></small>
-
-						</div>
-					</div>
-
-
-
-					<small>
-						Następnie, w pliku, w którym chcemy użyć klasy, importuje się plik nagłówkowy (<b>#include
-							"MojaKlasa.h"</b>) i
-						korzysta z
-						zadeklarowanego interfejsu. W przypadku kompilacji, konieczne jest dostarczenie zarówno pliku
-						nagłówkowego, jak i
-						pliku
-						źródłowego do kompilatora.
-					</small>
-				</section>
-				<section>
-					<h3>Kod preprocesora</h3>
-					<small>
-						W języku C++, w plikach nagłówkowych, często używa się dyrektyw preprocesora takich jak
-						<b>#ifndef</b>,
-						<b>#define</b> i <b>#endif</b>
-					</small>
-					<small>
-						<ul>
-							<li><b><em>#ifndef</em>(if not defined):</b> - Ten fragment kodu preprocesora sprawdza, czy
-								dany symbol lub makro nie został wcześniej zdefiniowany. Jeśli symbol nie
-								jest zdefiniowany, to wykonuje się kod znajdujący się między <b>#ifndef</b> a
-								odpowiadającym mu <b>#endif</b>. Jeśli symbol jest już
-								zdefiniowany, kod pomiędzy tymi dyrektywami jest pomijany. </li>
-							<li><b><em>#define</em></b> - Jeśli warunek w #ifndef jest spełniony (symbol nie jest
-								zdefiniowany), to <b>#define</b> służy do zdefiniowania tego symbolu. W
-								praktyce jest to najczęściej używane do stworzenia tzw. "strażnika wielokrotnego
-								dołączania" (include guard). Działa to
-								jako swoisty klucz, który uniemożliwia wielokrotne dołączanie tego samego pliku
-								nagłówkowego podczas kompilacji.</li>
-							<li><b><em>#endif</em></b> - Oznacza koniec bloku warunkowego rozpoczętego przez
-								<b>#ifndef</b>. Kody umieszczone między <b>#ifndef</b> a <b>#endif</b> są kompilowane
-								tylko wtedy, gdy warunek nie został spełniony (symbol nie jest zdefiniowany). To zamyka
-								blok warunkowy.
-							</li>
-						</ul>
-					</small>
-				</section>
-				<section>
-					<h3>Zadanie</h3>
-				</section>
-				<section>
-					<h2>Implementacja Klasy Person</h2>
-					<p style="font-size: 24px">Utworzyć klasę Person, która będzie przechowywać podstawowe informacje o osobie, takie jak imię, nazwisko i wiek. Klasa powinna zawierać metody do ustawiania i pobierania tych informacji.</p>
-					<p style="font-size: 24px">Struktura Plików</p>
-					<p style="font-size: 24px">Person.h: Plik nagłówkowy zawierający deklarację klasy Person.</p>
-					<p style="font-size: 24px">Person.cpp: Plik źródłowy z definicjami metod klasy Person.</p>
-					<p style="font-size: 24px">main.cpp: Plik źródłowy z funkcją main, w której testowana będzie klasa Person.</p>
-				</section>
-				<section>
-					<img style="max-height: 600px;" src="assets/person.png">
-				</section>
-			</section>
-			<section data-background-gradient="linear-gradient(175deg, #cc2936, #858332)">
-				<section>
-					<h2>Zadanie 2: Koła i kwadraty</h2>
-				</section>
-				<section data-background-color="#262626">
-					<img src="assets/kolaikwadraty.png">
-					<p>Zaimplementuj klasy zgodnie z diagramem UML</p>
-				</section>
-			</section>
-			<section data-background-gradient="linear-gradient(175deg, #009b72, #43447b)">
-
-				<section>
-					<h2>Polimorfizm</h2>
-					<h3>Przeciązanie funkcji i metod</h3>
-					<h3> Dziedziczenie</h3>
-				</section>
-				<section data-auto-animate>
-					<h3>Przeciążanie funkcji</h3>
-					<small>
-						Przeciążanie funkcji to technika programowania, która pozwala na definiowanie wielu funkcji o
-						tej samej nazwie,
-						ale różniących się typami i/lub liczbą argumentów. Kompilator wybiera odpowiednią funkcję do
-						wywołania na
-						podstawie argumentów użytych podczas wywołania.
-					</small>
-					<pre>Przykład przeciążania funkcji w C++<code><script type="text/template">void print(int i) {
-				std::cout << "Here is int: " << i << std::endl;
-}
-void print(double f) {
-				std::cout << "Here is float: " << f << std::endl;
-}
-void print(char* c) {
-				std::cout << "Here is char*: " << c << std::endl;
-}</script></code></pre>
-					<small>
-						W powyższym przykładzie, funkcja <code>print</code> jest przeciążona trzy razy: raz dla
-						argumentu typu int, raz
-						dla argumentu typu double i raz dla argumentu typu char*. Kompilator wybierze odpowiednią
-						funkcję do wywołania
-						na podstawie typu argumentu użytego podczas wywołania. Dzięki temu, metoda może być wywołana w
-						różny sposób w zależności od kontekstu, co zwiększa elastyczność i czytelność
-						kodu.
-					</small>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Przeciążanie funkcji a programowanie obiektowe</h3>
-					<small>
-						Przeciążanie funkcji jest kluczowym elementem programowania obiektowego. Pozwala na definiowanie
-						wielu metod o
-						tej samej nazwie w obrębie jednej klasy, które różnią się typami i/lub liczbą argumentów. Dzięki
-						temu, metoda
-						może być wywołana w różny sposób w zależności od kontekstu, co zwiększa elastyczność i
-						czytelność kodu.
-					</small>
-				</section>
-
-
-				<section data-auto-animate>
-					<h3>Dziedziczenie w programowaniu obiektowym</h3>
-					<small>
-						Dziedziczenie w programowaniu obiektowym to jeden z fundamentów tej paradygmatu programowania.
-						Pozwala ono na tworzenie
-						nowych klas na podstawie istniejących klas. Nowa klasa, zwana klasą pochodną, dziedziczy
-						atrybuty i metody klasy bazowej, co
-						pozwala na ponowne użycie kodu.
-					</small>
-					<pre style="font-size: 16px;">Przykład dziedziczenia w C++<code><script type="text/template">// Klasa bazowa
-class Animal {
-public:
-		void eat() {
-				std::cout << "I can eat!" << std::endl;
-		}
-};
-
-// Klasa pochodna
-class Dog : public Animal {
-public:
-		void bark() {
-				std::cout << "I can bark! Woof Woof!" << std::endl;
-		}
-};</script></code></pre>
-					<small>
-						W powyższym przykładzie, klasa <code>Dog</code> dziedziczy od klasy <code>Animal</code>. Oznacza
-						to, że obiekt
-						klasy <code>Dog</code> może używać metody <code>eat()</code> zdefiniowanej w klasie
-						<code>Animal</code>, a także
-						metody <code>bark()</code> zdefiniowanej w samej klasie <code>Dog</code>.
-					</small>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Dziedziczenie w programowaniu obiektowym</h3>
-					<pre>Użycie klasy Dog w main.cpp<code class="hljs cpp" ><script type="text/template">// main.cpp
-int main() {
-		Animal myAnimal;
-		myAnimal.eat();
-		//myAnimal.bark(); // Błąd kompilacji
-		Dog myDog;
-		myDog.eat();
-		myDog.bark();
-		return 0;
-}</script></code></pre>
-					<small>
-						W powyższym przykładzie, tworzymy obiekt klasy <code>Dog</code> i <code>Animal</code> i
-						wywołujemy metody <code>eat()</code> i
-						<code>bark()</code>. Metoda <code>eat()</code> jest dziedziczona z klasy <code>Animal</code>, a
-						metoda
-						<code>bark()</code> jest zdefiniowana w klasie <code>Dog</code>. Obiekt klasy
-						<code>Animal</code> nie posiada metody <code>bark()</code>,
-					</small>
-
-				</section>
-				<section data-auto-animate>
-					<h3>Poziomy dostępu do dziedziczenia w C++</h3>
-					<ul>
-						<li>
-							<small>
-								<strong>Public:</strong> Jeśli klasa jest dziedziczona publicznie, to publiczne i
-								chronione członki
-								klasy bazowej stają się odpowiednio publicznymi i chronionymi członkami klasy pochodnej.
-							</small>
-						</li>
-						<li>
-							<small>
-								<strong>Protected:</strong> Jeśli klasa jest dziedziczona chronionie, to publiczne i
-								chronione członki
-								klasy bazowej stają się chronionymi członkami klasy pochodnej.
-							</small>
-						</li>
-						<li>
-							<small>
-								<strong>Private:</strong> Jeśli klasa jest dziedziczona prywatnie, to publiczne i
-								chronione członki
-								klasy bazowej stają się prywatnymi członkami klasy pochodnej.
-							</small>
-						</li>
-					</ul>
-				</section>
-
-
-
-
-				<section data-auto-animate>
-					<h3>Metody wirtualne w C++</h3>
-					<small>
-						Metoda wirtualna to funkcja członkowska klasy, którą deklaruje się za pomocą słowa kluczowego
-						<code>virtual</code> w klasie bazowej. Pozwala to na "przesłanianie" metody w klasie pochodnej.
-						Gdy metoda
-						wirtualna jest wywoływana przez wskaźnik lub referencję do klasę bazową, wywołanie jest
-						rozstrzygane w czasie
-						wykonywania, a nie w czasie kompilacji. To oznacza, że wywołana zostanie metoda zdefiniowana w
-						klasie typu
-						obiektu, a nie typu wskaźnika lub referencji.
-					</small>
-
-
-					<pre style="font-size: 16px;">Przykład metody wirtualnej w C++<code><script type="text/template">// Klasa bazowa
-class Base {
-public:
-		virtual void print() {
-				cout << "Wywołanie metody print() klasy bazowej" << endl;
-		}
-};
-
-// Klasa pochodna
-class Derived : public Base {
-public:
-		// Przesłonięcie metody print()
-		void print() override {
-				cout << "Wywołanie metody print() klasy pochodnej" << endl;
-		}
-};</script></code></pre>
-				</section>
-
-
-				<section data-auto-animate>
-					<h3>Metody abstrakcyjne w C++</h3>
-					<small>
-						Metoda abstrakcyjna to metoda wirtualna, która jest zadeklarowana, ale nie zdefiniowana w klasie
-						bazowej.
-						Deklaruje się ją, ustawiając jej definicję na 0 (np. <code>virtual void myMethod() = 0;</code>).
-						Klasa, która
-						zawiera co najmniej jedną metodę abstrakcyjną, jest nazywana klasą abstrakcyjną. Klasy
-						abstrakcyjne nie mogą być
-						instancjonowane - służą jako bazy dla klas pochodnych, które muszą zaimplementować wszystkie
-						metody
-						abstrakcyjne.
-					</small>
-
-
-					<pre style="font-size: 16px;">Przykład metody abstrakcyjnej w C++<code><script type="text/template">// Klasa bazowa (abstrakcyjna)
-class Base {
-public:
-		virtual void print() = 0; // Metoda abstrakcyjna
-};
-
-// Klasa pochodna
-class Derived : public Base {
-public:
-		// Implementacja metody abstrakcyjnej
-		void print() override {
-				cout << "Wywołanie metody print() klasy pochodnej" << endl;
-		}
-};</script></code></pre>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Przesłanianie metod bez użycia słowa kluczowego 'virtual' w C++</h3>
-					<small>
-						Jeśli metoda zostanie przysłonięta bez użycia słowa kluczowego <code>virtual</code>, to
-						zachowanie będzie
-						zależało od typu
-						referencji lub wskaźnika, którym wywoływania jest metoda, a nie od rzeczywistego typu obiektu.
-						To jest
-						znane jako
-						"statyczne wiązanie" lub "wiązanie w czasie kompilacji".
-					</small>
-					<pre style="font-size: 15px;">Przykład <code><script type="text/template">// Klasa bazowa
-class Base {
-public:
-		void print() {
-				cout << "Wywołanie metody print() klasy bazowej" << endl;
-		}
-};
-
-// Klasa pochodna
-class Derived : public Base {
-public:
-		void print() {
-				cout << "Wywołanie metody print() klasy pochodnej" << endl;
-		}
-};
-
-int main() {
-		Derived d;
-		Base& b = d;
-		b.print();  // Wywoła metodę print() klasy bazowej, nie pochodnej
-		return 0;
-}</script></code></pre>
-					<small>
-						W powyższym przykładzie, mimo że <code>b</code> jest referencją do obiektu klasy
-						<code>Derived</code>, wywołanie
-						<code>b.print()</code> wywoła metodę <code>print()</code> klasy <code>Base</code>, ponieważ
-						metoda
-						<code>print()</code> nie jest wirtualna.
-					</small>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Rodzaje Dziedziczenia w Programowaniu Obiektowym</h3>
-					<small>
-						Dziedziczenie w programowaniu obiektowym umożliwia tworzenie nowych klas na podstawie
-						istniejących klas, co
-						ułatwia ponowne użycie kodu, zwiększa czytelność i ułatwia zarządzanie kodem.
-						<ul>
-							<li><strong>Dziedziczenie jednokrotne (single inheritance):</strong> Klasa podrzędna
-								dziedziczy od jednej
-								klasy nadrzędnej.</li>
-							<li><strong>Dziedziczenie wielokrotne (multiple inheritance):</strong> Klasa podrzędna
-								dziedziczy
-								jednocześnie od dwóch lub więcej klas nadrzędnych.</li>
-							<li><strong>Dziedziczenie wielostopniowe (multilevel inheritance):</strong> Jedna klasa
-								dziedziczy od innej,
-								a następnie inna klasa dziedziczy z powyższej klasy, tworząc hierarchię klasy.</li>
-							<li><strong>Dziedziczenie wielopoziomowe (hierarchical inheritance):</strong> Jedna klasa
-								nadrzędna, wiele
-								klas podrzędnych. Klasy podrzędne mogą dziedziczyć od jednej wspólnej klasy nadrzędnej.
-							</li>
-							<li><strong>Dziedziczenie interfejsów (interface inheritance):</strong> Klasy mogą
-								dziedziczyć jedynie
-								sygnatury metod, nie ich implementacje. Jest to podobne do klas abstrakcyjnych w C++.
-							</li>
-						</ul>
-					</small>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Polimorfizm w programowaniu obiektowym</h3>
-					<small>
-						Polimorfizm to kluczowy koncept w programowaniu obiektowym, który pozwala obiektom różnych klas
-						działać jak
-						obiekty innej klasy. Jest to możliwe dzięki użyciu dziedziczenia i metod wirtualnych.
-					</small>
-					<ul>
-						<li>
-							<small>
-								<b>Polimorfizm statyczny (wczesne wiązanie):</b> Typ obiektu jest określany podczas
-								kompilacji.
-								Przykładem może być przeciążanie funkcji.
-							</small>
-						</li>
-						<li>
-							<small>
-								<b>Polimorfizm dynamiczny (późne wiązanie):</b> Typ obiektu jest określany w czasie
-								wykonywania.
-								Przykładem może być przesłanianie funkcji.
-							</small>
-						</li>
-					</ul>
-					<small>
-						Polimorfizm jest ważny, ponieważ pozwala na tworzenie bardziej elastycznego i łatwiejszego do
-						zarządzania kodu,
-						umożliwiając programistom traktowanie obiektów różnych klas w ten sam sposób.
-					</small>
-				</section>
-			</section>
-			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
-				<section>
-					<h2>Zadania</h2>
-				</section>
-				<section>
-					<h3>Pojazdy</h3>
-					<p style="font-size: 24px">Zaimplementować hierarchię klas reprezentujących różne typy pojazdów, takie jak Car (Samochód) i Bike (Rower), które będą dziedziczyć z abstrakcyjnej klasy bazowej Vehicle (Pojazd).</p>
-					<p style="font-size: 24px">Struktura Plików</p>
-					<p style="font-size: 24px">Vehicle.h: Plik nagłówkowy zawierający deklarację abstrakcyjnej klasy bazowej Vehicle.</p>
-					<p style="font-size: 24px">Car.h i Bike.h: Pliki nagłówkowe dla klas pochodnych Car i Bike.</p>
-					<p style="font-size: 24px">Vehicle.cpp, Car.cpp, Bike.cpp: Pliki źródłowe z definicjami metod klas.</p>
-					<p style="font-size: 24px">main.cpp: Plik źródłowy z funkcją main do testowania klas.</p>
-				</section>
-				<section>
-					<img style="max-height: 600px;" src="assets/vehicle.png">
-				</section>
-				<section>
-					<h3>Biblioteka</h3>
-					<p style="font-size: 24px">Zaimplementować system zarządzania biblioteką, w którym różne typy materiałów (książki, czasopisma, artykuły) będą reprezentowane przez oddzielne klasy pochodne klasy bazowej LibraryItem. Każda klasa pochodna będzie miała swoje unikalne atrybuty i metody.</p>
-					<p style="font-size: 24px">Struktura Plików</p>
-					<p style="font-size: 24px">LibraryItem.h: Plik nagłówkowy zawierający abstrakcyjną klasę bazową LibraryItem.</p>
-					<p style="font-size: 24px">Book.h, Magazine.h, Article.h: Pliki nagłówkowe dla klas pochodnych.</p>
-					<p style="font-size: 24px">LibraryItem.cpp, Book.cpp, Magazine.cpp, Article.cpp: Pliki źródłowe z definicjami metod klas.</p>
-					<p style="font-size: 24px">main.cpp: Plik źródłowy z funkcją main do testowania systemu.</p>
-				</section>
-				<section>
-					<img style="max-height: 600px;" src="assets/library.png">
-				</section>
-				<section>
-					<h3>Program sprawdzający</h3>
-					<pre style="font-size: 16px;"><code class="hljs cpp"><script type="text/template">// main.cpp
-#include "Book.h"
-#include "Magazine.h"
-#include "Article.h"
-#include <vector>
-
-int main() {
-	std::vector<LibraryItem*> library;
-
-	library.push_back(new Book("1984", "George Orwell"));
-	library.push_back(new Magazine("National Geographic"));
-	library.push_back(new Article("Exploring C++ Polymorphism", "Jane Doe"));
-
-	for (LibraryItem* item : library) {
-		item->display();
-	}
-
-	// Oczyszczanie pamięci
-	for (LibraryItem* item : library) {
-		delete item;
-	}
-
-	return 0;
-}
-</script></code></pre>
-				</section>
-			</section>
-			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
-				<section>
-					<h2>Zadanie 3: Sklep</h2>
-				</section>
-				<section>
-					<h3>Zaimplementuj klasy wg diagramu</h3>
-					<img src="assets/sklep.png">
-				</section>
-				<section>
-					<h3>Program sprawdzający</h3>
-					<pre style="font-size: 16px;"><code class="hljs cpp"><script type="text/template">int main()
-{
- Shop *shop = new Shop();
- Supplier *supplier = new Supplier(shop);
- Notebook *notebook = new Notebook();
- supplier->deliverProduct(notebook);
- Bread *bread = new Bread();
- supplier->deliverProduct(bread);
- Pen *pen = new Pen();
- supplier->deliverProduct(pen);
- MineralWater *mineralWater = new MineralWater();
- supplier->deliverProduct(mineralWater);
- shop->printProductList();
-
- if (shop->checkAvailability("Bread"))
- {
-  shop->sellFoodProduct("Bread");
- }
-
- if (shop->checkAvailability(notebook))
- {
-  shop->sellPaperProduct(notebook->getName());
-  shop->printProductList();
-  return 0;
- }
-
- return 0;
-}</script></code></pre>
-				</section>
-			</section>
-			<section data-auto-animate data-background-gradient="linear-gradient(90deg, #aFB486, #F46267)">
-				<section>
-					<h1>Dziedziczenie wielobazowe</h1>
-				</section>
-				<section data-auto-animate>
-					<pre style="font-size: 16px" data-id="code-animation">
-					<code class="hljs cpp" data-trim data-line-numbers="3,12,21"><script type="text/template">#include <iostream>
-
-class BazowaA {
-protected:
-    int licznik;
-public:
-    void wyswietl() {
-        std::cout << "A::wyswietl()" << '\n';
-    }
-};
-
-class BazowaB {
-protected:
-    int licznik;
-public:
-    void wyswietl() {
-        std::cout << "B::wyswietl()" << '\n';
-    }
-};
-
-class Klasa: public BazowaA, public BazowaB {
-public:
-    void wyzeruj() {
-        BazowaA::licznik = 0;
-        BazowaB::licznik = 0;
-    }
-};
-
-int main() {
-    Klasa k;
-
-    k.BazowaA::wyswietl();
-    k.BazowaB::wyswietl();
-}</script>
-					</code>
-					</pre>
-					<small>
-						Język C++, w odróżnieniu od wielu popularnych języków, np. Javy, dopuszcza dziedziczenie
-						wielobazowe (dziedziczenie
-						wielokrotne), tj. klasa może dziedziczyć po więcej niż jednej klasie. To powoduje, że w ogólnym
-						przypadku nie mamy do
-						czynienia z drzewiastą hierarchią klas, lecz skierowanym grafem acyklicznym dziedziczenia.
-					</small>
-				</section>
-				<section data-auto-animate>
-					<pre style="font-size: 16px" data-id="code-animation">
-					<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">#include <iostream>
-
-class BazowaA {
-protected:
-    int licznik;
-public:
-    void wyswietl() {
-        std::cout << "A::wyswietl()" << '\n';
-    }
-};
-
-class BazowaB {
-protected:
-    int licznik;
-public:
-    void wyswietl() {
-        std::cout << "B::wyswietl()" << '\n';
-    }
-};
-
-class Klasa: public BazowaA, public BazowaB {
-public:
-    void wyzeruj() {
-        BazowaA::licznik = 0;
-        BazowaB::licznik = 0;
-    }
-};
-
-int main() {
-    Klasa k;
-
-    k.BazowaA::wyswietl();
-    k.BazowaB::wyswietl();
-}</script>
-					</code>
-					</pre>
-					<small>
-						Klasa pochodna ma dostęp do wszystkich pól z klas bazowych oraz udostępnia pola i metody zgodnie
-						z podanymi regułami
-						widoczności (private/protected/public). Jeśli pola lub metody w klasach bazowych powtarzają się,
-						wówczas konieczna jest
-						dodatkowa klasyfikacja nazwą klasy, jak w przykładzie poniżej.
-					</small>
-
-				</section>
-				<section>
-					<h3>Dziedziczenie wirtualne</h3>
-					<small>
-						Dziedzicznie wirtualne jest specjalnym przypadkiem w dziedziczeniu wielobazowym, które stosuje
-						się, gdy z jakiegoś
-						powodu jedna z klas staje się wielokrotnie przodkiem (bezpośrednio lub pośrednio) innej klasy.
-						Np.
-					</small>
-					<pre style="font-size: 16px" data-id="code-animation">
-										<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
-protected:
-    void wyswietl() {};
-};
-
-class Posrednia: public Bazowa {};
-
-class Klasa: public Bazowa, public Posrednia {};</script>
-										</code>
-										</pre>
-				</section>
-				<section>
-					<small>
-						Tutaj to klasa Bazowa jest przodkiem Klasy: raz bezpośrednio, raz poprzez klasę Pośrednią.
-						Oczywiście nie jest to błąd,
-						ale niesie ze sobą następujące niedogodności:
-						<ul>
-							<li>
-								Pola z klasy <b>Bazowa</b> powtarzają się 2 razy, skutkiem czego <b>sizeof(Klasa) > 2 *
-									sizeof(Bazowa)</b>. To na pierwszy rzut oka
-								może wydawać się mało istotne, bo zwykle rozmiar klasy jest niewielki. Jednak co gdy
-								przechowujemy tysiące lub miliony
-								instancji? Wówczas ten narzut może okazać się znaczący.
-							</li>
-							<li>
-								Zwykle też chcemy, aby to właśnie klasa Bazowa dostarczała pewnych metod lub pól dla
-								klas pochodnych, a w tym przypadku
-								odwołanie do metody <b>Wyswietl</b> musi być kwalifikowane nazwą klasy nadrzędnej, co
-								jest mało wygodne.
-							</li>
-						</ul>
-					</small>
-				</section>
-				<section>
-					<small>
-						Zatem jeśli chcemy wyraźnie wskazać, że jakaś klasa jest bazową dla wszystkich potomków, to przy
-						w deklaracji musimy
-						dodać słowo kluczowe virtual przy nazwie klasy z której dziedziczymy. Wówczas zniknie
-						niejednoznaczność odwołań do jej
-						składowych, natomiast jej pola zostaną umieszczone w klasie pochodnej tylko raz. W przykładzie
-						poniżej rozmiar Klasy to
-						1kB + kilka bajtów, bez dziedziczenia wirtualnego byłoby to ponad 2kB, oraz oczywiście wywołanie
-						metody wyswietl
-						(używając takiego zapisu) byłoby niemożliwe.
-					</small>
-					<pre style="font-size: 16px" data-id="code-animation">
-																				<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
-    char bufor1kB[1024];
-public:
-    void wyswietl() {}
-};
-
-class Posrednia1: public virtual Bazowa {};
-
-class Posrednia2: public virtual Bazowa {};
-
-class Klasa: public Posrednia1, public Posrednia2 {};
-
-int main() {
-    Klasa k;
-    std::cout << sizeof(Klasa) << '\n';
-    k.wyswietl();
-}</script>
-																				</code>
-																				</pre>
-				</section>
-				<section data-background-color="#262626">
-					<h3>Zadanie</h3>
-										<small>
-											Zaimplementuj klasy zgodnie z przedstawionym diagramem
-											klas.
-										</small>
-					<img style="max-height: 600px;" src="assets/vampire2.png">
-				</section>
-				<section data-background-color="#262626">
-					<h3>Kod sprawdzający</h3>
-				
-					<pre style="font-size: 16px" data-id="code-animation">
-																								<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">int main() {
-						Creature creature("Generic Creature");
-						creature.introduce();
-						std::cout << std::endl;
-				
-						Human person("John Doe", "Engineer", 30);
-						person.introduce();
-						person.work();
-						person.age();
-						std::cout << std::endl;
-				
-						Bat batman("Bruce Wayne", 150, 200);
-						batman.introduce();
-						batman.fly();
-						batman.changeFlightSpeed(300);
-						std::cout << std::endl;
-				
-						Vampire dracula("Count Dracula", "Nobleman", 180, 250);
-						dracula.introduce();
-						dracula.work();
-						dracula.age();
-						dracula.fly();
-						dracula.changeFlightSpeed(400);
-						dracula.suckBlood();
-				
-						return 0;
-				}</script></code></pre>
-				</section>
-				<section data-background-color="#262626">
-					<h3>Zadanie</h3>
-					<small>
-						Zaimplementuj klasy zgodnie z przedstawionym diagramem
-						klas.
-					</small>
-					<img style="max-height: 600px;" src="assets/vampire2Extended.drawio.png">
-				</section>
-				<section data-background-color="#262626">
-					<h3>Kod sprawdzający</h3>
-
-					<pre style="font-size: 16px" data-id="code-animation">
-																				<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">int main() {
-
-    Human *person = new Human("John Doe", "Engineer", 1997);
-    person->introduce();
-    person->work();
-    person->age();
-    std::cout << std::endl;
-
-    Bat *batman = new Bat("Bruce Wayne", 150, 200);
-    batman->introduce();
-    batman->fly();
-    batman->changeFlightSpeed(300);
-    std::cout << std::endl;
-
-    Vampire *dracula = new Vampire("Count Dracula", "Nobleman", 180, 250);
-    dracula->introduce();
-    dracula->work();
-    dracula->age();
-    dracula->fly();
-    dracula->changeFlightSpeed(400);
-    dracula->suckBlood();
-
-    cout << endl << "_______________________________________" << endl;
-
-    std::vector<Creature *> creatures;
-    creatures.push_back(person);
-    creatures.push_back(batman);
-    creatures.push_back(dracula);
-
-
-    int numberOfAliveCreatures = 0;
-    do {
-        numberOfAliveCreatures = 0;
-        for (int i = 0; i < creatures.size(); i++) {
-            creatures[i]->introduce();
-            if (creatures[i]->isAlive()) {
-                cout << "Atakuje" << endl;
-                for (int j = 0; j < creatures.size(); j++) {
-                    if (j != i && creatures[j]->isAlive()) { // stworzenie nie może atakować samego siebie ani nieżywego stworzenia
-                        creatures[i]->attack(creatures[j]);
-                    }
-                }
-            } else {
-                cout << "Nie żyje" << endl;
-            }
-        }
-        for (int i = 0; i < creatures.size(); i++) {
-            if (creatures[i]->isAlive()) {
-                numberOfAliveCreatures++;
-            }
-        }
-    } while (numberOfAliveCreatures > 1);
-
-    cout<<endl<<"Wygrał:"<<endl;
-    for (int i = 0; i < creatures.size(); i++) {
-        if (creatures[i]->isAlive()) {
-            creatures[i]->introduce();
-        }
-    }
-}</script></code></pre>
-								</section>
-												<section data-background-color="#262626">
-													<h3>Zadanie</h3>
-													<small>
-														Zaimplementuj klasy zgodnie z przedstawionym diagramem
-														klas.
-													</small>
-													<img style="max-height: 600px;" src="assets/vampireExtendedWithSimulation.png">
-												</section>
-
-			</section>
-			<section data-background-gradient="linear-gradient(165deg, #6FB486, #846267)">
-				<section>
-					<h2>Zadanie 1: System Zarządzania Pracownikami</h2>
-				</section>
-				<section>
-					<h2>Diagram klas</h2>
-					<img style="max-height: 800px;" src="assets/workers.png">
-				</section>
-				<section>
-					<h3>Kod sprawdzający</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">#include "EmployeeManager.h"
-#include "Programmer.h"
-#include "Manager.h"
-
-int main() {
-	// Tworzenie managera pracowników
-	EmployeeManager employeeManager;
-
-	// Tworzenie pracowników na stosie
-	Programmer john("John Doe", 1, "C++");
-	Manager jane("Jane Smith", 2, 5);
-
-	// Dodanie pracowników na stosie do managera
-	employeeManager.addEmployee(&john);
-	employeeManager.addEmployee(&jane);
-
-	// Wyświetlenie informacji o pracownikach
-	employeeManager.displayAllEmployees();
-
-	// Tworzenie pracowników na stercie
-	Programmer* mike = new Programmer("Mike Johnson", 3, "Java");
-	Manager* lisa = new Manager("Lisa Ray", 4, 10);
-
-	// Dodanie pracowników na stercie do managera
-	employeeManager.addEmployee(mike, true);
-	employeeManager.addEmployee(lisa, true);
-
-	// Wyświetlenie informacji o wszystkich pracownikach
-	employeeManager.displayAllEmployees();
-
-	// Wywołanie specyficznych dla klasy metod
-	john.writeCode();
-	jane.organizeMeeting();
-
-	// Bezpośrednie wywołanie metod dla obiektów na stercie
-	mike->writeCode();
-	lisa->organizeMeeting();
-	lisa->leadTeam();
-
-	// Usunięcie pracowników na stercie
-	employeeManager.removeEmployee(3);
-	employeeManager.removeEmployee(4);
-
-	// Ponowne wyświetlenie pracowników po usunięciu
-	employeeManager.displayAllEmployees();
-
-	return 0;
-}</script></code></pre>
-				</section>
-				<section>
-					<h2>Przykładowy wynik</h2>
-					<img style="max-height: 800px;" src="assets/workers_result.png">
-				</section>
-				<section>
-					<h3>Pseudokod Klasy Employee</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">Konstruktor(name: String, id: Integer)
-	Ustaw name = name
-	Ustaw id = id
-Destruktor()
-Metoda getId(): Integer
-	Zwróć id
-Metoda getName(): String
-	Zwróć name</script></code></pre>
-<p style="font-size: 24px">Konstruktor: Inicjalizuje obiekt Employee, przyjmując name i id jako parametry i przypisując te wartości do odpowiednich atrybutów w klasie.</p>
-<p style="font-size: 24px">Destruktor: Usuwa obiekt Employee. W tym pseudokodzie nie wykonuje dodatkowych działań, ponieważ jest pusty.</p>
-<p style="font-size: 24px">Metoda getId: Zwraca wartość id pracownika.</p>
-<p style="font-size: 24px">Metoda getName: Zwraca wartość name pracownika.</p>
-				</section>
-				<section>
-					<h3>Pseudokod Klasy EmployeeManager</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">Destruktor()
-	Dla każdego emp w employees:
-		Jeśli emp.second jest prawdziwe:
-			Usuń emp.first
-Metoda addEmployee(employee: Wskaźnik na Employee, isDynamic: Boolean)
-	Dodaj do employees parę (employee, isDynamic)
-Metoda removeEmployee(id: Integer)
-	Dla każdego it w employees:
-		Jeśli it.first.getId() równa się id:
-			Jeśli it.second jest prawdziwe:
-				Usuń it.first
-			Usuń it z employees
-Metoda displayAllEmployees()
-	Dla każdego emp w employees:
-		Wywołaj emp.first.displayInfo()</script></code></pre>
-<p style="font-size: 17px">Destruktor: Zwalnia pamięć pracowników przechowywanych w employees, jeśli ich flaga isDynamic jest ustawiona na true. Jest to ważne dla uniknięcia wycieków pamięci.</p>
-<p style="font-size: 17px">Metoda addEmployee: Dodaje pracownika do listy employees wraz z flagą isDynamic, która wskazuje, czy pracownik został utworzony dynamicznie (czyli czy powinien być usunięty przez menedżera).</p>
-<p style="font-size: 17px">Metoda removeEmployee: Usuwa pracownika o podanym id z listy employees. Jeśli pracownik jest dynamiczny (flaga isDynamic ustawiona na true), zwalnia jego pamięć.</p>
-<p style="font-size: 17px">Metoda displayAllEmployees: Wyświetla informacje o wszystkich pracownikach w employees.</p>
-<p style="font-size: 17px">W naszym kodzie employees jest listą par, gdzie każda para składa się z wskaźnika na Employee (first) oraz wartości logicznej (second).</p>
-				</section>
-				<section>
-					<h3>Pseudokod Klasy Manager</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">Konstruktor(name: String, id: Integer, teamSize: Integer)
-	Wywołaj konstruktor Employee z name i id
-	Ustaw teamSize = teamSize
-Metoda work()
-	Wyświetl name + " zarządza zespołem o wielkości " + teamSize + " członków."
-Metoda displayInfo()
-	Wyświetl "Menedżer: " + name + ", ID: " + id + ", Wielkość zespołu: " + teamSize
-Metoda organizeMeeting()
-	Wyświetl name + " organizuje spotkanie."
-Metoda leadTeam()
-	Wyświetl name + " prowadzi zespół."</script></code></pre>
-<p style="font-size: 17px">Konstruktor Manager: Inicjalizuje menedżera, ustawiając jego imię, identyfikator oraz wielkość zarządzanego zespołu. Wykorzystuje konstruktor klasy bazowej Employee do ustawienia name i id.</p>
-<p style="font-size: 17px">Metoda work: Wyświetla informację o zarządzaniu zespołem o określonej wielkości przez menedżera.</p>
-<p style="font-size: 17px">Metoda displayInfo: Wyświetla szczegółowe informacje o menedżerze, włączając jego nazwę, identyfikator oraz wielkość zarządzanego zespołu.</p>
-<p style="font-size: 17px">Metoda organizeMeeting: Prezentuje, że menedżer organizuje spotkanie.</p>
-<p style="font-size: 17px">Metoda leadTeam: Pokazuje, że menedżer prowadzi zespół.</p>
-				</section>
-				<section>
-					<h3>Pseudokod Klasy Programmer</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">Konstruktor(name: String, id: Integer, programmingLanguage: String)
-	Wywołaj konstruktor Employee z name i id
-	Ustaw programmingLanguage = programmingLanguage
-
-Metoda work()
-	Wyświetl name + " programuje w języku " + programmingLanguage
-
-Metoda displayInfo()
-	Wyświetl "Programista: " + name + ", ID: " + id + ", Język: " + programmingLanguage
-
-Metoda writeCode()
-	Wyświetl name + " pisze kod."</script></code></pre>
-<p style="font-size: 17px">Konstruktor Programmer: Inicjalizuje programistę, ustawiając jego imię, identyfikator oraz język programowania. Wykorzystuje konstruktor klasy bazowej Employee do ustawienia name i id.</p>
-<p style="font-size: 17px">Metoda work: Wyświetla informację o tym, że programista pisze kod w określonym języku programowania.</p>
-<p style="font-size: 17px">Metoda displayInfo: Wyświetla szczegółowe informacje o programiście, włączając jego nazwę, identyfikator oraz język programowania.</p>
-<p style="font-size: 17px">Metoda writeCode: Prezentuje, że programista pisze kod.</p>
-				</section>
-				<section style="font-size: 0.55em;">
-					<h2>Podsumowanie funkcji main</h2>
-					<ol>
-					<li>Zarządzanie pracownikami:</li>
-						<ul>
-							<li>Funkcja main demonstruje, jak klasa EmployeeManager może być używana do efektywnego zarządzania różnymi typami pracowników w systemie, takimi jak programiści i menedżerowie.</li>
-						</ul>
-					<li>Tworzenie Pracowników na Stosie i Stercie:</li>
-						<ul>
-							<li>Pracownicy są tworzeni na dwa sposoby: na stosie i na stercie.</li>
-							<li>Pracownicy na stosie (john, jane) są zarządzani automatycznie przez system i ich pamięć jest zwalniana po zakończeniu funkcji main.</li>
-							<li>Pracownicy na stercie (mike, lisa) wymagają ręcznego zarządzania pamięcią, co umożliwia dłuższe przechowywanie ich w programie.</li>
-						</ul>
-					<li>Znaczenie w Rzeczywistych Aplikacjach:</li>
-						<ul>
-							<li>Ten model znajduje zastosowanie w prawdziwych aplikacjach, gdzie wymagane jest zarządzanie dynamicznymi zasobami, np. w aplikacjach baz danych, systemach zarządzania pracownikami czy w grach komputerowych.</li>
-							<li>Umożliwia elastyczność w zarządzaniu różnymi typami obiektów i zasobami, oferując kontrolę nad czasem życia i sposobem zarządzania pamięcią obiektów.</li>
-						</ul>
-					<li>Wywoływanie Specyficznych Metod:</li>
-						<ul>
-							<li>Funkcja main pokazuje również, jak wywoływać specyficzne metody dla różnych typów pracowników, co jest przykładem polimorfizmu w programowaniu obiektowym.</li>
-						</ul>
-					</ol>
-				</section>
-				<section>
-					<h2>Zadanie 2</h2>
-				  </section>
-				  <section>
-					<h2>Diagram klas</h2>
-					<img style="max-height: 800px;" src="assets/simplecompany.png">
-				  </section>
-				  <section>
-					<h3>Kod sprawdzający</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-						<code class="hljs cpp" data-trim data-line-numbers><script type="text/template">#include "Person.h"
-#include "Employee.h"
-#include "Manager.h"
-#include "HRManager.h"
-#include "Company.h"
-#include <iostream>
-
-int main() {
-	// Utworzenie Person
-	Person person("John Doe", "123 Main St", 30);
-	person.displayInfo();
-
-	// Utworzenie Employee
-	Employee employee("Jane Smith", "456 Elm St", 28, 1, "Engineering");
-	employee.displayInfo();
-	employee.work();
-
-	// Utworzenie Manager
-	Manager manager("Bob Johnson", "789 Oak St", 35, 2, "Sales", 5);
-	manager.displayInfo();
-	manager.manage();
-
-	// Utworzenie HRManager
-	HRManager hrManager("Alice Brown", "101 Maple St", 32, 3, "Human Resources", "Recruiting");
-	hrManager.displayInfo();
-	hrManager.recruitEmployee();
-
-	// Utworzenie Company i dodanie Employees
-	Company company;
-	company.addEmployee(new Employee("Carl Sagan", "202 Skyway Ave", 40, 4, "Research and Development"));
-	company.addEmployee(new Manager("Margaret Hamilton", "303 Apollo Dr", 50, 5, "Software", 10));
-	company.addEmployee(new HRManager("Tim Berners-Lee", "404 Web St", 45, 6, "Information Technology", "Web Development"));
-
-	// Wyswietlenie wszystkich pracownikow
-	std::cout << "\nDisplaying all employees:\n";
-	company.displayAllEmployees();
-
-	// Usuwanie employee
-	company.removeEmployee(4);
-	std::cout << "\nAfter removing an employee:\n";
-	company.displayAllEmployees();
-
-	return 0;
-}</script></code></pre>
-				  </section>
-				  <section>
-					<h3>Pseudokod Klasy Person</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-					  <code class="hljs cpp" data-trim data-line-numbers>
-						Konstruktor(name: String, address: String, age: Integer)
-						  Ustaw name = name
-						  Ustaw address = address
-						  Ustaw age = age
-						Metoda displayInfo()
-						  Wyświetl name, address, age
-					  </code>
-					</pre>
-				  </section>
-				  <section>
-					<h3>Pseudokod Klasy Employee</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-					  <code class="hljs cpp" data-trim data-line-numbers>
-						Konstruktor(name: String, address: String, age: Integer, employeeId: Integer, department: String)
-						  Wywołaj konstruktor klasy bazowej Person
-						  Ustaw employeeId = employeeId
-						  Ustaw department = department
-						Metoda displayInfo()
-						  Wywołaj displayInfo() z klasy bazowej
-						  Wyświetl employeeId, department
-						Metoda work()
-						  Wyświetl "Pracownik pracuje w dziale" + department
-					  </code>
-					</pre>
-				  </section>
-				  <section>
-					<h3>Pseudokod Klasy Manager</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-					  <code class="hljs cpp" data-trim data-line-numbers>
-						Konstruktor(name: String, address: String, age: Integer, employeeId: Integer, department: String, numberOfSubordinates: Integer)
-						  Wywołaj konstruktor klasy bazowej Employee
-						  Ustaw numberOfSubordinates = numberOfSubordinates
-						Metoda displayInfo()
-						  Wywołaj displayInfo() z klasy bazowej
-						  Wyświetl numberOfSubordinates
-						Metoda manage()
-						  Wyświetl "Kierownik zarządza " + numberOfSubordinates + " podwładnymi"
-					  </code>
-					</pre>
-				  </section>
-				  <section>
-					<h3>Pseudokod Klasy HRManager</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-					  <code class="hljs cpp" data-trim data-line-numbers>
-						Konstruktor(name: String, address: String, age: Integer, employeeId: Integer, department: String, specialization: String)
-						  Wywołaj konstruktor klasy bazowej Employee
-						  Ustaw specialization = specialization
-						Metoda displayInfo()
-						  Wywołaj displayInfo() z klasy bazowej
-						  Wyświetl specialization
-						Metoda recruitEmployee()
-						  Wyświetl "HRManager rekrutuje pracowników do działu " + department
-					  </code>
-					</pre>
-				  </section>
-				  <section>
-					<h3>Pseudokod Klasy Company</h3>
-					<pre style="font-size: 16px" data-id="code-animation">
-					  <code class="hljs cpp" data-trim data-line-numbers>
-						Konstruktor()
-						Destruktor()
-						  Dla każdego pracownika w employees
-							Usuń pracownika
-						Metoda addEmployee(employee: Wskaźnik na Employee)
-						  Dodaj employee do listy employees
-						Metoda removeEmployee(employeeId: Integer)
-						  Znajdź i usuń pracownika o identyfikatorze employeeId z listy employees
-						Metoda displayAllEmployees()
-						  Dla każdego pracownika w employees
-							Wywołaj displayInfo() pracownika
-					  </code>
-					</pre>
-				  </section>				  
 			</section>
 		</div>
 	</div>
