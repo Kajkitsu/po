@@ -1637,6 +1637,465 @@ int main() {
 					</small>
 				</section>
 			</section>
+
+			<section data-background-gradient="linear-gradient(175deg, #09bc8a, #565896)" data-auto-animate>
+				<section>
+					<h2>Zarządzanie pamięcią w programowaniu obiektowym:<h2>
+							</h3>Wprowadzenie do operatorów new i delete</h3>
+				</section>
+				<section>
+					<h3>Alokacja pamięci dynamicznej</h3>
+					<p>
+						Alokacja pamięci dynamicznej to proces przydzielania pamięci w trakcie działania programu. W
+						przeciwieństwie do
+						pamięci statycznej, która jest przydzielana na etapie kompilacji, pamięć dynamiczna jest
+						przydzielana na żądanie
+						i może być zwalniana, gdy nie jest już potrzebna. Pozwala to na tworzenie struktur danych, które
+						mogą zmieniać
+						rozmiar w trakcie działania programu, takich jak listy dynamiczne i drzewa.
+					</p>
+				</section>
+				<section>
+					<h3>Zwalnianie pamięci dynamicznej</h3>
+					<ul>
+						<li>
+							<small>Zwalnianie pamięci dynamicznej to proces odzyskiwania pamięci, która została
+								wcześniej zaalokowana
+								dynamicznie. Jest to ważne, ponieważ pamięć, która nie jest zwolniona po użyciu, może
+								prowadzić do
+								wycieków pamięci.</small>
+						</li>
+						<li>
+							<small>W programowaniu obiektowym, zwalnianie pamięci jest często związane z destruktorami -
+								specjalnymi
+								funkcjami, które są wywoływane, gdy obiekt jest niszczony. Destruktory są odpowiedzialne
+								za zwalnianie
+								wszelkich zasobów, które obiekt mógł zaalokować podczas swojego istnienia.</small>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Wprowadzenie do zarządzania pamięcią</h3>
+					<p>
+						Zarządzanie pamięcią to kluczowy aspekt programowania, który polega na kontrolowaniu i
+						koordynowaniu dostępu do
+						pamięci komputera. W programowaniu obiektowym, zarządzanie pamięcią jest szczególnie
+						ważne, ponieważ obiekty
+						często wymagają alokacji i zwalniania pamięci dynamicznej.
+					</p>
+				</section>
+				<section>
+					<h3>Operator new</h3>
+					<p>
+						Operator <b>new</b> jest używany w programowaniu obiektowym do alokacji, czyli przydzielania
+						pamięci dla
+						nowych obiektów. Jest to specjalna funkcja, która tworzy miejsce w pamięci komputera na
+						przechowywanie danych
+						obiektu.
+					</p>
+					<p>
+						Kiedy tworzony jest nowy obiekt za pomocą operatora <b>new</b>, system najpierw znajduje
+						wystarczająco dużo
+						pamięci, aby pomieścić obiekt, a następnie zwraca adres tego miejsca w pamięci. Można następnie
+						użyć tego
+						adresu do odwoływania się do obiektu.
+					</p>
+				</section>
+				<section>
+					<h3>Operator delete</h3>
+					<p>
+						Operator <b>delete</b> jest używany do zwalniania, czyli odzyskiwania pamięci, która została
+						wcześniej
+						zaalokowana za pomocą operatora <b>new</b>. Kiedy obiekt nie jest już potrzebny, można użyć
+						operatora
+						<b>delete</b>, który zwalnia pamięć, którą obiekt zajmuje, co pozwala na jej ponowne użycie.
+					</p>
+					<p>
+						Jest to ważne, ponieważ niezwolnienie pamięci, która nie jest już potrzebna, może prowadzić do
+						wycieków pamięci.
+						Wycieki pamięci mogą spowodować, że program będzie działał wolniej, a w skrajnych przypadkach
+						może nawet
+						doprowadzić do awarii programu.
+					</p>
+				</section>
+				<section>
+					<h3>Korzyści z tworzenia obiektów za pomocą operatora new</h3>
+					<ul>
+						<li>
+							<small>Dynamiczna alokacja pamięci: Operator <code>new</code> pozwala na dynamiczną alokację
+								pamięci, co
+								oznacza, że pamięć jest przydzielana w trakcie działania programu. Dzięki temu możemy
+								tworzyć obiekty o
+								rozmiarze nieznanych nam na etapie kompilacji.</small>
+						</li>
+						<li>
+							<small>Żywotność obiektu: Obiekty utworzone za pomocą operatora <code>new</code> istnieją do
+								momentu ich
+								usunięcia za pomocą operatora <code>delete</code>. To oznacza, że obiekt utworzony za
+								pomocą
+								<code>new</code> może przetrwać dłużej niż obiekt utworzony za pomocą klasycznego
+								konstruktora, który
+								jest zniszczony, gdy opuszcza swój zakres (scope).</small>
+						</li>
+						<li>
+							<small>Flexybilność: Operator <code>new</code> daje większą kontrolę nad procesem tworzenia
+								obiektów, co
+								może być przydatne w niektórych zaawansowanych scenariuszach programowania.</small>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Przykład użycia operatorów new i delete</h3>
+					<small>
+						Poniżej znajduje się przykład kodu w języku C++, który pokazuje, jak używać operatorów
+						<code>new</code> i
+						<code>delete</code>:
+					</small>
+					<pre style="font-size: 16px;"><code>
+						// Definicja klasy
+						class MyClass {
+						public:
+								MyClass() {
+										std::cout << "Obiekt MyClass został utworzony.\n";
+								}
+								~MyClass() {
+										std::cout << "Obiekt MyClass został zniszczony.\n";
+								}
+						};
+						
+						int main() {
+						  // Użycie operatora new do utworzenia obiektu MyClass
+						  MyClass* myObject = new MyClass();
+						
+						  // Użycie operatora delete do zniszczenia obiektu MyClass
+						  delete myObject;
+						};
+						
+											    </code></pre>
+					<small>
+						W tym przykładzie, najpierw definiujemy klasę <code>MyClass</code> z konstruktorem i
+						destruktorem. Następnie
+						używamy operatora <code>new</code> do utworzenia nowego obiektu <code>MyClass</code> i
+						zapisujemy adres tego
+						obiektu w zmiennej <code>myObject</code>. Na końcu używamy operatora <code>delete</code> do
+						zniszczenia obiektu
+						i zwolnienia pamięci.
+					</small>
+				</section>
+				<section>
+					<h3>Zaawansowany przykład użycia operatorów new i delete</h3>
+					<small>
+						Poniżej znajduje się zaawansowany przykład kodu w języku C++, który pokazuje, jak używać
+						operatorów
+						<code>new</code> i <code>delete</code> do dynamicznego zarządzania tablicą obiektów:
+					</small>
+					<pre style="font-size: 16px;"><code>
+						// Definicja klasy
+						class MyClass {
+						public:
+								MyClass() {
+										std::cout << "Obiekt MyClass został utworzony.\n";
+								}
+								~MyClass() {
+										std::cout << "Obiekt MyClass został zniszczony.\n";
+								}
+						};
+						int main() {
+								// Użycie operatora new do utworzenia tablicy obiektów MyClass
+								MyClass* myObjects = new MyClass[10];
+						
+								// Użycie operatora delete[] do zniszczenia tablicy obiektów MyClass
+								delete[] myObjects;
+						};
+											    </code></pre>
+					<small>
+						W tym przykładzie, najpierw definiujemy klasę <code>MyClass</code> z konstruktorem i
+						destruktorem. Następnie
+						używamy operatora <code>new</code> do utworzenia tablicy 10 obiektów <code>MyClass</code> i
+						zapisujemy adres tej
+						tablicy w zmiennej <code>myObjects</code>. Na końcu używamy operatora <code>delete[]</code> do
+						zniszczenia
+						tablicy obiektów i zwolnienia pamięci.
+					</small>
+					<small>
+						Ten przykład pokazuje, jak operator <code>new</code> może być używany do dynamicznego tworzenia
+						tablic obiektów,
+						co jest jednym z kluczowych aspektów programowania obiektowego.
+					</small>
+				</section>
+				<section>
+					<h3>Zaawansowany przykład użycia destruktora</h3>
+					<small>
+						Poniżej znajduje się zaawansowany przykład kodu w języku C++, który pokazuje, jak używać
+						destruktora do
+						zwalniania zasobów:
+					</small>
+					<div>
+						<pre style="font-size: 16px;"><code style="max-height: 300px;">
+						// Definicja klasy
+						class MyClass {
+						public:
+								int* myArray;
+						
+								MyClass() {
+										myArray = new int[10];
+										std::cout << "Obiekt MyClass został utworzony i pamięć została zaalokowana.\n";
+								}
+						
+								~MyClass() {
+										delete[] myArray;
+										std::cout << "Obiekt MyClass został zniszczony i pamięć została zwolniona.\n";
+								}
+						};
+						
+						int	main() {
+								// Użycie operatora new do utworzenia obiektu MyClass
+								MyClass* myObject = new MyClass();
+						
+								// Użycie operatora delete do zniszczenia obiektu MyClass
+								delete myObject;
+						};
+						    </code></pre>
+					</div>
+					<small>
+						W tym przykładzie, klasa <code>MyClass</code> ma konstruktor, który alokuje pamięć dla tablicy
+						10 liczb
+						całkowitych, i destruktor, który zwalnia tę pamięć. Kiedy tworzymy nowy obiekt
+						<code>MyClass</code> za pomocą
+						operatora <code>new</code>, konstruktor jest wywoływany i pamięć jest alokowana. Kiedy niszczymy
+						obiekt za
+						pomocą operatora <code>delete</code>, destruktor jest wywoływany i pamięć jest zwalniana.
+						Ten przykład pokazuje, jak destruktor może być używany do automatycznego zwalniania zasobów, co
+						jest kluczowym
+						aspektem zarządzania pamięcią w programowaniu obiektowym.
+					</small>
+				</section>
+			</section>
+
+
+
+
+			<!-- TODO -->
+			<section>
+				<section>
+				<h3>Wzorzec projektowy Singleton</h3>
+				<small>
+					Wzorzec projektowy Singleton jest jednym z najbardziej popularnych wzorców projektowych w
+					programowaniu
+					obiektowym. Jego celem jest zapewnienie, że klasa ma tylko jedną instancję i zapewnienie
+					globalnego dostępu do
+					tej instancji.
+				</small>
+				<small>
+					Wzorzec Singleton jest szczególnie przydatny, gdy chcemy, aby klasa miała tylko jedną instancję
+					i chcemy
+					zapewnić, że dostęp do tej instancji jest globalny. Może to być przydatne w przypadku, gdy
+					chcemy, aby
+					klasa reprezentowała globalny stan lub zasób, który jest współdzielony przez całą aplikację.
+				</small>
+				</section>
+				<section>
+					<h3>Przykład użycia wzorca projektowego Singleton</h3>
+					<small>
+						Poniżej znajduje się przykład kodu w języku C++, który pokazuje, jak używać wzorca projektowego
+						Singleton:
+					</small>
+					<pre style="font-size: 16px;"><code>class Singleton {
+						private:
+								// Prywatny konstruktor, aby zapobiec 
+								// tworzeniu instancji za pomocą operatora new
+								Singleton() {}
+						
+								// Prywatny destruktor
+								~Singleton() {}
+						
+								// Usunięcie możliwości kopiowania i przypisywania
+								Singleton(const Singleton&) = delete;
+								Singleton& operator=(const Singleton&) = delete;
+						
+						public:
+								// Metoda do uzyskania instancji Singleton
+								static Singleton& getInstance() {
+										static Singleton instance;
+										return instance;
+								}
+						};
+						    </code></pre>
+					<small>
+						W tym przykładzie, klasa <code>Singleton</code> ma prywatny konstruktor i destruktor, co
+						zapobiega tworzeniu
+						nowych instancji za pomocą operatora <code>new</code> lub <code>delete</code>. Metoda
+						<code>getInstance</code>
+						zapewnia globalny dostęp do jednej instancji klasy.
+					</small>
+					<small>
+						Ten przykład pokazuje, jak wzorzec Singleton może być używany do zapewnienia, że klasa ma tylko
+						jedną instancję,
+						a dostęp do tej instancji jest globalny.
+					</small>
+				</section>
+				</section>
+				<section>
+
+				<section>
+					<h3>Klasy zaprzyjaźnione w C++</h3>
+					<small>
+						Słowo kluczowe <code>friend</code> w C++ jest używane do nadania pewnym funkcjom lub klasom
+						dostępu do
+						prywatnych i chronionych członków klasy. Jeśli klasa jest zadeklarowana jako <code>friend</code>
+						wewnątrz
+						definicji innej klasy, ta zaprzyjaźniona klasa może bezpośrednio dostępować do prywatnych i
+						chronionych członków
+						tej klasy.
+					</small>
+					<small>
+						Przykład użycia <code>friend</code> z klasą:
+					</small>
+					<pre style="font-size: 16px;"><code>
+						class MyClass {
+						private:
+								int myPrivateVar;
+						
+						friend class MyFriendClass;
+						};
+						
+						class MyFriendClass {
+						public:
+								void changeMyClass(MyClass& obj) {
+									// Dostęp do prywatnej zmiennej jest możliwy dzięki deklaracji friend
+										obj.myPrivateVar = 42;  
+								}
+						};
+						    </code></pre>
+					<small>
+						W powyższym przykładzie, klasa <code>MyFriendClass</code> ma dostęp do prywatnej zmiennej
+						<code>myPrivateVar</code> klasy <code>MyClass</code>, ponieważ jest zadeklarowana jako
+						<code>friend</code> w tej
+						klasie.
+					</small>
+				</section>
+
+
+				<section>
+					<h3>Ćwiczenie praktyczne: Rozbudowane zarządzanie pamięcią</h3>
+					<small>
+						Teraz, gdy zapoznałeś się z użyciem operatorów <code>new</code> i <code>delete</code> oraz
+						wzorcem Singleton,
+						spróbuj samodzielnie zaimplementować poniższe zadania:
+					</small>
+					<ul>
+						<li>
+							<small>
+								Zaimplementuj klasę <code>MyArray</code> w C++, która ma prywatny konstruktor alokujący
+								pamięć dla
+								tablicy o określonym rozmiarze, prywatny destruktor zwalniający tę pamięć i publiczną
+								metodę
+								<code>getSize</code>, która zwraca rozmiar tablicy. Dodatkowo, dodaj metody
+								<code>setValue</code> i
+								<code>getValue</code> do ustawiania i pobierania wartości na określonym indeksie
+								tablicy.
+							</small>
+						</li>
+						<li>
+							<small>
+								Zaimplementuj klasę <code>MySingleton</code>, która jest Singletonem i przechowuje
+								instancję klasy
+								<code>MyArray</code>. Klasa powinna mieć metodę <code>getArray</code>, która zwraca
+								referencję do
+								przechowywanej instancji <code>MyArray</code>.
+							</small>
+						</li>
+						<li>
+							<small>
+								Zaimplementuj funkcję <code>main</code>, która tworzy instancję klasy
+								<code>MySingleton</code> za pomocą
+								metody <code>getInstance</code>, a następnie używa metody <code>getArray</code> do
+								manipulacji tablicą.
+								Spróbuj dodać, odczytać i zmienić wartości w tablicy. Obserwuj, jak konstruktor i
+								destruktor są
+								wywoływane.
+							</small>
+						</li>
+					</ul>
+					<small>
+						Pamiętaj, że kluczowym aspektem zarządzania pamięcią w programowaniu obiektowym jest
+						zapewnienie, że pamięć jest
+						odpowiednio alokowana i zwalniana. Operatorzy <code>new</code> i <code>delete</code> są
+						podstawowymi narzędziami
+						do tego celu w języku C++, a wzorzec Singleton pomaga zarządzać instancjami klas.
+					</small>
+				</section>
+
+				<section data-background-color="black" data-auto-animate="">
+					<h3>Zadanie domowe: Klasa do sortowania z dynamiczną alokacją pamięci</h3>
+					<small>
+						Twoim zadaniem jest zaimplementować klasę, która przyjmuje tablicę liczb do posortowania w
+						konstruktorze,
+						dynamicznie alokuje pamięć dla tej tablicy, a następnie zawiera metodę do jej sortowania. Metoda
+						sortująca
+						powinna zwracać wynik sortowania, jeśli jest wywołana po raz pierwszy, lub zwracać poprzedni
+						wynik, jeśli
+						sortowanie już zostało wykonane.
+					</small>
+					<ul>
+						<li>
+							<small>
+								Użyj operatora <code>new</code> w konstruktorze klasy do dynamicznego alokowania pamięci
+								dla tablicy.
+							</small>
+						</li>
+						<li>
+							<small>
+								Zaimplementuj dowolny algorytm sortowania (oprócz sortowania bąbelkowego) jako metodę
+								klasy do
+								posortowania tablicy.
+							</small>
+						</li>
+						<li>
+							<small>
+								Metoda sortująca powinna zwracać wynik sortowania, jeśli jest wywołana po raz pierwszy,
+								lub zwracać
+								poprzedni wynik, jeśli sortowanie już zostało wykonane.
+							</small>
+						</li>
+						<li>
+							<small>
+								Użyj operatora <code>delete</code> w destruktorze klasy do zwolnienia pamięci po
+								zakończeniu sortowania.
+							</small>
+						</li>
+					</ul>
+					<small>
+						Pamiętaj, że kluczowym aspektem zarządzania pamięcią w programowaniu obiektowym jest
+						zapewnienie, że pamięć jest
+						odpowiednio alokowana i zwalniana. Operatorzy <code>new</code> i <code>delete</code> są
+						podstawowymi narzędziami
+						do tego celu w języku C++.
+					</small>
+				</section>
+
+
+
+			</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<!-- TODO jako zadanie domowe -->
 			<section data-background-gradient="linear-gradient(45deg, #c03090, #10a080)">
 				<section>
 					<h2>Konstruktor - cechy główne</h2>
