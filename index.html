@@ -2010,11 +2010,8 @@ void MojaKlasa::metoda() {
 					</small>
 				</section>
 			</section>
-
-
-
 			<section data-background-gradient="linear-gradient(175deg, #009b72, #43447b)">
-
+			
 				<section>
 					<h2>Polimorfizm</h2>
 					<h3>Przeciązanie funkcji i metod</h3>
@@ -2030,14 +2027,14 @@ void MojaKlasa::metoda() {
 						podstawie argumentów użytych podczas wywołania.
 					</small>
 					<pre>Przykład przeciążania funkcji w C++<code><script type="text/template">void print(int i) {
-							std::cout << "Here is int: " << i << std::endl;
-			}
-			void print(double f) {
-							std::cout << "Here is float: " << f << std::endl;
-			}
-			void print(char* c) {
-							std::cout << "Here is char*: " << c << std::endl;
-			}</script></code></pre>
+										std::cout << "Here is int: " << i << std::endl;
+						}
+						void print(double f) {
+										std::cout << "Here is float: " << f << std::endl;
+						}
+						void print(char* c) {
+										std::cout << "Here is char*: " << c << std::endl;
+						}</script></code></pre>
 					<small>
 						W powyższym przykładzie, funkcja <code>print</code> jest przeciążona trzy razy: raz dla
 						argumentu typu int, raz
@@ -2048,7 +2045,7 @@ void MojaKlasa::metoda() {
 						kodu.
 					</small>
 				</section>
-
+			
 				<section data-auto-animate>
 					<h3>Przeciążanie funkcji a programowanie obiektowe</h3>
 					<small>
@@ -2060,8 +2057,8 @@ void MojaKlasa::metoda() {
 						czytelność kodu.
 					</small>
 				</section>
-
-
+			
+			
 				<section data-auto-animate>
 					<h3>Dziedziczenie w programowaniu obiektowym</h3>
 					<small>
@@ -2072,20 +2069,20 @@ void MojaKlasa::metoda() {
 						pozwala na ponowne użycie kodu.
 					</small>
 					<pre style="font-size: 16px;">Przykład dziedziczenia w C++<code><script type="text/template">// Klasa bazowa
-			class Animal {
-			public:
-					void eat() {
-							std::cout << "I can eat!" << std::endl;
-					}
-			};
-			
-			// Klasa pochodna
-			class Dog : public Animal {
-			public:
-					void bark() {
-							std::cout << "I can bark! Woof Woof!" << std::endl;
-					}
-			};</script></code></pre>
+						class Animal {
+						public:
+								void eat() {
+										std::cout << "I can eat!" << std::endl;
+								}
+						};
+						
+						// Klasa pochodna
+						class Dog : public Animal {
+						public:
+								void bark() {
+										std::cout << "I can bark! Woof Woof!" << std::endl;
+								}
+						};</script></code></pre>
 					<small>
 						W powyższym przykładzie, klasa <code>Dog</code> dziedziczy od klasy <code>Animal</code>. Oznacza
 						to, że obiekt
@@ -2094,19 +2091,19 @@ void MojaKlasa::metoda() {
 						metody <code>bark()</code> zdefiniowanej w samej klasie <code>Dog</code>.
 					</small>
 				</section>
-
+			
 				<section data-auto-animate>
 					<h3>Dziedziczenie w programowaniu obiektowym</h3>
 					<pre>Użycie klasy Dog w main.cpp<code class="hljs cpp" ><script type="text/template">// main.cpp
-			int main() {
-					Animal myAnimal;
-					myAnimal.eat();
-					//myAnimal.bark(); // Błąd kompilacji
-					Dog myDog;
-					myDog.eat();
-					myDog.bark();
-					return 0;
-			}</script></code></pre>
+						int main() {
+								Animal myAnimal;
+								myAnimal.eat();
+								//myAnimal.bark(); // Błąd kompilacji
+								Dog myDog;
+								myDog.eat();
+								myDog.bark();
+								return 0;
+						}</script></code></pre>
 					<small>
 						W powyższym przykładzie, tworzymy obiekt klasy <code>Dog</code> i <code>Animal</code> i
 						wywołujemy metody <code>eat()</code> i
@@ -2115,7 +2112,7 @@ void MojaKlasa::metoda() {
 						<code>bark()</code> jest zdefiniowana w klasie <code>Dog</code>. Obiekt klasy
 						<code>Animal</code> nie posiada metody <code>bark()</code>,
 					</small>
-
+			
 				</section>
 				<section data-auto-animate>
 					<h3>Poziomy dostępu do dziedziczenia w C++</h3>
@@ -2143,10 +2140,10 @@ void MojaKlasa::metoda() {
 						</li>
 					</ul>
 				</section>
-
-
-
-
+			
+			
+			
+			
 				<section data-auto-animate>
 					<h3>Metody wirtualne w C++</h3>
 					<small>
@@ -2159,27 +2156,27 @@ void MojaKlasa::metoda() {
 						klasie typu
 						obiektu, a nie typu wskaźnika lub referencji.
 					</small>
-
-
-					<pre style="font-size: 16px;">Przykład metody wirtualnej w C++<code><script type="text/template">// Klasa bazowa
-			class Base {
-			public:
-					virtual void print() {
-							cout << "Wywołanie metody print() klasy bazowej" << endl;
-					}
-			};
 			
-			// Klasa pochodna
-			class Derived : public Base {
-			public:
-					// Przesłonięcie metody print()
-					void print() override {
-							cout << "Wywołanie metody print() klasy pochodnej" << endl;
-					}
-			};</script></code></pre>
+			
+					<pre style="font-size: 16px;">Przykład metody wirtualnej w C++<code><script type="text/template">// Klasa bazowa
+						class Base {
+						public:
+								virtual void print() {
+										cout << "Wywołanie metody print() klasy bazowej" << endl;
+								}
+						};
+						
+						// Klasa pochodna
+						class Derived : public Base {
+						public:
+								// Przesłonięcie metody print()
+								void print() override {
+										cout << "Wywołanie metody print() klasy pochodnej" << endl;
+								}
+						};</script></code></pre>
 				</section>
-
-
+			
+			
 				<section data-auto-animate>
 					<h3>Metody abstrakcyjne w C++</h3>
 					<small>
@@ -2193,24 +2190,24 @@ void MojaKlasa::metoda() {
 						metody
 						abstrakcyjne.
 					</small>
-
-
-					<pre style="font-size: 16px;">Przykład metody abstrakcyjnej w C++<code><script type="text/template">// Klasa bazowa (abstrakcyjna)
-			class Base {
-			public:
-					virtual void print() = 0; // Metoda abstrakcyjna
-			};
 			
-			// Klasa pochodna
-			class Derived : public Base {
-			public:
-					// Implementacja metody abstrakcyjnej
-					void print() override {
-							cout << "Wywołanie metody print() klasy pochodnej" << endl;
-					}
-			};</script></code></pre>
+			
+					<pre style="font-size: 16px;">Przykład metody abstrakcyjnej w C++<code><script type="text/template">// Klasa bazowa (abstrakcyjna)
+						class Base {
+						public:
+								virtual void print() = 0; // Metoda abstrakcyjna
+						};
+						
+						// Klasa pochodna
+						class Derived : public Base {
+						public:
+								// Implementacja metody abstrakcyjnej
+								void print() override {
+										cout << "Wywołanie metody print() klasy pochodnej" << endl;
+								}
+						};</script></code></pre>
 				</section>
-
+			
 				<section data-auto-animate>
 					<h3>Przesłanianie metod bez użycia słowa kluczowego 'virtual' w C++</h3>
 					<small>
@@ -2223,27 +2220,27 @@ void MojaKlasa::metoda() {
 						"statyczne wiązanie" lub "wiązanie w czasie kompilacji".
 					</small>
 					<pre style="font-size: 15px;">Przykład <code><script type="text/template">// Klasa bazowa
-			class Base {
-			public:
-					void print() {
-							cout << "Wywołanie metody print() klasy bazowej" << endl;
-					}
-			};
-			
-			// Klasa pochodna
-			class Derived : public Base {
-			public:
-					void print() {
-							cout << "Wywołanie metody print() klasy pochodnej" << endl;
-					}
-			};
-			
-			int main() {
-					Derived d;
-					Base& b = d;
-					b.print();  // Wywoła metodę print() klasy bazowej, nie pochodnej
-					return 0;
-			}</script></code></pre>
+						class Base {
+						public:
+								void print() {
+										cout << "Wywołanie metody print() klasy bazowej" << endl;
+								}
+						};
+						
+						// Klasa pochodna
+						class Derived : public Base {
+						public:
+								void print() {
+										cout << "Wywołanie metody print() klasy pochodnej" << endl;
+								}
+						};
+						
+						int main() {
+								Derived d;
+								Base& b = d;
+								b.print();  // Wywoła metodę print() klasy bazowej, nie pochodnej
+								return 0;
+						}</script></code></pre>
 					<small>
 						W powyższym przykładzie, mimo że <code>b</code> jest referencją do obiektu klasy
 						<code>Derived</code>, wywołanie
@@ -2252,7 +2249,7 @@ void MojaKlasa::metoda() {
 						<code>print()</code> nie jest wirtualna.
 					</small>
 				</section>
-
+			
 				<section data-auto-animate>
 					<h3>Rodzaje Dziedziczenia w Programowaniu Obiektowym</h3>
 					<small>
@@ -2280,7 +2277,7 @@ void MojaKlasa::metoda() {
 						</ul>
 					</small>
 				</section>
-
+			
 				<section data-auto-animate>
 					<h3>Polimorfizm w programowaniu obiektowym</h3>
 					<small>
@@ -2312,6 +2309,181 @@ void MojaKlasa::metoda() {
 				</section>
 			</section>
 
+			<section data-auto-animate data-background-gradient="linear-gradient(90deg, #aFB486, #F46267)">
+				<section>
+					<h1>Dziedziczenie wielobazowe</h1>
+				</section>
+				<section data-auto-animate>
+					<pre style="font-size: 16px" data-id="code-animation">
+								<code class="hljs cpp" data-trim data-line-numbers="3,12,21"><script type="text/template">#include <iostream>
+
+
+class BazowaA {
+protected:
+				int licznik;
+public:
+				void wyswietl() {
+								std::cout << "A::wyswietl()" << '\n';
+				}
+};
+
+class BazowaB {
+protected:
+				int licznik;
+public:
+				void wyswietl() {
+								std::cout << "B::wyswietl()" << '\n';
+				}
+};
+
+class Klasa: public BazowaA, public BazowaB {
+public:
+				void wyzeruj() {
+								BazowaA::licznik = 0;
+								BazowaB::licznik = 0;
+				}
+};
+
+int main() {
+				Klasa k;
+
+				k.BazowaA::wyswietl();
+				k.BazowaB::wyswietl();
+}</script>
+								</code>
+								</pre>
+					<small>
+						Język C++, w odróżnieniu od wielu popularnych języków, np. Javy, dopuszcza dziedziczenie
+						wielobazowe (dziedziczenie
+						wielokrotne), tj. klasa może dziedziczyć po więcej niż jednej klasie. To powoduje, że w ogólnym
+						przypadku nie mamy do
+						czynienia z drzewiastą hierarchią klas, lecz skierowanym grafem acyklicznym dziedziczenia.
+					</small>
+				</section>
+				<section data-auto-animate>
+					<pre style="font-size: 16px" data-id="code-animation">
+								<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">#include <iostream>
+
+class BazowaA {
+protected:
+				int licznik;
+public:
+				void wyswietl() {
+								std::cout << "A::wyswietl()" << '\n';
+				}
+};
+
+class BazowaB {
+protected:
+				int licznik;
+public:
+				void wyswietl() {
+								std::cout << "B::wyswietl()" << '\n';
+				}
+};
+
+class Klasa: public BazowaA, public BazowaB {
+public:
+				void wyzeruj() {
+								BazowaA::licznik = 0;
+								BazowaB::licznik = 0;
+				}
+};
+
+int main() {
+				Klasa k;
+
+				k.BazowaA::wyswietl();
+				k.BazowaB::wyswietl();
+}</script>
+								</code>
+								</pre>
+					<small>
+						Klasa pochodna ma dostęp do wszystkich pól z klas bazowych oraz udostępnia pola i metody zgodnie
+						z podanymi regułami
+						widoczności (private/protected/public). Jeśli pola lub metody w klasach bazowych powtarzają się,
+						wówczas konieczna jest
+						dodatkowa klasyfikacja nazwą klasy, jak w przykładzie poniżej.
+					</small>
+			
+				</section>
+				<section>
+					<h3>Dziedziczenie wirtualne</h3>
+					<small>
+						Dziedzicznie wirtualne jest specjalnym przypadkiem w dziedziczeniu wielobazowym, które stosuje
+						się, gdy z jakiegoś
+						powodu jedna z klas staje się wielokrotnie przodkiem (bezpośrednio lub pośrednio) innej klasy.
+						Np.
+					</small>
+					<pre style="font-size: 16px" data-id="code-animation">
+													<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
+protected:
+				void wyswietl() {};
+};
+
+class Posrednia: public Bazowa {};
+
+class Klasa: public Bazowa, public Posrednia {};</script>
+													</code>
+													</pre>
+				</section>
+				<section>
+					<small>
+						Tutaj to klasa Bazowa jest przodkiem Klasy: raz bezpośrednio, raz poprzez klasę Pośrednią.
+						Oczywiście nie jest to błąd,
+						ale niesie ze sobą następujące niedogodności:
+						<ul>
+							<li>
+								Pola z klasy <b>Bazowa</b> powtarzają się 2 razy, skutkiem czego <b>sizeof(Klasa) > 2 *
+									sizeof(Bazowa)</b>. To na pierwszy rzut oka
+								może wydawać się mało istotne, bo zwykle rozmiar klasy jest niewielki. Jednak co gdy
+								przechowujemy tysiące lub miliony
+								instancji? Wówczas ten narzut może okazać się znaczący.
+							</li>
+							<li>
+								Zwykle też chcemy, aby to właśnie klasa Bazowa dostarczała pewnych metod lub pól dla
+								klas pochodnych, a w tym przypadku
+								odwołanie do metody <b>Wyswietl</b> musi być kwalifikowane nazwą klasy nadrzędnej, co
+								jest mało wygodne.
+							</li>
+						</ul>
+					</small>
+				</section>
+				<section>
+					<small>
+						Zatem jeśli chcemy wyraźnie wskazać, że jakaś klasa jest bazową dla wszystkich potomków, to przy
+						w deklaracji musimy
+						dodać słowo kluczowe virtual przy nazwie klasy z której dziedziczymy. Wówczas zniknie
+						niejednoznaczność odwołań do jej
+						składowych, natomiast jej pola zostaną umieszczone w klasie pochodnej tylko raz. W przykładzie
+						poniżej rozmiar Klasy to
+						1kB + kilka bajtów, bez dziedziczenia wirtualnego byłoby to ponad 2kB, oraz oczywiście wywołanie
+						metody wyswietl
+						(używając takiego zapisu) byłoby niemożliwe.
+					</small>
+					<pre style="font-size: 16px" data-id="code-animation">
+																							<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
+				char bufor1kB[1024];
+public:
+				void wyswietl() {}
+};
+
+class Posrednia1: public virtual Bazowa {};
+
+class Posrednia2: public virtual Bazowa {};
+
+class Klasa: public Posrednia1, public Posrednia2 {};
+
+int main() {
+				Klasa k;
+				std::cout << sizeof(Klasa) << '\n';
+				k.wyswietl();
+}</script>
+																							</code>
+																							</pre>
+				</section>
+			
+			</section>
 			<!-- TODO -->
 			<section>
 				<section>
