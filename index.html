@@ -209,202 +209,196 @@ updateValue(&value); // Przekazanie adresu zmiennej
 						C++. O tym może kiedyś...</p>
 				</section>
 			</section>
-			<section data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
-				<section>
-					<h2>Klasa i obiekt dla zielonych</h2>
-				</section>
-				<section>
-					<h2>Co to jest Klasa i Obiekt?</h2>
-					<p>Klasa to szablon lub projekt, który określa, jakie właściwości (dane) i działania
-						(funkcje/metody) będzie miał obiekt.</p>
-					<p>Obiekt to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie
-						zdefiniowanych działań.</p>
-				</section>
-				<section>
-					<h2>Implementacja</h2>
+			<!-- ROZDZIAŁ 2: Klasa i obiekt (VERTICAL STACK) -->
+<section id="rozdzial-2" data-background-gradient="linear-gradient(37deg, #2b4a9e, #71a832)">
+  <!-- S1: Tytuł rozdziału (pionowo #1) -->
+  <section data-auto-animate>
+    <h2>Klasa i obiekt dla zielonych</h2>
+    <p><small>W tym mini-rozdziale najpierw intuicja, potem przykłady (Python/C++), a na końcu „profesjonalna” klasa.</small></p>
+  </section>
 
-					<div class="row">
-						<div class="column">
-							<h3>Python:</h3>
-							<pre style="font-size: 16px;"><code class="python">
-class Author:
-	def __init__(self, name, surname):
-		self.name = name
-		self.surname = surname
+  <!-- S2: Definicja (pionowo #2) -->
+  <section data-auto-animate>
+    <h2>Co to jest Klasa i Obiekt?</h2>
+    <p><b>Klasa</b> – przepis/forma opisująca dane (atrybuty) i działania (metody).</p>
+    <p><b>Obiekt</b> – konkretna „sztuka” tej klasy z własnymi danymi.</p>
+    <p><small>Analogią może być: <i>Przepis na ciasto (klasa)</i> vs. <i>upieczone ciasto (obiekt)</i>.</small></p>
+  </section>
 
-# tworzenie obiektu 'author1'
+  <!-- S3: Implementacja – intro -->
+  <section>
+    <h2>Implementacja: szybki start</h2>
+    <div class="row">
+      <div class="column">
+        <h3>Python</h3>
+        <pre style="font-size:16px"><code class="python">class Author:
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+
+# Obiekt
 author1 = Author("Jan", "Kowalski")
-												</code></pre>
-						</div>
-
-						<div class="column">
-							<h3>C++:</h3>
-							<pre style="font-size: 16px;"><code class="cpp">class Author {
+print(author1.name, author1.surname)</code></pre>
+      </div>
+      <div class="column">
+        <h3>C++</h3>
+        <pre style="font-size:16px"><code class="cpp">class Author {
 public:
     std::string name;
     std::string surname;
 };
 
-// tworzenie obiektu 'author1'
+// Obiekt
 Author author1;
 author1.name = "Jan";
-author1.surname = "Kowalski";
-                    </code></pre>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h2>Klasy vs Obiekty - Przykład</h2>
-					<p>Klasa Author określa, że każdy autor ma imię i nazwisko.</p>
-					<p>Obiekt klasy Author, np. author1, ma konkretne imię i nazwisko.</p>
-				</section>
-				<section>
-					<h2>Implementacja</h2>
+author1.surname = "Kowalski";</code></pre>
+      </div>
+    </div>
+  </section>
 
-					<div class="row">
-						<div class="column">
-							<h3>Python:</h3>
-							<pre style="font-size: 16px;"><code class="python"># Klasa Author
+  <!-- S4: Klasy vs Obiekty -->
+  <section>
+    <h2>Klasy vs Obiekty — przykład</h2>
+    <p>Klasa <code>Author</code> mówi: „każdy autor ma <i>name</i> i <i>surname</i>”.</p>
+    <p>Obiekt <code>author1</code> ma już konkretne wartości: „Jan Kowalski”.</p>
+  </section>
+
+  <!-- S5: Implementacja – wersja z podpisami -->
+  <section>
+    <h2>Implementacja — podpisane</h2>
+    <div class="row">
+      <div class="column">
+        <h3>Python</h3>
+        <pre style="font-size:16px"><code class="python"># Klasa Author
 class Author:
-	def __init__(self, name, surname):
-		self.name = name
-		self.surname = surname
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
 
-# Obiekt author1 klasy Author
-author1 = Author("Jan", "Kowalski")
-							</code></pre>
-						</div>
-
-						<div class="column">
-							<h3>C++:</h3>
-							<pre style="font-size: 16px;"><code class="cpp">
-// Klasa Author
+# Obiekt author1
+author1 = Author("Jan", "Kowalski")</code></pre>
+      </div>
+      <div class="column">
+        <h3>C++</h3>
+        <pre style="font-size:16px"><code class="cpp">// Klasa Author
 class Author {
 public:
-	std::string name;
-	std::string surname;
+    std::string name;
+    std::string surname;
 };
 
-// Obiekt author1 klasy Author
+// Obiekt author1
 Author author1;
 author1.name = "Jan";
-author1.surname = "Kowalski";
-							</code></pre>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h2>Zmienne i Typy w Programowaniu</h2>
-					<p style="font-size: 0.75em;">Typ zmiennej określa, jakiego rodzaju wartości może przechowywać
-						zmienna.</p>
-					<p style="font-size: 0.75em;">Klasa jest jak niestandardowy typ danych, który sami definiujemy.</p>
-					<p style="font-size: 0.75em;">Obiekt to zmienna, która przechowuje dane typu klasy.</p>
-					<pre><code class="cpp">// int to typ, a number to zmienna
+author1.surname = "Kowalski";</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6: Typy a obiekty -->
+  <section>
+    <h2>Zmienne i typy</h2>
+    <p><small>Typ mówi, jakie wartości przechowujemy. Klasa = nasz własny typ.</small></p>
+    <pre><code class="cpp">// int to typ, a number to zmienna
 int number = 5;
 
 // Author to klasa (typ), a author1 to obiekt (zmienna)
 Author author1;
 author1.name = "Jan";
-author1.surname = "Kowalski";					
-												</code></pre>
-				</section>
-				<section>
-					<h2>Po co nam ta obiektowość?</h2>
-					<p style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co
-						zapewnia bezpieczeństwo i integralność informacji.</p>
-					<p style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność
-						kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</p>
-					<p style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują
-						tych zaawansowanych funkcji.</p>
-					<p style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu
-						systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</p>
-				</section>
-				<section>
-					<h2>Struktura vs Klasa dla Samochodu</h2>
-					<div class="row">
-						<div class="column small-font">
-							<h3>Struktura:</h3>
-							<pre style="max-width: 600px;"><code class="python">// Definicja struktury Car
+author1.surname = "Kowalski";</code></pre>
+  </section>
+
+  <!-- S7: Po co OOP? -->
+  <section>
+    <h2>Po co nam obiektowość?</h2>
+    <ul>
+      <li>Enkapsulacja — ukrywasz detale, odsłaniasz interfejs.</li>
+      <li>Dziedziczenie — re-use i rozszerzalność.</li>
+      <li>Polimorfizm — jedna nazwa, różne zachowania.</li>
+    </ul>
+    <p><small>Struktury danych są prostsze, ale bez tych „supermocy”.</small></p>
+  </section>
+
+  <!-- S8: Struktura vs Klasa (auto-escape via template) -->
+  <section>
+    <h2>Struktura vs Klasa (C++)</h2>
+    <div class="row">
+      <div class="column small-font">
+        <h3>Struktura</h3>
+        <pre style="max-width:600px"><code class="hljs cpp" data-trim><script type="text/template">
+// Definicja struktury Car
 struct Car {
-	std::string brand;
-	int year;
+    std::string brand;
+    int year;
 };
 
 int main() {
-	// Tworzenie i inicjalizacja obiektu Car
-	Car myCar;
-	myCar.brand = "Toyota";
-	myCar.year = 2020;
+    Car myCar;
+    myCar.brand = "Toyota";
+    myCar.year  = 2020;
 
-	// Wyświetlanie danych
-	std::cout << "Samochód: " << myCar.brand << 
-	  ", Rok: " << myCar.year << std::endl;
-
-	return 0;
+    std::cout << "Samochód: " << myCar.brand
+              << ", Rok: "   << myCar.year  << std::endl;
+    return 0;
 }
-							</code></pre>
-						</div>
-
-						<div class="column small-font">
-							<h3>Klasa:</h3>
-							<pre style="max-width: 600px;">
-								<code class="cpp">// Definicja klasy Car
+</script></code></pre>
+      </div>
+      <div class="column small-font">
+        <h3>Klasa</h3>
+        <pre style="max-width:600px"><code class="hljs cpp" data-trim><script type="text/template">
+// Definicja klasy Car
 class Car {
 private:
-	std::string brand;
-	int year;
+    std::string brand;
+    int year;
 
 public:
-	Car(const std::string &brand, int year)
-		: brand(brand), year(year) {}
+    Car(const std::string& brand, int year)
+      : brand(brand), year(year) {}
 
-	void print() const {
-		std::cout << "Samochód: " << brand << 
-		  ", Rok: " << year << std::endl;
-	}
+    void print() const {
+        std::cout << "Samochód: " << brand
+                  << ", Rok: "   << year << std::endl;
+    }
 };
 
 int main() {
-	// Tworzenie i inicjalizacja obiektu Car
-	Car myCar("Toyota", 2020);
+    Car myCar("Toyota", 2020);
+    myCar.print();
+    return 0;
+}
+</script></code></pre>
+      </div>
+    </div>
+  </section>
 
-	// Wywołanie metody print
-	myCar.print();
+  <!-- S9: Kiedy co wybrać -->
+  <section>
+    <h2>Różnice i kiedy używać?</h2>
+    <div class="row">
+      <div class="column small-font">
+        <h3>Struktury</h3>
+        <ul>
+          <li>Proste „pudełka” na dane.</li>
+          <li>Pola zwykle publiczne.</li>
+          <li>Bez logiki (metod) albo minimalna.</li>
+        </ul>
+      </div>
+      <div class="column small-font">
+        <h3>Klasy</h3>
+        <ul>
+          <li>Logika w metodach (np. <code>print()</code>).</li>
+          <li>Enkapsulacja: kontrolowany dostęp.</li>
+          <li>Lepsze do złożonych modeli domeny.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-	return 0;
-}	
-							</code></pre>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h2>Różnice i Kiedy Używać</h2>
-
-					<div class="row">
-						<div class="column small-font">
-							<h3>Struktury:</h3>
-							<p style="font-size: 0.85em;"></p>Proste przechowywanie danych.</p>
-							<p style="font-size: 0.85em;"></p>Brak hermetyzacji; wszystkie pola są publiczne i dostępne
-							bezpośrednio.</p>
-							<p style="font-size: 0.85em;"></p>Brak metod; służy głównie jako kontener danych.</p>
-						</div>
-						<div class="column small-font">
-							<h3>Klasy:</h3>
-							<p style="font-size: 0.85em;">Zawiera metody (np. print) do interakcji z danymi.</p>
-							<p style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest
-								kontrolowany przez publiczne metody.</p>
-							<p style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest
-								kontrola i rozszerzalność.</p>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h2>"Profesjonalna" klasa</h2>
-					<pre style="font-size: 16px"><code  
-						class="hljs cpp" 
-						data-trim 
-						data-line-numbers>
-						<script type="text/template">
+  <!-- S10: „Profesjonalna” klasa (bez &lt; &gt; dzięki <script type="text/template">) -->
+  <section>
+    <h2>„Profesjonalna” klasa</h2>
+    <pre style="font-size:16px"><code class="hljs cpp" data-trim data-line-numbers><script type="text/template">
 #include <iostream>
 #include <string>
 #include <vector>
@@ -412,55 +406,61 @@ int main() {
 
 class Player {
 private:
-	std::string name;
-	int health;
-	int mana;
-	std::map<std::string, int> inventory; // Przechowuje przedmioty i ich ilość
-	std::vector<std::string> skills; // Lista umiejętności
+    std::string name;
+    int health;
+    int mana;
+    std::map<std::string,int> inventory; // przedmiot -> ilość
+    std::vector<std::string> skills;
 
 public:
-	Player(const std::string &name, int health, int mana)
-		: name(name), health(health), mana(mana) {}
+    Player(const std::string& name, int health, int mana)
+      : name(name), health(health), mana(mana) {}
 
-	void takeDamage(int amount) {
-		health -= amount;
-		if (health < 0) health = 0;
-	}
+    void takeDamage(int amount) {
+        health -= amount;
+        if (health < 0) health = 0;
+    }
 
-	void useItem(const std::string &item) {
-		if (inventory[item] > 0) {
-			// Logika używania przedmiotu
-			inventory[item]--;
-		} else {
-			std::cout << "Nie masz " << item << std::endl;
-		}
-	}
+    void useItem(const std::string& item) {
+        auto it = inventory.find(item);
+        if (it != inventory.end() && it->second > 0) {
+            it->second--;
+        } else {
+            std::cout << "Nie masz " << item << "\n";
+        }
+    }
 
-	void learnSkill(const std::string &skill) {
-		skills.push_back(skill);
-	}
+    void learnSkill(const std::string& skill) {
+        skills.push_back(skill);
+    }
 
-	void printStatus() const {
-		std::cout << "Gracz: " << name << "\n"
-					<< "Zdrowie: " << health << "\n"
-					<< "Mana: " << mana << std::endl;
-	}
-
-	// Dodatkowe metody...
+    void printStatus() const {
+        std::cout << "Gracz: "   << name   << "\n"
+                  << "Zdrowie: " << health << "\n"
+                  << "Mana: "    << mana   << std::endl;
+    }
 };
 
 int main() {
-	Player hero("Arthas", 100, 50);
-	hero.learnSkill("Fireball");
-	hero.takeDamage(20);
-	hero.useItem("Health Potion");
-	hero.printStatus();
-
-	return 0;
-}		
+    Player hero("Arthas", 100, 50);
+    hero.learnSkill("Fireball");
+    hero.takeDamage(20);
+    hero.useItem("Health Potion");
+    hero.printStatus();
+    return 0;
+}
 </script></code></pre>
-				</section>
-			</section>
+  </section>
+
+  <!-- S11: Mini-zadanko (uatrakcyjnienie) -->
+  <section>
+    <h2>Mini-zadanie</h2>
+    <p>Dodaj do <code>Player</code> metodę <code>heal(int amount)</code>, która zwiększa <code>health</code>,
+       ale nigdy powyżej 100. Spróbuj ją wywołać po <code>takeDamage(20)</code>.</p>
+    <p><small>Tip: użyj <code>std::min</code>.</small></p>
+  </section>
+</section>
+
 
 
 			<section id="start" data-background-gradient="linear-gradient(13deg, #3a6935, #b5b170)">
@@ -1526,117 +1526,113 @@ int main() {
 
 			</section>
 
+<!-- ROZDZIAŁ 5: Jak czytać diagramy klas (VERTICAL STACK) -->
+<section id="rozdzial-5" data-background-gradient="linear-gradient(67deg, #749c19, #bf3045)">
+
+  <!-- S1: Tytuł -->
+  <section data-auto-animate>
+    <h2>Jak czytać diagramy klas (UML)?</h2>
+    <p><small>Krótka ściąga: z czego składa się klasa, jakie są relacje, jak czytać krotności i widoczności.</small></p>
+  </section>
+
+<!-- S2: tylko diagram -->
+<section data-auto-animate>
+  <h3>Diagram klas — przykład</h3>
+  <img style="max-height: 600px; display:block; margin:auto;" 
+       src="assets/class_diagram_Zad1.png" 
+       alt="Przykładowy diagram klas UML">
+</section>
+
+<!-- S3: opis budowy klasy -->
+<section data-auto-animate>
+  <h3>Z czego składa się symbol klasy?</h3>
+  <img style="max-height: 250px; display:block; margin:auto;" 
+       src="assets/class_diagram_Zad1.png" 
+       alt="Diagram klas UML">
+  <ul style="margin-top:15px; font-size:0.8em;">
+    <li><b>Nazwa klasy</b> — górna część prostokąta.</li>
+    <li><b>Atrybuty (pola)</b> — środkowa część, przechowują dane.</li>
+    <li><b>Operacje (metody)</b> — dolna część, określają zachowanie.</li>
+  </ul>
+  <p style="font-size:0.75em;"><b>Widoczność:</b> + public, - private, # protected, ~ package.</p>
+</section>
 
 
-			<section data-background-gradient="linear-gradient(67deg, #749c19, #bf3045)">
-				<section>
-					<h2>Jak czytać diagramy klas?</h2>
-				</section>
-				<section data-auto-animate>
-					<h3>Diagram klas</h3>
-					<img style="max-height: 600px;" src="assets/class_diagram_Zad1.png">
-				</section>
-				<section data-auto-animate>
-					<h3>Jak czytać diagramy klas?</h3>
-					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
-					<small>
-						<ul>
-							<li><b>Klasy</b>: Prostokąty reprezentują klasy. Nazwa klasy jest umieszczona na górze
-								prostokąta.
-							</li>
-							<li><b>Atrybuty</b>: Poniżej nazwy klasy znajdują się atrybuty (pola, zmienne), które
-								przechowują
-								dane. Są
-								one zazwyczaj oznaczone
-								symbolem + dla publicznych lub - dla prywatnych.</li>
-							<li><b>Metody</b>: Jeszcze niżej umieszczone są metody (funkcje), które definiują zachowanie
-								klasy.
-								Podobnie jak atrybuty, metody
-								mogą być oznaczone jako publiczne (+) lub prywatne (-).</li>
-						</ul>
-					</small>
-				</section>
-				<section data-auto-animate>
-					<h3>Jak czytać diagramy klas?</h3>
-					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
-					<small>
-						<ul>
-							<li><b>Relacje</b>: Linie łączące klasy reprezentują różne typy relacji między nimi. Na
-								przykład:
-							</li>
-							<li><b>Asocjacja</b>: Zwykła linia oznacza, że dwie klasy są w jakiś sposób powiązane.
-								Strzałki
-								mogą
-								wskazywać kierunek asocjacji,
-								a liczby (np. "1" lub "*") określają krotność (ile obiektów jednej klasy może być
-								powiązanych z
-								obiektem drugiej klasy).</li>
-						</ul>
-					</small>
-				</section>
-				<section data-auto-animate>
-					<h3>Jak czytać diagramy klas?</h3>
-					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
-					<small>
-						<ul>
-							<li><b>Dziedziczenie</b>: Linia zakończona pustym trójkątem wskazuje na dziedziczenie lub
-								relację
-								typu
-								"jest rodzajem".</li>
-							<li><b>Krotność</b>: Przy relacjach, liczby takie jak "1" lub "" określają, ile instancji
-								jednej
-								klasy może
-								być powiązanych z
-								instancją drugiej klasy. Na przykład "1" oznacza pojedynczą instancję, a "" oznacza
-								wiele
-								instancji.</li>
-						</ul>
-					</small>
-				</section>
-				<section data-auto-animate>
-					<h3>Jak czytać diagramy klas?</h3>
-					<img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
-					<small>
-						Na podstawie tego diagramu możemy zobaczyć, że klasa Article zawiera prywatne atrybuty takie jak
-						title, author,
-						publicationYear, journal i publiczne metody takie jak konstruktory, displayInfo(), getTitle(),
-						getAuthor(),
-						getPublicationYear(), getJournal(). Podobnie dla klas Author, Book i Chapter. Ponadto, relacje
-						między klasami wskazują,
-						że Article, Book i Chapter zawierają obiekty klasy Author, a Book zawiera również kolekcję
-						obiektów Chapter.
-					</small>
-				</section>
-				<section>
-					<h3><b>&&&</b> ?</h3>
-					<small>
-						W języku C++ symbol <b>&</b> w kontekście parametru funkcji oznacza referencję. Referencje
-						pozwalają funkcjom na dostęp do
-						obiektów przekazanych do nich bez konieczności kopiowania tych obiektów. To znaczy, że funkcja
-						może operować
-						bezpośrednio na oryginalnym obiekcie, a nie na jego kopii, co jest wydajniejsze, szczególnie dla
-						dużych obiektów.
-					</small>
-					<small>
-						W kontekście diagramu klas UML, który przedstawiono, <b>&other</b> w konstruktorze kopiującym
-						oznacza, że konstruktor przyjmuje
-						referencję do innego obiektu tej samej klasy. Na przykład:
-					</small>
-					<pre style="font-size: 16px" data-id="code-animation">
-												<code class="hljs cpp"><script type="text/template">
-												Article::Article(const Article &other)
-												</script>
-												</code>
-												</pre>
-					<small>
-						Ten konstruktor kopiujący Article przyjmuje referencję do innego obiektu Article i używa jego
-						wartości do zainicjowania
-						nowego obiektu. To jest standardowy sposób implementacji konstruktora kopiującego w C++, który
-						zapewnia, że nowy obiekt
-						jest kopią istniejącego obiektu.
-					</small>
-				</section>
-			</section>
+  <!-- S4: Relacje (przegląd) -->
+  <section data-auto-animate>
+    <h3>Relacje między klasami — przegląd</h3>
+    <ul>
+      <li><b>Asocjacja</b> — zwykła linia: „A zna B”. Często z krotnościami (np. <code>1</code>, <code>0..1</code>, <code>*</code>, <code>1..*</code>).</li>
+      <li><b>Dziedziczenie (uogólnienie)</b> — linia z pustym trójkątem do klasy bazowej: „jest rodzajem”.</li>
+      <li><b>Agregacja</b> — pusta romba przy całości: „ma” (luźne posiadanie).</li>
+      <li><b>Kompozycja</b> — wypełniony romb: silne „składa się z” (część żyje tak długo jak całość).</li>
+      <li><b>Zależność</b> — przerywana strzałka: „używa” (np. w parametrze metody).</li>
+    </ul>
+  </section>
+
+  <!-- S5: Krotność (multiplicity) -->
+  <section data-auto-animate>
+    <h3>Jak czytać krotność?</h3>
+    <ul>
+      <li><b>1</b> — dokładnie jeden obiekt po tej stronie relacji.</li>
+      <li><b>0..1</b> — opcjonalnie (zero lub jeden).</li>
+      <li><b>*</b> — dowolnie wiele.</li>
+      <li><b>1..*</b> — co najmniej jeden.</li>
+    </ul>
+    <p><small>Przykład: <code>Author 1..* —— * Article</code> = każdy autor ma ≥1 artykuł, a artykuł może mieć wielu autorów.</small></p>
+  </section>
+
+  <!-- S6: Co widać w naszym diagramie -->
+  <section data-auto-animate>
+    <h3>Co widać na pokazanym diagramie?</h3>
+    <img style="max-height: 340px;" src="assets/class_diagram_Zad1.png" alt="Diagram klas">
+    <small>
+      <ul>
+        <li><b>Article</b> ma prywatne pola (np. <code>title</code>, <code>author</code>, <code>journal</code>) oraz publiczne operacje (konstruktory, <code>displayInfo()</code>, gettery).</li>
+        <li><b>Book</b> zawiera kolekcję <b>Chapter</b> (relacja całość–część), a elementy <b>Author</b> pojawiają się jako powiązania.</li>
+        <li>Krotności przy liniach mówią, ile elementów może być po każdej stronie.</li>
+      </ul>
+    </small>
+  </section>
+
+  <!-- S7: Widoczność, typy i sygnatury -->
+  <section data-auto-animate>
+    <h3>Widoczność i sygnatury w UML</h3>
+    <ul>
+      <li><b>+ nazwa(atrybuty): typ</b> — metoda publiczna, zwracająca <i>typ</i>.</li>
+      <li><b>- nazwa: typ</b> — atrybut prywatny.</li>
+      <li>Parametry mogą mieć nazwy i typy, np. <code>setTitle(title: std::string)</code>.</li>
+    </ul>
+  </section>
+
+  <!-- S8: & i && w C++ -->
+  <section data-auto-animate>
+    <h3>& i && w C++ — o co chodzi?</h3>
+    <ul>
+      <li><b>&</b> — <b>referencja</b>: przekazuje obiekt bez kopiowania (alias).</li>
+      <li><b>const &</b> — referencja do stałego obiektu (nie modyfikujemy argumentu).</li>
+      <li><b>&&</b> — <b>referencja przenosząca</b> (C++11+): pozwala „ukraść” zasoby (move).</li>
+    </ul>
+    <pre style="font-size:16px" data-id="code-animation">
+<code class="hljs cpp" data-trim><script type="text/template">
+// Kopiowanie
+Article::Article(const Article& other) : title(other.title) { /* ... */ }
+
+// Przenoszenie (wydajne)
+Article::Article(Article&& other) noexcept : title(std::move(other.title)) { /* ... */ }
+</script></code>
+    </pre>
+    <p><small>W diagramach UML często zobaczysz w konstruktorze parametr <code>const T&amp; other</code> — to właśnie referencja.</small></p>
+  </section>
+
+  <!-- S9: Mini-zadanie -->
+  <section>
+    <h3>Mini-zadanie</h3>
+    <p>Na podstawie diagramu dodaj do <code>Book</code> metodę <code>addChapter(ch: Chapter)</code> oraz pokaż w UML:
+      nową operację i zaktualizowaną krotność (np. <code>Book 1 —— 1..* Chapter</code>).</p>
+  </section>
+
+</section>
 
 			<section data-background-gradient="linear-gradient(175deg, #09bc8a, #565896)" data-auto-animate>
 				<section>
@@ -1875,141 +1871,159 @@ int main() {
 
 
 
+<section data-background-gradient="linear-gradient(175deg, #08415c, #202155)">
+  <!-- Slide 1 -->
+  <section data-auto-animate>
+    <h2>Pliki nagłówkowe</h2>
+  </section>
 
-			<section data-background-gradient="linear-gradient(175deg, #08415c, #202155)">
-				<section>
-					<h2>Pliki nagłówkowe</h2>
-				</section>
-				<section>
-					<p>
-						W języku C++, koncepcja podziału klasy na dwie części: plik nagłówkowy (header file) i plik
-						źródłowy (source
-						file) ma kilka korzyści:
-					</p>
-					<small>
-						<ol>
-							<li>
-								<strong>Modularność:</strong> Dzięki rozdzieleniu definicji klasy (deklaracji) od jej
-								implementacji, możliwe
-								jest tworzenie modułów kodu, które można łatwo łączyć. Plik nagłówkowy zawiera zazwyczaj
-								deklaracje klas,
-								funkcji i innych elementów interfejsu, natomiast plik źródłowy zawiera implementację
-								tych
-								elementów.
-							</li>
+  <!-- Slide 2 -->
+  <section data-auto-animate>
+    <h3>Po co dzielić na .h i .cpp?</h3>
+    <p>W C++ klasę zwykle dzielimy na <b>plik nagłówkowy (.h)</b> i <b>plik źródłowy (.cpp)</b>. To daje:</p>
+    <ul style="font-size:0.95em">
+      <li><b>Modularność</b> — interfejs oddzielony od implementacji.</li>
+      <li><b>Hermetyzację</b> — ukrywasz szczegóły działania.</li>
+      <li><b>Szybszą kompilację</b> — zmiany w implementacji przebudowują tylko .cpp.</li>
+    </ul>
+  </section>
 
-							<li>
-								<strong>Hermetyzacja:</strong> Dzięki rozdzieleniu interfejsu od implementacji, można
-								ukryć
-								szczegóły
-								implementacyjne przed użytkownikiem klasy. Użytkownicy mogą korzystać z interfejsu
-								dostępnego w pliku
-								nagłówkowym, nie będąc zaznajomieni z tym, jak dokładnie działa implementacja, co
-								ułatwia
-								utrzymanie
-								tajemnicy implementacyjnej (hermetyzację).
-							</li>
-
-							<li>
-								<strong>Szybsze kompilacje:</strong> W przypadku zmian w implementacji klasy, konieczne
-								jest
-								ponowne
-								skompilowanie tylko pliku źródłowego, co pozwala na zaoszczędzenie czasu kompilacji.
-								Jeśli
-								wszystko
-								zostałoby umieszczone w jednym pliku, nawet najmniejsza zmiana wymagałaby ponownego
-								kompilowania całego
-								programu.
-							</li>
-						</ol>
-					</small>
-
-				</section>
-
-				<section>
-					<small>
-						Przykładowo, rozdzielenie klasy "MojaKlasa" na plik nagłówkowy (MojaKlasa.h) i plik źródłowy
-						(MojaKlasa.cpp)
-						może wyglądać tak:
-					</small>
-					<div class="row">
-						<div class="col" style="float: left; width: 50%;">
-							<pre style="font-size: 14px;"><code><script type="text/template">#ifndef MOJA_KLASA_H
+  <!-- Slide 3 -->
+  <section data-auto-animate>
+    <h3>Jak wygląda podział?</h3>
+    <div class="row">
+      <div class="column" style="width:50%">
+        <pre style="font-size:14px">
+<code class="hljs cpp" data-trim data-line-numbers>
+<script type="text/template">
+// MojaKlasa.h
+#ifndef MOJA_KLASA_H
 #define MOJA_KLASA_H
+// alternatywnie: #pragma once
 
 class MojaKlasa {
 public:
-				// deklaracja konstruktora z parametrem
-				MojaKlasa(int zmienna); 
-				// deklaracja metody
-				void metoda(); 
+  explicit MojaKlasa(int zmienna); // konstruktor
+  void metoda() const;             // metoda nie zmienia stanu
+
 private:
-				// deklaracja prywatnej zmiennej
-				int zmienna; 
+  int zmienna;                     // pole prywatne
 };
 
-#endif // MOJA_KLASA_H</script></code></pre>
-							<small><b>MojaKlasa.h</b></small>
+#endif // MOJA_KLASA_H
+</script>
+</code>
+        </pre>
+        <small><b>MojaKlasa.h</b> — interfejs</small>
+      </div>
+      <div class="column" style="width:50%">
+        <pre style="font-size:14px">
+<code class="hljs cpp" data-trim data-line-numbers>
+<script type="text/template">
+// MojaKlasa.cpp
+#include "MojaKlasa.h"
+#include <iostream> // std::cout, std::endl
 
-						</div>
-						<div class="col" style="float: right; width: 50%;">
-
-							<pre style="font-size: 14px;"><code>
-												<script type="text/template">#include "MojaKlasa.h"
-
-// implementacja konstruktora
 MojaKlasa::MojaKlasa(int zmienna)
-				: zmienna(zmienna) {
+  : zmienna(zmienna) {}
+
+void MojaKlasa::metoda() const {
+  std::cout << "Zmienna: " << zmienna << std::endl;
 }
+</script>
+</code>
+        </pre>
+        <small><b>MojaKlasa.cpp</b> — implementacja</small>
+      </div>
+    </div>
+  </section>
 
-// implementacja metody
-void MojaKlasa::metoda() {
-				std::cout << "Zmienna: " 
-								<< zmienna << std::endl;
-}</script></code></pre>
-							<small><b>MojaKlasa.cpp</b></small>
+  <!-- Slide 4 -->
+  <section data-auto-animate>
+    <h3>Jak użyć klasy?</h3>
+    <pre style="font-size:15px">
+<code class="hljs cpp" data-trim data-line-numbers>
+<script type="text/template">
+#include "MojaKlasa.h"
 
-						</div>
-					</div>
-					<small>
-						Następnie, w pliku, w którym chcemy użyć klasy, importuje się plik nagłówkowy (<b>#include
-							"MojaKlasa.h"</b>) i
-						korzysta z
-						zadeklarowanego interfejsu. W przypadku kompilacji, konieczne jest dostarczenie zarówno pliku
-						nagłówkowego, jak i
-						pliku
-						źródłowego do kompilatora.
-					</small>
-				</section>
-				<section>
-					<h3>Kod preprocesora</h3>
-					<small>
-						W języku C++, w plikach nagłówkowych, często używa się dyrektyw preprocesora takich jak
-						<b>#ifndef</b>,
-						<b>#define</b> i <b>#endif</b>
-					</small>
-					<small>
-						<ul>
-							<li><b><em>#ifndef</em>(if not defined):</b> - Ten fragment kodu preprocesora sprawdza, czy
-								dany symbol lub makro nie został wcześniej zdefiniowany. Jeśli symbol nie
-								jest zdefiniowany, to wykonuje się kod znajdujący się między <b>#ifndef</b> a
-								odpowiadającym mu <b>#endif</b>. Jeśli symbol jest już
-								zdefiniowany, kod pomiędzy tymi dyrektywami jest pomijany. </li>
-							<li><b><em>#define</em></b> - Jeśli warunek w #ifndef jest spełniony (symbol nie jest
-								zdefiniowany), to <b>#define</b> służy do zdefiniowania tego symbolu. W
-								praktyce jest to najczęściej używane do stworzenia tzw. "strażnika wielokrotnego
-								dołączania" (include guard). Działa to
-								jako swoisty klucz, który uniemożliwia wielokrotne dołączanie tego samego pliku
-								nagłówkowego podczas kompilacji.</li>
-							<li><b><em>#endif</em></b> - Oznacza koniec bloku warunkowego rozpoczętego przez
-								<b>#ifndef</b>. Kody umieszczone między <b>#ifndef</b> a <b>#endif</b> są kompilowane
-								tylko wtedy, gdy warunek nie został spełniony (symbol nie jest zdefiniowany). To zamyka
-								blok warunkowy.
-							</li>
-						</ul>
-					</small>
-				</section>
-			</section>
+int main() {
+  MojaKlasa ob(42);
+  ob.metoda();
+  return 0;
+}
+</script>
+</code>
+    </pre>
+    <p style="font-size:0.9em;margin-top:6px">Kompilacja (przykład): po prostu zbuduj projekt — kompilator sam skompiluje oba pliki i połączy.</p>
+  </section>
+
+  <!-- Slide 5 -->
+  <section data-auto-animate>
+    <h3>Strażnicy dołączania</h3>
+    <p>W nagłówkach zabezpiecz się przed wielokrotnym dołączeniem:</p>
+    <div class="row">
+      <div class="column" style="width:50%">
+        <pre style="font-size:14px">
+<code class="hljs cpp" data-trim>
+<script type="text/template">
+// Najczęściej spotykane
+#ifndef MOJA_KLASA_H
+#define MOJA_KLASA_H
+// ... definicje ...
+#endif
+</script>
+</code>
+        </pre>
+      </div>
+      <div class="column" style="width:50%">
+        <pre style="font-size:14px">
+<code class="hljs cpp" data-trim>
+<script type="text/template">
+// Krótko i wygodnie (nieformalny standard)
+#pragma once
+// ... definicje ...
+</script>
+</code>
+        </pre>
+      </div>
+    </div>
+    <p style="font-size:0.9em">Obie formy zapobiegają wielokrotnemu wciągnięciu tego samego nagłówka.</p>
+  </section>
+
+  <!-- Slide 6 -->
+  <section data-auto-animate>
+    <h3>Co trafia do .h, a co do .cpp?</h3>
+    <ul style="font-size:0.95em">
+      <li><b>.h (interfejs):</b> deklaracje klas, metod, stałych, typów; <i>minimum</i> niezbędnych <code>#include</code>.</li>
+      <li><b>.cpp (implementacja):</b> definicje metod i funkcji, cięższe <code>#include</code> (np. <code>&lt;iostream&gt;</code>).</li>
+      <li><b>Forward declarations</b> w .h, gdy wystarczy wskazać istnienie typu:
+        <pre style="font-size:13px;margin:8px 0 0">
+<code class="hljs cpp" data-trim>
+<script type="text/template">
+class InnaKlasa;   // deklaracja wstępna
+class Moja {
+  InnaKlasa* ptr;  // wskaźnik/refs ok w nagłówku bez pełnej definicji
+};
+</script>
+</code>
+        </pre>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Slide 7 -->
+  <section data-auto-animate>
+    <h3>Dobre praktyki (w pigułce)</h3>
+    <ul style="font-size:0.95em">
+      <li>W nagłówkach używaj <b>include guards</b> lub <b>#pragma once</b>.</li>
+      <li>Minimalizuj <code>#include</code> w .h — resztę przenieś do .cpp.</li>
+      <li>Metody, które nie zmieniają stanu, oznaczaj <code>const</code>.</li>
+      <li>Konstruktor z jednym parametrem oznacz <code>explicit</code> (unikasz niechcianych konwersji).</li>
+      <li>Unikaj definicji zmiennych globalnych w nagłówkach (ODR!).</li>
+    </ul>
+  </section>
+</section>
+
 			<section data-background-gradient="linear-gradient(175deg, #009b72, #43447b)">
 			
 				<section>
@@ -2485,65 +2499,107 @@ int main() {
 			
 			</section>
 			<!-- TODO -->
-			<section>
-				<section>
-					<h3>Wzorzec projektowy Singleton</h3>
-					<small>
-						Wzorzec projektowy Singleton jest jednym z najbardziej popularnych wzorców projektowych w
-						programowaniu
-						obiektowym. Jego celem jest zapewnienie, że klasa ma tylko jedną instancję i zapewnienie
-						globalnego dostępu do
-						tej instancji.
-					</small>
-					<small>
-						Wzorzec Singleton jest szczególnie przydatny, gdy chcemy, aby klasa miała tylko jedną instancję
-						i chcemy
-						zapewnić, że dostęp do tej instancji jest globalny. Może to być przydatne w przypadku, gdy
-						chcemy, aby
-						klasa reprezentowała globalny stan lub zasób, który jest współdzielony przez całą aplikację.
-					</small>
-				</section>
-				<section>
-					<h3>Przykład użycia wzorca projektowego Singleton</h3>
-					<small>
-						Poniżej znajduje się przykład kodu w języku C++, który pokazuje, jak używać wzorca projektowego
-						Singleton:
-					</small>
-					<pre style="font-size: 16px;"><code>class Singleton {
-						private:
-								// Prywatny konstruktor, aby zapobiec 
-								// tworzeniu instancji za pomocą operatora new
-								Singleton() {}
-						
-								// Prywatny destruktor
-								~Singleton() {}
-						
-								// Usunięcie możliwości kopiowania i przypisywania
-								Singleton(const Singleton&) = delete;
-								Singleton& operator=(const Singleton&) = delete;
-						
-						public:
-								// Metoda do uzyskania instancji Singleton
-								static Singleton& getInstance() {
-										static Singleton instance;
-										return instance;
-								}
-						};
-						    </code></pre>
-					<small>
-						W tym przykładzie, klasa <code>Singleton</code> ma prywatny konstruktor i destruktor, co
-						zapobiega tworzeniu
-						nowych instancji za pomocą operatora <code>new</code> lub <code>delete</code>. Metoda
-						<code>getInstance</code>
-						zapewnia globalny dostęp do jednej instancji klasy.
-					</small>
-					<small>
-						Ten przykład pokazuje, jak wzorzec Singleton może być używany do zapewnienia, że klasa ma tylko
-						jedną instancję,
-						a dostęp do tej instancji jest globalny.
-					</small>
-				</section>
-			</section>
+			<section data-background-gradient="linear-gradient(200deg, #1c1f4c, #6b0f1a)">
+  <!-- Slajd 1 -->
+  <section>
+    <h2>Wzorzec projektowy Singleton</h2>
+    <p>
+      Singleton to jeden z najprostszych, ale też najczęściej używanych wzorców projektowych.
+    </p>
+    <p>
+      Jego głównym celem jest <b>zapewnienie, że istnieje tylko jedna instancja klasy</b> oraz
+      <b>globalny dostęp</b> do niej w całej aplikacji.
+    </p>
+  </section>
+
+  <!-- Slajd 2 -->
+  <section>
+    <h3>Kiedy stosować Singleton?</h3>
+    <ul>
+      <li>Gdy chcemy, aby istniał <b>jeden wspólny punkt dostępu</b> – np. do logów aplikacji.</li>
+      <li>Do zarządzania <b>połączeniem z bazą danych</b>.</li>
+      <li>Do obsługi <b>ustawień globalnych</b> w programie.</li>
+      <li>Do kontroli dostępu do <b>wspólnego zasobu</b> (np. pliku, drukarki, pamięci).</li>
+    </ul>
+  </section>
+
+  <!-- Slajd 3 -->
+  <section>
+    <h3>Przykład Singletona w C++</h3>
+    <pre style="font-size: 15px;"><code class="cpp">class Singleton {
+private:
+    // Prywatny konstruktor
+    Singleton() {}
+
+    // Prywatny destruktor
+    ~Singleton() {}
+
+    // Blokada kopiowania
+    Singleton(const Singleton&) = delete;
+    Singleton& operator=(const Singleton&) = delete;
+
+public:
+    // Statyczna metoda zwracająca jedyną instancję
+    static Singleton& getInstance() {
+        static Singleton instance;
+        return instance;
+    }
+
+    // Przykładowa metoda
+    void sayHello() {
+        std::cout << "Jestem jedynym Singletonem!" << std::endl;
+    }
+};
+</code></pre>
+  </section>
+
+  <!-- Slajd 4 -->
+  <section>
+    <h3>Jak to działa?</h3>
+    <ul>
+      <li><code>private</code> konstruktor blokuje tworzenie nowych obiektów.</li>
+      <li><code>delete</code> przy kopiowaniu i przypisaniu zapobiega duplikatom.</li>
+      <li><code>static</code> metoda <b>getInstance()</b> gwarantuje utworzenie tylko jednego obiektu.</li>
+      <li>Instancja tworzona jest tylko raz – przy pierwszym wywołaniu metody.</li>
+    </ul>
+  </section>
+
+  <!-- Slajd 5 -->
+  <section>
+    <h3>Singleton — zalety i wady</h3>
+    <div class="row">
+      <div class="column">
+        <h4> Zalety</h4>
+        <ul>
+          <li>Prosty dostęp do wspólnego obiektu.</li>
+          <li>Oszczędność pamięci (jedna instancja).</li>
+          <li>Przydatny w zarządzaniu zasobami globalnymi.</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4> Wady</h4>
+        <ul>
+          <li>Nadużywany może prowadzić do „globalnych zmiennych”.</li>
+          <li>Może utrudniać testowanie jednostkowe.</li>
+          <li>Wielowątkowość wymaga dodatkowej ostrożności.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slajd 6 -->
+  <section>
+    <h2>Podsumowanie</h2>
+    <p>
+      Singleton to wzorzec zapewniający <b>jedną instancję klasy</b> i <b>globalny dostęp</b> do niej.  
+      Świetny w przypadku logów, konfiguracji, baz danych czy sterowania zasobami.
+    </p>
+    <p>
+      Jednak używaj go z rozwagą — łatwo wpaść w pułapkę <b>nadmiaru globalnego stanu</b>.
+    </p>
+  </section>
+</section>
+
 			<section>
 
 				<section>
@@ -3885,7 +3941,7 @@ int main() {
 				</section>
 				<footer style="position: absolute; bottom: 0; width: 100%;">
 					<small style="font-size: 9px;">
-						Materiały do tej prezentacji zostały opracowane w oparciu o skrót materiałów wykładowych
+						Materiały dos tej prezentacji zostały opracowane w oparciu o skrót materiałów wykładowych
 						przedmiotu
 						Programowanie
 						Obiektowe prowadzonego na WAT. Autor materiałów źródłowych: prof. Andrzej Walczak<br>
@@ -3895,6 +3951,106 @@ int main() {
 
 
 			</section>
+			<section data-background-gradient="linear-gradient(160deg, #005C97, #363795)">
+	<section>
+		<h2>Inteligentne wskaźniki (Smart Pointers)</h2>
+		<small>
+			Inteligentne wskaźniki w C++ to obiekty, które automatycznie zarządzają
+			cyklem życia dynamicznie alokowanej pamięci. 
+			Zamiast używać ręcznie <code>new</code> i <code>delete</code>,
+			korzystamy z klas biblioteki standardowej.
+		</small>
+	</section>
+
+	<section>
+		<h3>Dlaczego Smart Pointers?</h3>
+		<small>
+			<ul>
+				<li>Unikają wycieków pamięci (memory leaks).</li>
+				<li>Automatycznie zwalniają zasoby, gdy obiekt nie jest już używany.</li>
+				<li>Ułatwiają pracę z dynamicznymi obiektami i złożonymi strukturami.</li>
+				<li>Są częścią nowoczesnego standardu C++11 i nowszych.</li>
+			</ul>
+		</small>
+	</section>
+
+	<section>
+		<h3><code>unique_ptr</code></h3>
+		<small>
+			<code>unique_ptr</code> posiada na własność obiekt i nie pozwala na współdzielenie.
+			Może istnieć tylko jeden właściciel danego zasobu.
+		</small>
+		<pre><code class="cpp" data-trim>
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main() {
+    unique_ptr<int> ptr = make_unique<int>(42);
+    cout << "Wartość: " << *ptr << endl;
+}			
+		</code></pre>
+	</section>
+
+	<section>
+		<h3><code>shared_ptr</code></h3>
+		<small>
+			<code>shared_ptr</code> umożliwia współdzielenie zasobu przez wiele wskaźników.
+			Obiekt zostaje usunięty dopiero, gdy ostatnia kopia <code>shared_ptr</code> wyjdzie z zakresu.
+		</small>
+		<pre><code class="cpp" data-trim>
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main() {
+    shared_ptr<int> p1 = make_shared<int>(100);
+    shared_ptr<int> p2 = p1; // współdzielony
+    cout << *p1 << " " << *p2 << endl;
+}			
+		</code></pre>
+	</section>
+
+	<section>
+		<h3><code>weak_ptr</code></h3>
+		<small>
+			<code>weak_ptr</code> nie zwiększa liczby referencji i służy do uniknięcia cyklicznych zależności
+			(np. w strukturach grafowych lub obiektach powiązanych wzajemnie).
+		</small>
+		<pre><code class="cpp" data-trim>
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main() {
+    shared_ptr<int> sp = make_shared<int>(7);
+    weak_ptr<int> wp = sp; // nie zwiększa liczby referencji
+    cout << "Czy dostępny? " << !wp.expired() << endl;
+}			
+		</code></pre>
+	</section>
+
+	<section>
+		<h3>Porównanie wskaźników</h3>
+		<small>
+			<ul>
+				<li><b>unique_ptr</b> – jeden właściciel zasobu.</li>
+				<li><b>shared_ptr</b> – wielu właścicieli, zasób zwalniany automatycznie.</li>
+				<li><b>weak_ptr</b> – obserwator, nie zarządza czasem życia obiektu.</li>
+			</ul>
+		</small>
+	</section>
+
+	<section>
+		<h3>Podsumowanie</h3>
+		<small>
+			Inteligentne wskaźniki są podstawą nowoczesnego programowania w C++.  
+			Stosując je zamiast klasycznych <code>new</code>/<code>delete</code>, 
+			unikamy wycieków pamięci i zyskujemy bezpieczniejszy kod.
+		</small>
+	</section>
+</section>
+
 		</div>
 	</div>
 
