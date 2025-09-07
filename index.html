@@ -215,43 +215,10 @@ updateValue(&value); // Przekazanie adresu zmiennej
 				</section>
 				<section>
 					<h2>Co to jest Klasa i Obiekt?</h2>
-					<p>Klasa to szablon lub projekt, który określa, jakie właściwości (dane) i działania
+					<p>KLASA to szablon lub projekt, który określa, jakie właściwości (dane) i działania
 						(funkcje/metody) będzie miał obiekt.</p>
-					<p>Obiekt to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie
+					<p>OBIEKT to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie
 						zdefiniowanych działań.</p>
-				</section>
-				<section>
-					<h2>Implementacja</h2>
-
-					<div class="row">
-						<div class="column">
-							<h3>Python:</h3>
-							<pre style="font-size: 16px;"><code class="python">
-class Author:
-	def __init__(self, name, surname):
-		self.name = name
-		self.surname = surname
-
-# tworzenie obiektu 'author1'
-author1 = Author("Jan", "Kowalski")
-												</code></pre>
-						</div>
-
-						<div class="column">
-							<h3>C++:</h3>
-							<pre style="font-size: 16px;"><code class="cpp">class Author {
-public:
-    std::string name;
-    std::string surname;
-};
-
-// tworzenie obiektu 'author1'
-Author author1;
-author1.name = "Jan";
-author1.surname = "Kowalski";
-                    </code></pre>
-						</div>
-					</div>
 				</section>
 				<section>
 					<h2>Klasy vs Obiekty - Przykład</h2>
@@ -264,7 +231,7 @@ author1.surname = "Kowalski";
 					<div class="row">
 						<div class="column">
 							<h3>Python:</h3>
-							<pre style="font-size: 16px;"><code class="python"># Klasa Author
+							<pre style="font-size: 16px;"><code class="python" data-trim data-line-numbers="2-5"># Klasa Author
 class Author:
 	def __init__(self, name, surname):
 		self.name = name
@@ -277,7 +244,7 @@ author1 = Author("Jan", "Kowalski")
 
 						<div class="column">
 							<h3>C++:</h3>
-							<pre style="font-size: 16px;"><code class="cpp">
+							<pre style="font-size: 16px;"><code class="hljs cpp" data-trim data-line-numbers="2-6" contenteditable>
 // Klasa Author
 class Author {
 public:
@@ -292,6 +259,43 @@ author1.surname = "Kowalski";
 							</code></pre>
 						</div>
 					</div>
+					<p>Implementacja Klasy Author</p>
+				</section>
+								<section>
+					<h2>Implementacja</h2>
+
+					<div class="row">
+						<div class="column">
+							<h3>Python:</h3>
+							<pre style="font-size: 16px;"><code class="python" data-trim data-line-numbers="7-8"># Klasa Author
+class Author:
+	def __init__(self, name, surname):
+		self.name = name
+		self.surname = surname
+
+# Obiekt author1 klasy Author
+author1 = Author("Jan", "Kowalski")
+							</code></pre>
+						</div>
+
+						<div class="column">
+							<h3>C++:</h3>
+							<pre style="font-size: 16px;"><code class="hljs cpp" data-trim data-line-numbers="8-11" contenteditable>
+// Klasa Author
+class Author {
+public:
+	std::string name;
+	std::string surname;
+};
+
+// Obiekt author1 klasy Author
+Author author1;
+author1.name = "Jan";
+author1.surname = "Kowalski";
+							</code></pre>
+						</div>
+					</div>
+					<p>Utworzenie obiektu author1 klasy Author</p>
 				</section>
 				<section>
 					<h2>Zmienne i Typy w Programowaniu</h2>
@@ -310,14 +314,16 @@ author1.surname = "Kowalski";
 				</section>
 				<section>
 					<h2>Po co nam ta obiektowość?</h2>
-					<p style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co
-						zapewnia bezpieczeństwo i integralność informacji.</p>
-					<p style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność
-						kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</p>
-					<p style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują
-						tych zaawansowanych funkcji.</p>
-					<p style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu
-						systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</p>
+					<ul>
+					<li style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co
+						zapewnia bezpieczeństwo i integralność informacji.</li>
+					<li style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność
+						kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</li>
+					<li style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują
+						tych zaawansowanych funkcji.</li>
+					<li style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu
+						systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</li>
+						</ul>
 				</section>
 				<section>
 					<h2>Struktura vs Klasa dla Samochodu</h2>
@@ -383,23 +389,28 @@ int main() {
 					<div class="row">
 						<div class="column small-font">
 							<h3>Struktury:</h3>
-							<p style="font-size: 0.85em;"></p>Proste przechowywanie danych.</p>
-							<p style="font-size: 0.85em;"></p>Brak hermetyzacji; wszystkie pola są publiczne i dostępne
-							bezpośrednio.</p>
-							<p style="font-size: 0.85em;"></p>Brak metod; służy głównie jako kontener danych.</p>
+							<ul>
+							
+							<li style="font-size: 0.85em;">Brak hermetyzacji; wszystkie pola są publiczne i dostępne
+							bezpośrednio.</li>
+							<li style="font-size: 0.85em;">Brak metod; służy głównie jako kontener danych.</li>
+							<li style="font-size: 0.85em;">Proste przechowywanie danych.</li>
+							</ul>
 						</div>
 						<div class="column small-font">
 							<h3>Klasy:</h3>
-							<p style="font-size: 0.85em;">Zawiera metody (np. print) do interakcji z danymi.</p>
-							<p style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest
-								kontrolowany przez publiczne metody.</p>
-							<p style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest
-								kontrola i rozszerzalność.</p>
+							<ul>
+							<li style="font-size: 0.85em;">Zawiera metody (np. print) do interakcji z danymi.</li>
+							<li style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest
+								kontrolowany przez publiczne metody.</li>
+							<li style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest
+								kontrola i rozszerzalność.</li>
+							</ul>
 						</div>
 					</div>
 				</section>
 				<section>
-					<h2>"Profesjonalna" klasa</h2>
+					<h2>Przykładowa poprawna klasa</h2>
 					<pre style="font-size: 16px"><code  
 						class="hljs cpp" 
 						data-trim 
