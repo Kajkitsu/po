@@ -1918,6 +1918,29 @@ int main() {
 							</li>
 
 							<li>
+								<strong>Hermetyzacja:</strong> 
+							</li>
+
+							<li>
+								<strong>Szybsze kompilacje:</strong> 
+							</li>
+						</ol>
+					</small>
+
+				</section>
+<section>
+					<p>
+						W języku C++, koncepcja podziału klasy na dwie części: plik nagłówkowy (header file) i plik
+						źródłowy (source
+						file) ma kilka korzyści:
+					</p>
+					<small>
+						<ol>
+							<li>
+								<strong>Modularność:</strong> 
+							</li>
+
+							<li>
 								<strong>Hermetyzacja:</strong> Dzięki rozdzieleniu interfejsu od implementacji, można
 								ukryć
 								szczegóły
@@ -1927,6 +1950,29 @@ int main() {
 								ułatwia
 								utrzymanie
 								tajemnicy implementacyjnej (hermetyzację).
+							</li>
+
+							<li>
+								<strong>Szybsze kompilacje:</strong> 
+							</li>
+						</ol>
+					</small>
+
+				</section>
+<section>
+					<p>
+						W języku C++, koncepcja podziału klasy na dwie części: plik nagłówkowy (header file) i plik
+						źródłowy (source
+						file) ma kilka korzyści:
+					</p>
+					<small>
+						<ol>
+							<li>
+								<strong>Modularność:</strong> 
+							</li>
+
+							<li>
+								<strong>Hermetyzacja:</strong> 
 							</li>
 
 							<li>
@@ -1991,7 +2037,58 @@ void MojaKlasa::metoda() {
 						</div>
 					</div>
 					<small>
-						Następnie, w pliku, w którym chcemy użyć klasy, importuje się plik nagłówkowy (<b>#include
+						W pliku nagłówkowym (<b>MojaKlasa.h</b>) znajdują się deklaracja konstruktora, metod oraz zmiennych. 
+						</small><small>
+						W pliku źródłowym (<b>MojaKlasa.cpp</b>) znajduje się implementacja konstruktora i metod.
+					</small>
+				</section>
+								<section>
+					<small>
+						Przykładowo, rozdzielenie klasy "MojaKlasa" na plik nagłówkowy (MojaKlasa.h) i plik źródłowy
+						(MojaKlasa.cpp)
+						może wyglądać tak:
+					</small>
+					<div class="row">
+						<div class="col" style="float: left; width: 50%;">
+							<pre style="font-size: 14px;"><code><script type="text/template">#ifndef MOJA_KLASA_H
+#define MOJA_KLASA_H
+
+class MojaKlasa {
+public:
+				// deklaracja konstruktora z parametrem
+				MojaKlasa(int zmienna); 
+				// deklaracja metody
+				void metoda(); 
+private:
+				// deklaracja prywatnej zmiennej
+				int zmienna; 
+};
+
+#endif // MOJA_KLASA_H</script></code></pre>
+							<small><b>MojaKlasa.h</b></small>
+
+						</div>
+						<div class="col" style="float: right; width: 50%;">
+
+							<pre style="font-size: 14px;"><code>
+												<script type="text/template">#include "MojaKlasa.h"
+
+// implementacja konstruktora
+MojaKlasa::MojaKlasa(int zmienna)
+				: zmienna(zmienna) {
+}
+
+// implementacja metody
+void MojaKlasa::metoda() {
+				std::cout << "Zmienna: " 
+								<< zmienna << std::endl;
+}</script></code></pre>
+							<small><b>MojaKlasa.cpp</b></small>
+
+						</div>
+					</div>
+					<small>
+						W pliku, w którym chcemy użyć klasy, importuje się plik nagłówkowy (<b>#include
 							"MojaKlasa.h"</b>) i
 						korzysta z
 						zadeklarowanego interfejsu. W przypadku kompilacji, konieczne jest dostarczenie zarówno pliku
@@ -2014,12 +2111,44 @@ void MojaKlasa::metoda() {
 								jest zdefiniowany, to wykonuje się kod znajdujący się między <b>#ifndef</b> a
 								odpowiadającym mu <b>#endif</b>. Jeśli symbol jest już
 								zdefiniowany, kod pomiędzy tymi dyrektywami jest pomijany. </li>
+							<li><b><em>#define</em></b></li>
+							<li><b><em>#endif</em></b>
+							</li>
+						</ul>
+					</small>
+				</section>
+								<section>
+					<h3>Kod preprocesora</h3>
+					<small>
+						W języku C++, w plikach nagłówkowych, często używa się dyrektyw preprocesora takich jak
+						<b>#ifndef</b>,
+						<b>#define</b> i <b>#endif</b>
+					</small>
+					<small>
+						<ul>
+							<li><b><em>#ifndef</em></b></li>
 							<li><b><em>#define</em></b> - Jeśli warunek w #ifndef jest spełniony (symbol nie jest
 								zdefiniowany), to <b>#define</b> służy do zdefiniowania tego symbolu. W
 								praktyce jest to najczęściej używane do stworzenia tzw. "strażnika wielokrotnego
 								dołączania" (include guard). Działa to
 								jako swoisty klucz, który uniemożliwia wielokrotne dołączanie tego samego pliku
 								nagłówkowego podczas kompilacji.</li>
+							<li><b><em>#endif</em></b>
+							</li>
+						</ul>
+					</small>
+				</section>
+								<section>
+					<h3>Kod preprocesora</h3>
+					<small>
+						W języku C++, w plikach nagłówkowych, często używa się dyrektyw preprocesora takich jak
+						<b>#ifndef</b>,
+						<b>#define</b> i <b>#endif</b>
+					</small>
+					<small>
+						<ul>
+							<li><b><em>#ifndef</em></b></li>
+							<li><b><em>#define</em></b></li>
 							<li><b><em>#endif</em></b> - Oznacza koniec bloku warunkowego rozpoczętego przez
 								<b>#ifndef</b>. Kody umieszczone między <b>#ifndef</b> a <b>#endif</b> są kompilowane
 								tylko wtedy, gdy warunek nie został spełniony (symbol nie jest zdefiniowany). To zamyka
