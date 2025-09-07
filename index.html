@@ -1108,9 +1108,18 @@ public class Card {
 				</section>
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
+					<h5> Co to jest konstruktor?</h5>
+					
+					<small>Konstruktor to specjalna metoda w klasie, która służy do <b>inicjalizacji</b> nowo tworzonego obiektu tej klasy.
+						 Konstruktor wywoływany jest automatycznie w momencie tworzenia obiektu i ustawia początkowe wartości jego pól (atrybutów). 
+						 W C++ i innych językach obiektowych konstruktor ma taką samą nazwę jak klasa i nie zwraca żadnej wartości. 
+						 Dzięki konstruktorowi obiekt jest gotowy do użycia zaraz po utworzeniu.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktory</h3>
 					<small>Konstruktor <b>NIE MUSI</b> wystąpić w opisie klasy, czyli obiekty nie muszą być wprowadzane
 						konstruktorem <B>jawnym</B>.</small>
-					<small><b>Nazwa konstruktora może być przeładowana bo jest on funkcją</b>, czyli może być ta nazwa
+					<small><b>Konstruktor to funkcja więc nazwa może być przeładowana</b>, czyli może być ta nazwa
 						stosowana wielokrotnie w opisie
 						deklaracji klasy oraz w opisie funkcji konstruktora z różnymi listami argumentów. Wtedy
 						kompilator odróżnia konstruktory
@@ -1128,16 +1137,6 @@ public class Card {
 						domniemanym.</small>
 				</section>
 				<section data-auto-animate>
-					<h3>Konstruktory</h3>
-					<p>Co właściwie robi konstruktor? On <b>INICJALIZUJE</b> obiekty. Kompilator automatycznie wywołuje
-						konstruktor w miejscu
-						tworzenia obiektu zanim jeszcze obiekt podejmie jakiekolwiek działanie. <b>Czyli po pierwszym
-							komunikacie na obiekt
-							startuje konstruktor</b>. Nazwa konstruktora taka sama jak nazwa klasy (pomysł Stroustrupa)
-						pozwala na jednoznaczne
-						powiązanie konstruktora z typem zmiennej obiektowej (wykorzystano operator zakresu).</p>
-				</section>
-				<section>
 					<h3>Konstruktory</h3>
 					<small>
 						<b>Konstruktor jest zwykle deklarowany jako publiczny</b>, bo przecież wprowadzane nim obiekty
@@ -1165,11 +1164,23 @@ public class Card {
 						bezargumentowy !!
 					</p>
 				</section>
+				<section>
+    <h3>konstruktory</h3>
+    <small>
+        <b>Konstruktor domyślny</b> (ang. <i>default constructor</i>) to konstruktor, który nie przyjmuje żadnych argumentów. Jeśli nie zdefiniujesz żadnego konstruktora w klasie, kompilator automatycznie wygeneruje konstruktor domyślny.
+    </small>
+    <br>
+    <small>
+        <b>Konstruktor domniemany</b> (czasem używany jako synonim domyślnego) to konstruktor bezargumentowy, który zostaje utworzony przez kompilator, gdy nie zdefiniujesz żadnego własnego konstruktora. Jeśli zdefiniujesz jakikolwiek inny konstruktor (np. z argumentami), kompilator nie wygeneruje już domyślnego/domnienanego konstruktora automatycznie – musisz go wtedy zadeklarować jawnie, jeśli jest potrzebny.
+    </small>
+    <br>
+    
+</section>
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
 					<p>Konstruktor domniemany (ang. default constructor)</p>
 					<pre style="font-size: 16px" data-id="code-animation">
-																												<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="9|15"><script type="text/template">
+						<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="9|15"><script type="text/template">
 	#include <iostream>
 	#include <cstring>
 	 
@@ -1211,16 +1222,13 @@ public class Card {
 																												</code>
 																												</pre>
 					<small>
-						Konstruktor domyślny (ang. default constructor) w języku C++ jest specjalnym rodzajem
-						konstruktora, który jest wywoływany bez
-						żadnych argumentów podczas tworzenia obiektu klasy. Gdy w klasie nie zdefiniowano żadnych
-						konstruktorów, kompilator
-						automatycznie generuje konstruktor domyślny. Jednakże, jeśli w klasie zdefiniowano jakikolwiek
-						inny konstruktor (np.
-						konstruktor z parametrami), konstruktor domyślny nie jest już automatycznie generowany, chyba że
-						został zdefiniowany
-						jawnie przez programistę.
-					</small>
+        <b>Podsumowanie:</b>
+        <ul>
+            <li>Konstruktor domyślny = konstruktor bezargumentowy.</li>
+            <li>Konstruktor domniemany = automatycznie wygenerowany przez kompilator, jeśli nie ma innych konstruktorów.</li>
+            <li>Jeśli zdefiniujesz własny konstruktor, domyślny/domniemany nie powstaje automatycznie.</li>
+        </ul>
+    </small>
 				</section>
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
