@@ -2463,7 +2463,7 @@ void MojaKlasa::metoda() {
 				</section>
 				<section data-auto-animate>
 					<pre style="font-size: 16px" data-id="code-animation">
-								<code class="hljs cpp" data-trim data-line-numbers="3,12,21"><script type="text/template">#include <iostream>
+								<code class="hljs cpp" data-trim data-line-numbers="4,13,22"><script type="text/template">#include <iostream>
 
 
 class BazowaA {
@@ -2503,9 +2503,7 @@ int main() {
 					<small>
 						Język C++, w odróżnieniu od wielu popularnych języków, np. Javy, dopuszcza dziedziczenie
 						wielobazowe (dziedziczenie
-						wielokrotne), tj. klasa może dziedziczyć po więcej niż jednej klasie. To powoduje, że w ogólnym
-						przypadku nie mamy do
-						czynienia z drzewiastą hierarchią klas, lecz skierowanym grafem acyklicznym dziedziczenia.
+						wielokrotne), tj. klasa może dziedziczyć po więcej niż jednej klasie. 
 					</small>
 				</section>
 				<section data-auto-animate>
@@ -2576,6 +2574,17 @@ class Klasa: public Bazowa, public Posrednia {};</script>
 													</pre>
 				</section>
 				<section>
+					<pre style="font-size: 16px" data-id="code-animation">
+													<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
+protected:
+				void wyswietl() {};
+};
+
+class Posrednia: public Bazowa {};
+
+class Klasa: public Bazowa, public Posrednia {};</script>
+													</code>
+													</pre>
 					<small>
 						Tutaj to klasa Bazowa jest przodkiem Klasy: raz bezpośrednio, raz poprzez klasę Pośrednią.
 						Oczywiście nie jest to błąd,
