@@ -215,43 +215,10 @@ updateValue(&value); // Przekazanie adresu zmiennej
 				</section>
 				<section>
 					<h2>Co to jest Klasa i Obiekt?</h2>
-					<p>Klasa to szablon lub projekt, który określa, jakie właściwości (dane) i działania
+					<p>KLASA to szablon lub projekt, który określa, jakie właściwości (dane) i działania
 						(funkcje/metody) będzie miał obiekt.</p>
-					<p>Obiekt to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie
+					<p>OBIEKT to konkretna instancja klasy, zawierająca rzeczywiste dane i umożliwiająca wykonanie
 						zdefiniowanych działań.</p>
-				</section>
-				<section>
-					<h2>Implementacja</h2>
-
-					<div class="row">
-						<div class="column">
-							<h3>Python:</h3>
-							<pre style="font-size: 16px;"><code class="python">
-class Author:
-	def __init__(self, name, surname):
-		self.name = name
-		self.surname = surname
-
-# tworzenie obiektu 'author1'
-author1 = Author("Jan", "Kowalski")
-												</code></pre>
-						</div>
-
-						<div class="column">
-							<h3>C++:</h3>
-							<pre style="font-size: 16px;"><code class="cpp">class Author {
-public:
-    std::string name;
-    std::string surname;
-};
-
-// tworzenie obiektu 'author1'
-Author author1;
-author1.name = "Jan";
-author1.surname = "Kowalski";
-                    </code></pre>
-						</div>
-					</div>
 				</section>
 				<section>
 					<h2>Klasy vs Obiekty - Przykład</h2>
@@ -264,7 +231,7 @@ author1.surname = "Kowalski";
 					<div class="row">
 						<div class="column">
 							<h3>Python:</h3>
-							<pre style="font-size: 16px;"><code class="python"># Klasa Author
+							<pre style="font-size: 16px;"><code class="python" data-trim data-line-numbers="2-5"># Klasa Author
 class Author:
 	def __init__(self, name, surname):
 		self.name = name
@@ -277,7 +244,7 @@ author1 = Author("Jan", "Kowalski")
 
 						<div class="column">
 							<h3>C++:</h3>
-							<pre style="font-size: 16px;"><code class="cpp">
+							<pre style="font-size: 16px;"><code class="hljs cpp" data-trim data-line-numbers="2-6" contenteditable>
 // Klasa Author
 class Author {
 public:
@@ -292,6 +259,43 @@ author1.surname = "Kowalski";
 							</code></pre>
 						</div>
 					</div>
+					<p>Implementacja Klasy Author</p>
+				</section>
+								<section>
+					<h2>Implementacja</h2>
+
+					<div class="row">
+						<div class="column">
+							<h3>Python:</h3>
+							<pre style="font-size: 16px;"><code class="python" data-trim data-line-numbers="7-8"># Klasa Author
+class Author:
+	def __init__(self, name, surname):
+		self.name = name
+		self.surname = surname
+
+# Obiekt author1 klasy Author
+author1 = Author("Jan", "Kowalski")
+							</code></pre>
+						</div>
+
+						<div class="column">
+							<h3>C++:</h3>
+							<pre style="font-size: 16px;"><code class="hljs cpp" data-trim data-line-numbers="8-11" contenteditable>
+// Klasa Author
+class Author {
+public:
+	std::string name;
+	std::string surname;
+};
+
+// Obiekt author1 klasy Author
+Author author1;
+author1.name = "Jan";
+author1.surname = "Kowalski";
+							</code></pre>
+						</div>
+					</div>
+					<p>Utworzenie obiektu author1 klasy Author</p>
 				</section>
 				<section>
 					<h2>Zmienne i Typy w Programowaniu</h2>
@@ -310,14 +314,16 @@ author1.surname = "Kowalski";
 				</section>
 				<section>
 					<h2>Po co nam ta obiektowość?</h2>
-					<p style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co
-						zapewnia bezpieczeństwo i integralność informacji.</p>
-					<p style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność
-						kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</p>
-					<p style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują
-						tych zaawansowanych funkcji.</p>
-					<p style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu
-						systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</p>
+					<ul>
+					<li style="font-size: 0.85em;">Programowanie obiektowe (OOP) umożliwia hermetyzację danych, co
+						zapewnia bezpieczeństwo i integralność informacji.</li>
+					<li style="font-size: 0.85em;">Dzięki dziedziczeniu, OOP wspiera ponowne użycie i rozszerzalność
+						kodu, a polimorfizm pozwala na dynamiczniejsze zachowania.</li>
+					<li style="font-size: 0.85em;">Dla porównania, struktury danych są bardziej podstawowe i nie oferują
+						tych zaawansowanych funkcji.</li>
+					<li style="font-size: 0.85em;">OOP jest kluczowe w tworzeniu złożonych, łatwych w utrzymaniu
+						systemów, podczas gdy struktury są odpowiednie dla prostych zadań.</li>
+						</ul>
 				</section>
 				<section>
 					<h2>Struktura vs Klasa dla Samochodu</h2>
@@ -383,23 +389,28 @@ int main() {
 					<div class="row">
 						<div class="column small-font">
 							<h3>Struktury:</h3>
-							<p style="font-size: 0.85em;"></p>Proste przechowywanie danych.</p>
-							<p style="font-size: 0.85em;"></p>Brak hermetyzacji; wszystkie pola są publiczne i dostępne
-							bezpośrednio.</p>
-							<p style="font-size: 0.85em;"></p>Brak metod; służy głównie jako kontener danych.</p>
+							<ul>
+							
+							<li style="font-size: 0.85em;">Brak hermetyzacji; wszystkie pola są publiczne i dostępne
+							bezpośrednio.</li>
+							<li style="font-size: 0.85em;">Brak metod; służy głównie jako kontener danych.</li>
+							<li style="font-size: 0.85em;">Proste przechowywanie danych.</li>
+							</ul>
 						</div>
 						<div class="column small-font">
 							<h3>Klasy:</h3>
-							<p style="font-size: 0.85em;">Zawiera metody (np. print) do interakcji z danymi.</p>
-							<p style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest
-								kontrolowany przez publiczne metody.</p>
-							<p style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest
-								kontrola i rozszerzalność.</p>
+							<ul>
+							<li style="font-size: 0.85em;">Zawiera metody (np. print) do interakcji z danymi.</li>
+							<li style="font-size: 0.85em;">Hermetyzuje dane; pola są prywatne, a dostęp do nich jest
+								kontrolowany przez publiczne metody.</li>
+							<li style="font-size: 0.85em;">Idealne do bardziej złożonych zastosowań, gdzie wymagana jest
+								kontrola i rozszerzalność.</li>
+							</ul>
 						</div>
 					</div>
 				</section>
 				<section>
-					<h2>"Profesjonalna" klasa</h2>
+					<h2>Przykładowa poprawna klasa</h2>
 					<pre style="font-size: 16px"><code  
 						class="hljs cpp" 
 						data-trim 
@@ -1097,9 +1108,18 @@ public class Card {
 				</section>
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
+					<h5> Co to jest konstruktor?</h5>
+					
+					<small>Konstruktor to specjalna metoda w klasie, która służy do <b>inicjalizacji</b> nowo tworzonego obiektu tej klasy.
+						 Konstruktor wywoływany jest automatycznie w momencie tworzenia obiektu i ustawia początkowe wartości jego pól (atrybutów). 
+						 W C++ i innych językach obiektowych konstruktor ma taką samą nazwę jak klasa i nie zwraca żadnej wartości. 
+						 Dzięki konstruktorowi obiekt jest gotowy do użycia zaraz po utworzeniu.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktory</h3>
 					<small>Konstruktor <b>NIE MUSI</b> wystąpić w opisie klasy, czyli obiekty nie muszą być wprowadzane
 						konstruktorem <B>jawnym</B>.</small>
-					<small><b>Nazwa konstruktora może być przeładowana bo jest on funkcją</b>, czyli może być ta nazwa
+					<small><b>Konstruktor to funkcja więc nazwa może być przeładowana</b>, czyli może być ta nazwa
 						stosowana wielokrotnie w opisie
 						deklaracji klasy oraz w opisie funkcji konstruktora z różnymi listami argumentów. Wtedy
 						kompilator odróżnia konstruktory
@@ -1117,16 +1137,6 @@ public class Card {
 						domniemanym.</small>
 				</section>
 				<section data-auto-animate>
-					<h3>Konstruktory</h3>
-					<p>Co właściwie robi konstruktor? On <b>INICJALIZUJE</b> obiekty. Kompilator automatycznie wywołuje
-						konstruktor w miejscu
-						tworzenia obiektu zanim jeszcze obiekt podejmie jakiekolwiek działanie. <b>Czyli po pierwszym
-							komunikacie na obiekt
-							startuje konstruktor</b>. Nazwa konstruktora taka sama jak nazwa klasy (pomysł Stroustrupa)
-						pozwala na jednoznaczne
-						powiązanie konstruktora z typem zmiennej obiektowej (wykorzystano operator zakresu).</p>
-				</section>
-				<section>
 					<h3>Konstruktory</h3>
 					<small>
 						<b>Konstruktor jest zwykle deklarowany jako publiczny</b>, bo przecież wprowadzane nim obiekty
@@ -1154,11 +1164,23 @@ public class Card {
 						bezargumentowy !!
 					</p>
 				</section>
+				<section>
+    <h3>konstruktory</h3>
+    <small>
+        <b>Konstruktor domyślny</b> (ang. <i>default constructor</i>) to konstruktor, który nie przyjmuje żadnych argumentów. Jeśli nie zdefiniujesz żadnego konstruktora w klasie, kompilator automatycznie wygeneruje konstruktor domyślny.
+    </small>
+    <br>
+    <small>
+        <b>Konstruktor domniemany</b> (czasem używany jako synonim domyślnego) to konstruktor bezargumentowy, który zostaje utworzony przez kompilator, gdy nie zdefiniujesz żadnego własnego konstruktora. Jeśli zdefiniujesz jakikolwiek inny konstruktor (np. z argumentami), kompilator nie wygeneruje już domyślnego/domnienanego konstruktora automatycznie – musisz go wtedy zadeklarować jawnie, jeśli jest potrzebny.
+    </small>
+    <br>
+    
+</section>
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
 					<p>Konstruktor domniemany (ang. default constructor)</p>
 					<pre style="font-size: 16px" data-id="code-animation">
-																												<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="9|15"><script type="text/template">
+						<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="9|15"><script type="text/template">
 	#include <iostream>
 	#include <cstring>
 	 
@@ -1200,16 +1222,13 @@ public class Card {
 																												</code>
 																												</pre>
 					<small>
-						Konstruktor domyślny (ang. default constructor) w języku C++ jest specjalnym rodzajem
-						konstruktora, który jest wywoływany bez
-						żadnych argumentów podczas tworzenia obiektu klasy. Gdy w klasie nie zdefiniowano żadnych
-						konstruktorów, kompilator
-						automatycznie generuje konstruktor domyślny. Jednakże, jeśli w klasie zdefiniowano jakikolwiek
-						inny konstruktor (np.
-						konstruktor z parametrami), konstruktor domyślny nie jest już automatycznie generowany, chyba że
-						został zdefiniowany
-						jawnie przez programistę.
-					</small>
+        <b>Podsumowanie:</b>
+        <ul>
+            <li>Konstruktor domyślny = konstruktor bezargumentowy.</li>
+            <li>Konstruktor domniemany = automatycznie wygenerowany przez kompilator, jeśli nie ma innych konstruktorów.</li>
+            <li>Jeśli zdefiniujesz własny konstruktor, domyślny/domniemany nie powstaje automatycznie.</li>
+        </ul>
+    </small>
 				</section>
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
@@ -1899,6 +1918,29 @@ int main() {
 							</li>
 
 							<li>
+								<strong>Hermetyzacja:</strong> 
+							</li>
+
+							<li>
+								<strong>Szybsze kompilacje:</strong> 
+							</li>
+						</ol>
+					</small>
+
+				</section>
+<section>
+					<p>
+						W języku C++, koncepcja podziału klasy na dwie części: plik nagłówkowy (header file) i plik
+						źródłowy (source
+						file) ma kilka korzyści:
+					</p>
+					<small>
+						<ol>
+							<li>
+								<strong>Modularność:</strong> 
+							</li>
+
+							<li>
 								<strong>Hermetyzacja:</strong> Dzięki rozdzieleniu interfejsu od implementacji, można
 								ukryć
 								szczegóły
@@ -1908,6 +1950,29 @@ int main() {
 								ułatwia
 								utrzymanie
 								tajemnicy implementacyjnej (hermetyzację).
+							</li>
+
+							<li>
+								<strong>Szybsze kompilacje:</strong> 
+							</li>
+						</ol>
+					</small>
+
+				</section>
+<section>
+					<p>
+						W języku C++, koncepcja podziału klasy na dwie części: plik nagłówkowy (header file) i plik
+						źródłowy (source
+						file) ma kilka korzyści:
+					</p>
+					<small>
+						<ol>
+							<li>
+								<strong>Modularność:</strong> 
+							</li>
+
+							<li>
+								<strong>Hermetyzacja:</strong> 
 							</li>
 
 							<li>
@@ -1972,7 +2037,58 @@ void MojaKlasa::metoda() {
 						</div>
 					</div>
 					<small>
-						Następnie, w pliku, w którym chcemy użyć klasy, importuje się plik nagłówkowy (<b>#include
+						W pliku nagłówkowym (<b>MojaKlasa.h</b>) znajdują się deklaracja konstruktora, metod oraz zmiennych. 
+						</small><small>
+						W pliku źródłowym (<b>MojaKlasa.cpp</b>) znajduje się implementacja konstruktora i metod.
+					</small>
+				</section>
+								<section>
+					<small>
+						Przykładowo, rozdzielenie klasy "MojaKlasa" na plik nagłówkowy (MojaKlasa.h) i plik źródłowy
+						(MojaKlasa.cpp)
+						może wyglądać tak:
+					</small>
+					<div class="row">
+						<div class="col" style="float: left; width: 50%;">
+							<pre style="font-size: 14px;"><code><script type="text/template">#ifndef MOJA_KLASA_H
+#define MOJA_KLASA_H
+
+class MojaKlasa {
+public:
+				// deklaracja konstruktora z parametrem
+				MojaKlasa(int zmienna); 
+				// deklaracja metody
+				void metoda(); 
+private:
+				// deklaracja prywatnej zmiennej
+				int zmienna; 
+};
+
+#endif // MOJA_KLASA_H</script></code></pre>
+							<small><b>MojaKlasa.h</b></small>
+
+						</div>
+						<div class="col" style="float: right; width: 50%;">
+
+							<pre style="font-size: 14px;"><code>
+												<script type="text/template">#include "MojaKlasa.h"
+
+// implementacja konstruktora
+MojaKlasa::MojaKlasa(int zmienna)
+				: zmienna(zmienna) {
+}
+
+// implementacja metody
+void MojaKlasa::metoda() {
+				std::cout << "Zmienna: " 
+								<< zmienna << std::endl;
+}</script></code></pre>
+							<small><b>MojaKlasa.cpp</b></small>
+
+						</div>
+					</div>
+					<small>
+						W pliku, w którym chcemy użyć klasy, importuje się plik nagłówkowy (<b>#include
 							"MojaKlasa.h"</b>) i
 						korzysta z
 						zadeklarowanego interfejsu. W przypadku kompilacji, konieczne jest dostarczenie zarówno pliku
@@ -1995,12 +2111,44 @@ void MojaKlasa::metoda() {
 								jest zdefiniowany, to wykonuje się kod znajdujący się między <b>#ifndef</b> a
 								odpowiadającym mu <b>#endif</b>. Jeśli symbol jest już
 								zdefiniowany, kod pomiędzy tymi dyrektywami jest pomijany. </li>
+							<li><b><em>#define</em></b></li>
+							<li><b><em>#endif</em></b>
+							</li>
+						</ul>
+					</small>
+				</section>
+								<section>
+					<h3>Kod preprocesora</h3>
+					<small>
+						W języku C++, w plikach nagłówkowych, często używa się dyrektyw preprocesora takich jak
+						<b>#ifndef</b>,
+						<b>#define</b> i <b>#endif</b>
+					</small>
+					<small>
+						<ul>
+							<li><b><em>#ifndef</em></b></li>
 							<li><b><em>#define</em></b> - Jeśli warunek w #ifndef jest spełniony (symbol nie jest
 								zdefiniowany), to <b>#define</b> służy do zdefiniowania tego symbolu. W
 								praktyce jest to najczęściej używane do stworzenia tzw. "strażnika wielokrotnego
 								dołączania" (include guard). Działa to
 								jako swoisty klucz, który uniemożliwia wielokrotne dołączanie tego samego pliku
 								nagłówkowego podczas kompilacji.</li>
+							<li><b><em>#endif</em></b>
+							</li>
+						</ul>
+					</small>
+				</section>
+								<section>
+					<h3>Kod preprocesora</h3>
+					<small>
+						W języku C++, w plikach nagłówkowych, często używa się dyrektyw preprocesora takich jak
+						<b>#ifndef</b>,
+						<b>#define</b> i <b>#endif</b>
+					</small>
+					<small>
+						<ul>
+							<li><b><em>#ifndef</em></b></li>
+							<li><b><em>#define</em></b></li>
 							<li><b><em>#endif</em></b> - Oznacza koniec bloku warunkowego rozpoczętego przez
 								<b>#ifndef</b>. Kody umieszczone między <b>#ifndef</b> a <b>#endif</b> są kompilowane
 								tylko wtedy, gdy warunek nie został spełniony (symbol nie jest zdefiniowany). To zamyka
@@ -2315,7 +2463,7 @@ void MojaKlasa::metoda() {
 				</section>
 				<section data-auto-animate>
 					<pre style="font-size: 16px" data-id="code-animation">
-								<code class="hljs cpp" data-trim data-line-numbers="3,12,21"><script type="text/template">#include <iostream>
+								<code class="hljs cpp" data-trim data-line-numbers="4,13,22"><script type="text/template">#include <iostream>
 
 
 class BazowaA {
@@ -2355,9 +2503,7 @@ int main() {
 					<small>
 						Język C++, w odróżnieniu od wielu popularnych języków, np. Javy, dopuszcza dziedziczenie
 						wielobazowe (dziedziczenie
-						wielokrotne), tj. klasa może dziedziczyć po więcej niż jednej klasie. To powoduje, że w ogólnym
-						przypadku nie mamy do
-						czynienia z drzewiastą hierarchią klas, lecz skierowanym grafem acyklicznym dziedziczenia.
+						wielokrotne), tj. klasa może dziedziczyć po więcej niż jednej klasie. 
 					</small>
 				</section>
 				<section data-auto-animate>
@@ -2428,6 +2574,17 @@ class Klasa: public Bazowa, public Posrednia {};</script>
 													</pre>
 				</section>
 				<section>
+					<pre style="font-size: 16px" data-id="code-animation">
+													<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
+protected:
+				void wyswietl() {};
+};
+
+class Posrednia: public Bazowa {};
+
+class Klasa: public Bazowa, public Posrednia {};</script>
+													</code>
+													</pre>
 					<small>
 						Tutaj to klasa Bazowa jest przodkiem Klasy: raz bezpośrednio, raz poprzez klasę Pośrednią.
 						Oczywiście nie jest to błąd,
@@ -3895,6 +4052,177 @@ int main() {
 
 
 			</section>
+			    
+            
+
+            <section data-auto-animate data-background-gradient="linear-gradient(45deg, #c03030, #10a081)">
+                <section>
+                    <h2>Wyjątki i obsługa błędów</h2>
+                </section>
+                <section data-auto-animate>
+                    <h3>Co to są wyjątki?</h3>
+                    <small>
+                        Wyjątki to mechanizm zgłaszania i obsługi błędów w czasie wykonania programu. Pozwalają
+                        oddzielić kod normalnej logiki od kodu obsługi błędów (try / catch / throw). Dzięki nim
+                        można bezpiecznie przechwycić problem i zwrócić się do procedury naprawczej lub poprawnie
+                        zakończyć działanie programu.
+                    </small>
+                </section>
+			<section data-auto-animate>
+                    <h3>Obsługa wyjątków -  try, catch i throw</h3>
+                    <small>
+                        <ul>
+							<li><strong>try:</strong> Blok kodu, w którym może wystąpić wyjątek. Jeśli wyjątek
+								zostanie rzucony, realizcaja programu przekierowywana jest do odpowiedniego bloku catch.
+							</li>
+							<li><strong>catch:</strong> Blok kodu, który przechwytuje i obsługuje wyjątek. Można
+								mieć wiele bloków catch dla różnych typów wyjątków.
+							</li>
+							<li><strong>throw:</strong> Służy do zgłaszania wyjątku. Może być używany do
+								zgłaszania zarówno standardowych, jak i niestandardowych wyjątków. 
+							</li>
+						</ul>
+                    </small>
+                </section>
+                <section data-auto-animate>
+                    <h3>Przykład w C++</h3>
+                    <pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="11-14"><script type="text/template">
+// C++: prosty przykład obsługi wyjątków
+#include <iostream>
+#include <stdexcept>
+
+int divide(int a, int b) {
+    if (b == 0) throw std::runtime_error("Dzielenie przez zero");
+    return a / b;
+}
+
+int main() {
+    try {
+        std::cout << divide(10, 2) << std::endl;
+        std::cout << divide(5, 0) << std::endl; // tu zostanie rzucony wyjątek
+    } 
+	  catch (const std::exception &e) {
+        std::cerr << "Błąd: " << e.what() << std::endl;
+    }
+    return 0;
+}
+</script></code></pre>
+                    <small>
+                        <ul>
+                            <li><strong>try</strong> — blok(fragmęt kodu), w którym może wystąpić wyjątek.<br>
+								tu może coś pójść nie tak </li>
+								
+                            <li><strong>throw</strong> 
+							</li>
+                            <li><strong>catch</strong> 
+							</li>
+                        </ul>
+                    </small>
+                </section>
+<section data-auto-animate>
+                    <h3>Przykład w C++</h3>
+                    <pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="6"><script type="text/template">
+// C++: prosty przykład obsługi wyjątków
+#include <iostream>
+#include <stdexcept>
+
+int divide(int a, int b) {
+    if (b == 0) throw std::runtime_error("Dzielenie przez zero");
+    return a / b;
+}
+
+int main() {
+    try {
+        std::cout << divide(10, 2) << std::endl;
+        std::cout << divide(5, 0) << std::endl; // tu zostanie rzucony wyjątek
+    } 
+	  catch (const std::exception &e) {
+        std::cerr << "Błąd: " << e.what() << std::endl;
+    }
+    return 0;
+}
+</script></code></pre>
+                    <small>
+                        <ul>
+                            <li><strong>try</strong></li>
+								
+                            <li><strong>throw</strong> — zgłasza wyjątek (tutaj std::runtime_error).<br>
+								tu coś poszło nie tak, więc zgłaszamy wyjątek
+							</li>
+                            <li><strong>catch</strong> 
+							</li>
+                        </ul>
+                    </small>
+                </section><section data-auto-animate>
+                    <h3>Przykład w C++</h3>
+                    <pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="15-17"><script type="text/template">
+// C++: prosty przykład obsługi wyjątków
+#include <iostream>
+#include <stdexcept>
+
+int divide(int a, int b) {
+    if (b == 0) throw std::runtime_error("Dzielenie przez zero");
+    return a / b;
+}
+
+int main() {
+    try {
+        std::cout << divide(10, 2) << std::endl;
+        std::cout << divide(5, 0) << std::endl; // tu zostanie rzucony wyjątek
+    } 
+	  catch (const std::exception &e) {
+        std::cerr << "Błąd: " << e.what() << std::endl;
+    }
+    return 0;
+}
+</script></code></pre>
+                    <small>
+                        <ul>
+                            <li><strong>try</strong></li>
+								
+                            <li><strong>throw</strong>
+							</li>
+                            <li><strong>catch</strong> — przechwytuje wyjątek; można obsłużyć różne typy wyjątków.<br>
+								tu obsługujemy wyjątek, czyli coś poszło nie tak, więc wykonujemy procedurę naprawczą.
+							</li>
+                        </ul>
+                    </small>
+                </section>
+                <section data-auto-animate>
+                    <h3>Przykład w Pythonie</h3>
+                    <pre style="font-size: 16px"><code class="python" data-trim data-line-numbers="1-11"><script type="text/template">
+# Python: prosty przykład obsługi wyjątków
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Dzielenie przez zero")
+    return a / b
+
+try:
+    print(divide(10, 2))
+    print(divide(5, 0))
+except ValueError as e:
+    print("Błąd:", e)
+</script></code></pre>
+                    <small>
+                        <ul>
+                            <li>raise — rzuca wyjątek. (odpowiendik throw w cpp)</li>
+                            <li>try except — przechwycenie </li>
+                            <li>except - obsługa wyjątku w Pythonie. </li>
+                        </ul>
+                    </small>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Wskazówki praktyczne</h3>
+                    <small>
+                        <ul>
+                            <li>Używaj wyjątków do sytuacji wyjątkowych — nie do normalnego sterowania przepływem.</li>
+                            <li>Przechwytuj możliwie najbardziej konkretne typy wyjątków.</li>
+                            <li>Zadbaj o czyszczenie zasobów (RAII w C++ lub finally / context manager w Pythonie).</li>
+                        </ul>
+                    </small>
+                </section>
+            </section>
 		</div>
 	</div>
 
