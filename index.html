@@ -4052,6 +4052,177 @@ int main() {
 
 
 			</section>
+			    
+            
+
+            <section data-auto-animate data-background-gradient="linear-gradient(45deg, #c03030, #10a081)">
+                <section>
+                    <h2>Wyjątki i obsługa błędów</h2>
+                </section>
+                <section data-auto-animate>
+                    <h3>Co to są wyjątki?</h3>
+                    <small>
+                        Wyjątki to mechanizm zgłaszania i obsługi błędów w czasie wykonania programu. Pozwalają
+                        oddzielić kod normalnej logiki od kodu obsługi błędów (try / catch / throw). Dzięki nim
+                        można bezpiecznie przechwycić problem i zwrócić się do procedury naprawczej lub poprawnie
+                        zakończyć działanie programu.
+                    </small>
+                </section>
+			<section data-auto-animate>
+                    <h3>Obsługa wyjątków -  try, catch i throw</h3>
+                    <small>
+                        <ul>
+							<li><strong>try:</strong> Blok kodu, w którym może wystąpić wyjątek. Jeśli wyjątek
+								zostanie rzucony, realizcaja programu przekierowywana jest do odpowiedniego bloku catch.
+							</li>
+							<li><strong>catch:</strong> Blok kodu, który przechwytuje i obsługuje wyjątek. Można
+								mieć wiele bloków catch dla różnych typów wyjątków.
+							</li>
+							<li><strong>throw:</strong> Służy do zgłaszania wyjątku. Może być używany do
+								zgłaszania zarówno standardowych, jak i niestandardowych wyjątków. 
+							</li>
+						</ul>
+                    </small>
+                </section>
+                <section data-auto-animate>
+                    <h3>Przykład w C++</h3>
+                    <pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="11-14"><script type="text/template">
+// C++: prosty przykład obsługi wyjątków
+#include <iostream>
+#include <stdexcept>
+
+int divide(int a, int b) {
+    if (b == 0) throw std::runtime_error("Dzielenie przez zero");
+    return a / b;
+}
+
+int main() {
+    try {
+        std::cout << divide(10, 2) << std::endl;
+        std::cout << divide(5, 0) << std::endl; // tu zostanie rzucony wyjątek
+    } 
+	  catch (const std::exception &e) {
+        std::cerr << "Błąd: " << e.what() << std::endl;
+    }
+    return 0;
+}
+</script></code></pre>
+                    <small>
+                        <ul>
+                            <li><strong>try</strong> — blok(fragmęt kodu), w którym może wystąpić wyjątek.<br>
+								tu może coś pójść nie tak </li>
+								
+                            <li><strong>throw</strong> 
+							</li>
+                            <li><strong>catch</strong> 
+							</li>
+                        </ul>
+                    </small>
+                </section>
+<section data-auto-animate>
+                    <h3>Przykład w C++</h3>
+                    <pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="6"><script type="text/template">
+// C++: prosty przykład obsługi wyjątków
+#include <iostream>
+#include <stdexcept>
+
+int divide(int a, int b) {
+    if (b == 0) throw std::runtime_error("Dzielenie przez zero");
+    return a / b;
+}
+
+int main() {
+    try {
+        std::cout << divide(10, 2) << std::endl;
+        std::cout << divide(5, 0) << std::endl; // tu zostanie rzucony wyjątek
+    } 
+	  catch (const std::exception &e) {
+        std::cerr << "Błąd: " << e.what() << std::endl;
+    }
+    return 0;
+}
+</script></code></pre>
+                    <small>
+                        <ul>
+                            <li><strong>try</strong></li>
+								
+                            <li><strong>throw</strong> — zgłasza wyjątek (tutaj std::runtime_error).<br>
+								tu coś poszło nie tak, więc zgłaszamy wyjątek
+							</li>
+                            <li><strong>catch</strong> 
+							</li>
+                        </ul>
+                    </small>
+                </section><section data-auto-animate>
+                    <h3>Przykład w C++</h3>
+                    <pre style="font-size: 16px"><code class="hljs cpp" data-trim data-line-numbers="15-17"><script type="text/template">
+// C++: prosty przykład obsługi wyjątków
+#include <iostream>
+#include <stdexcept>
+
+int divide(int a, int b) {
+    if (b == 0) throw std::runtime_error("Dzielenie przez zero");
+    return a / b;
+}
+
+int main() {
+    try {
+        std::cout << divide(10, 2) << std::endl;
+        std::cout << divide(5, 0) << std::endl; // tu zostanie rzucony wyjątek
+    } 
+	  catch (const std::exception &e) {
+        std::cerr << "Błąd: " << e.what() << std::endl;
+    }
+    return 0;
+}
+</script></code></pre>
+                    <small>
+                        <ul>
+                            <li><strong>try</strong></li>
+								
+                            <li><strong>throw</strong>
+							</li>
+                            <li><strong>catch</strong> — przechwytuje wyjątek; można obsłużyć różne typy wyjątków.<br>
+								tu obsługujemy wyjątek, czyli coś poszło nie tak, więc wykonujemy procedurę naprawczą.
+							</li>
+                        </ul>
+                    </small>
+                </section>
+                <section data-auto-animate>
+                    <h3>Przykład w Pythonie</h3>
+                    <pre style="font-size: 16px"><code class="python" data-trim data-line-numbers="1-11"><script type="text/template">
+# Python: prosty przykład obsługi wyjątków
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Dzielenie przez zero")
+    return a / b
+
+try:
+    print(divide(10, 2))
+    print(divide(5, 0))
+except ValueError as e:
+    print("Błąd:", e)
+</script></code></pre>
+                    <small>
+                        <ul>
+                            <li>raise — rzuca wyjątek. (odpowiendik throw w cpp)</li>
+                            <li>try except — przechwycenie </li>
+                            <li>except - obsługa wyjątku w Pythonie. </li>
+                        </ul>
+                    </small>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Wskazówki praktyczne</h3>
+                    <small>
+                        <ul>
+                            <li>Używaj wyjątków do sytuacji wyjątkowych — nie do normalnego sterowania przepływem.</li>
+                            <li>Przechwytuj możliwie najbardziej konkretne typy wyjątków.</li>
+                            <li>Zadbaj o czyszczenie zasobów (RAII w C++ lub finally / context manager w Pythonie).</li>
+                        </ul>
+                    </small>
+                </section>
+            </section>
 		</div>
 	</div>
 
