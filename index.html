@@ -71,18 +71,23 @@
 				</section>
 				<section>
 					<h2>Tablice w C/C++</h2>
-					<p>Tablice to zbiory podobnych elementów danych, umożliwiające grupowanie typów danych, takich jak
-						liczby całkowite lub zmiennoprzecinkowe, pod jedną nazwą.</p>
+					<p>Tablica to ciąg elementów jednego typu (np. int, double) ułożonych w pamięci kolejno, pod wspólną nazwą. Indeksy zaczynają się od 0..</p>
 					<p>Aby zadeklarować tablice liczb całkowitych:</p>
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
 						<script type="text/template">
 							int A[5];
 					</script></code></pre>
 					<p>Tworzy to tablicę A z 5 elementami typu integer.</p>
+					<p>Uwaga: lokalna tablica bez inicjalizacji ma <b>nieokreślone</b> wartości (śmieci).</p>
+
 				</section>
 				<section>
 					<h2>Gdzie lądują tablice</h2>
-					<p>W programie C/C++ tablica jest zwykle alokowana w segmencie stosu głównej pamięci.</p>
+					<p>W programie C/C++ lokalna tablica (deklarowana wewnątrz funkcji bez new/malloc) trafia do pamięci o automatycznym czasie życia (potocznie „stos”).
+					Tablice globalne/static trafiają do sekcji danych.
+					Tablice tworzone przez new/malloc trafiają na sterte (heap).</p>
+					</section>
+					<section>
 					<p>Tablice można deklarować i inicjować jednocześnie:</p>
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
                         <script type="text/template">
@@ -94,53 +99,120 @@
 A[0] = 27;
 A[1] = 10;
                     </script></code></pre>
+					<p>Przykład częściowej inicjalizacji</p>
+					<pre style="font-size:16px"><code class="hljs cpp" data-trim>
+					<script type="text/template">
+					int A[5] = {1, 2}; // pozostałe elementy zostaną wyzerowane
+					</script></code></pre>
+
+					
 				</section>
 				<section>
 					<h2>Struktura pamięci</h2>
 					<p>Gdy tablica jest deklarowana w funkcji, pojawia się w stosie głównej pamięci i jest bezpośrednio
-						dostępna dla funkcji main.</p>
+						dostępna dla funkcji main.Lokalna tablica jest dostępna w zakresie (scope) funkcji, w której została zadeklarowana.</p>
 					<p>Aby uzyskać dostęp do wszystkich elementów tablicy, często używa się pętli for. Na przykład:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-for (int i = 0; i < 5; i++) {
-    printf("%d ", B[i]);
-}
-                    </script></code></pre>
+					<pre style="font-size:16px"><code class="hljs cpp" data-trim>
+					<script type="text/template">
+					for (int i = 0; i < 5; i++) {
+						printf("%d ", A[i]); 
+					}
+					</script></code></pre>
+
 				</section>
 				<section>
 					<h2>Wskaźniki w C/C++</h2>
 					<p>Wskaźnik to zmienna adresowa przeznaczona do przechowywania adresu danych, a nie samych danych.
 						Zmienne zwykłe przechowują dane, natomiast wskaźniki - adresy. Wskaźniki są używane do
 						pośredniego dostępu do danych.</p>
+						<p>Wskaźnik można „wyzerować” wartością <code>nullptr</code> (C++) lub <code>NULL</code> (C). To pomaga wykrywać błędy.</p>
+
 				</section>
 				<section>
 					<h2>Po co używać wskaźników?</h2>
-					<p>Wskaźniki są potrzebne do dostępu do pamięci poza programem, takiej jak pamięć sterty (heap).</p>
+					<p>Wskaźniki pozwalają:
+						<br />
+						– korzystać z pamięci na stercie (heap),
+						<br />
+						– przekazywać duże struktury/tablice do funkcji bez kopiowania,
+						<br />
+						– tworzyć dynamiczne struktury danych (listy, drzewa, grafy),
+						<br />
+						– pracować z zasobami (bufory plików, urządzenia).</p>
 				</section>
 				<section>
-					<p>Deklarowanie i Inicjalizacja wskaźników</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-int a = 10; // Zmienna danych
-int *p;     // Wskaźnik
-p = &a;     // Inicjalizacja wskaźnika adresem zmiennej 'a'							
-                    </script></code></pre>
-					<p>Dereferencja to proces uzyskiwania dostępu do wartości, na którą wskazuje wskaźnik:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-printf("%d", *p); // Wydrukuje wartość zmiennej 'a' poprzez wskaźnik 'p'						
-                    </script></code></pre>
-					<p>Wskaźniki umożliwiają dynamiczne alokowanie pamięci:</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-p = (int *)malloc(5 * sizeof(int)); // Alokacja 5 intów w C						
-                    </script></code></pre>
+				<h2>Deklarowanie i inicjalizacja wskaźników</h2>
+				<p>Wskaźnik przechowuje <b>adres</b> zmiennej (nie jej wartość). Najpierw deklarujemy, potem inicjalizujemy adresem i możemy dereferencją <code>*</code> odczytać/zapisać wartość.</p>
+
+				<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
+					<script type="text/template">
+				int a = 10;          // zwykła zmienna
+				int *p = nullptr;    // C++: bezpieczna inicjalizacja wskaźnika (nie wskazuje na nic)
+				p = &a;              
+
+				printf("%d\n", *p);  
+				*p = 42;             
+					</script>
+				</code></pre>
+				  <small>
+					<ul>
+					<li>W C++ startuj wskaźniki od <code>nullptr</code>.</li>
+					<li>Wyjście poza zakres tablicy to <b>niezdefiniowane zachowanie</b>.</li>
+					</ul>
+				</small>
 				</section>
 				<section>
+				<h2>Wskaźniki w C + alokacja dynamiczna</h2>
+
+				<p>W czystym C używamy <code>NULL</code> zamiast <code>nullptr</code>:</p>
+				<pre style="font-size:16px"><code class="hljs cpp" data-trim contenteditable>
+					<script type="text/template">
+				// C:
+				int a = 10;
+				int *p = NULL;
+				p = &a;
+				printf("%d\n", *p);
+					</script>
+				</code></pre>
+				</section>
+				<section>
+				<h3 style="margin-top:10px;">Dynamiczna alokacja</h3>
+				<p><b>C:</b> <code>malloc</code>/<code>free</code> (bez rzutowania wyniku <code>malloc</code>):</p>
+				<pre style="font-size:16px"><code class="hljs cpp" data-trim contenteditable>
+					<script type="text/template">
+				// #include &lt;stdlib.h&gt;
+				int *pc = malloc(5 * sizeof *pc);
+				if (pc == NULL) {
+					// obsługa błędu
+				}
+				free(pc); // paruj malloc ↔ free
+					</script>
+				</code></pre>
+
+				<p><b>C++:</b> <code>new[]</code>/<code>delete[]</code> (w praktyce lepiej <code>std::vector</code>):</p>
+				<pre style="font-size:16px"><code class="hljs cpp" data-trim contenteditable>
+					<script type="text/template">
+				int *pp = new int[5];
+				/* ...użycie pp... */
+				delete[] pp;            
+
+					</script>
+				</code></pre>
+
+				<small>
+					<ul>
+					<li><b>Nie mieszaj</b>: <code>malloc</code>↔<code>delete[]</code> ani <code>new[]</code>↔<code>free</code>.</li>
+					<li>Sprawdzaj wynik <code>malloc</code>; w C++ preferuj kontenery STL.</li>
+					</ul>
+				</small>
+				</section>
+
+
+					<section>
 					<h2>Zastosowanie Wskaźników</h2>
 					<p>Dostęp do pamięci sterty.</p>
 					<p>Dostęp do zasobów zewnętrznych (np. plików, urządzeń).</p>
-					<p>Przekazywanie parametrów przez wskaźniki.</p>
+					<p>Przekazywanie parametrów przez wskaźniki <em>lub</em> (w C++) przez <b>referencje</b> jest wydajne.</p>
 				</section>
 				<section>
 					<h2>Wskaźniki w C++</h2>
@@ -156,6 +228,9 @@ int *p = new int[5]; // Alokacja tablicy 5 całkowitych liczb
 				<section>
 					<p>Możliwy jest też dostęp do elementów tablicy z użyciem wskaźnika `p` jako tablicy do zapisywania
 						wartości:</p>
+						<p><b>Uwaga:</b> pamiętaj o parze <code>new[]</code> / <code>delete[]</code>. 
+W nowoczesnym C++ preferuj <code>std::vector&lt;int&gt; v(5);</code> zamiast surowych wskaźników.</p>
+
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
                         <script type="text/template">
 for(int i = 0; i < 5; i++) {
@@ -167,11 +242,21 @@ for(int i = 0; i < 5; i++) {
 					<h2>Zwalnianie pamięci</h2>
 					<p>Pamięć zaalokowana przez `new` musi być zwolniona za pomocą `delete`, a pamięć zaalokowana przez
 						`malloc` jest zwalniana przez `free`.</p>
-					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
-                        <script type="text/template">
-free(tablica);
-delete[] p; // Zwolnienie zaalokowanej pamięci						
-                    </script></code></pre>
+					<pre style="font-size:16px"><code class="hljs cpp" data-trim>
+					<script type="text/template">
+					// C:
+					int *pc = malloc(5 * sizeof *pc);
+					/* ... */
+					free(pc);       // zawsze paruj malloc ↔ free
+
+					// C++:
+					int *p = new int[5];
+					/* ... */
+					delete[] p;     // zawsze paruj new[] ↔ delete[]
+
+					// NIE mieszaj stylów: malloc ↔ delete[] (błąd), new[] ↔ free (błąd).
+					</script></code></pre>
+
 				</section>
 				<section>
 					<h2>Wskaźniki i Struktury</h2>
@@ -193,6 +278,8 @@ delete ptr; // Zwolnienie pamięci
 					<h2>Co nam to daje?</h2>
 					<p>Wskaźniki są używane do przekazywania dużych struktur lub tablic do funkcji bez konieczności ich
 						kopiowania, co jest efektywne pod względem pamięci:</p>
+						<p>W nowoczesnym C++ do zarządzania pamięcią używaj <code>std::unique_ptr</code>, <code>std::shared_ptr</code> i kontenerów STL (np. <code>std::vector</code>) — to minimalizuje wycieki pamięci.</p>
+
 					<pre style="font-size: 16px"><code class="hljs cpp" data-trim contenteditable>
                         <script type="text/template">
 void updateValue(int *pValue) {
@@ -1096,26 +1183,24 @@ public class Card {
 					<h2>Wstęp do programowania obiektowego cz.2</h2>
 				</section>
 				<section data-auto-animate>
-					<h3>Konstruktory</h3>
-					<small>Konstruktor <b>NIE MUSI</b> wystąpić w opisie klasy, czyli obiekty nie muszą być wprowadzane
-						konstruktorem <B>jawnym</B>.</small>
-					<small><b>Nazwa konstruktora może być przeładowana bo jest on funkcją</b>, czyli może być ta nazwa
-						stosowana wielokrotnie w opisie
-						deklaracji klasy oraz w opisie funkcji konstruktora z różnymi listami argumentów. Wtedy
-						kompilator odróżnia konstruktory
-						po listach argumentów, tak, jak w przypadku przeładowanych nazw funkcji. Konstruktorów może wiec
-						być wiele.</small>
-					<small>Konstruktor <b>może być wywoływany ( a nie deklarowany!!) bez żadnych argumentów</b>. Jest to
-						tak zwany konstruktor domniemany.
-						Czasem nazywamy go domyślnym albo standardowym. Ze względu na istotę przeładowania nazwy
-						<b>konstruktor domniemany czyli
-							bezargumentowy może wystąpić tylko raz</b>. Jeśli nie deklarujemy w klasie żadnego
-						konstruktora, to kompilator sam ustanawia
-						właśnie konstruktor domniemany do obsługi obiektów klas deklarowanych w programie. Każdy
-						konstruktor z argumentami,
-						którym nadamy wartości domyślne czyli niedefiniowalne jest także konstruktorem
-						domniemanym.</small>
+				<h3>Konstruktory</h3>
+				<small>
+					<ul>
+					<li><b>Konstruktor</b> to funkcja specjalna uruchamiana przy tworzeniu obiektu; służy do <b>inicjalizacji</b> pól.</li>
+					<li>Można mieć <b>wiele konstruktorów</b> (przeładowanie) – różne listy parametrów.</li>
+					<li><b>Konstruktor domyślny</b> = taki, który można wywołać <b>bez argumentów</b>. Powstaje:
+						<ul>
+						<li>automatycznie – jeśli nie zadeklarowano żadnego innego konstruktora, lub</li>
+						<li>jawnie: <code>Class() = default;</code>, lub</li>
+						<li>gdy istnieje konstruktor z parametrami, ale wszystkie mają <b>wartości domyślne</b>.</li>
+						</ul>
+					</li>
+					<li>Konstruktor zwykle jest <code>public</code> (żeby móc tworzyć obiekty z zewnątrz), ale może być też
+						<code>protected</code>/<code>private</code> – wtedy <b>ograniczasz możliwość wywołania konstruktora</b> (np. wzorzec fabryki/singleton). To nie oznacza „prywatnego obiektu”.</li>
+					</ul>
+				</small>
 				</section>
+
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
 					<p>Co właściwie robi konstruktor? On <b>INICJALIZUJE</b> obiekty. Kompilator automatycznie wywołuje
@@ -1148,12 +1233,17 @@ public class Card {
 					</small>
 				</section>
 				<section>
-					<h3>Konstruktory</h3>
-					<p>
-						Destruktor (w naszym przykładzie <b>~Card</b>), zawsze wpisujemy w C++ do deklaracji klasy jako
-						bezargumentowy !!
-					</p>
+				<h3>Destruktor</h3>
+				<small>
+					<ul>
+					<li>Destruktor ma postać <code>~ClassName()</code>, <b>bez parametrów i zwracanej wartości</b>.</li>
+					<li>Jeśli nie potrzebujesz specjalnego sprzątania, wystarczy <code>~ClassName() = default;</code> lub po prostu nic nie deklarować.</li>
+					<li>W klasach bazowych używanych polimorficznie destruktor powinien być <b>virtual</b>.</li>
+					<li>W nowoczesnym C++ preferuj RAII/kontenery (<code>std::string</code>, <code>std::vector</code>) zamiast ręcznego <code>new/delete</code>.</li>
+					</ul>
+				</small>
 				</section>
+
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
 					<p>Konstruktor domniemany (ang. default constructor)</p>
@@ -1280,6 +1370,29 @@ public class Card {
 						korzystać wszystkie funkcje i obiekty oraz funkcje składowe innych klas w programie.</small>
 				</section>
 				<section>
+				<h3>Zasięg i czas życia obiektów</h3>
+				<small>
+					<ul>
+					<li><b>Automatyczny (stos)</b>: obiekt w funkcji/bloku – tworzony przy wejściu, niszczony przy wyjściu.</li>
+					<li><b>Statyczny</b>: <code>static</code> – istnieje przez cały czas trwania programu (inicjalizacja do zera, jedna instancja).</li>
+					<li><b>Dynamiczny (sterna)</b>: tworzony przez <code>new</code>/<code>make_unique</code>/<code>make_shared</code> – żyje, aż go zwolnisz lub wskaźnik inteligentny go zniszczy.</li>
+					<li><b>Uwaga:</b> <code>public/private/protected</code> dotyczą <b>dostępu do członów klasy</b>, a nie czasu życia obiektów.</li>
+					</ul>
+				</small>
+				</section>
+				<section>
+				<h3>Co oznacza <code>static</code>?</h3>
+				<small>
+					<ul>
+					<li><b>W funkcji</b>: zmienna zachowuje wartość między wywołaniami (statyczny czas życia, lokalny zasięg).</li>
+					<li><b>W klasie</b>: <code>static</code> przy polu/metodzie = należy do <b>klasy</b>, a nie do konkretnego obiektu.</li>
+					<li><b>W przestrzeni nazw</b>: <code>static</code> nadaje <b>wewnętrzne wiązanie</b> (niewidoczne poza plikiem kompilacji).</li>
+					</ul>
+				</small>
+				</section>
+
+
+				<section>
 					<h3>Cechy obiektów</h3>
 					<small>Obiekt może funkcjonować lokalnie (obiekt prywatny) i wówczas automatycznie kończy się jego
 						zakres ważności wtedy, kiedy
@@ -1348,6 +1461,27 @@ public class Card {
 						wykonywania metod (ang. class member function execution), za
 						wyjątkiem funkcji statycznych.</small>
 				</section>
+				<section>
+				<h3><code>this</code> – wskaźnik specjalny</h3>
+				<small>
+					<ul>
+					<li>Każda <b>niestatyczna</b> metoda (także konstruktor/destruktor) dostaje ukryty wskaźnik <code>this</code> do „tego” obiektu.</li>
+					<li>Używamy go m.in. do rozróżnienia nazw parametrów i pól oraz do „<i>method chaining</i>”.</li>
+					</ul>
+				</small>
+				<pre style="font-size: 16px"><code class="hljs cpp" data-trim>
+				<script type="text/template">
+				class Vec2 {
+				int x{}, y{};
+				public:
+				Vec2(int x, int y) : x(x), y(y) {}      // this->x = x;
+				Vec2& setX(int x) { this->x = x; return *this; }
+				Vec2& setY(int y) { this->y = y; return *this; }
+				};
+				</script>
+				</code></pre>
+				</section>
+
 
 
 
@@ -1463,13 +1597,12 @@ int main() {
 				</section>
 
 				<section>
-					<h3>Tworzenie obiektów</h3>
-					<p>
-						Kiedy w C++ tworzony jest obiekt zachodzą dwa procesy:
-					<ul>
-						<li>alokacja pamięci na obiekt</li>
-						<li>inicjalizacja obiektu</li>
-						</p>
+				<h3>Tworzenie obiektów</h3>
+				<p>Kiedy tworzysz obiekt w C++ zachodzą 2 kroki:</p>
+				<ul>
+					<li><b>Alokacja pamięci</b> (gdzie obiekt ma żyć: stos/statycznie/na stercie).</li>
+					<li><b>Inicjalizacja</b> (wywołanie konstruktora).</li>
+				</ul>
 				</section>
 				<section>
 					<h3>Tworzenie obiektów</h3>
@@ -1493,6 +1626,9 @@ int main() {
 									bibliotece poprzez przestrzeń nazw (namespace)]</li>
 					</small>
 				</section>
+
+
+
 				<section>
 					<h3>Klasy abstrakcyjne i interfejsy</h3>
 					<small>Zwykle po to tworzymy klasy by tworzyć ich egzemplarze (instancje/obiekty). Okazuje się
@@ -1641,19 +1777,22 @@ int main() {
 			<section data-background-gradient="linear-gradient(175deg, #09bc8a, #565896)" data-auto-animate>
 				<section>
 					<h2>Zarządzanie pamięcią w programowaniu obiektowym:<h2>
-							</h3>Wprowadzenie do operatorów new i delete</h3>
+							</h3>Wprowadzenie do operatorów <code>new</code> i <code>delete</code></h3>
 				</section>
 				<section>
 					<h3>Alokacja pamięci dynamicznej</h3>
 					<p>
-						Alokacja pamięci dynamicznej to proces przydzielania pamięci w trakcie działania programu. W
-						przeciwieństwie do
-						pamięci statycznej, która jest przydzielana na etapie kompilacji, pamięć dynamiczna jest
-						przydzielana na żądanie
-						i może być zwalniana, gdy nie jest już potrzebna. Pozwala to na tworzenie struktur danych, które
-						mogą zmieniać
-						rozmiar w trakcie działania programu, takich jak listy dynamiczne i drzewa.
+					Alokacja dynamiczna to przydzielanie pamięci <b>w czasie działania programu</b>.
+					W C++ obiekty mają różne czasy życia:
 					</p>
+					<small>
+					<ul>
+						<li><b>Statyczny</b> (globalne i <code>static</code>): rezerwacja przed startem programu, zwolnienie po jego końcu.</li>
+						<li><b>Automatyczny</b> (stos): tworzone w bloku/funkcji, niszczone przy wyjściu z zakresu.</li>
+						<li><b>Dynamiczny</b> (sterta): tworzone przez <code>new</code>/<code>make_unique</code>/<code>make_shared</code>; żyją aż je zwolnisz lub zrobi to smart-pointer.</li>
+					</ul>
+					</small>
+
 				</section>
 				<section>
 					<h3>Zwalnianie pamięci dynamicznej</h3>
@@ -1672,6 +1811,9 @@ int main() {
 								za zwalnianie
 								wszelkich zasobów, które obiekt mógł zaalokować podczas swojego istnienia.</small>
 						</li>
+						<li><small><b>Paruj:</b> <code>new</code>↔<code>delete</code>, <code>new[]</code>↔<code>delete[]</code> (nie mieszamy stylów).</small></li>
+						<li><small><b>RAII:</b> preferuj <code>std::string</code>, <code>std::vector</code>, <code>std::unique_ptr</code> – wtedy ręczne <code>delete</code> nie jest potrzebne.</small></li>
+
 					</ul>
 				</section>
 
@@ -1701,6 +1843,11 @@ int main() {
 						użyć tego
 						adresu do odwoływania się do obiektu.
 					</p>
+					<small>
+					Domyślny <code>new</code> przy braku pamięci rzuca <code>std::bad_alloc</code>.
+					Wersja <code>new (std::nothrow)</code> zwraca <code>nullptr</code>.
+					</small>
+
 				</section>
 				<section>
 					<h3>Operator delete</h3>
@@ -1711,6 +1858,8 @@ int main() {
 						operatora
 						<b>delete</b>, który zwalnia pamięć, którą obiekt zajmuje, co pozwala na jej ponowne użycie.
 					</p>
+					</section>
+					<section> 
 					<p>
 						Jest to ważne, ponieważ niezwolnienie pamięci, która nie jest już potrzebna, może prowadzić do
 						wycieków pamięci.
@@ -1718,6 +1867,14 @@ int main() {
 						może nawet
 						doprowadzić do awarii programu.
 					</p>
+					<small>
+					<ul>
+						<li><code>delete nullptr;</code> jest bezpieczne (nic nie robi).</li>
+						<li>Przy polimorfizmie destruktor w klasie bazowej powinien być <b>virtual</b>.</li>
+						<li>Po <code>delete</code> ustaw wskaźnik na <code>nullptr</code>, by uniknąć „wiszących” wskaźników.</li>
+					</ul>
+					</small>
+
 				</section>
 				<section>
 					<h3>Korzyści z tworzenia obiektów za pomocą operatora new</h3>
@@ -1744,6 +1901,16 @@ int main() {
 								może być przydatne w niektórych zaawansowanych scenariuszach programowania.</small>
 						</li>
 					</ul>
+				</section>
+				<section>
+					<h3>Kiedy naprawdę używać <code>new</code>?</h3>
+					<ul>
+					<li><small>Obiekt musi przetrwać poza zakresem funkcji (kontrolujesz czas życia).</small></li>
+					<li><small>Tworzysz wiele obiektów o rozmiarze/liczbie znanej dopiero w run-time.</small></li>
+					<li><small>Polimorfizm i współdzielenie obiektów (np. przez <code>std::shared_ptr</code>).</small></li>
+					<li><small>W codziennej pracy preferuj <b>automatyczne</b> obiekty na stosie lub kontenery (<code>std::vector</code>).</small></li>
+					</ul>
+
 				</section>
 				<section>
 					<h3>Przykład użycia operatorów new i delete</h3>
@@ -1871,7 +2038,19 @@ int main() {
 						aspektem zarządzania pamięcią w programowaniu obiektowym.
 					</small>
 				</section>
+			
+			<section>
+			<h3>Podsumowanie – dobre praktyki</h3>
+			<ul>
+				<li><small>Preferuj obiekty na stosie i kontenery STL (<code>std::vector</code>, <code>std::string</code>).</small></li>
+				<li><small>Używaj <code>std::unique_ptr</code>/<code>std::shared_ptr</code> zamiast surowych wskaźników.</small></li>
+				<li><small>Jeśli używasz <code>new</code>, pamiętaj o odpowiednim <code>delete</code> / <code>delete[]</code>.</small></li>
+				<li><small>Nie mieszaj <code>new</code>/<code>delete</code> z <code>malloc</code>/<code>free</code>.</small></li>
+				<li><small>Unikaj wycieków i „dangling pointers” – ustawiaj wskaźniki na <code>nullptr</code> po zwolnieniu.</small></li>
+			</ul>
 			</section>
+			</section>
+
 
 
 
@@ -2408,13 +2587,12 @@ int main() {
 			
 				</section>
 				<section>
-					<h3>Dziedziczenie wirtualne</h3>
+					<h3>Dziedziczenie wirtualne</h3>					
 					<small>
-						Dziedzicznie wirtualne jest specjalnym przypadkiem w dziedziczeniu wielobazowym, które stosuje
-						się, gdy z jakiegoś
-						powodu jedna z klas staje się wielokrotnie przodkiem (bezpośrednio lub pośrednio) innej klasy.
-						Np.
+					Dziedziczenie wirtualne rozwiązuje tzw. <b>problem diamentu</b> (ta sama klasa bazowa pojawia się wielokrotnie w hierarchii).
+					Dzięki niemu w klasie pochodnej istnieje tylko <b>jedna</b> wspólna instancja klasy bazowej.
 					</small>
+
 					<pre style="font-size: 16px" data-id="code-animation">
 													<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
 protected:
@@ -2461,6 +2639,12 @@ class Klasa: public Bazowa, public Posrednia {};</script>
 						metody wyswietl
 						(używając takiego zapisu) byłoby niemożliwe.
 					</small>
+					<small>
+					Dzięki dziedziczeniu wirtualnemu pola z klasy <b>Bazowa</b> pojawią się w <b>Klasa</b> tylko raz,
+					co redukuje rozmiar obiektu i usuwa niejednoznaczność odwołań.
+					Nieznaczny narzut wynika z mechanizmu wirtualnej bazy (wskazniki wewnętrzne).
+					</small>
+
 					<pre style="font-size: 16px" data-id="code-animation">
 																							<code class="hljs cpp" data-trim data-line-numbers="24,25,32,33"><script type="text/template">class Bazowa {
 				char bufor1kB[1024];
@@ -2479,10 +2663,23 @@ int main() {
 				std::cout << sizeof(Klasa) << '\n';
 				k.wyswietl();
 }</script>
+
+
 																							</code>
 																							</pre>
-				</section>
 			
+			</section>
+				<section>
+				<h3>Dobre praktyki przy dziedziczeniu wielokrotnym</h3>
+				<small>
+					<ul>
+					<li>Rozważ najpierw <b>kompozycję</b> zamiast dziedziczenia wielokrotnego.</li>
+					<li>Jeśli musisz łączyć wiele baz – unikaj kolizji nazw; używaj <code>using</code> lub nadpisz własną metodę w klasie pochodnej.</li>
+					<li>Przy diamencie – użyj <b>dziedziczenia wirtualnego</b> (<code>public virtual</code>).</li>
+					<li>W bazach używanych polimorficznie dodaj <b>wirtualny destruktor</b>.</li>
+					</ul>
+				</small>
+				</section>
 			</section>
 			<!-- TODO -->
 			<section>
@@ -2549,14 +2746,14 @@ int main() {
 				<section>
 					<h3>Klasy zaprzyjaźnione w C++</h3>
 					<small>
-						Słowo kluczowe <code>friend</code> w C++ jest używane do nadania pewnym funkcjom lub klasom
-						dostępu do
-						prywatnych i chronionych członków klasy. Jeśli klasa jest zadeklarowana jako <code>friend</code>
-						wewnątrz
-						definicji innej klasy, ta zaprzyjaźniona klasa może bezpośrednio dostępować do prywatnych i
-						chronionych członków
-						tej klasy.
+					Słowo kluczowe <code>friend</code> pozwala wskazanym funkcjom lub klasom dostać się do <b>prywatnych</b> i <b>chronionych</b> składowych <i>tej</i> klasy.
+					<ul>
+						<li>„Przyjaźń” <b>nie jest dziedziczona</b> i <b>nie jest przechodnia</b> (A→B nie oznacza B→A ani A→C przez B).</li>
+						<li>Deklarację <code>friend</code> umieszczasz <b>wewnątrz klasy udzielającej dostępu</b>.</li>
+						<li>Używaj oszczędnie – to wyjątek od hermetyzacji (przydatne np. dla operatorów, funkcji narzędziowych, testów).</li>
+					</ul>
 					</small>
+
 					<small>
 						Przykład użycia <code>friend</code> z klasą:
 					</small>
@@ -2583,6 +2780,18 @@ int main() {
 						klasie.
 					</small>
 				</section>
+				<section>
+				<h3>Kiedy stosować <code>friend</code>?</h3>
+				<small>
+					<ul>
+					<li>Symetryczne operatory wolnostojące (np. <code>operator==</code>, <code>operator&lt;&lt;</code>).</li>
+					<li>Funkcje narzędziowe wymagające wglądu w stan, ale niebędące metodami.</li>
+					<li>Testy jednostkowe (gdy nie chcesz ujawniać API tylko dla testów).</li>
+					<li><b>Unikaj</b> jako „drzwi awaryjnych” – lepiej dać wąskie API lub wzorzec „przyjacielski budowniczy”.</li>
+					</ul>
+				</small>
+				</section>
+
 
 
 				<section>
@@ -2592,40 +2801,45 @@ int main() {
 						wzorcem Singleton,
 						spróbuj samodzielnie zaimplementować poniższe zadania:
 					</small>
+<ul>
+  <li><small>
+					Zaimplementuj <code>MyArray</code> przechowujące tablicę <b>bez ręcznego delete</b>:
 					<ul>
-						<li>
-							<small>
-								Zaimplementuj klasę <code>MyArray</code> w C++, która ma prywatny konstruktor alokujący
-								pamięć dla
-								tablicy o określonym rozmiarze, prywatny destruktor zwalniający tę pamięć i publiczną
-								metodę
-								<code>getSize</code>, która zwraca rozmiar tablicy. Dodatkowo, dodaj metody
-								<code>setValue</code> i
-								<code>getValue</code> do ustawiania i pobierania wartości na określonym indeksie
-								tablicy.
-							</small>
-						</li>
-						<li>
-							<small>
-								Zaimplementuj klasę <code>MySingleton</code>, która jest Singletonem i przechowuje
-								instancję klasy
-								<code>MyArray</code>. Klasa powinna mieć metodę <code>getArray</code>, która zwraca
-								referencję do
-								przechowywanej instancji <code>MyArray</code>.
-							</small>
-						</li>
-						<li>
-							<small>
-								Zaimplementuj funkcję <code>main</code>, która tworzy instancję klasy
-								<code>MySingleton</code> za pomocą
-								metody <code>getInstance</code>, a następnie używa metody <code>getArray</code> do
-								manipulacji tablicą.
-								Spróbuj dodać, odczytać i zmienić wartości w tablicy. Obserwuj, jak konstruktor i
-								destruktor są
-								wywoływane.
-							</small>
-						</li>
+					<li>Wersja A (zalecana): użyj <code>std::vector&lt;int&gt;</code>.</li>
+					<li>Wersja B (edukacyjna): użyj <code>std::unique_ptr&lt;int[]&gt;</code> + <b>Rule of 5</b> (zdefiniuj konstruktor przenoszący i operator= przenoszący; skasuj kopiowanie).</li>
 					</ul>
+					API: <code>size()</code>, <code>setValue(i,v)</code>, <code>getValue(i)</code> (sprawdzaj zakres).
+				</small></li>
+				<li><small>
+					Zaimplementuj <code>MySingleton</code> jako <b>Meyers' Singleton</b> (bez <code>new</code>):
+					<pre style="font-size:13px;"><code class="hljs cpp" data-trim>
+				<script type="text/template">
+				class MySingleton {
+				MyArray arr;                       // brak wskaźników surowych
+				MySingleton(): arr(/*np. rozmiar*/ 100) {}
+				public:
+				static MySingleton& getInstance() {
+					static MySingleton inst;         // tworzy się leniwie, niszczy automatycznie
+					return inst;
+				}
+				MyArray& getArray() { return arr; }
+				MySingleton(const MySingleton&) = delete;
+				MySingleton& operator=(const MySingleton&) = delete;
+				};
+				</script>
+				</code></pre>
+				</section>
+				<section>
+				</small></li>
+				<li><small>
+					W <code>main()</code> pobierz referencję: <code>auto&amp; a = MySingleton::getInstance().getArray();</code>
+					Ustaw/odczytaj kilka wartości; pokaż, że obejdzie się bez <code>delete</code>.
+				</small></li>
+				</ul>
+				<small>
+				Cel: pokazać nowoczesne C++ (RAII, brak wycieków) zamiast ręcznego <code>new/delete</code>.
+				</small>
+
 					<small>
 						Pamiętaj, że kluczowym aspektem zarządzania pamięcią w programowaniu obiektowym jest
 						zapewnienie, że pamięć jest
@@ -2634,6 +2848,32 @@ int main() {
 						do tego celu w języku C++, a wzorzec Singleton pomaga zarządzać instancjami klas.
 					</small>
 				</section>
+				<section>
+				<h3>Szkielet: MyArray (RAII)</h3>
+				<pre style="font-size:16px;"><code class="hljs cpp" data-trim>
+				<script type="text/template">
+				#include <vector>
+				#include <stdexcept>
+
+				class MyArray {
+				std::vector<int> data;
+				public:
+				explicit MyArray(size_t n): data(n) {}
+				size_t size() const { return data.size(); }
+				void setValue(size_t i, int v) {
+					if (i >= data.size()) throw std::out_of_range("index");
+					data[i] = v;
+				}
+				int getValue(size_t i) const {
+					if (i >= data.size()) throw std::out_of_range("index");
+					return data[i];
+				}
+				};
+				</script>
+				</code></pre>
+				<small>Wersja edukacyjna ze <code>std::unique_ptr&lt;int[]&gt;</code> też jest OK.</small>
+				</section>
+
 
 				<section data-background-color="black" data-auto-animate="">
 					<h3>Zadanie domowe: Klasa do sortowania z dynamiczną alokacją pamięci</h3>
@@ -2682,6 +2922,18 @@ int main() {
 						do tego celu w języku C++.
 					</small>
 				</section>
+				<section>
+				<h3>Podsumowanie – dobre praktyki</h3>
+				<small>
+					<ul>
+					<li><code>friend</code> stosuj wąsko (operator wolnostojący, testy, narzędzia) – nie jako „skrót” do private.</li>
+					<li>Preferuj RAII: <code>std::string</code>, <code>std::vector</code>, <code>std::unique_ptr</code>.</li>
+					<li>Jeśli używasz surowych wskaźników, pamiętaj o parze <code>new</code>/<code>delete</code> i <code>new[]</code>/<code>delete[]</code>.</li>
+					<li>Singleton? Używaj oszczędnie. Jeśli już – <b>Meyers' Singleton</b> bez <code>new</code>, z wyłączonym kopiowaniem.</li>
+					</ul>
+				</small>
+				</section>
+
 
 
 
@@ -3883,6 +4135,7 @@ int main() {
 					</small>
 
 				</section>
+
 				<footer style="position: absolute; bottom: 0; width: 100%;">
 					<small style="font-size: 9px;">
 						Materiały do tej prezentacji zostały opracowane w oparciu o skrót materiałów wykładowych
@@ -3895,6 +4148,207 @@ int main() {
 
 
 			</section>
+
+
+							<section data-background-gradient="linear-gradient(120deg, #2b4a9e, #71a832)" data-auto-animate>
+
+						<section>
+							<h2>Dobre praktyki OOP</h2>
+							<h3>Kompozycja &gt; Dziedziczenie • SOLID • Rule of 0/3/5</h3>
+						</section>
+
+						<section data-auto-animate>
+							<h3>Kompozycja &gt; Dziedziczenie</h3>
+							<small>
+							Zamiast relacji „jest-rodzajem” używaj „ma”, gdy łączysz funkcjonalności. Dziedziczenie tylko dla prawdziwych relacji <b>is-a</b> i polimorfizmu.
+							</small>
+							<div class="row">
+							<div class="column">
+								<h4>Przykład dziedziczenia</h4>
+								<pre style="font-size:14px;"><code class="hljs cpp" data-trim>
+						<script type="text/template">
+						struct Silnik { void start(){} };
+						struct Samochod : Silnik {
+						void jedz(){ start(); }
+						};
+						</script>
+								</code></pre>
+							</div>
+							<div class="column">
+								<h4>Przykład kompozycji</h4>
+								<pre style="font-size:14px;"><code class="hljs cpp" data-trim>
+						<script type="text/template">
+						struct Silnik { void start(){} };
+						struct Samochod {
+						Silnik silnik;
+						void jedz(){ silnik.start(); }
+						};
+						</script>
+								</code></pre>
+							</div>
+							</div>
+						</section>
+
+						<section data-auto-animate>
+							<h3>Przegląd SOLID</h3>
+							<small>
+							<ul>
+								<li><b>Single Responsibility</b> – klasa ma jedną odpowiedzialność.</li>
+								<li><b>Open/Closed</b> – otwarta na rozszerzenia, zamknięta na modyfikacje.</li>
+								<li><b>Liskov Substitution</b> – podklasa może zastąpić bazę bez zmiany zachowania klienta.</li>
+								<li><b>Interface Segregation</b> – małe, wyspecjalizowane interfejsy.</li>
+								<li><b>Dependency Inversion</b> – zależ od abstrakcji, nie od konkretów.</li>
+							</ul>
+							</small>
+						</section>
+
+						<section data-auto-animate>
+							<h3>Mini-przykłady SOLID</h3>
+							<div class="row">
+							<div class="column">
+								<h4>SRP</h4>
+								<pre style="font-size:13px;"><code class="hljs cpp" data-trim>
+						<script type="text/template">
+						struct Raport { /* generuje dane */ };
+						struct RaportPDF { /* renderuje do PDF */ };
+						</script>
+								</code></pre>
+								<h4>OCP</h4>
+								<pre style="font-size:13px;"><code class="hljs cpp" data-trim>
+						<script type="text/template">
+						struct Strategia {
+						virtual int cena(int) const = 0;
+						virtual ~Strategia()=default;
+						};
+						struct Promocja10 : Strategia {
+						int cena(int b) const override { return b*9/10; }
+						};
+						</script>
+								</code></pre>
+							</div>
+							<div class="column">
+								<h4>LSP</h4>
+								<pre style="font-size:13px;"><code class="hljs cpp" data-trim>
+						<script type="text/template">
+						struct Baza { virtual void set(int){} virtual ~Baza()=default; }
+						struct Poch : Baza { void set(int) override {/* spójne z kontraktem */} };
+						</script>
+								</code></pre>
+								<h4>ISP • DIP</h4>
+								<pre style="font-size:13px;"><code class="hljs cpp" data-trim>
+						<script type="text/template">
+						struct ILog { virtual void log(const char*)=0; virtual ~ILog()=default; }
+						struct App {
+						ILog& log;
+						void run(){ log.log("start"); }
+						};
+						</script>
+								</code></pre>
+							</div>
+							</div>
+						</section>
+
+						<section data-auto-animate>
+							<h3>Rule of 0 / 3 / 5 (C++)</h3>
+							<small>
+							<ul>
+								<li><b>Rule of 0</b>: używaj RAII/kontenerów – bez własnego destruktora i operacji specjalnych.</li>
+								<li><b>Rule of 3</b>: gdy zarządzasz zasobem – zdefiniuj destruktor, kopiujący konstruktor i kopiujący operator=.</li>
+								<li><b>Rule of 5</b>: dodatkowo przenoszący konstruktor i przenoszący operator=.</li>
+							</ul>
+							</small>
+						</section>
+
+						<section data-auto-animate>
+							<h3>Rule of 0 – przykład</h3>
+							<pre style="font-size:15px;"><code class="hljs cpp" data-trim>
+						<script type="text/template">
+						#include <string>
+						#include <vector>
+
+						struct UserDb {
+						std::string name;
+						std::vector<int> scores;
+						};
+						</script>
+							</code></pre>
+						</section>
+
+						<section data-auto-animate>
+							<h3>Rule of 5 – przykład</h3>
+							<pre style="font-size:13.5px;"><code class="hljs cpp" data-trim>
+						<script type="text/template">
+						#include <cstring>
+						#include <utility>
+
+						struct Buffer {
+						size_t n{};
+						char*  data{};
+
+						Buffer() = default;
+						explicit Buffer(size_t n): n(n), data(new char[n]{}) {}
+						~Buffer(){ delete[] data; }
+
+						Buffer(const Buffer& o): Buffer(o.n){
+							std::memcpy(data, o.data, n);
+						}
+						Buffer& operator=(const Buffer& o){
+							if(this!=&o){
+							Buffer tmp(o);
+							std::swap(n, tmp.n);
+							std::swap(data, tmp.data);
+							}
+							return *this;
+						}
+
+						Buffer(Buffer&& o) noexcept : n(o.n), data(o.data){
+							o.n=0; o.data=nullptr;
+						}
+						Buffer& operator=(Buffer&& o) noexcept {
+							if(this!=&o){
+							delete[] data;
+							n=o.n; data=o.data;
+							o.n=0; o.data=nullptr;
+							}
+							return *this;
+						}
+						};
+						</script>
+							</code></pre>
+						</section>
+
+						<section data-auto-animate>
+							<h3>Kontrakty klas: const i niezmienniki</h3>
+							<small>
+							<ul>
+								<li>Metody niezmieniające stanu oznacz jako <code>const</code>; dane wejściowe przekazuj przez <code>const&amp;</code> gdy to możliwe.</li>
+								<li>Niezmienniki: warunki zawsze prawdziwe dla obiektu; sprawdzaj je w konstruktorach i metodach modyfikujących.</li>
+							</ul>
+							</small>
+							<pre style="font-size:14px;"><code class="hljs cpp" data-trim>
+						<script type="text/template">
+						struct Konto {
+						int saldo{0};
+						void wplata(int x){ if(x<0) throw; saldo+=x; }
+						bool maSrodki(int x) const { return saldo>=x; }
+						};
+						</script>
+							</code></pre>
+						</section>
+
+						<section>
+							<h3>Ćwiczenia</h3>
+							<small>
+							<ul>
+								<li>Przerób klasę z dziedziczeniem na wersję z kompozycją.</li>
+								<li>Dodaj do projektu abstrakcję (interfejs) i podmień implementację bez modyfikacji kodu klienta.</li>
+								<li>Napisz klasę z własnym zasobem w dwóch wersjach: Rule of 0 i Rule of 5.</li>
+							</ul>
+							</small>
+						</section>
+
+						</section>
+		
 		</div>
 	</div>
 
