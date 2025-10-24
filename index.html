@@ -462,7 +462,46 @@ int main() {
 				</section>
 			</section>
 
+			<section data-background-color="black">
+				<section data-auto-animate>
+					<h2 style="color: white;">Zadanie 1</h2>
+					<a href="https://classroom.github.com/a/HgQ5yLLi">Link do zadania</a>
+				</section>
+			</section>
 
+			<section data-background-color="black">
+				<section data-auto-animate>
+					<h2 style="color: white;">Zadanie domowe + kartkówka</h2>
+					<p>Obejrzeć materiały video, aby przygotować sie do kartkówki.</p>
+					<small>
+						<ul>
+							<li><a href="https://youtu.be/D6EI7EbEN4Q">Czym jest Git? - Kurs gita po polsku #1/12</a>
+							</li>
+							<li><a href="https://youtu.be/4bXuEv2R3W4">Jak zapisać zmiany - Kurs gita po polsku
+									#2/12</a></li>
+							<li><a href="https://youtu.be/gG80UsfMXsU">Przestrzeń robocza i stage - Kurs gita po polsku
+									#3/12</a></li>
+							<li><a href="https://youtu.be/I8lQK0NK0lY">Czym jest branch? - Kurs git po polsku #8/12</a>
+							</li>
+							<li><a href="https://youtu.be/7myDXGfEnds">Zdalne repozytorium i fork - Kurs git po polsku
+									#9/12</a></li>
+							<li><a href="https://youtu.be/mxDN0rYQyGA">Rozwiązywanie konfliktów - Kurs git po polsku
+									#10/12</a></li>
+						</ul>
+					</small>
+					<br />
+					<small>Przykładowe pytania na kartkówkę:
+						<ul>
+							<li>Co to jest system kontroli wersji?</li>
+							<li>Wymień podstawowe podstawowe komendy Gita i ich przeznaczenie</li>
+							<li>Co to jest repozytorium?</li>
+							<li>Co to jest branch?</li>
+							<li>Co to jest commit?</li>
+						</ul>
+					</small>
+
+				</section>
+			</section>
 			<section id="start" data-background-gradient="linear-gradient(13deg, #3a6935, #b5b170)">
 				<section data-auto-animate>
 					<h2>Wstęp do programowania obiektowego</h2>
@@ -624,23 +663,7 @@ int main() {
 							interfejsu, co zwiększa bezpieczeństwo i ułatwia utrzymanie kodu.</li>
 					</ul>
 				</section>
-				<section data-auto-animate>
-					<h3>O obiektach</h3>
-					<small>Koncepcje programowania obiektowego zostały pokazane w języku Simula. Zbudowano go do
-						symulacji złożonych systemów i
-						jako podstawę konstrukcji języka przyjęto, że każdy obiekt rzeczywisty charakteryzują jego
-						zachowania.</small>
-					<b>
-						<p style="margin: 10px;">Spróbowano więc tak układać komunikację pomiędzy procedurami (modułami)
-							i danymi aby były podporządkowane zachowaniom
-							symulowanych obiektów.</p>
-					</b>
-					<small>Obiekt był „pakunkiem” zawierającym procedury i dane powiązane razem tak, aby określały jego
-						możliwe zachowania.
-						Procedury w podejściu obiektowym nazywa się metodami. W odniesieniu do danych stosujemy nazwę
-						zmienne bo ich wartość
-						może się zmieniać w czasie. Nazywamy metody i zmienne atrybutami obiektu.</small>
-				</section>
+
 				<section data-auto-animate>
 					<h3>O obiektach</h3>
 					<small>Rozważmy dla ilustracji jak moglibyśmy programować przenośnik fabryczny. Może on wykonywać
@@ -1097,9 +1120,21 @@ public class Card {
 				</section>
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
+					<h5> Co to jest konstruktor?</h5>
+
+					<small>Konstruktor to specjalna metoda w klasie, która służy do <b>inicjalizacji</b> nowo tworzonego
+						obiektu tej klasy.
+						Konstruktor wywoływany jest automatycznie w momencie tworzenia obiektu i ustawia początkowe
+						wartości jego pól (atrybutów).
+						W C++ i innych językach obiektowych konstruktor ma taką samą nazwę jak klasa i nie zwraca żadnej
+						wartości.
+						Dzięki konstruktorowi obiekt jest gotowy do użycia zaraz po utworzeniu.</small>
+				</section>
+				<section data-auto-animate>
+					<h3>Konstruktory</h3>
 					<small>Konstruktor <b>NIE MUSI</b> wystąpić w opisie klasy, czyli obiekty nie muszą być wprowadzane
 						konstruktorem <B>jawnym</B>.</small>
-					<small><b>Nazwa konstruktora może być przeładowana bo jest on funkcją</b>, czyli może być ta nazwa
+					<small><b>Konstruktor to funkcja więc nazwa może być przeładowana</b>, czyli może być ta nazwa
 						stosowana wielokrotnie w opisie
 						deklaracji klasy oraz w opisie funkcji konstruktora z różnymi listami argumentów. Wtedy
 						kompilator odróżnia konstruktory
@@ -1117,16 +1152,6 @@ public class Card {
 						domniemanym.</small>
 				</section>
 				<section data-auto-animate>
-					<h3>Konstruktory</h3>
-					<p>Co właściwie robi konstruktor? On <b>INICJALIZUJE</b> obiekty. Kompilator automatycznie wywołuje
-						konstruktor w miejscu
-						tworzenia obiektu zanim jeszcze obiekt podejmie jakiekolwiek działanie. <b>Czyli po pierwszym
-							komunikacie na obiekt
-							startuje konstruktor</b>. Nazwa konstruktora taka sama jak nazwa klasy (pomysł Stroustrupa)
-						pozwala na jednoznaczne
-						powiązanie konstruktora z typem zmiennej obiektowej (wykorzystano operator zakresu).</p>
-				</section>
-				<section>
 					<h3>Konstruktory</h3>
 					<small>
 						<b>Konstruktor jest zwykle deklarowany jako publiczny</b>, bo przecież wprowadzane nim obiekty
@@ -1154,11 +1179,29 @@ public class Card {
 						bezargumentowy !!
 					</p>
 				</section>
+				<section>
+					<h3>konstruktory</h3>
+					<small>
+						<b>Konstruktor domyślny</b> (ang. <i>default constructor</i>) to konstruktor, który nie
+						przyjmuje żadnych argumentów. Jeśli nie zdefiniujesz żadnego konstruktora w klasie, kompilator
+						automatycznie wygeneruje konstruktor domyślny.
+					</small>
+					<br>
+					<small>
+						<b>Konstruktor domniemany</b> (czasem używany jako synonim domyślnego) to konstruktor
+						bezargumentowy, który zostaje utworzony przez kompilator, gdy nie zdefiniujesz żadnego własnego
+						konstruktora. Jeśli zdefiniujesz jakikolwiek inny konstruktor (np. z argumentami), kompilator
+						nie wygeneruje już domyślnego/domnienanego konstruktora automatycznie – musisz go wtedy
+						zadeklarować jawnie, jeśli jest potrzebny.
+					</small>
+					<br>
+
+				</section>
 				<section data-auto-animate>
 					<h3>Konstruktory</h3>
 					<p>Konstruktor domniemany (ang. default constructor)</p>
 					<pre style="font-size: 16px" data-id="code-animation">
-																												<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="9|15"><script type="text/template">
+						<code style="max-height: 250px" class="hljs cpp" data-trim data-line-numbers="9|15"><script type="text/template">
 	#include <iostream>
 	#include <cstring>
 	 
@@ -1200,15 +1243,14 @@ public class Card {
 																												</code>
 																												</pre>
 					<small>
-						Konstruktor domyślny (ang. default constructor) w języku C++ jest specjalnym rodzajem
-						konstruktora, który jest wywoływany bez
-						żadnych argumentów podczas tworzenia obiektu klasy. Gdy w klasie nie zdefiniowano żadnych
-						konstruktorów, kompilator
-						automatycznie generuje konstruktor domyślny. Jednakże, jeśli w klasie zdefiniowano jakikolwiek
-						inny konstruktor (np.
-						konstruktor z parametrami), konstruktor domyślny nie jest już automatycznie generowany, chyba że
-						został zdefiniowany
-						jawnie przez programistę.
+						<b>Podsumowanie:</b>
+						<ul>
+							<li>Konstruktor domyślny = konstruktor bezargumentowy.</li>
+							<li>Konstruktor domniemany = automatycznie wygenerowany przez kompilator, jeśli nie ma
+								innych konstruktorów.</li>
+							<li>Jeśli zdefiniujesz własny konstruktor, domyślny/domniemany nie powstaje automatycznie.
+							</li>
+						</ul>
 					</small>
 				</section>
 				<section data-auto-animate>
@@ -1514,15 +1556,6 @@ int main() {
 						nazwano ją interfejsem
 						(klasa interfejsu).</p>
 				</section>
-				<footer style="position: absolute; bottom: 0; width: 100%;">
-					<small style="font-size: 9px;">
-						Materiały do tej prezentacji zostały opracowane w oparciu o skrót materiałów wykładowych
-						przedmiotu
-						Programowanie
-						Obiektowe prowadzonego na WAT. Autor materiałów źródłowych: prof. Andrzej Walczak<br>
-						Copyrights Military University of Technology in Warsaw
-					</small>
-				</footer>
 
 			</section>
 
@@ -1635,6 +1668,13 @@ int main() {
 						zapewnia, że nowy obiekt
 						jest kopią istniejącego obiektu.
 					</small>
+				</section>
+			</section>
+
+			<section data-background-color="black">
+				<section>
+					<h2>Zadanie</h2>
+					<a href="https://classroom.github.com/a/4RgTCcBl">Link do zadania</a>
 				</section>
 			</section>
 
@@ -1873,9 +1913,6 @@ int main() {
 				</section>
 			</section>
 
-
-
-
 			<section data-background-gradient="linear-gradient(175deg, #08415c, #202155)">
 				<section>
 					<h2>Pliki nagłówkowe</h2>
@@ -2011,7 +2048,7 @@ void MojaKlasa::metoda() {
 				</section>
 			</section>
 			<section data-background-gradient="linear-gradient(175deg, #009b72, #43447b)">
-			
+
 				<section>
 					<h2>Polimorfizm</h2>
 					<h3>Przeciązanie funkcji i metod</h3>
@@ -2045,7 +2082,7 @@ void MojaKlasa::metoda() {
 						kodu.
 					</small>
 				</section>
-			
+
 				<section data-auto-animate>
 					<h3>Przeciążanie funkcji a programowanie obiektowe</h3>
 					<small>
@@ -2057,8 +2094,8 @@ void MojaKlasa::metoda() {
 						czytelność kodu.
 					</small>
 				</section>
-			
-			
+
+
 				<section data-auto-animate>
 					<h3>Dziedziczenie w programowaniu obiektowym</h3>
 					<small>
@@ -2091,7 +2128,7 @@ void MojaKlasa::metoda() {
 						metody <code>bark()</code> zdefiniowanej w samej klasie <code>Dog</code>.
 					</small>
 				</section>
-			
+
 				<section data-auto-animate>
 					<h3>Dziedziczenie w programowaniu obiektowym</h3>
 					<pre>Użycie klasy Dog w main.cpp<code class="hljs cpp" ><script type="text/template">// main.cpp
@@ -2112,7 +2149,7 @@ void MojaKlasa::metoda() {
 						<code>bark()</code> jest zdefiniowana w klasie <code>Dog</code>. Obiekt klasy
 						<code>Animal</code> nie posiada metody <code>bark()</code>,
 					</small>
-			
+
 				</section>
 				<section data-auto-animate>
 					<h3>Poziomy dostępu do dziedziczenia w C++</h3>
@@ -2140,10 +2177,10 @@ void MojaKlasa::metoda() {
 						</li>
 					</ul>
 				</section>
-			
-			
-			
-			
+
+
+
+
 				<section data-auto-animate>
 					<h3>Metody wirtualne w C++</h3>
 					<small>
@@ -2156,8 +2193,8 @@ void MojaKlasa::metoda() {
 						klasie typu
 						obiektu, a nie typu wskaźnika lub referencji.
 					</small>
-			
-			
+
+
 					<pre style="font-size: 16px;">Przykład metody wirtualnej w C++<code><script type="text/template">// Klasa bazowa
 						class Base {
 						public:
@@ -2175,8 +2212,8 @@ void MojaKlasa::metoda() {
 								}
 						};</script></code></pre>
 				</section>
-			
-			
+
+
 				<section data-auto-animate>
 					<h3>Metody abstrakcyjne w C++</h3>
 					<small>
@@ -2190,8 +2227,8 @@ void MojaKlasa::metoda() {
 						metody
 						abstrakcyjne.
 					</small>
-			
-			
+
+
 					<pre style="font-size: 16px;">Przykład metody abstrakcyjnej w C++<code><script type="text/template">// Klasa bazowa (abstrakcyjna)
 						class Base {
 						public:
@@ -2207,7 +2244,7 @@ void MojaKlasa::metoda() {
 								}
 						};</script></code></pre>
 				</section>
-			
+
 				<section data-auto-animate>
 					<h3>Przesłanianie metod bez użycia słowa kluczowego 'virtual' w C++</h3>
 					<small>
@@ -2249,7 +2286,7 @@ void MojaKlasa::metoda() {
 						<code>print()</code> nie jest wirtualna.
 					</small>
 				</section>
-			
+
 				<section data-auto-animate>
 					<h3>Rodzaje Dziedziczenia w Programowaniu Obiektowym</h3>
 					<small>
@@ -2277,7 +2314,7 @@ void MojaKlasa::metoda() {
 						</ul>
 					</small>
 				</section>
-			
+
 				<section data-auto-animate>
 					<h3>Polimorfizm w programowaniu obiektowym</h3>
 					<small>
@@ -2405,7 +2442,7 @@ int main() {
 						wówczas konieczna jest
 						dodatkowa klasyfikacja nazwą klasy, jak w przykładzie poniżej.
 					</small>
-			
+
 				</section>
 				<section>
 					<h3>Dziedziczenie wirtualne</h3>
@@ -2482,7 +2519,7 @@ int main() {
 																							</code>
 																							</pre>
 				</section>
-			
+
 			</section>
 			<!-- TODO -->
 			<section>
