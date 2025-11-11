@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <title>Programowanie Obiektowe - Nowa Wersja</title>
+    <meta name="description" content="PO LAB">
+    <meta name="author" content="Norbert Waszkowiak">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+            padding: 10px;
+        }
+
+        .small-font pre {
+            font-size: 13px;
+            margin-left: 0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section data-background-gradient="linear-gradient(45deg, #2c3e50, #3498db)">
+
+                <!-- 1. Slajd powitalny -->
+                <section style="text-align: left;">
+                    <h1>Programowanie Obiektowe</h1>
+
+                    <div style="margin-top: 40px;">
+                        <p><strong>Prowadzący:</strong> por. mgr inż. Norbert Waszkowiak</p>
+
+                        <div style="margin-top: 30px; font-size: 0.6em;">
+                            <p>📞 <strong>Tel:</strong> 261 839 060</p>
+                            <p>📧 <strong>Email:</strong> norbert.waszkowiak@wat.edu.pl</p>
+                            <p>🏢 <strong>Pokój:</strong> bud. 100, pok. 254B</p>
+                            <p>💬 <strong>Konsultacje:</strong> po wcześniejszym umówieniu (online/stacjonarnie)</p>
+                        </div>
+                    </div>
+
+                </section>
+            </section>
+
+            <!-- 2. Historia programowania -->
+            <section data-background-gradient="linear-gradient(37deg, #1e3c72, #2a5298)">
+
+                <!-- Slajd tytułowy -->
+                <section>
+                    <h2>Historia programowania</h2>
+                    <h3>Programowanie proceduralne vs obiektowe</h3>
+                    <aside class="notes">
+                        Programowanie obiektowe nie powstało przypadkowo ani jako abstrakcyjna teoria akademicka.
+                        Jest odpowiedzią na konkretne problemy inżynierskie, które wystąpiły w praktyce 
+                        tworzenia oprogramowania w latach 60. i 70. XX wieku.
+                        
+                        W tej części wykładu omówimy ewolucję paradygmatów programowania oraz przyczyny,
+                        dla których programowanie obiektowe stało się dominującym podejściem w inżynierii oprogramowania.
+                        Analiza historyczna pozwoli zrozumieć, że OOP jest narzędziem rozwiązującym realne problemy,
+                        a nie jedynie teoretyczną koncepcją.
+                    </aside>
+                </section>
+
+                <!-- Programowanie proceduralne -->
+                <section>
+                    <h3>Programowanie proceduralne</h3>
+                    <p><strong>Lata 50-60. XX wieku</strong></p>
+                    <ul>
+                        <li>Program = lista instrukcji wykonywanych kolejno</li>
+                        <li>Dane oddzielone od funkcji</li>
+                        <li>Przykłady: Fortran, COBOL, C</li>
+                    </ul>
+                    <pre style="font-size: 16px; margin-top: 30px;"><code class="hljs c" data-trim>
+int suma = 0;
+for(int i = 0; i < 10; i++) {
+    suma += i;
+}
+printf("Suma: %d", suma);
+                    </code></pre>
+                    <aside class="notes">
+                        Programowanie proceduralne charakteryzuje się sekwencyjnym wykonywaniem instrukcji.
+                        Program składa się ze zmiennych przechowujących dane oraz procedur (funkcji) operujących na tych danych.
+                        Kluczową cechą tego paradygmatu jest separacja danych od logiki przetwarzania.
+                        
+                        Języki takie jak Fortran (1957) służyły obliczeniom naukowym, COBOL (1959) 
+                        zastosowaniom biznesowym, a C (1972) programowaniu systemowemu. Wszystkie opierały się
+                        na paradygmacie proceduralnym.
+                        
+                        Podejście to było efektywne dla programów o ograniczonej złożoności - rzędu setek linii kodu.
+                        Jednak wraz ze wzrostem skali oprogramowania zaczęły ujawniać się fundamentalne problemy tego modelu.
+                    </aside>
+                </section>
+
+                <!-- Problem -->
+                <section>
+                    <h3>Problem: chaos w dużych programach</h3>
+                    <ul>
+                        <li>📈 Tysiące linii w jednym pliku</li>
+                        <li>🔄 Zmienne globalne - kto je zmienia?</li>
+                        <li>🐛 Błąd w jednym miejscu = awaria całości</li>
+                        <li>👥 Współpraca w zespole? Koszmar!</li>
+                        <li>♻️ Ponowne użycie kodu? Niemożliwe</li>
+                    </ul>
+                    <p style="margin-top: 40px; color: #ffd93d;">
+                        <em>"Spaghetti code"</em> - wszystko ze wszystkim poplątane
+                    </p>
+                    <aside class="notes">
+                        W latach 70. XX wieku skala oprogramowania osiągnęła dziesiątki i setki tysięcy linii kodu.
+                        Systemy bankowe, systemy kontroli lotów, wczesne systemy operacyjne - wszystkie ujawniły
+                        fundamentalne ograniczenia podejścia proceduralnego.
+                        
+                        Zmienne globalne tworzyły problem identyfikacji odpowiedzialności. W programie liczącym
+                        50 tysięcy linii kodu, zmienna globalna "saldo_konta" mogła być modyfikowana przez dziesiątki
+                        funkcji. Wykrycie źródła nieprawidłowej wartości wymagało analizy całej bazy kodu.
+                        
+                        Silne sprzężenie między komponentami oznaczało, że błąd w jednej funkcji mógł propagować się
+                        na pozornie niepowiązane obszary systemu. Funkcje operowały na tych samych globalnych strukturach danych.
+                        
+                        Praca zespołowa była utrudniona - wielu programistów modyfikowało te same globalne zasoby,
+                        co prowadziło do konfliktów i błędów integracyjnych.
+                        
+                        Ponowne wykorzystanie kodu było praktycznie niemożliwe. Funkcje były ściśle związane
+                        z globalnymi zmiennymi konkretnego projektu, co uniemożliwiało ich przeniesienie.
+                        
+                        Termin "spaghetti code" opisuje tę sytuację - kod tak splątany, że modyfikacja
+                        jednego elementu wpływa nieprzewidywalnie na cały system.
+                    </aside>
+                </section>
+
+                <!-- Rozwiązanie -->
+                <section>
+                    <h3>Potrzeba nowego podejścia</h3>
+                    <div class="row" style="margin-top: 40px;">
+                        <div class="column">
+                            <h4 style="color: #ff6b6b;">❌ Problem</h4>
+                            <ul style="font-size: 0.8em;">
+                                <li>Dane osobno od funkcji</li>
+                                <li>Wszystko globalne</li>
+                                <li>Brak ochrony</li>
+                                <li>Trudno skalować</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4 style="color: #51cf66;">✓ Rozwiązanie</h4>
+                            <ul style="font-size: 0.8em;">
+                                <li>Dane + funkcje razem</li>
+                                <li>Kontrolowany dostęp</li>
+                                <li>Ukryte szczegóły</li>
+                                <li>Łatwe rozszerzanie</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Analiza problemów programowania proceduralnego doprowadziła do fundamentalnej obserwacji:
+                        dane i operacje na nich są naturalnie powiązane. Konto bankowe zawiera saldo oraz operacje
+                        wpłaty, wypłaty i sprawdzenia stanu. Logicznie stanowią one jedną całość.
+                        
+                        Programowanie proceduralne separowało te elementy - zmienna "saldo" istniała oddzielnie
+                        od funkcji "wpłać" i "wypłać". To prowadzi do pytania: dlaczego kod nie odzwierciedla
+                        naturalnej struktury problemu?
+                        
+                        Koncepcja grupowania danych z operacjami to fundament programowania obiektowego.
+                        Zamiast separacji, otrzymujemy encję "Konto", która zawiera zarówno dane (saldo),
+                        jak i metody (wpłać, wypłać).
+                        
+                        Konieczna była również kontrola dostępu do danych. Bezpośrednia modyfikacja
+                        "saldo = -1000" powinna być niemożliwa. Tylko odpowiednie metody, zawierające
+                        logikę walidacji, powinny mieć prawo zmiany stanu. To jest istota enkapsulacji -
+                        ukrywania danych i kontrolowania dostępu poprzez zdefiniowany interfejs.
+                        
+                        Dodatkowo potrzebna była możliwość rozszerzania funkcjonalności bez przepisywania kodu.
+                        Mechanizm dziedziczenia pozwala na stworzenie KontoOszczędnościowego rozszerzającego
+                        Konto, bez konieczności duplikacji kodu bazowego.
+                        
+                        Te obserwacje doprowadziły do powstania koncepcji programowania obiektowego.
+                    </aside>
+                </section>
+
+                <!-- Simula -->
+                <section>
+                    <h3>1967: Simula</h3>
+                    <p><strong>Ole-Johan Dahl i Kristen Nygaard (Norwegia)</strong></p>
+                    <ul>
+                        <li>Symulacje (kolejki, procesy)</li>
+                        <li>Wprowadzili: <strong>klasy i obiekty</strong></li>
+                        <li>Pierwszy język obiektowy</li>
+                    </ul>
+                    <aside class="notes">
+                        Rok 1967, Norwegian Computing Center w Oslo. Ole-Johan Dahl i Kristen Nygaard
+                        pracują nad językiem do symulacji dyskretnych zdarzeń - kolejek w systemach obsługi,
+                        procesów produkcyjnych, ruchu w portach.
+                        
+                        Podczas projektowania języka symulacji zauważyli fundamentalną właściwość:
+                        symulowane systemy składają się z bytów, z których każdy posiada własny stan
+                        (dane) oraz zachowanie (operacje). W symulacji sklepu naturalnymi bytami są:
+                        klienci posiadający imię, wiek, koszyk zakupów; kasjerzy mający stanowisko
+                        i szybkość obsługi; produkty charakteryzujące się nazwą, ceną i kodem.
+                        
+                        Każdy byt posiada nie tylko dane, ale również zachowania: klient czeka w kolejce,
+                        wybiera produkty, płaci; kasjer obsługuje klienta, skanuje produkty, wydaje resztę.
+                        
+                        Ta obserwacja doprowadziła do stworzenia języka Simula z fundamentalnymi koncepcjami:
+                        klasą jako szablonem definiującym strukturę i zachowanie, oraz obiektem jako
+                        konkretną instancją klasy. Klasa "Klient" definiuje, że każdy klient posiada
+                        imię, wiek i koszyk. Obiekt "Jan Kowalski" jest konkretną instancją z wartościami:
+                        imię="Jan", wiek=35, koszyk=[mleko, chleb].
+                        
+                        Simula wprowadziła również koncepcję dziedziczenia - możliwości tworzenia
+                        specjalizowanych klas na bazie klas ogólnych.
+                        
+                        Mimo że Simula nie osiągnęła szerokiego zastosowania komercyjnego, jej koncepcje
+                        stały się fundamentem wszystkich współczesnych języków obiektowych: C++, Java, Python, C#.
+                        Kluczową ideą jest grupowanie danych z zachowaniami w spójne encje.
+                    </aside>
+                </section>
+
+                <!-- Smalltalk -->
+                <section>
+                    <h3>1972: Smalltalk</h3>
+                    <p><strong>Alan Kay (Xerox PARC)</strong></p>
+                    <ul>
+                        <li>WSZYSTKO jest obiektem (nawet liczby!)</li>
+                        <li>Pierwsze GUI (okienka, mysz)</li>
+                        <li>Ukuł termin "programowanie obiektowe"</li>
+                    </ul>
+                    <aside class="notes">
+                        Rok 1972, Xerox Palo Alto Research Center. Alan Kay, informatyk i wizjoner,
+                        rozwija koncepcję programowania obiektowego do jej logicznej konkluzji, tworząc
+                        język Smalltalk.
+                        
+                        Fundamentalna zasada Smalltalk: wszystko jest obiektem. Nawet wartości prymitywne
+                        takie jak liczba 5 są obiektami posiadającymi metody. Liczba 5 posiada metody
+                        dodawania, mnożenia, konwersji do stringa. W notacji Smalltalk: 5 + 3 to wywołanie
+                        metody dodawania na obiekcie 5 z argumentem 3. Współcześnie ten model widzimy
+                        w Pythonie, gdzie (5).__add__(3) jest poprawnym wywołaniem.
+                        
+                        Kay wprowadził również koncepcję komunikacji poprzez wiadomości. Obiekty nie
+                        "wywołują funkcji" - wysyłają wiadomości do innych obiektów, które decydują
+                        jak na nie odpowiedzieć. To fundamentalna zmiana paradygmatu.
+                        
+                        Smalltalk był również rewolucyjny technologicznie - Kay stworzył pierwsze
+                        graficzne środowisko użytkownika oparte na oknach, ikonach i myszy. To rozwiązanie,
+                        zaprezentowane w Xerox PARC, zostało następnie zaadaptowane przez Apple
+                        w Macintosh oraz Microsoft w Windows.
+                        
+                        Alan Kay ukuł termin "object-oriented programming" - programowanie obiektowe.
+                        
+                        Mimo że Smalltalk nie osiągnął dominacji w przemyśle ze względu na wymagania
+                        wydajnościowe, jego czysta wizja OOP wpłynęła na projektowanie wszystkich
+                        późniejszych języków obiektowych. Zasady formułowane przez Kaya pozostają
+                        aktualne 50 lat później.
+                    </aside>
+                </section>
+
+                <!-- C++ -->
+                <section>
+                    <h3>1983: C++</h3>
+                    <p><strong>Bjarne Stroustrup</strong></p>
+                    <ul>
+                        <li>Połączył C (szybki) + OOP (zorganizowany)</li>
+                        <li>"C with Classes" → C++</li>
+                        <li>Programiści C mogli stopniowo przejść na OOP</li>
+                    </ul>
+                    <aside class="notes">
+                        Rok 1983, Bell Laboratories. Bjarne Stroustrup, informatyk duńskiego pochodzenia,
+                        stoi przed problemem: jak wprowadzić koncepcje obiektowe do praktyki przemysłowej,
+                        gdzie dominuje język C znany z wydajności i kontroli niskopoziomowej?
+                        
+                        Rozwiązaniem było stworzenie C++ - języka łączącego sprawdzoną efektywność C
+                        z możliwościami organizacyjnymi programowania obiektowego. To był strategiczny
+                        kompromis pozwalający na ewolucyjne przyjęcie nowego paradygmatu.
+                        
+                        Programiści C mogli kontynuować pisanie kodu proceduralnego, stopniowo wprowadzając
+                        elementy obiektowe. Nie było konieczności rewolucyjnej zmiany całego podejścia.
+                        Kod C pozostawał poprawnym kodem C++, zapewniając kompatybilność wsteczną.
+                        
+                        Początkowo język nazywał się "C with Classes". Zmiana nazwy na C++ (operator
+                        inkrementacji w C oznacza zwiększenie o 1) symbolizowała ewolucyjny charakter języka.
+                        
+                        C++ zachował fundamentalne cechy C: bezpośredni dostęp do pamięci, wskaźniki,
+                        możliwość programowania niskopoziomowego. Jednocześnie wprowadził klasy, dziedziczenie,
+                        polimorfizm, szablony. To połączenie czyni C++ unikalnym - pozwala na
+                        niskopoziomową kontrolę (zarządzanie każdym bajtem pamięci) oraz wysokopoziomową
+                        organizację (eleganckie hierarchie klas).
+                        
+                        Zastosowania C++: systemy operacyjne (Windows, Linux), silniki gier (Unreal Engine),
+                        oprogramowanie embedded (automotive, avionics), aplikacje wymagające wydajności
+                        (przeglądarki Chrome, Firefox).
+                        
+                        C++ nie jest językiem stworzonym od podstaw dla OOP. Jest ewolucją C w kierunku
+                        obiektowości, zachowującą kompatybilność i wydajność. To wyjaśnia wiele jego
+                        osobliwości - koegzystencja struktur i klas, operatorów new/malloc, różne
+                        konwencje. Zrozumienie tej ewolucji jest kluczem do zrozumienia języka.
+                    </aside>
+                </section>
+
+                <!-- Java -->
+                <section>
+                    <h3>1995: Java</h3>
+                    <p><strong>James Gosling (Sun Microsystems)</strong></p>
+                    <ul>
+                        <li>"Write once, run anywhere" (JVM)</li>
+                        <li>Automatyczne zarządzanie pamięcią</li>
+                        <li>Wymuszony OOP - wszystko w klasach</li>
+                    </ul>
+                    <aside class="notes">
+                        Rok 1995, Sun Microsystems. Kontekst: ekspansja Internetu, heterogeniczne
+                        środowiska sprzętowe (PC, Mac, Unix), potrzeba przenośności oprogramowania.
+                        James Gosling projektuje Javę z fundamentalnym założeniem: "Write once, run anywhere".
+                        
+                        Mechanizm realizacji: Java Virtual Machine (JVM). Kompilacja nie produkuje
+                        kodu maszynowego specyficznego dla platformy, lecz bytecode - kod pośredni.
+                        JVM na każdej platformie interpretuje ten bytecode. Ten sam plik .class
+                        wykonuje się identycznie na Windows, macOS, Linux.
+                        
+                        Java wprowadziła dwie fundamentalne zmiany względem C++:
+                        
+                        Pierwsza: Garbage Collector - automatyczne zarządzanie pamięcią. W C++ programista
+                        musi pamiętać: new wymaga delete. Brak delete prowadzi do wycieku pamięci - program
+                        konsumuje coraz więcej RAM. W Javie Garbage Collector automatycznie identyfikuje
+                        i usuwa nieużywane obiekty. To znacząco upraszcza programowanie, kosztem mniejszej
+                        kontroli i potencjalnie wolniejszego działania podczas zbierania śmieci.
+                        
+                        Druga: Wymuszony paradygmat obiektowy. W Javie nie można napisać kodu poza klasą.
+                        Funkcja main() musi być metodą statyczną klasy. Zmienne globalne nie istnieją -
+                        muszą być statycznymi polami klas. Wszystko musi być obiektem (z wyjątkiem
+                        typów prymitywnych, które posiadają wrappery obiektowe: int → Integer).
+                        
+                        To wymuszenie paradygmatu miało znaczący efekt edukacyjny. W C++ można mieszać
+                        kod proceduralny z obiektowym. Java nie pozwala na kompromisy - tylko czyste OOP.
+                        Miliony programistów uczących się Javy musiało opanować właściwe praktyki obiektowe.
+                        
+                        Współczesne zastosowania Javy: aplikacje webowe (backend - Spring, Hibernate),
+                        Android (choć obecnie Kotlin zyskuje przewagę), systemy korporacyjne (bankowość,
+                        ubezpieczenia, gdzie dominuje Java Enterprise Edition).
+                        
+                        Dla programistów C++ Java reprezentuje alternatywną filozofię: rezygnacja
+                        z niskopoziomowej kontroli w zamian za bezpieczeństwo i przenośność. Oba podejścia
+                        mają uzasadnienie w odpowiednich kontekstach zastosowań.
+                    </aside>
+                </section>
+
+                <!-- Dlaczego OOP wygrało -->
+                <section>
+                    <h3>Dlaczego OOP?</h3>
+                    <div style="text-align: left; margin: 20px;">
+                        <div style="margin: 20px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                            <strong>✅ Enkapsulacja</strong>
+                            <p style="font-size: 0.85em; margin-top: 10px;">
+                                Dane chronione - tylko metody mogą je zmieniać
+                            </p>
+                        </div>
+                        <div style="margin: 20px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                            <strong>✅ Modularność</strong>
+                            <p style="font-size: 0.85em; margin-top: 10px;">
+                                Niezależne obiekty - łatwiej debugować
+                            </p>
+                        </div>
+                        <div style="margin: 20px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
+                            <strong>✅ Wielokrotne użycie</strong>
+                            <p style="font-size: 0.85em; margin-top: 10px;">
+                                Dziedziczenie - nie piszesz od zera
+                            </p>
+                        </div>
+                        <div style="margin: 20px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
+                            <strong>✅ Naturalne myślenie</strong>
+                            <p style="font-size: 0.85em; margin-top: 10px;">
+                                Kod = rzeczywistość (Klient, Produkt, Zamówienie)
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Programowanie obiektowe rozwiązało fundamentalne problemy inżynierii oprogramowania
+                        na dużą skalę. Analiza czterech kluczowych zalet:
+                        
+                        ENKAPSULACJA - ukrywanie implementacji i kontrola dostępu.
+                        
+                        Rozważmy klasę BankAccount. Pole balance jest prywatne. Dostęp możliwy wyłącznie
+                        poprzez metody deposit() i withdraw(). Te metody zawierają logikę walidacji:
+                        deposit() weryfikuje czy kwota jest dodatnia, withdraw() sprawdza czy saldo
+                        jest wystarczające. Bezpośrednie przypisanie balance = -1000000 jest niemożliwe -
+                        kompilator zgłosi błąd dostępu do prywatnego pola.
+                        
+                        To fundamentalna różnica względem programowania proceduralnego, gdzie każda
+                        zmienna globalna może być modyfikowana przez dowolny fragment kodu. Enkapsulacja
+                        gwarantuje, że dane mogą być zmieniane tylko w kontrolowany sposób.
+                        
+                        MODULARNOŚĆ - niezależność komponentów.
+                        
+                        Każda klasa stanowi niezależny moduł. Klasa User nie posiada wiedzy o klasie Invoice.
+                        Modyfikacja implementacji User nie wpływa na Invoice, o ile interfejs publiczny
+                        (publiczne metody) pozostaje niezmieniony. Reszta systemu nie zauważa wewnętrznych zmian.
+                        
+                        W systemie składającym się ze stu klas, każda stanowi czarną skrzynkę.
+                        Interfejs publiczny definiuje wejście i wyjście, implementacja jest ukryta.
+                        Debugowanie staje się prostsze - błąd w klasie Payment wymaga analizy tylko tej klasy,
+                        nie całego systemu.
+                        
+                        WIELOKROTNE UŻYCIE - dziedziczenie i kompozycja.
+                        
+                        Klasa Animal definiuje metody eat(), sleep(), makeSound(). Klasa Dog dziedziczy
+                        po Animal, automatycznie otrzymując te metody. Programista dodaje tylko metodę bark().
+                        Nie ma duplikacji kodu bazowego.
+                        
+                        Kompozycja: klasa Car zawiera obiekt Engine. Ten sam Engine może być używany
+                        w klasie Motorcycle. Ponowne wykorzystanie bez kopiowania.
+                        
+                        W programowaniu proceduralnym ponowne użycie wymaga copy-paste. Modyfikacja
+                        w jednym miejscu wymaga modyfikacji we wszystkich kopiach. To prowadzi do
+                        błędów i trudności w utrzymaniu.
+                        
+                        NATURALNE MODELOWANIE - odzwierciedlenie rzeczywistości.
+                        
+                        Projektując system e-commerce, naturalnie identyfikujemy encje: Klient (imię, adres,
+                        historia zamówień), Produkt (nazwa, cena, opis), Koszyk (lista produktów, suma),
+                        Zamówienie (klient, produkty, status).
+                        
+                        OOP pozwala bezpośrednio zapisać tę strukturę w kodzie:
+                        class Customer { }, class Product { }, class ShoppingCart { }, class Order { }
+                        
+                        Kod staje się samodokumentującym. Nowy programista analizujący projekt
+                        natychmiast rozumie strukturę systemu przez nazwy klas. Nie musi analizować
+                        tysięcy linii funkcji o niejasnych nazwach.
+                        
+                        To są cztery filary programowania obiektowego: enkapsulacja, modularność,
+                        wielokrotne użycie, naturalne modelowanie. Nie są abstrakcyjnymi koncepcjami -
+                        to praktyczne narzędzia rozwiązujące realne problemy inżynierskie.
+                    </aside>
+                </section>
+
+                <!-- Porównanie -->
+                <section>
+                    <h3>Porównanie: Proceduralne vs Obiektowe</h3>
+                    <div class="row">
+                        <div class="column">
+                            <h4 style="color: #ff6b6b;">❌ Proceduralnie</h4>
+                            <pre style="font-size: 13px;"><code class="hljs c">int saldo = 1000;
+
+void wplac(int kwota) {
+    saldo += kwota;
+}
+
+void wyplac(int kwota) {
+    saldo -= kwota;
+}
+
+// Każdy może:
+saldo = -5000; // Ups!
+</code></pre>
+                        </div>
+                        <div class="column">
+                            <h4 style="color: #2ecc71;">✅ Obiektowo</h4>
+                            <pre style="font-size: 13px;"><code class="hljs cpp">class Konto {
+private:
+    int saldo;
+public:
+    void wplac(int kwota) {
+        if (kwota > 0)
+            saldo += kwota;
+    }
+    void wyplac(int kwota) {
+        if (kwota > 0 && kwota <= saldo)
+            saldo -= kwota;
+    }
+};
+
+// Chronione!
+// k.saldo = -5000; // BŁĄD!
+</code></pre>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Porównanie implementacji konta bankowego w paradygmatach proceduralnym i obiektowym
+                        ilustruje fundamentalne różnice.
+                        
+                        PODEJŚCIE PROCEDURALNE:
+                        
+                        Zmienna "saldo" jest globalna. Każdy fragment programu ma do niej dostęp i może
+                        ją modyfikować. Funkcje wplac() i wyplac() operują na tej zmiennej. Problem:
+                        identyfikacja wszystkich miejsc modyfikujących saldo wymaga przeszukania całego kodu.
+                        
+                        Brak walidacji. Funkcja wyplac() nie weryfikuje czy saldo jest wystarczające.
+                        Funkcja wplac() nie sprawdza czy kwota jest dodatnia. Największy problem:
+                        bezpośrednie przypisanie saldo = -5000 jest poprawne składniowo.
+                        
+                        Kompilator akceptuje taki kod. Program kompiluje się i uruchamia. Błąd manifestuje
+                        się w runtime, potencjalnie po dłuższym okresie działania systemu. System produkcyjny
+                        może wykazać nieprawidłowe saldo klienta: -5000 zł.
+                        
+                        PODEJŚCIE OBIEKTOWE:
+                        
+                        Klasa Konto. Pole saldo jest prywatne. Dostęp ma wyłącznie kod wewnątrz klasy.
+                        Z zewnątrz dostęp jest niemożliwy.
+                        
+                        Metody wplac() i wyplac() są publiczne - stanowią interfejs klasy. Zawierają
+                        logikę walidacji: wplac() weryfikuje if (kwota > 0), wyplac() sprawdza
+                        if (kwota > 0 && kwota <= saldo).
+                        
+                        Próba bezpośredniej modyfikacji k.saldo = -5000 jest błędem kompilacji.
+                        Kompilator zgłosi: "'saldo' is a private member of 'Konto'".
+                        Program nie skompiluje się. Błąd zostaje wykryty przed uruchomieniem, nie po
+                        tygodniach działania w środowisku produkcyjnym.
+                        
+                        To ilustruje fundamentalną wartość OOP: kontrola i bezpieczeństwo. Projektant
+                        klasy definiuje poprawne operacje. Użytkownik klasy (inny programista, możliwe
+                        ten sam programista po upływie czasu) nie może naruszyć niezmienników. Kompilator
+                        egzekwuje reguły.
+                        
+                        Ten przykład демонstruje nie teoretyczną koncepcję, lecz praktyczne narzędzie.
+                        Bezpieczeństwo, kontrola, mniej błędów, łatwiejsze utrzymanie. To konkretne
+                        korzyści inżynierskie, nie abstrakcje akademickie.
+                    </aside>
+                </section>
+
+                <!-- Podsumowanie -->
+                <section>
+                    <h3>Podsumowanie</h3>
+                    <p style="font-size: 1.1em; margin-bottom: 20px;">
+                        <strong>OOP powstało, aby kod był:</strong>
+                    </p>
+                    <ul style="font-size: 0.9em; line-height: 1.8;">
+                        <li>📦 <strong>Bezpieczniejszy</strong> - chronione dane</li>
+                        <li>🧩 <strong>Modularny</strong> - łatwiej zarządzać</li>
+                        <li>♻️ <strong>Wielokrotnego użytku</strong> - dziedziczenie</li>
+                        <li>🌍 <strong>Zrozumiały</strong> - jak rzeczywistość</li>
+                    </ul>
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(52, 152, 219, 0.1); border-radius: 10px;">
+                        <p style="font-size: 0.9em; text-align: center; font-style: italic;">
+                            "Nie programujemy dla komputerów, programujemy dla ludzi."
+                        </p>
+                    </div>
+                    <aside class="notes">
+                        Podsumowanie analizy historycznej:
+                        
+                        Programowanie obiektowe nie jest arbitralną abstrakcją teoretyczną. Jest odpowiedzią
+                        na konkretne problemy inżynierskie, które ujawniły się w praktyce tworzenia
+                        oprogramowania w latach 60-70 XX wieku.
+                        
+                        W początkowej fazie, gdy programy liczyły setki linii kodu, paradygmat proceduralny
+                        był wystarczający. Jednak wraz ze wzrostem skali - systemy osiągające miliony linii
+                        kodu, takie jak Windows, Oracle, systemy bankowe - podejście proceduralne okazało się
+                        nieadekwatne. Potrzebna była lepsza organizacja i kontrola złożoności.
+                        
+                        Programowanie obiektowe dostarcza narzędzi do konstrukcji złożonych systemów
+                        charakteryzujących się: zrozumiałością (klasy odzwierciedlają strukturę problemu),
+                        bezpieczeństwem (enkapsulacja chroni niezmienniki), modularnością (łatwiejsze
+                        zarządzanie i debugowanie), rozszerzalnością (dziedziczenie i polimorfizm).
+                        
+                        W kolejnych zajęciach teoria zostanie przeniesiona do praktyki. Studenci będą
+                        implementować klasy, stosować enkapsulację, konstruować hierarchie dziedziczenia,
+                        wykorzystywać polimorfizm. To nie będzie teoretyczna abstrakcja - będzie praktyczne
+                        zastosowanie narzędzi inżynierskich.
+                        
+                        Należy pamiętać: nauka programowania obiektowego jest procesem. Początkowo może
+                        wydawać się nadmiernie skomplikowane. Pytanie "dlaczego cała klasa zamiast prostej
+                        funkcji?" jest naturalne na początkowym etapie. Jednak wraz z doświadczeniem,
+                        szczególnie przy projektach większej skali, zalety OOP stają się oczywiste.
+                        
+                        Współczesne oprogramowanie - 90% systemów produkcyjnych - wykorzystuje paradygmat
+                        obiektowy. Od systemów operacyjnych (Windows, Linux), przez platformy mobilne
+                        (Android), po systemy webowe (Facebook, Google). To nie przypadek. OOP sprawdza się
+                        w praktyce inżynierskiej.
+                        
+                        Skuteczność metody weryfikuje się w praktyce, nie w teorii. OOP funkcjonuje
+                        efektywnie w małych projektach (ćwiczenia akademickie), średnich (projekty
+                        zaliczeniowe), i co najistotniejsze - w systemach przemysłowych o skali
+                        milionów linii kodu.
+                        
+                        Cytat na zakończenie: "Nie programujemy dla komputerów, programujemy dla ludzi."
+                        
+                        Komputer wykonuje każdy poprawny kod - proceduralny, obiektowy, assembly.
+                        Jednak ludzie - programista za miesiąc, kolega przejmujący projekt, przyszły
+                        maintainer - wymagają kodu zrozumiałego.
+                        
+                        Programowanie obiektowe tworzy kod czytelny dla ludzi. Kod do którego można wrócić
+                        po roku i zrozumieć jego strukturę. Kod możliwy do przekazania bez wielogodzinnych
+                        sesji wyjaśniających.
+                        
+                        Wartość OOP nie tkwi w szybkości wykonania (choć C++ jest efektywny) ani oszczędności
+                        pamięci (choć obiekty mogą być kompaktowe). Fundamentalna wartość to: zrozumiałość,
+                        utrzymywalność, skalowalność.
+                        
+                        Następne zajęcia: implementacja pierwszej klasy w C++.
+                    </aside>
+                </section>
+
+            </section>
+            <!-- Koniec sekcji: Historia programowania -->
+
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
+        });
+    </script>
+
+</body>
+
+</html>
