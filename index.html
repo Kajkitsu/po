@@ -149,6 +149,208 @@ printf("Suma: %d", suma);
                 <!-- Rozwiązanie -->
                 <section>
                     <h3>Potrzeba nowego podejścia</h3>
+                    <p style="font-size: 0.9em;">Analiza problemów programowania proceduralnego prowadzi do fundamentalnej obserwacji:</p>
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(52, 152, 219, 0.1); border-radius: 10px;">
+                        <p style="font-size: 0.95em;">
+                            <strong>Dane i operacje na nich są naturalnie powiązane!</strong>
+                        </p>
+                    </div>
+                    <aside class="notes">
+                        Analiza problemów programowania proceduralnego doprowadziła do fundamentalnej obserwacji:
+                        dane i operacje na nich są naturalnie powiązane. 
+                        
+                        W kolejnych slajdach zobaczymy konkretne przykłady tego problemu i jego rozwiązania.
+                    </aside>
+                </section>
+
+                <!-- Przykład: Konto bankowe - problem proceduralny -->
+                <section>
+                    <h3>Problem: Dane oddzielone od operacji</h3>
+                    <p style="font-size: 0.85em;">Konto bankowe w podejściu proceduralnym:</p>
+                    <pre style="font-size: 14px;"><code class="hljs c" data-trim>
+// Dane
+int saldo = 1000;
+char* wlasciciel = "Jan Kowalski";
+
+// Operacje (gdzieś indziej w kodzie)
+void wplac(int kwota) {
+    saldo += kwota;
+}
+
+void wyplac(int kwota) {
+    saldo -= kwota;
+}
+
+int sprawdz_saldo() {
+    return saldo;
+}
+                    </code></pre>
+                    <p style="font-size: 0.8em; color: #ff6b6b; margin-top: 20px;">
+                        ❌ Zmienna <code>saldo</code> istnieje oddzielnie od funkcji <code>wpłać</code> i <code>wypłać</code>
+                    </p>
+                    <aside class="notes">
+                        Konto bankowe zawiera saldo oraz operacje wpłaty, wypłaty i sprawdzenia stanu. 
+                        Logicznie stanowią one jedną całość.
+
+                        Jednak programowanie proceduralne separuje te elementy - zmienna "saldo" istnieje 
+                        oddzielnie od funkcji "wpłać" i "wypłać". 
+                        
+                        To prowadzi do pytania: dlaczego kod nie odzwierciedla naturalnej struktury problemu?
+                    </aside>
+                </section>
+
+                <!-- Naturalne grupowanie -->
+                <section>
+                    <h3>Naturalne grupowanie danych i operacji</h3>
+                    <div class="row" style="margin-top: 30px;">
+                        <div class="column">
+                            <h4 style="color: #ff6b6b; font-size: 0.9em;">❌ Proceduralnie</h4>
+                            <pre style="font-size: 12px;"><code class="hljs c" data-trim>
+// Dane
+int saldo;
+char* wlasciciel;
+
+// Funkcje (oddzielnie)
+void wplac(int kwota);
+void wyplac(int kwota);
+int sprawdz_saldo();
+                            </code></pre>
+                            <p style="font-size: 0.75em;">Separacja danych i logiki</p>
+                        </div>
+                        <div class="column">
+                            <h4 style="color: #51cf66; font-size: 0.9em;">✓ Obiektowo</h4>
+                            <pre style="font-size: 12px;"><code class="hljs cpp" data-trim>
+class Konto {
+    // Dane + Metody razem
+    int saldo;
+    string wlasciciel;
+    
+    void wplac(int kwota);
+    void wyplac(int kwota);
+    int sprawdz_saldo();
+};
+                            </code></pre>
+                            <p style="font-size: 0.75em;">Dane i logika w jednej encji</p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Koncepcja grupowania danych z operacjami to fundament programowania obiektowego.
+                        Zamiast separacji, otrzymujemy encję "Konto", która zawiera zarówno dane (saldo, właściciel),
+                        jak i metody (wpłać, wypłać, sprawdź saldo).
+
+                        To jest istota OOP - dane i zachowania razem tworzą spójną całość.
+                    </aside>
+                </section>
+
+                <!-- Problem: Brak kontroli dostępu -->
+                <section>
+                    <h3>Problem: Brak kontroli dostępu</h3>
+                    <pre style="font-size: 14px;"><code class="hljs c" data-trim>
+int saldo = 1000;
+
+void wyplac(int kwota) {
+    saldo -= kwota;  // Brak walidacji!
+}
+
+// W innym miejscu programu:
+saldo = -1000000;  // Każdy może to zrobić!
+wyplac(5000);      // Saldo teraz: -1005000
+                    </code></pre>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(255, 107, 107, 0.1); border-left: 4px solid #ff6b6b;">
+                        <p style="font-size: 0.85em;">
+                            <strong>Problem:</strong> Bezpośrednia modyfikacja <code>saldo = -1000000</code> jest możliwa!
+                        </p>
+                    </div>
+                    <aside class="notes">
+                        W podejściu proceduralnym każda zmienna globalna może być modyfikowana przez dowolny fragment kodu.
+                        Bezpośrednie przypisanie "saldo = -1000000" jest poprawne składniowo.
+                        
+                        Kompilator akceptuje taki kod. Program kompiluje się i uruchamia. Błąd manifestuje
+                        się w runtime, potencjalnie po dłuższym okresie działania systemu.
+                    </aside>
+                </section>
+
+                <!-- Rozwiązanie: Enkapsulacja -->
+                <section>
+                    <h3>Rozwiązanie: Enkapsulacja</h3>
+                    <pre style="font-size: 13px;"><code class="hljs cpp" data-trim>
+class Konto {
+private:
+    int saldo;  // Chronione!
+    
+public:
+    void wplac(int kwota) {
+        if (kwota > 0)  // Walidacja
+            saldo += kwota;
+    }
+    
+    void wyplac(int kwota) {
+        if (kwota > 0 && kwota <= saldo)  // Walidacja
+            saldo -= kwota;
+    }
+};
+
+// Konto k;
+// k.saldo = -1000000;  // BŁĄD KOMPILACJI!
+                    </code></pre>
+                    <div style="margin-top: 15px; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                        <p style="font-size: 0.85em;">
+                            ✅ <strong>Kontrola dostępu:</strong> tylko metody mogą zmieniać dane
+                        </p>
+                    </div>
+                    <aside class="notes">
+                        Konieczna była kontrola dostępu do danych. Bezpośrednia modyfikacja "saldo = -1000" 
+                        powinna być niemożliwa. Tylko odpowiednie metody, zawierające logikę walidacji, 
+                        powinny mieć prawo zmiany stanu.
+                        
+                        To jest istota enkapsulacji - ukrywania danych i kontrolowania dostępu poprzez 
+                        zdefiniowany interfejs.
+                        
+                        Pole saldo jest prywatne. Próba bezpośredniej modyfikacji k.saldo=-1000000 
+                        jest błędem kompilacji. Kompilator zgłosi błąd przed uruchomieniem programu.
+                    </aside>
+                </section>
+
+                <!-- Rozwiązanie: Rozszerzalność -->
+                <section>
+                    <h3>Rozwiązanie: Rozszerzalność</h3>
+                    <pre style="font-size: 13px;"><code class="hljs cpp" data-trim>
+class Konto {
+protected:
+    int saldo;
+public:
+    void wplac(int kwota) { /* ... */ }
+    void wyplac(int kwota) { /* ... */ }
+};
+
+// Rozszerzenie bez przepisywania!
+class KontoOszczednosciowe : public Konto {
+private:
+    float oprocentowanie;
+public:
+    void nalicz_odsetki() {
+        saldo += saldo * oprocentowanie;
+    }
+};
+                    </code></pre>
+                    <div style="margin-top: 15px; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
+                        <p style="font-size: 0.85em;">
+                            ✅ <strong>Dziedziczenie:</strong> rozszerzamy bez duplikacji kodu
+                        </p>
+                    </div>
+                    <aside class="notes">
+                        Potrzebna była możliwość rozszerzania funkcjonalności bez przepisywania kodu.
+                        Mechanizm dziedziczenia pozwala na stworzenie KontoOszczędnościowego rozszerzającego
+                        Konto, bez konieczności duplikacji kodu bazowego.
+                        
+                        KontoOszczędnościowe automatycznie otrzymuje metody wpłać i wypłać z klasy bazowej,
+                        dodając tylko nową funkcjonalność - naliczanie odsetek.
+                    </aside>
+                </section>
+
+                <!-- Podsumowanie potrzeby OOP -->
+                <section>
+                    <h3>Czego potrzebowaliśmy?</h3>
                     <div class="row" style="margin-top: 40px;">
                         <div class="column">
                             <h4 style="color: #ff6b6b;">❌ Problem</h4>
@@ -160,38 +362,22 @@ printf("Suma: %d", suma);
                             </ul>
                         </div>
                         <div class="column">
-                            <h4 style="color: #51cf66;">✓ Rozwiązanie</h4>
+                            <h4 style="color: #51cf66;">✓ Rozwiązanie OOP</h4>
                             <ul style="font-size: 0.8em;">
                                 <li>Dane + funkcje razem</li>
                                 <li>Kontrolowany dostęp</li>
-                                <li>Ukryte szczegóły</li>
-                                <li>Łatwe rozszerzanie</li>
+                                <li>Ukryte szczegóły (enkapsulacja)</li>
+                                <li>Łatwe rozszerzanie (dziedziczenie)</li>
                             </ul>
                         </div>
                     </div>
                     <aside class="notes">
-                        Analiza problemów programowania proceduralnego doprowadziła do fundamentalnej obserwacji:
-                        dane i operacje na nich są naturalnie powiązane. Konto bankowe zawiera saldo oraz operacje
-                        wpłaty, wypłaty i sprawdzenia stanu. Logicznie stanowią one jedną całość.
-
-                        Programowanie proceduralne separowało te elementy - zmienna "saldo" istniała oddzielnie
-                        od funkcji "wpłać" i "wypłać". To prowadzi do pytania: dlaczego kod nie odzwierciedla
-                        naturalnej struktury problemu?
-
-                        Koncepcja grupowania danych z operacjami to fundament programowania obiektowego.
-                        Zamiast separacji, otrzymujemy encję "Konto", która zawiera zarówno dane (saldo),
-                        jak i metody (wpłać, wypłać).
-
-                        Konieczna była również kontrola dostępu do danych. Bezpośrednia modyfikacja
-                        "saldo = -1000" powinna być niemożliwa. Tylko odpowiednie metody, zawierające
-                        logikę walidacji, powinny mieć prawo zmiany stanu. To jest istota enkapsulacji -
-                        ukrywania danych i kontrolowania dostępu poprzez zdefiniowany interfejs.
-
-                        Dodatkowo potrzebna była możliwość rozszerzania funkcjonalności bez przepisywania kodu.
-                        Mechanizm dziedziczenia pozwala na stworzenie KontoOszczędnościowego rozszerzającego
-                        Konto, bez konieczności duplikacji kodu bazowego.
-
-                        Te obserwacje doprowadziły do powstania koncepcji programowania obiektowego.
+                        Te obserwacje - grupowanie danych z metodami, kontrola dostępu przez enkapsulację,
+                        rozszerzalność przez dziedziczenie - doprowadziły do powstania koncepcji 
+                        programowania obiektowego.
+                        
+                        W następnych slajdach zobaczymy jak te idee zostały zrealizowane w pierwszych
+                        językach obiektowych.
                     </aside>
                 </section>
 
@@ -209,27 +395,171 @@ printf("Suma: %d", suma);
                         pracują nad językiem do symulacji dyskretnych zdarzeń - kolejek w systemach obsługi,
                         procesów produkcyjnych, ruchu w portach.
 
+                        W kolejnych slajdach zobaczymy jak fundamentalna obserwacja doprowadziła do stworzenia
+                        koncepcji klas i obiektów.
+                    </aside>
+                </section>
+
+                <!-- Simula: Problem symulacji -->
+                <section>
+                    <h3>Simula: Symulacja sklepu</h3>
+                    <p style="font-size: 0.85em;">Naturalne byty w symulacji:</p>
+                    <div style="text-align: left; margin: 20px; font-size: 0.8em;">
+                        <div style="margin: 15px 0; padding: 12px; background: rgba(52, 152, 219, 0.1); border-left: 3px solid #3498db;">
+                            <strong>👤 Klient:</strong> imię, wiek, koszyk zakupów<br>
+                            <em>Zachowania:</em> czeka w kolejce, wybiera produkty, płaci
+                        </div>
+                        <div style="margin: 15px 0; padding: 12px; background: rgba(46, 204, 113, 0.1); border-left: 3px solid #2ecc71;">
+                            <strong>💼 Kasjer:</strong> stanowisko, szybkość obsługi<br>
+                            <em>Zachowania:</em> obsługuje klienta, skanuje produkty, wydaje resztę
+                        </div>
+                        <div style="margin: 15px 0; padding: 12px; background: rgba(155, 89, 182, 0.1); border-left: 3px solid #9b59b6;">
+                            <strong>📦 Produkt:</strong> nazwa, cena, kod<br>
+                            <em>Zachowania:</em> wyświetl informacje, oblicz rabat
+                        </div>
+                    </div>
+                    <aside class="notes">
                         Podczas projektowania języka symulacji zauważyli fundamentalną właściwość:
                         symulowane systemy składają się z bytów, z których każdy posiada własny stan
-                        (dane) oraz zachowanie (operacje). W symulacji sklepu naturalnymi bytami są:
-                        klienci posiadający imię, wiek, koszyk zakupów; kasjerzy mający stanowisko
-                        i szybkość obsługi; produkty charakteryzujące się nazwą, ceną i kodem.
+                        (dane) oraz zachowanie (operacje).
+
+                        W symulacji sklepu naturalnymi bytami są: klienci posiadający imię, wiek, koszyk zakupów;
+                        kasjerzy mający stanowisko i szybkość obsługi; produkty charakteryzujące się nazwą, ceną i kodem.
 
                         Każdy byt posiada nie tylko dane, ale również zachowania: klient czeka w kolejce,
                         wybiera produkty, płaci; kasjer obsługuje klienta, skanuje produkty, wydaje resztę.
+                    </aside>
+                </section>
 
+                <!-- Simula: Klasa jako szablon -->
+                <section>
+                    <h3>Simula: Klasa jako szablon</h3>
+                    <pre style="font-size: 13px;"><code class="hljs" data-trim>
+! Klasa w Simula
+CLASS Klient;
+BEGIN
+    TEXT imie;
+    INTEGER wiek;
+    REF(Koszyk) koszyk;
+    
+    PROCEDURE czekaj_w_kolejce;
+    BEGIN
+        ! kod czekania
+    END;
+    
+    PROCEDURE plac;
+    BEGIN
+        ! kod płacenia
+    END;
+END Klient;
+                    </code></pre>
+                    <p style="font-size: 0.8em; margin-top: 20px;">
+                        💡 <strong>Klasa</strong> = szablon definiujący strukturę i zachowanie
+                    </p>
+                    <aside class="notes">
                         Ta obserwacja doprowadziła do stworzenia języka Simula z fundamentalnymi koncepcjami:
-                        klasą jako szablonem definiującym strukturę i zachowanie, oraz obiektem jako
-                        konkretną instancją klasy. Klasa "Klient" definiuje, że każdy klient posiada
-                        imię, wiek i koszyk. Obiekt "Jan Kowalski" jest konkretną instancją z wartościami:
-                        imię="Jan", wiek=35, koszyk=[mleko, chleb].
+                        klasą jako szablonem definiującym strukturę i zachowanie.
 
+                        Klasa "Klient" definiuje, że każdy klient posiada imię, wiek i koszyk.
+                        Definiuje również zachowania (procedury): czekaj_w_kolejce, plac.
+                    </aside>
+                </section>
+
+                <!-- Simula: Obiekt jako instancja -->
+                <section>
+                    <h3>Simula: Obiekt jako instancja</h3>
+                    <pre style="font-size: 13px;"><code class="hljs" data-trim>
+! Tworzenie obiektów (instancji klasy Klient)
+REF(Klient) jan, anna;
+
+jan :- NEW Klient;
+jan.imie := "Jan Kowalski";
+jan.wiek := 35;
+
+anna :- NEW Klient;
+anna.imie := "Anna Nowak";
+anna.wiek := 28;
+
+! Każdy obiekt ma własne dane
+jan.plac;   ! Jan płaci
+anna.plac;  ! Anna płaci
+                    </code></pre>
+                    <p style="font-size: 0.8em; margin-top: 20px;">
+                        💡 <strong>Obiekt</strong> = konkretna instancja klasy z własnymi wartościami
+                    </p>
+                    <aside class="notes">
+                        Obiekt jako konkretną instancją klasy. Klasa "Klient" definiuje, że każdy klient 
+                        posiada imię, wiek i koszyk. 
+                        
+                        Obiekt "Jan Kowalski" jest konkretną instancją z wartościami: imię="Jan", wiek=35, 
+                        koszyk=[mleko, chleb].
+
+                        Każdy obiekt ma własne wartości, ale wspólną strukturę i zachowania zdefiniowane w klasie.
+                    </aside>
+                </section>
+
+                <!-- Simula: Dziedziczenie -->
+                <section>
+                    <h3>Simula: Dziedziczenie</h3>
+                    <pre style="font-size: 12px;"><code class="hljs" data-trim>
+! Klasa bazowa
+CLASS Osoba;
+BEGIN
+    TEXT imie;
+    INTEGER wiek;
+    
+    PROCEDURE przedstaw_sie;
+    BEGIN
+        OutText("Nazywam się ");
+        OutText(imie);
+    END;
+END Osoba;
+
+! Klasa pochodna (dziedziczy po Osoba)
+Osoba CLASS Klient;  ! Klient rozszerza Osoba
+BEGIN
+    REF(Koszyk) koszyk;
+    
+    PROCEDURE rob_zakupy;
+    BEGIN
+        ! kod zakupów
+    END;
+END Klient;
+                    </code></pre>
+                    <aside class="notes">
                         Simula wprowadziła również koncepcję dziedziczenia - możliwości tworzenia
                         specjalizowanych klas na bazie klas ogólnych.
 
+                        Klient dziedziczy po Osoba, otrzymując automatycznie pola (imie, wiek) i metody
+                        (przedstaw_sie), dodając własne rozszerzenia (koszyk, rob_zakupy).
+                    </aside>
+                </section>
+
+                <!-- Simula: Wpływ -->
+                <section>
+                    <h3>Simula: Wpływ na przyszłość</h3>
+                    <div style="text-align: left; margin: 20px;">
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                            <strong>Koncepcje wprowadzone przez Simula:</strong>
+                            <ul style="font-size: 0.85em; margin-top: 10px;">
+                                <li>✅ Klasa jako szablon</li>
+                                <li>✅ Obiekt jako instancja</li>
+                                <li>✅ Dziedziczenie</li>
+                                <li>✅ Polimorfizm (wirtualne procedury)</li>
+                            </ul>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                            <strong>Wpłynęła na:</strong>
+                            <p style="font-size: 0.85em; margin-top: 10px;">
+                                C++, Java, Python, C#, JavaScript...
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
                         Mimo że Simula nie osiągnęła szerokiego zastosowania komercyjnego, jej koncepcje
                         stały się fundamentem wszystkich współczesnych języków obiektowych: C++, Java, Python, C#.
-                        Kluczową ideą jest grupowanie danych z zachowaniami w spójne encje.
+                        
+                        Kluczową ideą jest grupowanie danych z zachowaniami w spójne encje - klasy i obiekty.
                     </aside>
                 </section>
 
@@ -247,27 +577,181 @@ printf("Suma: %d", suma);
                         rozwija koncepcję programowania obiektowego do jej logicznej konkluzji, tworząc
                         język Smalltalk.
 
-                        Fundamentalna zasada Smalltalk: wszystko jest obiektem. Nawet wartości prymitywne
-                        takie jak liczba 5 są obiektami posiadającymi metody. Liczba 5 posiada metody
-                        dodawania, mnożenia, konwersji do stringa. W notacji Smalltalk: 5 + 3 to wywołanie
-                        metody dodawania na obiekcie 5 z argumentem 3. Współcześnie ten model widzimy
-                        w Pythonie, gdzie (5).__add__(3) jest poprawnym wywołaniem.
+                        W kolejnych slajdach zobaczymy rewolucyjne podejście Smalltalk.
+                    </aside>
+                </section>
 
-                        Kay wprowadził również koncepcję komunikacji poprzez wiadomości. Obiekty nie
+                <!-- Smalltalk: Wszystko jest obiektem -->
+                <section>
+                    <h3>Smalltalk: Wszystko jest obiektem</h3>
+                    <p style="font-size: 0.85em;">Nawet liczby są obiektami z metodami!</p>
+                    <pre style="font-size: 14px;"><code class="hljs smalltalk" data-trim>
+"Liczby jako obiekty"
+5 + 3.          "Wynik: 8"
+10 - 7.         "Wynik: 3"
+4 * 6.          "Wynik: 24"
+
+"To jest tak naprawdę wywołanie metod:"
+5 plus: 3.      "Metoda 'plus:' z argumentem 3"
+10 minus: 7.    "Metoda 'minus:' z argumentem 7"
+
+"Liczby mają różne metody:"
+5 squared.      "Wynik: 25 (podniesienie do kwadratu)"
+10 factorial.   "Wynik: 3628800"
+7 isPrime.      "Wynik: true (czy pierwsza?)"
+                    </code></pre>
+                    <p style="font-size: 0.75em; margin-top: 20px; color: #3498db;">
+                        💡 W Smalltalk <code>5 + 3</code> to wysłanie wiadomości <code>+</code> do obiektu <code>5</code> z argumentem <code>3</code>
+                    </p>
+                    <aside class="notes">
+                        Fundamentalna zasada Smalltalk: wszystko jest obiektem. Nawet wartości prymitywne
+                        takie jak liczba 5 są obiektami posiadającymi metody. 
+                        
+                        Liczba 5 posiada metody dodawania, mnożenia, konwersji do stringa. W notacji Smalltalk: 
+                        5 + 3 to wywołanie metody dodawania na obiekcie 5 z argumentem 3. 
+                        
+                        Współcześnie ten model widzimy w Pythonie, gdzie (5).__add__(3) jest poprawnym wywołaniem.
+                    </aside>
+                </section>
+
+                <!-- Smalltalk: Komunikacja przez wiadomości -->
+                <section>
+                    <h3>Smalltalk: Komunikacja przez wiadomości</h3>
+                    <pre style="font-size: 13px;"><code class="hljs smalltalk" data-trim>
+"Definiowanie klasy"
+Object subclass: #Konto
+    instanceVariableNames: 'saldo wlasciciel'
+    
+"Definiowanie metod"
+Konto >> wplac: kwota
+    saldo := saldo + kwota.
+
+Konto >> wyplac: kwota
+    (kwota <= saldo)
+        ifTrue: [ saldo := saldo - kwota ]
+        ifFalse: [ self error: 'Niewystarczające saldo' ].
+
+"Tworzenie obiektu i wysyłanie wiadomości"
+mojeKonto := Konto new.
+mojeKonto wplac: 1000.    "Wysyłanie wiadomości 'wplac:' z argumentem 1000"
+mojeKonto wyplac: 500.    "Wysyłanie wiadomości 'wyplac:' z argumentem 500"
+                    </code></pre>
+                    <aside class="notes">
+                        Kay wprowadził koncepcję komunikacji poprzez wiadomości. Obiekty nie
                         "wywołują funkcji" - wysyłają wiadomości do innych obiektów, które decydują
                         jak na nie odpowiedzieć. To fundamentalna zmiana paradygmatu.
 
+                        Zamiast "wywołaj funkcję wplac na koncie", mówimy "wyślij wiadomość wplac: do obiektu konto".
+                    </aside>
+                </section>
+
+                <!-- Smalltalk: Porównanie z innymi językami -->
+                <section>
+                    <h3>Smalltalk vs inne języki</h3>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="column">
+                            <h4 style="font-size: 0.85em;">Smalltalk (czyste OOP)</h4>
+                            <pre style="font-size: 11px;"><code class="hljs smalltalk" data-trim>
+"Wszystko jest obiektem"
+5 + 3.
+'tekst' size.
+true ifTrue: [ 'tak' ].
+
+"Nawet klasy są obiektami!"
+String new.
+                            </code></pre>
+                        </div>
+                        <div class="column">
+                            <h4 style="font-size: 0.85em;">Python (inspirowany Smalltalk)</h4>
+                            <pre style="font-size: 11px;"><code class="hljs python" data-trim>
+# Liczby jako obiekty
+(5).__add__(3)
+"tekst".upper()
+
+# Klasy też są obiektami
+type(str)  # <class 'type'>
+                            </code></pre>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.75em; margin-top: 20px;">
+                        💡 Współczesne języki jak Python przejęły filozofię Smalltalk
+                    </p>
+                    <aside class="notes">
+                        Współcześnie ten model widzimy w Pythonie, gdzie (5).__add__(3) jest poprawnym wywołaniem.
+                        Python, podobnie jak Smalltalk, traktuje wszystko jako obiekty, włącznie z klasami.
+
+                        To pokazuje jak daleko sięgający był wpływ Smalltalk na rozwój języków programowania.
+                    </aside>
+                </section>
+
+                <!-- Smalltalk: GUI -->
+                <section>
+                    <h3>Smalltalk: Rewolucja w interfejsach</h3>
+                    <div style="text-align: left; margin: 20px;">
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                            <strong>Pierwsze graficzne GUI (1973):</strong>
+                            <ul style="font-size: 0.85em; margin-top: 10px;">
+                                <li>🖼️ Okna (nakładające się)</li>
+                                <li>🖱️ Obsługa myszy</li>
+                                <li>📋 Menu rozwijane</li>
+                                <li>🎨 Ikony</li>
+                            </ul>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
+                            <strong>Wpływ:</strong>
+                            <p style="font-size: 0.85em; margin-top: 10px;">
+                                → Apple Macintosh (1984)<br>
+                                → Microsoft Windows (1985)<br>
+                                → Wszystkie współczesne GUI
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
                         Smalltalk był również rewolucyjny technologicznie - Kay stworzył pierwsze
-                        graficzne środowisko użytkownika oparte na oknach, ikonach i myszy. To rozwiązanie,
-                        zaprezentowane w Xerox PARC, zostało następnie zaadaptowane przez Apple
+                        graficzne środowisko użytkownika oparte na oknach, ikonach i myszy. 
+                        
+                        To rozwiązanie, zaprezentowane w Xerox PARC, zostało następnie zaadaptowane przez Apple
                         w Macintosh oraz Microsoft w Windows.
 
+                        Bez Smalltalk nie mielibyśmy współczesnych interfejsów graficznych!
+                    </aside>
+                </section>
+
+                <!-- Smalltalk: Dziedzictwo -->
+                <section>
+                    <h3>Smalltalk: Dziedzictwo</h3>
+                    <div style="text-align: left; margin: 20px; font-size: 0.85em;">
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                            <strong>💡 Alan Kay ukuł termin:</strong>
+                            <p style="margin-top: 10px; font-size: 1.2em; font-weight: bold; color: #2ecc71;">
+                                "Object-Oriented Programming"
+                            </p>
+                            <p style="margin-top: 10px; font-style: italic;">
+                                Programowanie Obiektowe
+                            </p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                            <strong>Wpływ na języki:</strong>
+                            <p style="margin-top: 10px;">
+                                Ruby (bardzo inspirowany Smalltalk)<br>
+                                Python (filozofia "wszystko jest obiektem")<br>
+                                JavaScript (prototypy, dynamiczność)<br>
+                                Swift (nowoczesna składnia, opcjonalne typy)
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
                         Alan Kay ukuł termin "object-oriented programming" - programowanie obiektowe.
 
                         Mimo że Smalltalk nie osiągnął dominacji w przemyśle ze względu na wymagania
                         wydajnościowe, jego czysta wizja OOP wpłynęła na projektowanie wszystkich
-                        późniejszych języków obiektowych. Zasady formułowane przez Kaya pozostają
-                        aktualne 50 lat później.
+                        późniejszych języków obiektowych. 
+                        
+                        Zasady formułowane przez Kaya pozostają aktualne 50 lat później.
+
+                        Wiele współczesnych języków przejęło filozofię Smalltalk - Ruby jest niemal
+                        bezpośrednim spadkobiercą, Python przyjął koncepcję "wszystko jest obiektem",
+                        JavaScript wykorzystał dynamiczne wysyłanie wiadomości.
                     </aside>
                 </section>
 
@@ -285,31 +769,268 @@ printf("Suma: %d", suma);
                         stoi przed problemem: jak wprowadzić koncepcje obiektowe do praktyki przemysłowej,
                         gdzie dominuje język C znany z wydajności i kontroli niskopoziomowej?
 
+                        W kolejnych slajdach zobaczymy jak C++ łączy świat C z paradygmatem obiektowym.
+                    </aside>
+                </section>
+
+                <!-- C++: Problem do rozwiązania -->
+                <section>
+                    <h3>C++: Wyzwanie</h3>
+                    <div style="text-align: left; margin: 20px; font-size: 0.85em;">
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
+                            <strong>🎯 Problem:</strong>
+                            <p style="margin-top: 10px;">
+                                Jak wprowadzić OOP do świata, gdzie dominuje C?
+                            </p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                            <strong>Wymagania:</strong>
+                            <ul style="margin-top: 10px;">
+                                <li>✅ Zachować wydajność C</li>
+                                <li>✅ Zachować kontrolę niskopoziomową</li>
+                                <li>✅ Dodać możliwości organizacyjne OOP</li>
+                                <li>✅ Kompatybilność z istniejącym kodem C</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <aside class="notes">
                         Rozwiązaniem było stworzenie C++ - języka łączącego sprawdzoną efektywność C
                         z możliwościami organizacyjnymi programowania obiektowego. To był strategiczny
                         kompromis pozwalający na ewolucyjne przyjęcie nowego paradygmatu.
 
                         Programiści C mogli kontynuować pisanie kodu proceduralnego, stopniowo wprowadzając
                         elementy obiektowe. Nie było konieczności rewolucyjnej zmiany całego podejścia.
+                    </aside>
+                </section>
+
+                <!-- C++: Ewolucja, nie rewolucja -->
+                <section>
+                    <h3>C++: Ewolucja, nie rewolucja</h3>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="column">
+                            <h4 style="font-size: 0.85em;">Kod C (działa w C++)</h4>
+                            <pre style="font-size: 11px;"><code class="hljs c" data-trim>
+// Czysty C
+#include <stdio.h>
+
+int suma(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int wynik = suma(5, 3);
+    printf("%d\n", wynik);
+    return 0;
+}
+                            </code></pre>
+                        </div>
+                        <div class="column">
+                            <h4 style="font-size: 0.85em;">Kod C++ (z klasami)</h4>
+                            <pre style="font-size: 11px;"><code class="hljs cpp" data-trim>
+// C++ z klasą
+#include <iostream>
+using namespace std;
+
+class Kalkulator {
+public:
+    int suma(int a, int b) {
+        return a + b;
+    }
+};
+
+int main() {
+    Kalkulator k;
+    cout << k.suma(5, 3) << endl;
+    return 0;
+}
+                            </code></pre>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.75em; margin-top: 20px;">
+                        💡 Kod C pozostawał poprawnym kodem C++ - kompatybilność wsteczna!
+                    </p>
+                    <aside class="notes">
                         Kod C pozostawał poprawnym kodem C++, zapewniając kompatybilność wsteczną.
+                        Programiści mogli stopniowo wprowadzać klasy i obiekty, nie przepisując
+                        całego projektu od zera.
 
                         Początkowo język nazywał się "C with Classes". Zmiana nazwy na C++ (operator
                         inkrementacji w C oznacza zwiększenie o 1) symbolizowała ewolucyjny charakter języka.
+                    </aside>
+                </section>
 
+                <!-- C++: Klasy w C++ -->
+                <section>
+                    <h3>C++: Wprowadzenie klas</h3>
+                    <pre style="font-size: 13px;"><code class="hljs cpp" data-trim>
+// Klasa w C++
+class Konto {
+private:
+    double saldo;
+    string wlasciciel;
+    
+public:
+    // Konstruktor
+    Konto(string w, double s) : wlasciciel(w), saldo(s) {}
+    
+    void wplac(double kwota) {
+        if (kwota > 0)
+            saldo += kwota;
+    }
+    
+    void wyplac(double kwota) {
+        if (kwota > 0 && kwota <= saldo)
+            saldo -= kwota;
+    }
+    
+    double pobierz_saldo() const {
+        return saldo;
+    }
+};
+                    </code></pre>
+                    <aside class="notes">
+                        C++ wprowadził klasy z pełną enkapsulacją - pola prywatne, metody publiczne,
+                        konstruktory. Jednocześnie zachował wszystkie możliwości C - wskaźniki,
+                        bezpośredni dostęp do pamięci, struktury.
+                    </aside>
+                </section>
+
+                <!-- C++: Wskaźniki + OOP -->
+                <section>
+                    <h3>C++: Niskopoziomowa kontrola + OOP</h3>
+                    <pre style="font-size: 12px;"><code class="hljs cpp" data-trim>
+class Osoba {
+private:
+    string imie;
+    int wiek;
+public:
+    Osoba(string i, int w) : imie(i), wiek(w) {}
+    void wyswietl() { cout << imie << ", " << wiek << endl; }
+};
+
+int main() {
+    // Obiekt na stosie (jak w C)
+    Osoba p1("Jan", 30);
+    
+    // Obiekt na stercie (wskaźnik jak w C)
+    Osoba* p2 = new Osoba("Anna", 25);
+    
+    p1.wyswietl();
+    p2->wyswietl();
+    
+    // Manualne zarządzanie pamięcią (jak w C)
+    delete p2;  // Musimy pamiętać!
+    
+    return 0;
+}
+                    </code></pre>
+                    <aside class="notes">
                         C++ zachował fundamentalne cechy C: bezpośredni dostęp do pamięci, wskaźniki,
                         możliwość programowania niskopoziomowego. Jednocześnie wprowadził klasy, dziedziczenie,
-                        polimorfizm, szablony. To połączenie czyni C++ unikalnym - pozwala na
-                        niskopoziomową kontrolę (zarządzanie każdym bajtem pamięci) oraz wysokopoziomową
-                        organizację (eleganckie hierarchie klas).
+                        polimorfizm, szablony. 
+                        
+                        To połączenie czyni C++ unikalnym - pozwala na niskopoziomową kontrolę 
+                        (zarządzanie każdym bajtem pamięci) oraz wysokopoziomową organizację 
+                        (eleganckie hierarchie klas).
+                    </aside>
+                </section>
 
+                <!-- C++: Dziedziczenie -->
+                <section>
+                    <h3>C++: Dziedziczenie i polimorfizm</h3>
+                    <pre style="font-size: 12px;"><code class="hljs cpp" data-trim>
+class Pojazd {
+protected:
+    string marka;
+public:
+    Pojazd(string m) : marka(m) {}
+    virtual void jedz() {  // Metoda wirtualna
+        cout << "Pojazd jedzie" << endl;
+    }
+};
+
+class Samochod : public Pojazd {
+private:
+    int liczba_drzwi;
+public:
+    Samochod(string m, int d) : Pojazd(m), liczba_drzwi(d) {}
+    void jedz() override {  // Nadpisanie
+        cout << "Samochód " << marka << " jedzie" << endl;
+    }
+};
+
+// Polimorfizm
+Pojazd* p = new Samochod("Toyota", 4);
+p->jedz();  // Wywołuje Samochod::jedz()
+                    </code></pre>
+                    <aside class="notes">
+                        C++ wprowadził pełne wsparcie dla dziedziczenia i polimorfizmu. Metody wirtualne
+                        umożliwiają dynamiczne wiązanie - wywołanie odpowiedniej metody w runtime
+                        w zależności od rzeczywistego typu obiektu.
+
+                        To wszystko przy zachowaniu wydajności - programista może wybrać czy chce
+                        polimorfizm (metody wirtualne) czy maksymalną wydajność (metody niewirtualne).
+                    </aside>
+                </section>
+
+                <!-- C++: Zastosowania -->
+                <section>
+                    <h3>C++: Gdzie się sprawdza?</h3>
+                    <div style="text-align: left; margin: 20px; font-size: 0.85em;">
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                            <strong>🖥️ Systemy operacyjne:</strong>
+                            <p style="margin-top: 10px;">Windows, Linux - wydajność + organizacja</p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
+                            <strong>🎮 Silniki gier:</strong>
+                            <p style="margin-top: 10px;">Unreal Engine - kontrola każdego klatki na sekundę</p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                            <strong>🚗 Embedded/Automotive:</strong>
+                            <p style="margin-top: 10px;">Systemy kontroli w samochodach, samolotach</p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
+                            <strong>🌐 Przeglądarki:</strong>
+                            <p style="margin-top: 10px;">Chrome, Firefox - wydajność krytyczna</p>
+                        </div>
+                    </div>
+                    <aside class="notes">
                         Zastosowania C++: systemy operacyjne (Windows, Linux), silniki gier (Unreal Engine),
                         oprogramowanie embedded (automotive, avionics), aplikacje wymagające wydajności
                         (przeglądarki Chrome, Firefox).
 
+                        Wszędzie tam, gdzie liczy się wydajność i niskopoziomowa kontrola, ale jednocześnie
+                        potrzebna jest dobra organizacja dużego projektu.
+                    </aside>
+                </section>
+
+                <!-- C++: Charakterystyka -->
+                <section>
+                    <h3>C++: Ewolucja C</h3>
+                    <div style="text-align: left; margin: 20px; font-size: 0.85em;">
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                            <strong>💡 Kluczowa idea:</strong>
+                            <p style="margin-top: 10px;">
+                                C++ nie jest językiem stworzonym od podstaw dla OOP.<br>
+                                Jest <strong>ewolucją C w kierunku obiektowości</strong>.
+                            </p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
+                            <strong>To wyjaśnia:</strong>
+                            <ul style="margin-top: 10px;">
+                                <li>Współistnienie struktur i klas</li>
+                                <li>Operatory <code>new</code> i <code>malloc</code></li>
+                                <li>Różne konwencje i style</li>
+                                <li>Wielość paradygmatów (proceduralny, obiektowy, generyczny)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <aside class="notes">
                         C++ nie jest językiem stworzonym od podstaw dla OOP. Jest ewolucją C w kierunku
-                        obiektowości, zachowującą kompatybilność i wydajność. To wyjaśnia wiele jego
-                        osobliwości - koegzystencja struktur i klas, operatorów new/malloc, różne
-                        konwencje. Zrozumienie tej ewolucji jest kluczem do zrozumienia języka.
+                        obiektowości, zachowującą kompatybilność i wydajność. 
+                        
+                        To wyjaśnia wiele jego osobliwości - koegzystencja struktur i klas, operatorów 
+                        new/malloc, różne konwencje. Zrozumienie tej ewolucji jest kluczem do zrozumienia języka.
                     </aside>
                 </section>
 
@@ -325,37 +1046,299 @@ printf("Suma: %d", suma);
                     <aside class="notes">
                         Rok 1995, Sun Microsystems. Kontekst: ekspansja Internetu, heterogeniczne
                         środowiska sprzętowe (PC, Mac, Unix), potrzeba przenośności oprogramowania.
+                        
                         James Gosling projektuje Javę z fundamentalnym założeniem: "Write once, run anywhere".
 
+                        W kolejnych slajdach zobaczymy jak Java różni się od C++.
+                    </aside>
+                </section>
+
+                <!-- Java: Problem przenośności -->
+                <section>
+                    <h3>Java: Problem do rozwiązania</h3>
+                    <div style="text-align: left; margin: 20px; font-size: 0.85em;">
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(231, 76, 60, 0.1); border-left: 4px solid #e74c3c;">
+                            <strong>🌍 Problem lat 90.:</strong>
+                            <p style="margin-top: 10px;">
+                                Różne platformy: Windows, macOS, Unix, Solaris...<br>
+                                Każda wymaga osobnej kompilacji i testowania!
+                            </p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                            <strong>C++ problem:</strong>
+                            <pre style="font-size: 11px; margin-top: 10px;"><code class="hljs bash" data-trim>
+# Trzeba kompilować osobno dla każdej platformy!
+g++ program.cpp -o program_windows.exe    # Windows
+g++ program.cpp -o program_mac            # macOS  
+g++ program.cpp -o program_linux          # Linux
+                            </code></pre>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Kontekst: ekspansja Internetu, heterogeniczne środowiska sprzętowe (PC, Mac, Unix), 
+                        potrzeba przenośności oprogramowania. James Gosling projektuje Javę z fundamentalnym 
+                        założeniem: "Write once, run anywhere".
+
+                        W C++ ten sam kod trzeba kompilować osobno dla każdej platformy. To generuje
+                        ogromne koszty testowania i dystrybucji.
+                    </aside>
+                </section>
+
+                <!-- Java: JVM -->
+                <section>
+                    <h3>Java: Rozwiązanie - JVM</h3>
+                    <div style="text-align: left; margin: 20px; font-size: 0.8em;">
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                            <strong>Java Virtual Machine:</strong>
+                            <p style="margin-top: 10px;">
+                                1. Kompilujesz raz → bytecode (.class)<br>
+                                2. JVM na każdej platformie uruchamia ten sam bytecode
+                            </p>
+                        </div>
+                    </div>
+                    <pre style="font-size: 12px;"><code class="hljs java" data-trim>
+// Program.java
+public class Program {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+
+// Kompilacja (raz!)
+javac Program.java  → Program.class (bytecode)
+
+// Uruchomienie (na dowolnej platformie!)
+java Program  // Windows
+java Program  // macOS
+java Program  // Linux
+                    </code></pre>
+                    <aside class="notes">
                         Mechanizm realizacji: Java Virtual Machine (JVM). Kompilacja nie produkuje
                         kodu maszynowego specyficznego dla platformy, lecz bytecode - kod pośredni.
+                        
                         JVM na każdej platformie interpretuje ten bytecode. Ten sam plik .class
                         wykonuje się identycznie na Windows, macOS, Linux.
 
-                        Java wprowadziła dwie fundamentalne zmiany względem C++:
+                        To była rewolucja w dystrybucji oprogramowania!
+                    </aside>
+                </section>
 
-                        Pierwsza: Garbage Collector - automatyczne zarządzanie pamięcią. W C++ programista
+                <!-- Java: Garbage Collector -->
+                <section>
+                    <h3>Java: Automatyczne zarządzanie pamięcią</h3>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="column">
+                            <h4 style="font-size: 0.8em; color: #e74c3c;">C++ (manualnie)</h4>
+                            <pre style="font-size: 11px;"><code class="hljs cpp" data-trim>
+Osoba* p = new Osoba("Jan");
+// ... używamy obiektu ...
+
+delete p;  // MUSISZ PAMIĘTAĆ!
+
+// Zapomniałeś? 
+// → Wyciek pamięci! 💥
+                            </code></pre>
+                            <p style="font-size: 0.7em; margin-top: 10px;">❌ Łatwo o błędy!</p>
+                        </div>
+                        <div class="column">
+                            <h4 style="font-size: 0.8em; color: #2ecc71;">Java (automatycznie)</h4>
+                            <pre style="font-size: 11px;"><code class="hljs java" data-trim>
+Osoba p = new Osoba("Jan");
+// ... używamy obiektu ...
+
+// Koniec! Nie musisz nic robić!
+// Garbage Collector sam usuwa ✅
+                            </code></pre>
+                            <p style="font-size: 0.7em; margin-top: 10px;">✅ Bezpieczniejsze!</p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Java wprowadziła pierwszą fundamentalną zmianę względem C++:
+
+                        Garbage Collector - automatyczne zarządzanie pamięcią. W C++ programista
                         musi pamiętać: new wymaga delete. Brak delete prowadzi do wycieku pamięci - program
-                        konsumuje coraz więcej RAM. W Javie Garbage Collector automatycznie identyfikuje
-                        i usuwa nieużywane obiekty. To znacząco upraszcza programowanie, kosztem mniejszej
-                        kontroli i potencjalnie wolniejszego działania podczas zbierania śmieci.
+                        konsumuje coraz więcej RAM. 
+                        
+                        W Javie Garbage Collector automatycznie identyfikuje i usuwa nieużywane obiekty. 
+                        To znacząco upraszcza programowanie, kosztem mniejszej kontroli i potencjalnie 
+                        wolniejszego działania podczas zbierania śmieci.
+                    </aside>
+                </section>
 
-                        Druga: Wymuszony paradygmat obiektowy. W Javie nie można napisać kodu poza klasą.
-                        Funkcja main() musi być metodą statyczną klasy. Zmienne globalne nie istnieją -
-                        muszą być statycznymi polami klas. Wszystko musi być obiektem (z wyjątkiem
-                        typów prymitywnych, które posiadają wrappery obiektowe: int → Integer).
+                <!-- Java: Wymuszony OOP -->
+                <section>
+                    <h3>Java: Wymuszony paradygmat OOP</h3>
+                    <pre style="font-size: 13px;"><code class="hljs java" data-trim>
+// W Javie WSZYSTKO musi być w klasie!
+public class Program {
+    // Nawet main() jest metodą klasy
+    public static void main(String[] args) {
+        System.out.println("Hello!");
+    }
+}
+
+// To NIE zadziała w Javie:
+// void funkcja() { ... }  // ❌ Musi być w klasie!
+// int x = 5;              // ❌ Musi być polem klasy!
+
+// Poprawnie:
+public class MojaKlasa {
+    private int x = 5;        // ✅ Pole klasy
+    
+    public void funkcja() {   // ✅ Metoda klasy
+        // ...
+    }
+}
+                    </code></pre>
+                    <aside class="notes">
+                        Druga fundamentalna zmiana: Wymuszony paradygmat obiektowy. W Javie nie można 
+                        napisać kodu poza klasą. Funkcja main() musi być metodą statyczną klasy. 
+                        Zmienne globalne nie istnieją - muszą być statycznymi polami klas.
 
                         To wymuszenie paradygmatu miało znaczący efekt edukacyjny. W C++ można mieszać
                         kod proceduralny z obiektowym. Java nie pozwala na kompromisy - tylko czyste OOP.
-                        Miliony programistów uczących się Javy musiało opanować właściwe praktyki obiektowe.
+                    </aside>
+                </section>
 
+                <!-- Java: Wszystko obiektowe -->
+                <section>
+                    <h3>Java: Prawie wszystko jest obiektem</h3>
+                    <pre style="font-size: 13px;"><code class="hljs java" data-trim>
+// Typy prymitywne (wyjątek)
+int liczba = 5;
+boolean prawda = true;
+
+// Ale mają obiektowe wrappery!
+Integer liczbaObj = 5;        // Autoboxing
+Boolean prawdaObj = true;
+
+// Mogą używać metod obiektowych
+String text = liczbaObj.toString();
+int wartosc = liczbaObj.intValue();
+
+// Kolekcje wymagają obiektów
+ArrayList<Integer> lista = new ArrayList<>();
+lista.add(5);  // int → Integer automatycznie!
+
+// ArrayList<int> lista;  // ❌ NIE ZADZIAŁA!
+                    </code></pre>
+                    <aside class="notes">
+                        Wszystko musi być obiektem (z wyjątkiem typów prymitywnych, które posiadają 
+                        wrappery obiektowe: int → Integer).
+
+                        Miliony programistów uczących się Javy musiało opanować właściwe praktyki obiektowe.
+                        To miało ogromny wpływ edukacyjny - Java wymusił myślenie obiektowe.
+                    </aside>
+                </section>
+
+                <!-- Java: Klasa w Javie -->
+                <section>
+                    <h3>Java: Przykład klasy</h3>
+                    <pre style="font-size: 12px;"><code class="hljs java" data-trim>
+public class Konto {
+    // Pola (zawsze prywatne!)
+    private double saldo;
+    private String wlasciciel;
+    
+    // Konstruktor
+    public Konto(String wlasciciel, double saldo) {
+        this.wlasciciel = wlasciciel;
+        this.saldo = saldo;
+    }
+    
+    // Metody publiczne
+    public void wplac(double kwota) {
+        if (kwota > 0) {
+            saldo += kwota;
+        }
+    }
+    
+    public void wyplac(double kwota) {
+        if (kwota > 0 && kwota <= saldo) {
+            saldo -= kwota;
+        }
+    }
+    
+    // Getter
+    public double getSaldo() {
+        return saldo;
+    }
+}
+                    </code></pre>
+                    <aside class="notes">
+                        Typowa klasa w Javie: pola prywatne, konstruktor publiczny, metody publiczne,
+                        gettery/settery. To jest standard w Javie - enkapsulacja jest wymuszona
+                        przez konwencje języka i dobre praktyki.
+                    </aside>
+                </section>
+
+                <!-- Java: Porównanie C++ vs Java -->
+                <section>
+                    <h3>Java vs C++: Filozofie</h3>
+                    <div class="row" style="margin-top: 20px; font-size: 0.75em;">
+                        <div class="column">
+                            <h4 style="color: #9b59b6;">C++</h4>
+                            <ul style="font-size: 0.9em;">
+                                <li>✅ Maksymalna wydajność</li>
+                                <li>✅ Kontrola niskopoziomowa</li>
+                                <li>✅ Wskaźniki, pamięć</li>
+                                <li>⚠️ Manualne delete</li>
+                                <li>⚠️ Kompilacja dla platform</li>
+                            </ul>
+                            <p style="margin-top: 15px; font-style: italic;">
+                                "Pełna kontrola + odpowiedzialność"
+                            </p>
+                        </div>
+                        <div class="column">
+                            <h4 style="color: #2ecc71;">Java</h4>
+                            <ul style="font-size: 0.9em;">
+                                <li>✅ Przenośność (JVM)</li>
+                                <li>✅ Automatyczny GC</li>
+                                <li>✅ Bezpieczeństwo</li>
+                                <li>⚠️ Mniejsza kontrola</li>
+                                <li>⚠️ Wolniejsze (czasem)</li>
+                            </ul>
+                            <p style="margin-top: 15px; font-style: italic;">
+                                "Bezpieczeństwo + prostota"
+                            </p>
+                        </div>
+                    </div>
+                    <aside class="notes">
+                        Dla programistów C++ Java reprezentuje alternatywną filozofię: rezygnacja
+                        z niskopoziomowej kontroli w zamian za bezpieczeństwo i przenośność. 
+                        
+                        Oba podejścia mają uzasadnienie w odpowiednich kontekstach zastosowań.
+                    </aside>
+                </section>
+
+                <!-- Java: Zastosowania -->
+                <section>
+                    <h3>Java: Gdzie się sprawdza?</h3>
+                    <div style="text-align: left; margin: 20px; font-size: 0.85em;">
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                            <strong>🌐 Aplikacje webowe (backend):</strong>
+                            <p style="margin-top: 10px;">Spring, Hibernate - systemy korporacyjne</p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                            <strong>📱 Android:</strong>
+                            <p style="margin-top: 10px;">Większość aplikacji (choć Kotlin zyskuje)</p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
+                            <strong>🏦 Systemy enterprise:</strong>
+                            <p style="margin-top: 10px;">Bankowość, ubezpieczenia - Java EE dominuje</p>
+                        </div>
+                        <div style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
+                            <strong>☁️ Big Data:</strong>
+                            <p style="margin-top: 10px;">Hadoop, Apache Spark - ekosystem JVM</p>
+                        </div>
+                    </div>
+                    <aside class="notes">
                         Współczesne zastosowania Javy: aplikacje webowe (backend - Spring, Hibernate),
                         Android (choć obecnie Kotlin zyskuje przewagę), systemy korporacyjne (bankowość,
                         ubezpieczenia, gdzie dominuje Java Enterprise Edition).
 
-                        Dla programistów C++ Java reprezentuje alternatywną filozofię: rezygnacja
-                        z niskopoziomowej kontroli w zamian za bezpieczeństwo i przenośność. Oba podejścia
-                        mają uzasadnienie w odpowiednich kontekstach zastosowań.
+                        Java sprawdza się wszędzie tam, gdzie przenośność i bezpieczeństwo są ważniejsze
+                        niż maksymalna wydajność.
                     </aside>
                 </section>
 
@@ -363,28 +1346,28 @@ printf("Suma: %d", suma);
                 <section>
                     <h3>Dlaczego OOP?</h3>
                     <div style="text-align: left; margin: 20px;">
-                        <div
+                        <div data-id="enkapsulacja"
                             style="margin: 20px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
                             <strong>✅ Enkapsulacja</strong>
                             <p style="font-size: 0.85em; margin-top: 10px;">
                                 Dane chronione - tylko metody mogą je zmieniać
                             </p>
                         </div>
-                        <div
+                        <div data-id="modularnosc"
                             style="margin: 20px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
                             <strong>✅ Modularność</strong>
                             <p style="font-size: 0.85em; margin-top: 10px;">
                                 Niezależne obiekty - łatwiej debugować
                             </p>
                         </div>
-                        <div
+                        <div data-id="wielokrotne"
                             style="margin: 20px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
                             <strong>✅ Wielokrotne użycie</strong>
                             <p style="font-size: 0.85em; margin-top: 10px;">
                                 Dziedziczenie - nie piszesz od zera
                             </p>
                         </div>
-                        <div
+                        <div data-id="naturalne"
                             style="margin: 20px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
                             <strong>✅ Naturalne myślenie</strong>
                             <p style="font-size: 0.85em; margin-top: 10px;">
@@ -394,8 +1377,55 @@ printf("Suma: %d", suma);
                     </div>
                     <aside class="notes">
                         Programowanie obiektowe rozwiązało fundamentalne problemy inżynierii oprogramowania
-                        na dużą skalę. Analiza czterech kluczowych zalet:
+                        na dużą skalę. 
+                        
+                        W kolejnych slajdach szczegółowo omówimy każdy z czterech filarów OOP.
+                    </aside>
+                </section>
 
+                <!-- Enkapsulacja - szczegóły -->
+                <section>
+                    <div data-id="enkapsulacja"
+                        style="padding: 20px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71; margin-bottom: 20px;">
+                        <h3 style="margin: 0;">✅ Enkapsulacja</h3>
+                        <p style="font-size: 0.85em; margin-top: 10px;">
+                            Ukrywanie implementacji i kontrola dostępu
+                        </p>
+                    </div>
+                    <div class="row" style="margin-top: 20px; font-size: 0.8em;">
+                        <div class="column">
+                            <h4 style="color: #e74c3c;">❌ Bez enkapsulacji</h4>
+                            <pre style="font-size: 11px;"><code class="hljs cpp" data-trim>
+class BankAccount {
+public:
+    double balance; // Każdy ma dostęp!
+};
+
+BankAccount acc;
+acc.balance = -1000000; // 💥 Możliwe!
+                            </code></pre>
+                        </div>
+                        <div class="column">
+                            <h4 style="color: #2ecc71;">✅ Z enkapsulacją</h4>
+                            <pre style="font-size: 11px;"><code class="hljs cpp" data-trim>
+class BankAccount {
+private:
+    double balance; // Chronione!
+public:
+    void deposit(double amount) {
+        if (amount > 0) // Walidacja
+            balance += amount;
+    }
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance)
+            balance -= amount;
+    }
+};
+// acc.balance = -1000; // ❌ BŁĄD!
+                            </code></pre>
+                        </div>
+                    </div>
+                    <aside class="notes">
                         ENKAPSULACJA - ukrywanie implementacji i kontrola dostępu.
 
                         Rozważmy klasę BankAccount. Pole balance jest prywatne. Dostęp możliwy wyłącznie
@@ -407,7 +1437,43 @@ printf("Suma: %d", suma);
                         To fundamentalna różnica względem programowania proceduralnego, gdzie każda
                         zmienna globalna może być modyfikowana przez dowolny fragment kodu. Enkapsulacja
                         gwarantuje, że dane mogą być zmieniane tylko w kontrolowany sposób.
+                    </aside>
+                </section>
 
+                <!-- Modularność - szczegóły -->
+                <section>
+                    <div data-id="modularnosc"
+                        style="padding: 20px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db; margin-bottom: 20px;">
+                        <h3 style="margin: 0;">✅ Modularność</h3>
+                        <p style="font-size: 0.85em; margin-top: 10px;">
+                            Niezależność komponentów
+                        </p>
+                    </div>
+                    <pre style="font-size: 12px;"><code class="hljs cpp" data-trim>
+class User {
+private:
+    string name;
+    string email;
+public:
+    string getName() { return name; }
+    void setName(string n) { name = n; }
+};
+
+class Invoice {
+private:
+    double amount;
+    User* customer;
+public:
+    void generatePDF() { /* ... */ }
+};
+
+// User nie wie o Invoice, Invoice używa tylko interfejsu User
+// Zmiana implementacji User nie wpływa na Invoice!
+                    </code></pre>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(52, 152, 219, 0.1); border-radius: 10px; font-size: 0.85em;">
+                        💡 Każda klasa to niezależny moduł - łatwiejsze debugowanie i utrzymanie
+                    </div>
+                    <aside class="notes">
                         MODULARNOŚĆ - niezależność komponentów.
 
                         Każda klasa stanowi niezależny moduł. Klasa User nie posiada wiedzy o klasie Invoice.
@@ -418,7 +1484,64 @@ printf("Suma: %d", suma);
                         Interfejs publiczny definiuje wejście i wyjście, implementacja jest ukryta.
                         Debugowanie staje się prostsze - błąd w klasie Payment wymaga analizy tylko tej klasy,
                         nie całego systemu.
+                    </aside>
+                </section>
 
+                <!-- Wielokrotne użycie - szczegóły -->
+                <section>
+                    <div data-id="wielokrotne"
+                        style="padding: 20px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6; margin-bottom: 20px;">
+                        <h3 style="margin: 0;">✅ Wielokrotne użycie</h3>
+                        <p style="font-size: 0.85em; margin-top: 10px;">
+                            Dziedziczenie i kompozycja
+                        </p>
+                    </div>
+                    <div class="row" style="margin-top: 20px; font-size: 0.75em;">
+                        <div class="column">
+                            <h4 style="font-size: 0.9em;">Dziedziczenie</h4>
+                            <pre style="font-size: 10px;"><code class="hljs cpp" data-trim>
+class Animal {
+protected:
+    string name;
+public:
+    void eat() { /*...*/ }
+    void sleep() { /*...*/ }
+};
+
+class Dog : public Animal {
+public:
+    void bark() { /*...*/ }
+    // Otrzymuje eat() i sleep()
+    // automatycznie!
+};
+                            </code></pre>
+                        </div>
+                        <div class="column">
+                            <h4 style="font-size: 0.9em;">Kompozycja</h4>
+                            <pre style="font-size: 10px;"><code class="hljs cpp" data-trim>
+class Engine {
+public:
+    void start() { /*...*/ }
+    void stop() { /*...*/ }
+};
+
+class Car {
+private:
+    Engine engine; // Zawiera Engine
+public:
+    void drive() {
+        engine.start();
+        // ...
+    }
+};
+// Ten sam Engine w Motorcycle!
+                            </code></pre>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(155, 89, 182, 0.1); border-radius: 10px; font-size: 0.85em;">
+                        💡 Ponowne wykorzystanie bez duplikacji kodu
+                    </div>
+                    <aside class="notes">
                         WIELOKROTNE UŻYCIE - dziedziczenie i kompozycja.
 
                         Klasa Animal definiuje metody eat(), sleep(), makeSound(). Klasa Dog dziedziczy
@@ -431,7 +1554,49 @@ printf("Suma: %d", suma);
                         W programowaniu proceduralnym ponowne użycie wymaga copy-paste. Modyfikacja
                         w jednym miejscu wymaga modyfikacji we wszystkich kopiach. To prowadzi do
                         błędów i trudności w utrzymaniu.
+                    </aside>
+                </section>
 
+                <!-- Naturalne modelowanie - szczegóły -->
+                <section>
+                    <div data-id="naturalne"
+                        style="padding: 20px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22; margin-bottom: 20px;">
+                        <h3 style="margin: 0;">✅ Naturalne myślenie</h3>
+                        <p style="font-size: 0.85em; margin-top: 10px;">
+                            Odzwierciedlenie rzeczywistości w kodzie
+                        </p>
+                    </div>
+                    <div style="text-align: left; margin: 20px; font-size: 0.8em;">
+                        <div style="margin: 15px 0; padding: 12px; background: rgba(52, 152, 219, 0.1); border-left: 3px solid #3498db;">
+                            <strong>🛒 System e-commerce - naturalne encje:</strong>
+                        </div>
+                        <pre style="font-size: 11px; margin-top: 15px;"><code class="hljs cpp" data-trim>
+class Customer {
+    string name, address;
+    vector<Order> orderHistory;
+};
+
+class Product {
+    string name, description;
+    double price;
+};
+
+class ShoppingCart {
+    vector<Product> items;
+    double calculateTotal();
+};
+
+class Order {
+    Customer* customer;
+    vector<Product> products;
+    string status; // "pending", "shipped", "delivered"
+};
+                        </code></pre>
+                        <div style="margin-top: 15px; padding: 12px; background: rgba(230, 126, 34, 0.1); border-radius: 10px;">
+                            💡 Kod = bezpośrednie odzwierciedlenie struktury biznesowej
+                        </div>
+                    </div>
+                    <aside class="notes">
                         NATURALNE MODELOWANIE - odzwierciedlenie rzeczywistości.
 
                         Projektując system e-commerce, naturalnie identyfikujemy encje: Klient (imię, adres,
@@ -451,7 +1616,7 @@ printf("Suma: %d", suma);
                     </aside>
                 </section>
 
-                <!-- Porównanie -->
+                <!-- Porównanie: Proceduralne vs Obiektowe -->
                 <section>
                     <h3>Porównanie: Proceduralne vs Obiektowe</h3>
                     <div class="row">
@@ -518,12 +1683,11 @@ public:
                         Metody wplac() i wyplac() są publiczne - stanowią interfejs klasy. Zawierają
                         logikę walidacji: wplac() weryfikuje if (kwota > 0), wyplac() sprawdza
                         if (kwota > 0 && kwota <= saldo). Próba bezpośredniej modyfikacji k.saldo=-5000 jest błędem
-                            kompilacji. Kompilator zgłosi: "'saldo' is a private member of 'Konto'" . Program nie
-                            skompiluje się. Błąd zostaje wykryty przed uruchomieniem, nie po tygodniach działania w
+                            kompilacji. Kompilator zgłosi błąd przed uruchomieniem, nie po tygodniach działania w
                             środowisku produkcyjnym. To ilustruje fundamentalną wartość OOP: kontrola i bezpieczeństwo.
                             Projektant klasy definiuje poprawne operacje. Użytkownik klasy (inny programista, możliwe
                             ten sam programista po upływie czasu) nie może naruszyć niezmienników. Kompilator egzekwuje
-                            reguły. Ten przykład демонstruje nie teoretyczną koncepcję, lecz praktyczne narzędzie.
+                            reguły. Ten przykład demonstruje nie teoretyczną koncepcję, lecz praktyczne narzędzie.
                             Bezpieczeństwo, kontrola, mniej błędów, łatwiejsze utrzymanie. To konkretne korzyści
                             inżynierskie, nie abstrakcje akademickie. </aside>
                 </section>
