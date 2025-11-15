@@ -149,16 +149,18 @@ printf("Suma: %d", suma);
                 <!-- Rozwiązanie -->
                 <section>
                     <h3>Potrzeba nowego podejścia</h3>
-                    <p style="font-size: 0.9em;">Analiza problemów programowania proceduralnego prowadzi do fundamentalnej obserwacji:</p>
-                    <div style="margin-top: 30px; padding: 20px; background: rgba(52, 152, 219, 0.1); border-radius: 10px;">
+                    <p style="font-size: 0.9em;">Analiza problemów programowania proceduralnego prowadzi do
+                        fundamentalnej obserwacji:</p>
+                    <div
+                        style="margin-top: 30px; padding: 20px; background: rgba(52, 152, 219, 0.1); border-radius: 10px;">
                         <p style="font-size: 0.95em;">
                             <strong>Dane i operacje na nich są naturalnie powiązane!</strong>
                         </p>
                     </div>
                     <aside class="notes">
                         Analiza problemów programowania proceduralnego doprowadziła do fundamentalnej obserwacji:
-                        dane i operacje na nich są naturalnie powiązane. 
-                        
+                        dane i operacje na nich są naturalnie powiązane.
+
                         W kolejnych slajdach zobaczymy konkretne przykłady tego problemu i jego rozwiązania.
                     </aside>
                 </section>
@@ -186,15 +188,16 @@ int sprawdz_saldo() {
 }
                     </code></pre>
                     <p style="font-size: 0.8em; color: #ff6b6b; margin-top: 20px;">
-                        ❌ Zmienna <code>saldo</code> istnieje oddzielnie od funkcji <code>wpłać</code> i <code>wypłać</code>
+                        ❌ Zmienna <code>saldo</code> istnieje oddzielnie od funkcji <code>wpłać</code> i
+                        <code>wypłać</code>
                     </p>
                     <aside class="notes">
-                        Konto bankowe zawiera saldo oraz operacje wpłaty, wypłaty i sprawdzenia stanu. 
+                        Konto bankowe zawiera saldo oraz operacje wpłaty, wypłaty i sprawdzenia stanu.
                         Logicznie stanowią one jedną całość.
 
-                        Jednak programowanie proceduralne separuje te elementy - zmienna "saldo" istnieje 
-                        oddzielnie od funkcji "wpłać" i "wypłać". 
-                        
+                        Jednak programowanie proceduralne separuje te elementy - zmienna "saldo" istnieje
+                        oddzielnie od funkcji "wpłać" i "wypłać".
+
                         To prowadzi do pytania: dlaczego kod nie odzwierciedla naturalnej struktury problemu?
                     </aside>
                 </section>
@@ -256,15 +259,18 @@ void wyplac(int kwota) {
 saldo = -1000000;  // Każdy może to zrobić!
 wyplac(5000);      // Saldo teraz: -1005000
                     </code></pre>
-                    <div style="margin-top: 20px; padding: 15px; background: rgba(255, 107, 107, 0.1); border-left: 4px solid #ff6b6b;">
+                    <div
+                        style="margin-top: 20px; padding: 15px; background: rgba(255, 107, 107, 0.1); border-left: 4px solid #ff6b6b;">
                         <p style="font-size: 0.85em;">
-                            <strong>Problem:</strong> Bezpośrednia modyfikacja <code>saldo = -1000000</code> jest możliwa!
+                            <strong>Problem:</strong> Bezpośrednia modyfikacja <code>saldo = -1000000</code> jest
+                            możliwa!
                         </p>
                     </div>
                     <aside class="notes">
-                        W podejściu proceduralnym każda zmienna globalna może być modyfikowana przez dowolny fragment kodu.
+                        W podejściu proceduralnym każda zmienna globalna może być modyfikowana przez dowolny fragment
+                        kodu.
                         Bezpośrednie przypisanie "saldo = -1000000" jest poprawne składniowo.
-                        
+
                         Kompilator akceptuje taki kod. Program kompiluje się i uruchamia. Błąd manifestuje
                         się w runtime, potencjalnie po dłuższym okresie działania systemu.
                     </aside>
@@ -293,20 +299,21 @@ public:
 // Konto k;
 // k.saldo = -1000000;  // BŁĄD KOMPILACJI!
                     </code></pre>
-                    <div style="margin-top: 15px; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                    <div
+                        style="margin-top: 15px; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
                         <p style="font-size: 0.85em;">
                             ✅ <strong>Kontrola dostępu:</strong> tylko metody mogą zmieniać dane
                         </p>
                     </div>
                     <aside class="notes">
-                        Konieczna była kontrola dostępu do danych. Bezpośrednia modyfikacja "saldo = -1000" 
-                        powinna być niemożliwa. Tylko odpowiednie metody, zawierające logikę walidacji, 
+                        Konieczna była kontrola dostępu do danych. Bezpośrednia modyfikacja "saldo = -1000"
+                        powinna być niemożliwa. Tylko odpowiednie metody, zawierające logikę walidacji,
                         powinny mieć prawo zmiany stanu.
-                        
-                        To jest istota enkapsulacji - ukrywania danych i kontrolowania dostępu poprzez 
+
+                        To jest istota enkapsulacji - ukrywania danych i kontrolowania dostępu poprzez
                         zdefiniowany interfejs.
-                        
-                        Pole saldo jest prywatne. Próba bezpośredniej modyfikacji k.saldo=-1000000 
+
+                        Pole saldo jest prywatne. Próba bezpośredniej modyfikacji k.saldo=-1000000
                         jest błędem kompilacji. Kompilator zgłosi błąd przed uruchomieniem programu.
                     </aside>
                 </section>
@@ -333,7 +340,8 @@ public:
     }
 };
                     </code></pre>
-                    <div style="margin-top: 15px; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
+                    <div
+                        style="margin-top: 15px; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
                         <p style="font-size: 0.85em;">
                             ✅ <strong>Dziedziczenie:</strong> rozszerzamy bez duplikacji kodu
                         </p>
@@ -342,7 +350,7 @@ public:
                         Potrzebna była możliwość rozszerzania funkcjonalności bez przepisywania kodu.
                         Mechanizm dziedziczenia pozwala na stworzenie KontoOszczędnościowego rozszerzającego
                         Konto, bez konieczności duplikacji kodu bazowego.
-                        
+
                         KontoOszczędnościowe automatycznie otrzymuje metody wpłać i wypłać z klasy bazowej,
                         dodając tylko nową funkcjonalność - naliczanie odsetek.
                     </aside>
@@ -373,9 +381,9 @@ public:
                     </div>
                     <aside class="notes">
                         Te obserwacje - grupowanie danych z metodami, kontrola dostępu przez enkapsulację,
-                        rozszerzalność przez dziedziczenie - doprowadziły do powstania koncepcji 
+                        rozszerzalność przez dziedziczenie - doprowadziły do powstania koncepcji
                         programowania obiektowego.
-                        
+
                         W następnych slajdach zobaczymy jak te idee zostały zrealizowane w pierwszych
                         językach obiektowych.
                     </aside>
@@ -405,15 +413,18 @@ public:
                     <h3>Simula: Symulacja sklepu</h3>
                     <p style="font-size: 0.85em;">Naturalne byty w symulacji:</p>
                     <div style="text-align: left; margin: 20px; font-size: 0.8em;">
-                        <div style="margin: 15px 0; padding: 12px; background: rgba(52, 152, 219, 0.1); border-left: 3px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 12px; background: rgba(52, 152, 219, 0.1); border-left: 3px solid #3498db;">
                             <strong>👤 Klient:</strong> imię, wiek, koszyk zakupów<br>
                             <em>Zachowania:</em> czeka w kolejce, wybiera produkty, płaci
                         </div>
-                        <div style="margin: 15px 0; padding: 12px; background: rgba(46, 204, 113, 0.1); border-left: 3px solid #2ecc71;">
+                        <div
+                            style="margin: 15px 0; padding: 12px; background: rgba(46, 204, 113, 0.1); border-left: 3px solid #2ecc71;">
                             <strong>💼 Kasjer:</strong> stanowisko, szybkość obsługi<br>
                             <em>Zachowania:</em> obsługuje klienta, skanuje produkty, wydaje resztę
                         </div>
-                        <div style="margin: 15px 0; padding: 12px; background: rgba(155, 89, 182, 0.1); border-left: 3px solid #9b59b6;">
+                        <div
+                            style="margin: 15px 0; padding: 12px; background: rgba(155, 89, 182, 0.1); border-left: 3px solid #9b59b6;">
                             <strong>📦 Produkt:</strong> nazwa, cena, kod<br>
                             <em>Zachowania:</em> wyświetl informacje, oblicz rabat
                         </div>
@@ -424,7 +435,8 @@ public:
                         (dane) oraz zachowanie (operacje).
 
                         W symulacji sklepu naturalnymi bytami są: klienci posiadający imię, wiek, koszyk zakupów;
-                        kasjerzy mający stanowisko i szybkość obsługi; produkty charakteryzujące się nazwą, ceną i kodem.
+                        kasjerzy mający stanowisko i szybkość obsługi; produkty charakteryzujące się nazwą, ceną i
+                        kodem.
 
                         Każdy byt posiada nie tylko dane, ale również zachowania: klient czeka w kolejce,
                         wybiera produkty, płaci; kasjer obsługuje klienta, skanuje produkty, wydaje resztę.
@@ -488,10 +500,10 @@ anna.plac;  ! Anna płaci
                         💡 <strong>Obiekt</strong> = konkretna instancja klasy z własnymi wartościami
                     </p>
                     <aside class="notes">
-                        Obiekt jako konkretną instancją klasy. Klasa "Klient" definiuje, że każdy klient 
-                        posiada imię, wiek i koszyk. 
-                        
-                        Obiekt "Jan Kowalski" jest konkretną instancją z wartościami: imię="Jan", wiek=35, 
+                        Obiekt jako konkretną instancją klasy. Klasa "Klient" definiuje, że każdy klient
+                        posiada imię, wiek i koszyk.
+
+                        Obiekt "Jan Kowalski" jest konkretną instancją z wartościami: imię="Jan", wiek=35,
                         koszyk=[mleko, chleb].
 
                         Każdy obiekt ma własne wartości, ale wspólną strukturę i zachowania zdefiniowane w klasie.
@@ -539,7 +551,8 @@ END Klient;
                 <section>
                     <h3>Simula: Wpływ na przyszłość</h3>
                     <div style="text-align: left; margin: 20px;">
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
                             <strong>Koncepcje wprowadzone przez Simula:</strong>
                             <ul style="font-size: 0.85em; margin-top: 10px;">
                                 <li>✅ Klasa jako szablon</li>
@@ -548,7 +561,8 @@ END Klient;
                                 <li>✅ Polimorfizm (wirtualne procedury)</li>
                             </ul>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
                             <strong>Wpłynęła na:</strong>
                             <p style="font-size: 0.85em; margin-top: 10px;">
                                 C++, Java, Python, C#, JavaScript...
@@ -558,7 +572,7 @@ END Klient;
                     <aside class="notes">
                         Mimo że Simula nie osiągnęła szerokiego zastosowania komercyjnego, jej koncepcje
                         stały się fundamentem wszystkich współczesnych języków obiektowych: C++, Java, Python, C#.
-                        
+
                         Kluczową ideą jest grupowanie danych z zachowaniami w spójne encje - klasy i obiekty.
                     </aside>
                 </section>
@@ -601,15 +615,16 @@ END Klient;
 7 isPrime.      "Wynik: true (czy pierwsza?)"
                     </code></pre>
                     <p style="font-size: 0.75em; margin-top: 20px; color: #3498db;">
-                        💡 W Smalltalk <code>5 + 3</code> to wysłanie wiadomości <code>+</code> do obiektu <code>5</code> z argumentem <code>3</code>
+                        💡 W Smalltalk <code>5 + 3</code> to wysłanie wiadomości <code>+</code> do obiektu
+                        <code>5</code> z argumentem <code>3</code>
                     </p>
                     <aside class="notes">
                         Fundamentalna zasada Smalltalk: wszystko jest obiektem. Nawet wartości prymitywne
-                        takie jak liczba 5 są obiektami posiadającymi metody. 
-                        
-                        Liczba 5 posiada metody dodawania, mnożenia, konwersji do stringa. W notacji Smalltalk: 
-                        5 + 3 to wywołanie metody dodawania na obiekcie 5 z argumentem 3. 
-                        
+                        takie jak liczba 5 są obiektami posiadającymi metody.
+
+                        Liczba 5 posiada metody dodawania, mnożenia, konwersji do stringa. W notacji Smalltalk:
+                        5 + 3 to wywołanie metody dodawania na obiekcie 5 z argumentem 3.
+
                         Współcześnie ten model widzimy w Pythonie, gdzie (5).__add__(3) jest poprawnym wywołaniem.
                     </aside>
                 </section>
@@ -688,7 +703,8 @@ type(str)  # <class 'type'>
                 <section>
                     <h3>Smalltalk: Rewolucja w interfejsach</h3>
                     <div style="text-align: left; margin: 20px;">
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
                             <strong>Pierwsze graficzne GUI (1973):</strong>
                             <ul style="font-size: 0.85em; margin-top: 10px;">
                                 <li>🖼️ Okna (nakładające się)</li>
@@ -697,7 +713,8 @@ type(str)  # <class 'type'>
                                 <li>🎨 Ikony</li>
                             </ul>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
                             <strong>Wpływ:</strong>
                             <p style="font-size: 0.85em; margin-top: 10px;">
                                 → Apple Macintosh (1984)<br>
@@ -708,8 +725,8 @@ type(str)  # <class 'type'>
                     </div>
                     <aside class="notes">
                         Smalltalk był również rewolucyjny technologicznie - Kay stworzył pierwsze
-                        graficzne środowisko użytkownika oparte na oknach, ikonach i myszy. 
-                        
+                        graficzne środowisko użytkownika oparte na oknach, ikonach i myszy.
+
                         To rozwiązanie, zaprezentowane w Xerox PARC, zostało następnie zaadaptowane przez Apple
                         w Macintosh oraz Microsoft w Windows.
 
@@ -721,7 +738,8 @@ type(str)  # <class 'type'>
                 <section>
                     <h3>Smalltalk: Dziedzictwo</h3>
                     <div style="text-align: left; margin: 20px; font-size: 0.85em;">
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
                             <strong>💡 Alan Kay ukuł termin:</strong>
                             <p style="margin-top: 10px; font-size: 1.2em; font-weight: bold; color: #2ecc71;">
                                 "Object-Oriented Programming"
@@ -730,7 +748,8 @@ type(str)  # <class 'type'>
                                 Programowanie Obiektowe
                             </p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
                             <strong>Wpływ na języki:</strong>
                             <p style="margin-top: 10px;">
                                 Ruby (bardzo inspirowany Smalltalk)<br>
@@ -743,10 +762,10 @@ type(str)  # <class 'type'>
                     <aside class="notes">
                         Alan Kay ukuł termin "object-oriented programming" - programowanie obiektowe.
 
-                        Mimo że Smalltalk nie osiągnął dominacji w przemyśle ze względu na wymagania
+                        Mimo że Smalltalk nie osiągnęła dominacji w przemyśle ze względu na wymagania
                         wydajnościowe, jego czysta wizja OOP wpłynęła na projektowanie wszystkich
-                        późniejszych języków obiektowych. 
-                        
+                        późniejszych języków obiektowych.
+
                         Zasady formułowane przez Kaya pozostają aktualne 50 lat później.
 
                         Wiele współczesnych języków przejęło filozofię Smalltalk - Ruby jest niemal
@@ -777,13 +796,15 @@ type(str)  # <class 'type'>
                 <section>
                     <h3>C++: Wyzwanie</h3>
                     <div style="text-align: left; margin: 20px; font-size: 0.85em;">
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
                             <strong>🎯 Problem:</strong>
                             <p style="margin-top: 10px;">
                                 Jak wprowadzić OOP do świata, gdzie dominuje C?
                             </p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
                             <strong>Wymagania:</strong>
                             <ul style="margin-top: 10px;">
                                 <li>✅ Zachować wydajność C</li>
@@ -927,10 +948,10 @@ int main() {
                     <aside class="notes">
                         C++ zachował fundamentalne cechy C: bezpośredni dostęp do pamięci, wskaźniki,
                         możliwość programowania niskopoziomowego. Jednocześnie wprowadził klasy, dziedziczenie,
-                        polimorfizm, szablony. 
-                        
-                        To połączenie czyni C++ unikalnym - pozwala na niskopoziomową kontrolę 
-                        (zarządzanie każdym bajtem pamięci) oraz wysokopoziomową organizację 
+                        polimorfizm, szablony.
+
+                        To połączenie czyni C++ unikalnym - pozwala na niskopoziomową kontrolę
+                        (zarządzanie każdym bajtem pamięci) oraz wysokopoziomową organizację
                         (eleganckie hierarchie klas).
                     </aside>
                 </section>
@@ -977,19 +998,23 @@ p->jedz();  // Wywołuje Samochod::jedz()
                 <section>
                     <h3>C++: Gdzie się sprawdza?</h3>
                     <div style="text-align: left; margin: 20px; font-size: 0.85em;">
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
                             <strong>🖥️ Systemy operacyjne:</strong>
                             <p style="margin-top: 10px;">Windows, Linux - wydajność + organizacja</p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
                             <strong>🎮 Silniki gier:</strong>
                             <p style="margin-top: 10px;">Unreal Engine - kontrola każdego klatki na sekundę</p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
                             <strong>🚗 Embedded/Automotive:</strong>
                             <p style="margin-top: 10px;">Systemy kontroli w samochodach, samolotach</p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
                             <strong>🌐 Przeglądarki:</strong>
                             <p style="margin-top: 10px;">Chrome, Firefox - wydajność krytyczna</p>
                         </div>
@@ -1008,14 +1033,16 @@ p->jedz();  // Wywołuje Samochod::jedz()
                 <section>
                     <h3>C++: Ewolucja C</h3>
                     <div style="text-align: left; margin: 20px; font-size: 0.85em;">
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
                             <strong>💡 Kluczowa idea:</strong>
                             <p style="margin-top: 10px;">
                                 C++ nie jest językiem stworzonym od podstaw dla OOP.<br>
                                 Jest <strong>ewolucją C w kierunku obiektowości</strong>.
                             </p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
                             <strong>To wyjaśnia:</strong>
                             <ul style="margin-top: 10px;">
                                 <li>Współistnienie struktur i klas</li>
@@ -1027,9 +1054,9 @@ p->jedz();  // Wywołuje Samochod::jedz()
                     </div>
                     <aside class="notes">
                         C++ nie jest językiem stworzonym od podstaw dla OOP. Jest ewolucją C w kierunku
-                        obiektowości, zachowującą kompatybilność i wydajność. 
-                        
-                        To wyjaśnia wiele jego osobliwości - koegzystencja struktur i klas, operatorów 
+                        obiektowości, zachowującą kompatybilność i wydajność.
+
+                        To wyjaśnia wiele jego osobliwości - koegzystencja struktur i klas, operatorów
                         new/malloc, różne konwencje. Zrozumienie tej ewolucji jest kluczem do zrozumienia języka.
                     </aside>
                 </section>
@@ -1046,7 +1073,7 @@ p->jedz();  // Wywołuje Samochod::jedz()
                     <aside class="notes">
                         Rok 1995, Sun Microsystems. Kontekst: ekspansja Internetu, heterogeniczne
                         środowiska sprzętowe (PC, Mac, Unix), potrzeba przenośności oprogramowania.
-                        
+
                         James Gosling projektuje Javę z fundamentalnym założeniem: "Write once, run anywhere".
 
                         W kolejnych slajdach zobaczymy jak Java różni się od C++.
@@ -1057,14 +1084,16 @@ p->jedz();  // Wywołuje Samochod::jedz()
                 <section>
                     <h3>Java: Problem do rozwiązania</h3>
                     <div style="text-align: left; margin: 20px; font-size: 0.85em;">
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(231, 76, 60, 0.1); border-left: 4px solid #e74c3c;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(231, 76, 60, 0.1); border-left: 4px solid #e74c3c;">
                             <strong>🌍 Problem lat 90.:</strong>
                             <p style="margin-top: 10px;">
                                 Różne platformy: Windows, macOS, Unix, Solaris...<br>
                                 Każda wymaga osobnej kompilacji i testowania!
                             </p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
                             <strong>C++ problem:</strong>
                             <pre style="font-size: 11px; margin-top: 10px;"><code class="hljs bash" data-trim>
 # Trzeba kompilować osobno dla każdej platformy!
@@ -1075,8 +1104,8 @@ g++ program.cpp -o program_linux          # Linux
                         </div>
                     </div>
                     <aside class="notes">
-                        Kontekst: ekspansja Internetu, heterogeniczne środowiska sprzętowe (PC, Mac, Unix), 
-                        potrzeba przenośności oprogramowania. James Gosling projektuje Javę z fundamentalnym 
+                        Kontekst: ekspansja Internetu, heterogeniczne środowiska sprzętowe (PC, Mac, Unix),
+                        potrzeba przenośności oprogramowania. James Gosling projektuje Javę z fundamentalnym
                         założeniem: "Write once, run anywhere".
 
                         W C++ ten sam kod trzeba kompilować osobno dla każdej platformy. To generuje
@@ -1088,7 +1117,8 @@ g++ program.cpp -o program_linux          # Linux
                 <section>
                     <h3>Java: Rozwiązanie - JVM</h3>
                     <div style="text-align: left; margin: 20px; font-size: 0.8em;">
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
                             <strong>Java Virtual Machine:</strong>
                             <p style="margin-top: 10px;">
                                 1. Kompilujesz raz → bytecode (.class)<br>
@@ -1115,7 +1145,7 @@ java Program  // Linux
                     <aside class="notes">
                         Mechanizm realizacji: Java Virtual Machine (JVM). Kompilacja nie produkuje
                         kodu maszynowego specyficznego dla platformy, lecz bytecode - kod pośredni.
-                        
+
                         JVM na każdej platformie interpretuje ten bytecode. Ten sam plik .class
                         wykonuje się identycznie na Windows, macOS, Linux.
 
@@ -1157,10 +1187,10 @@ Osoba p = new Osoba("Jan");
 
                         Garbage Collector - automatyczne zarządzanie pamięcią. W C++ programista
                         musi pamiętać: new wymaga delete. Brak delete prowadzi do wycieku pamięci - program
-                        konsumuje coraz więcej RAM. 
-                        
-                        W Javie Garbage Collector automatycznie identyfikuje i usuwa nieużywane obiekty. 
-                        To znacząco upraszcza programowanie, kosztem mniejszej kontroli i potencjalnie 
+                        konsumuje coraz więcej RAM.
+
+                        W Javie Garbage Collector automatycznie identyfikuje i usuwa nieużywane obiekty.
+                        To znacząco upraszcza programowanie, kosztem mniejszej kontroli i potencjalnie
                         wolniejszego działania podczas zbierania śmieci.
                     </aside>
                 </section>
@@ -1191,8 +1221,8 @@ public class MojaKlasa {
 }
                     </code></pre>
                     <aside class="notes">
-                        Druga fundamentalna zmiana: Wymuszony paradygmat obiektowy. W Javie nie można 
-                        napisać kodu poza klasą. Funkcja main() musi być metodą statyczną klasy. 
+                        Druga fundamentalna zmiana: Wymuszony paradygmat obiektowy. W Javie nie można
+                        napisać kodu poza klasą. Funkcja main() musi być metodą statyczną klasy.
                         Zmienne globalne nie istnieją - muszą być statycznymi polami klas.
 
                         To wymuszenie paradygmatu miało znaczący efekt edukacyjny. W C++ można mieszać
@@ -1223,7 +1253,7 @@ lista.add(5);  // int → Integer automatycznie!
 // ArrayList<int> lista;  // ❌ NIE ZADZIAŁA!
                     </code></pre>
                     <aside class="notes">
-                        Wszystko musi być obiektem (z wyjątkiem typów prymitywnych, które posiadają 
+                        Wszystko musi być obiektem (z wyjątkiem typów prymitywnych, które posiadają
                         wrappery obiektowe: int → Integer).
 
                         Miliony programistów uczących się Javy musiało opanować właściwe praktyki obiektowe.
@@ -1305,8 +1335,8 @@ public class Konto {
                     </div>
                     <aside class="notes">
                         Dla programistów C++ Java reprezentuje alternatywną filozofię: rezygnacja
-                        z niskopoziomowej kontroli w zamian za bezpieczeństwo i przenośność. 
-                        
+                        z niskopoziomowej kontroli w zamian za bezpieczeństwo i przenośność.
+
                         Oba podejścia mają uzasadnienie w odpowiednich kontekstach zastosowań.
                     </aside>
                 </section>
@@ -1315,19 +1345,23 @@ public class Konto {
                 <section>
                     <h3>Java: Gdzie się sprawdza?</h3>
                     <div style="text-align: left; margin: 20px; font-size: 0.85em;">
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db;">
                             <strong>🌐 Aplikacje webowe (backend):</strong>
                             <p style="margin-top: 10px;">Spring, Hibernate - systemy korporacyjne</p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71;">
                             <strong>📱 Android:</strong>
                             <p style="margin-top: 10px;">Większość aplikacji (choć Kotlin zyskuje)</p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(155, 89, 182, 0.1); border-left: 4px solid #9b59b6;">
                             <strong>🏦 Systemy enterprise:</strong>
                             <p style="margin-top: 10px;">Bankowość, ubezpieczenia - Java EE dominuje</p>
                         </div>
-                        <div style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
+                        <div
+                            style="margin: 15px 0; padding: 15px; background: rgba(230, 126, 34, 0.1); border-left: 4px solid #e67e22;">
                             <strong>☁️ Big Data:</strong>
                             <p style="margin-top: 10px;">Hadoop, Apache Spark - ekosystem JVM</p>
                         </div>
@@ -1377,8 +1411,8 @@ public class Konto {
                     </div>
                     <aside class="notes">
                         Programowanie obiektowe rozwiązało fundamentalne problemy inżynierii oprogramowania
-                        na dużą skalę. 
-                        
+                        na dużą skalę.
+
                         W kolejnych slajdach szczegółowo omówimy każdy z czterech filarów OOP.
                     </aside>
                 </section>
@@ -1417,11 +1451,13 @@ public:
             balance += amount;
     }
     void withdraw(double amount) {
-        if (amount > 0 && amount <= balance)
+        if (amount > 0 && amount <= balance)  // Walidacja
             balance -= amount;
     }
 };
-// acc.balance = -1000; // ❌ BŁĄD!
+
+// Chronione!
+// k.saldo = -5000; // BŁĄD!
                             </code></pre>
                         </div>
                     </div>
@@ -1430,8 +1466,8 @@ public:
 
                         Rozważmy klasę BankAccount. Pole balance jest prywatne. Dostęp możliwy wyłącznie
                         poprzez metody deposit() i withdraw(). Te metody zawierają logikę walidacji:
-                        deposit() weryfikuje czy kwota jest dodatnia, withdraw() sprawdza czy saldo
-                        jest wystarczające. Bezpośrednie przypisanie balance = -1000000 jest niemożliwe -
+                        deposit() weryfikuje czy kwota jest dodatnia, withdraw() sprawdza
+                        czy saldo jest wystarczające. Bezpośrednie przypisanie balance = -1000000 jest niemożliwe -
                         kompilator zgłosi błąd dostępu do prywatnego pola.
 
                         To fundamentalna różnica względem programowania proceduralnego, gdzie każda
@@ -1470,7 +1506,8 @@ public:
 // User nie wie o Invoice, Invoice używa tylko interfejsu User
 // Zmiana implementacji User nie wpływa na Invoice!
                     </code></pre>
-                    <div style="margin-top: 20px; padding: 15px; background: rgba(52, 152, 219, 0.1); border-radius: 10px; font-size: 0.85em;">
+                    <div
+                        style="margin-top: 20px; padding: 15px; background: rgba(52, 152, 219, 0.1); border-radius: 10px; font-size: 0.85em;">
                         💡 Każda klasa to niezależny moduł - łatwiejsze debugowanie i utrzymanie
                     </div>
                     <aside class="notes">
@@ -1538,7 +1575,8 @@ public:
                             </code></pre>
                         </div>
                     </div>
-                    <div style="margin-top: 20px; padding: 15px; background: rgba(155, 89, 182, 0.1); border-radius: 10px; font-size: 0.85em;">
+                    <div
+                        style="margin-top: 20px; padding: 15px; background: rgba(155, 89, 182, 0.1); border-radius: 10px; font-size: 0.85em;">
                         💡 Ponowne wykorzystanie bez duplikacji kodu
                     </div>
                     <aside class="notes">
@@ -1567,7 +1605,8 @@ public:
                         </p>
                     </div>
                     <div style="text-align: left; margin: 20px; font-size: 0.8em;">
-                        <div style="margin: 15px 0; padding: 12px; background: rgba(52, 152, 219, 0.1); border-left: 3px solid #3498db;">
+                        <div
+                            style="margin: 15px 0; padding: 12px; background: rgba(52, 152, 219, 0.1); border-left: 3px solid #3498db;">
                             <strong>🛒 System e-commerce - naturalne encje:</strong>
                         </div>
                         <pre style="font-size: 11px; margin-top: 15px;"><code class="hljs cpp" data-trim>
@@ -1592,7 +1631,8 @@ class Order {
     string status; // "pending", "shipped", "delivered"
 };
                         </code></pre>
-                        <div style="margin-top: 15px; padding: 12px; background: rgba(230, 126, 34, 0.1); border-radius: 10px;">
+                        <div
+                            style="margin-top: 15px; padding: 12px; background: rgba(230, 126, 34, 0.1); border-radius: 10px;">
                             💡 Kod = bezpośrednie odzwierciedlenie struktury biznesowej
                         </div>
                     </div>
@@ -1724,8 +1764,8 @@ public:
 
                         Programowanie obiektowe dostarcza narzędzi do konstrukcji złożonych systemów
                         charakteryzujących się: zrozumiałością (klasy odzwierciedlają strukturę problemu),
-                        bezpieczeństwem (enkapsulacja chroni niezmienniki), modularnością (łatwiejsze
-                        zarządzanie i debugowanie), rozszerzalnością (dziedziczenie i polimorfizm).
+                        bezpieczeństwem (enkapsulacja chroni niezmienniki), modularnością (łatwiej
+                        zarządzać i debugować), rozszerzalnością (dziedziczenie i polimorfizm).
 
                         W kolejnych zajęciach teoria zostanie przeniesiona do praktyki. Studenci będą
                         implementować klasy, stosować enkapsulację, konstruować hierarchie dziedziczenia,
@@ -1910,6 +1950,721 @@ int main() {
                     </div>
                 </section>
             </section>
+            <!-- ZAJĘCIA 3: Składowe klasy w C++ (wersja rozszerzona) -->
+            <section data-background-gradient="linear-gradient(67deg, #1e5799, #7db9e8)">
+
+                <!-- Slajd tytułowy -->
+                <section>
+                    <h2>ZAJĘCIA 3</h2>
+                    <h3>Składowe klasy w C++</h3>
+                    <p style="font-size: 0.8em; margin-top: 15px;">
+                        Składnia klasy, modyfikatory dostępu, konstruktory, gettery i settery,
+                        metody obliczające i wyświetlające, słowo kluczowe <code>const</code>.
+                    </p>
+                </section>
+
+                <!-- Klasa jako przepis na obiekt -->
+                <section>
+                    <h2>Klasa – przepis na obiekt</h2>
+                    <pre><code class="hljs cpp" data-trim>
+            class User {
+                // tutaj będzie opis tego,
+                // co każdy "użytkownik" posiada i co potrafi
+            };
+                </code></pre>
+                    <ul style="font-size:0.8em; line-height:1.5; margin-top: 10px;">
+                        <li>Klasa to przepis (szablon), według którego tworzone są obiekty.</li>
+                        <li>Obiekt to konkretny egzemplarz klasy, np. konkretny użytkownik, konkretny pracownik,
+                            konkretne
+                            zamówienie.</li>
+                        <li>W klasie opisujemy: jakie dane przechowuje obiekt (pola) oraz jakie operacje można na nim
+                            wykonywać
+                            (metody).</li>
+                    </ul>
+                    <p style="font-size:0.75em; margin-top: 8px;">
+                        Kod <code>class User { ... };</code> nie tworzy jeszcze żadnego obiektu – tylko nowy typ,
+                        którego później
+                        użyjemy.
+                    </p>
+                </section>
+
+                <!-- Składnia klasy - każdy element -->
+                <section>
+                    <h2>Składnia klasy w C++</h2>
+                    <pre style="font-size: 13px;"><code class="hljs cpp" data-trim>
+            class User {
+            private:
+                // pola – dane wewnętrzne obiektu
+                std::string login;
+                std::string role;
+            
+            public:
+                // konstruktory
+                User();                          // konstruktor domyślny
+                User(const std::string&amp; l);      // konstruktor z parametrem
+            
+                // metody publiczne
+                void setRole(const std::string&amp; newRole);
+                std::string getRole() const;
+            
+            protected:
+                // elementy widoczne w klasach pochodnych
+                void resetRoleToDefault();
+            }; // średnik jest obowiązkowy
+                </code></pre>
+                    <ul style="font-size:0.75em; margin-top:10px; line-height:1.5;">
+                        <li><code>class</code> – słowo kluczowe, po nim nazwa klasy (zwykle z dużej litery).</li>
+                        <li>Wewnątrz klamerek <code>{ }</code> opisujemy kolejno pola i metody, grupując je według
+                            dostępu:
+                            <code>private</code>, <code>public</code>, <code>protected</code>.
+                        </li>
+                        <li>Po definicji klasy musi być średnik <code>;</code> – to częsty błąd początkujących.</li>
+                    </ul>
+                </section>
+
+                <!-- Modyfikatory dostępu - idea -->
+                <section>
+                    <h3 style="font-size: 1.3em;">Modyfikatory dostępu</h3>
+                    <div class="row" style="font-size:0.75em; margin-top: 5px;">
+                        <div class="column" style="padding: 5px;">
+                            <h4 style="color:#e74c3c; font-size:0.95em; margin: 5px 0;">private</h4>
+                            <ul style="line-height:1.3; margin-top: 5px;">
+                                <li>Dostęp tylko z metod tej samej klasy (oraz ewentualnie zaprzyjaźnionych).</li>
+                                <li>Najczęściej używane dla pól – ukrywamy szczegóły działania.</li>
+                                <li>Chroni przed przypadkową zmianą stanu obiektu z zewnątrz.</li>
+                            </ul>
+                        </div>
+                        <div class="column" style="padding: 5px;">
+                            <h4 style="color:#2ecc71; font-size:0.95em; margin: 5px 0;">public</h4>
+                            <ul style="line-height:1.3; margin-top: 5px;">
+                                <li>Widoczne wszędzie tam, gdzie widoczna jest klasa.</li>
+                                <li>Definiuje „interfejs" klasy – to, czego mogą używać inni.</li>
+                                <li>Typowe miejsce na konstruktory, metody obsługi i gettery/settery.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="margin-top: 8px; font-size:0.75em;">
+                        <h4 style="color:#9b59b6; font-size:0.95em; margin: 5px 0;">protected</h4>
+                        <ul style="line-height:1.3; margin-top: 5px;">
+                            <li>Niewidoczne z zewnątrz, ale dostępne w klasach dziedziczących.</li>
+                            <li>Przydatne, gdy projektujemy rodzinę klas (bazowa + pochodne).</li>
+                        </ul>
+                    </div>
+                    <p style="font-size:0.7em; margin-top:6px;">
+                        Dobra praktyka: pola zwykle są <code>private</code>, a metody, których ma używać użytkownik
+                        klasy, są
+                        <code>public</code>.
+                    </p>
+                </section>
+
+                <!-- private / public w praktyce -->
+                <section>
+                    <h3 style="font-size: 1.3em; margin-bottom: 10px;">private i public w praktyce</h3>
+                    <pre style="font-size: 11px;"><code class="hljs cpp" data-trim>
+            class Employee {
+            private:
+                std::string name;
+                double monthlySalary;
+            
+            public:
+                // publiczny interfejs – to może zrobić "świat zewnętrzny"
+                void setName(const std::string&amp; newName) {
+                    name = newName;   // dostęp OK – jesteśmy w środku klasy
+                }
+            
+                void setMonthlySalary(double salary) {
+                    if (salary &gt;= 0) {   // walidacja danych
+                        monthlySalary = salary;
+                    }
+                }
+            
+                void print() const {
+                    std::cout &lt;&lt; "Pracownik: " &lt;&lt; name
+                              &lt;&lt; ", pensja: " &lt;&lt; monthlySalary
+                              &lt;&lt; std::endl;
+                }
+            };
+                </code></pre>
+                    <ul style="font-size:0.75em; margin-top: 8px; line-height:1.4;">
+                        <li>Z kodu zewnętrznego nie można napisać <code>emp.name = "...";</code> – pole jest prywatne.
+                        </li>
+                        <li>Zmiana pensji i imienia jest możliwa tylko przez metody <code>setName</code> i
+                            <code>setMonthlySalary</code>, które mogą sprawdzać poprawność danych.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Gettery i settery - po co -->
+                <section>
+                    <h2>Gettery i settery – po co?</h2>
+                    <ul style="font-size:0.8em; line-height:1.6; margin-top: 10px;">
+                        <li><strong>Getter</strong> – metoda, która zwraca wartość pola (tylko odczyt).</li>
+                        <li><strong>Setter</strong> – metoda, która zmienia wartość pola (zapis + ewentualna walidacja).
+                        </li>
+                        <li>Dzięki getterom i setterom możemy:
+                            <ul style="margin-top: 4px;">
+                                <li>ukryć pola przed światem zewnętrznym (<code>private</code>),</li>
+                                <li>dodawać sprawdzanie poprawności danych,</li>
+                                <li>zmienić sposób przechowywania danych bez zmiany kodu, który używa klasy.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p style="font-size:0.75em; margin-top:8px;">
+                        Bez getterów/setterów każdy mógłby dowolnie zmieniać pola, co szybko prowadzi do błędów trudnych
+                        do
+                        znalezienia.
+                    </p>
+                </section>
+
+                <!-- Gettery i settery - przykład -->
+                <section>
+                    <h2>Gettery i settery – przykład</h2>
+                    <pre style="font-size: 12px;"><code class="hljs cpp" data-trim>
+            class Account {
+            private:
+                std::string owner;
+                double balance;
+            
+            public:
+                // konstruktor z parametrami domyślnymi
+                Account(const std::string&amp; ownerName, double initialBalance)
+                    : owner(ownerName), balance(initialBalance) {}
+            
+                // getter – tylko odczyt
+                std::string getOwner() const {
+                    return owner;
+                }
+            
+                double getBalance() const {
+                    return balance;
+                }
+            
+                // setter (pośrednio) – zmiana stanu z walidacją
+                void deposit(double amount) {
+                    if (amount &gt; 0) {
+                        balance += amount;
+                    }
+                }
+            };
+                </code></pre>
+                    <p style="font-size:0.8em; margin-top: 10px;">
+                        Zauważ, że <code>getOwner</code> i <code>getBalance</code> są metodami <code>const</code> –
+                        tylko czytają
+                        stan obiektu.
+                    </p>
+                </section>
+
+                <!-- Metody obliczające i wyświetlające - idea -->
+                <section>
+                    <h2>Metody obliczające i wyświetlające</h2>
+                    <ul style="font-size:0.8em; line-height:1.6; margin-top: 10px;">
+                        <li><strong>Metoda obliczająca</strong> – na podstawie pól obiektu liczy jakąś wartość i ją
+                            zwraca, np.
+                            całkowity koszt, średnią, liczbę dni itp.</li>
+                        <li><strong>Metoda wyświetlająca</strong> – wypisuje czytelny opis obiektu (np. na ekran, do
+                            logów).</li>
+                        <li>Często metoda wyświetlająca wewnątrz używa metody obliczającej, żeby nie duplikować logiki
+                            obliczeń.
+                        </li>
+                    </ul>
+                    <p style="font-size:0.75em; margin-top:8px;">
+                        Obie te metody zwykle nie zmieniają stanu obiektu, więc powinny być oznaczone jako
+                        <code>const</code>.
+                    </p>
+                </section>
+
+                <!-- Metody obliczające i wyświetlające - przykład -->
+                <section>
+                    <h3 style="font-size: 1.3em; margin-bottom: 10px;">Metody obliczające – przykład</h3>
+                    <pre style="font-size: 11px;"><code class="hljs cpp" data-trim>
+            class Order {
+            private:
+                std::string customerName;
+                int itemCount;
+                double itemPrice;
+            
+            public:
+                Order(const std::string&amp; customer, int count, double price)
+                    : customerName(customer), itemCount(count), itemPrice(price) {}
+            
+                // metoda obliczająca
+                double getTotalCost() const {
+                    return itemCount * itemPrice;
+                }
+            
+                // metoda wyświetlająca
+                void printSummary() const {
+                    std::cout &lt;&lt; "Klient: " &lt;&lt; customerName
+                              &lt;&lt; ", sztuk: " &lt;&lt; itemCount
+                              &lt;&lt; ", cena/szt: " &lt;&lt; itemPrice
+                              &lt;&lt; ", razem: " &lt;&lt; getTotalCost()
+                              &lt;&lt; std::endl;
+                }
+            };
+                </code></pre>
+                    <ul style="font-size:0.75em; margin-top: 8px; line-height:1.4;">
+                        <li>Metoda <code>getTotalCost</code> nie zmienia żadnego pola – tylko liczy i zwraca wynik.</li>
+                        <li>Metoda <code>printSummary</code> wyświetla dane oraz wynik obliczeń, korzystając z
+                            <code>getTotalCost</code>.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Konstruktory - ogólne wprowadzenie -->
+                <section>
+                    <h2>Konstruktory – ogólna idea</h2>
+                    <ul style="font-size:0.8em; line-height:1.6; margin-top: 10px;">
+                        <li>Konstruktor to specjalna metoda wywoływana automatycznie przy tworzeniu obiektu.</li>
+                        <li>Ma taką samą nazwę jak klasa i nie ma typu zwracanego (nawet <code>void</code>).</li>
+                        <li>Jego zadanie: ustawić sensowny stan początkowy obiektu (np. wartości startowe pól).</li>
+                        <li>W C++ można mieć kilka konstruktorów w jednej klasie – różnią się listą parametrów.</li>
+                    </ul>
+                    <p style="font-size:0.75em; margin-top:8px;">
+                        Wyróżnimy tutaj dwa podstawowe typy: konstruktor domyślny oraz konstruktor z parametrami.
+                    </p>
+                </section>
+
+                <!-- Konstruktor domyślny - wyjaśnienie -->
+                <section>
+                    <h3 style="font-size: 1.3em; margin-bottom: 10px;">Konstruktor domyślny</h3>
+                    <small>
+                        <ul style="font-size:0.75em; line-height:1.5; margin-top: 8px;">
+                            <li>Konstruktor, który można wywołać bez żadnych argumentów.</li>
+                            <li>Może być zdefiniowany jawnie przez programistę, albo wygenerowany automatycznie przez
+                                kompilator (jeśli
+                                nie ma żadnego innego konstruktora).</li>
+                            <li>Często ustawia „bezpieczne" wartości początkowe (np. zera, wartości pustych tekstów).
+                            </li>
+                        </ul>
+                        <pre><code class="hljs cpp" data-trim>
+            class Profile {
+            private:
+                std::string nickname;
+                int age;
+            
+            public:
+                // konstruktor domyślny – bez parametrów
+                Profile()
+                    : nickname("anonymous"), age(0) {
+                    // ciało konstruktora (opcjonalne działania)
+                }
+            };
+            
+            int main() {
+                Profile p;      // wywołanie konstruktora domyślnego
+            }
+                </code></pre>
+                        <p style="font-size:0.7em; margin-top:6px;">
+                            Po utworzeniu <code>Profile p;</code> obiekt ma już ustawione sensowne wartości startowe.
+                        </p>
+                    </small>
+                </section>
+
+                <!-- Konstruktor z parametrami - wyjaśnienie -->
+                <section>
+                    <h3 style="font-size: 1.3em; margin-bottom: 10px;">Konstruktor z parametrami</h3>
+                    <small>
+                        <ul style="font-size:0.75em; line-height:1.5; margin-top: 8px;">
+                            <li>Pozwala od razu przy tworzeniu obiektu przekazać konkretne wartości pól.</li>
+                            <li>Dzięki temu obiekt jest „od razu gotowy do użycia" – nie trzeba osobno ustawiać każdego
+                                pola.</li>
+                            <li>Często używany razem z listą inicjalizacyjną (po <code>:</code>), aby wydajnie
+                                zainicjalizować pola.
+                            </li>
+                        </ul>
+                        <pre><code class="hljs cpp" data-trim>
+            class Device {
+            private:
+                std::string id;
+                bool online;
+            
+            public:
+                // konstruktor z parametrami
+                Device(const std::string&amp; deviceId, bool startOnline)
+                    : id(deviceId), online(startOnline) {}
+            
+                void printStatus() const {
+                    std::cout &lt;&lt; "Urządzenie " &lt;&lt; id
+                              &lt;&lt; " online? " &lt;&lt; std::boolalpha &lt;&lt; online
+                              &lt;&lt; std::endl;
+                }
+            };
+            
+            int main() {
+                Device d1("A-123", true);
+                Device d2("B-777", false);
+                d1.printStatus();
+                d2.printStatus();
+            }
+                </code></pre>
+                        <p style="font-size:0.7em; margin-top:6px;">
+                            Różne argumenty konstruktora dają różne stany początkowe obiektów tej samej klasy.
+                        </p>
+                    </small>
+                </section>
+
+                <!-- Konstruktor z parametrami i wartości domyślne -->
+                <section>
+                    <h4>Konstruktor z wartościami domyślnymi</h4>
+                    <small>
+                        <ul style="font-size:0.75em; line-height:1.5; margin-top: 8px;">
+                            <li>Parametry konstruktora mogą mieć wartości domyślne – wtedy część argumentów można
+                                pominąć.</li>
+                            <li>To pozwala uniknąć pisania kilku bardzo podobnych konstruktorów.</li>
+                        </ul>
+                        <pre><code class="hljs cpp" data-trim>
+            class Session {
+            private:
+                std::string user;
+                int timeoutMinutes;
+            
+            public:
+                // jeden konstruktor z parametrami domyślnymi
+                Session(const std::string&amp; userName = "guest", int timeout = 30)
+                    : user(userName), timeoutMinutes(timeout) {}
+            
+                void printInfo() const {
+                    std::cout &lt;&lt; "Użytkownik: " &lt;&lt; user
+                              &lt;&lt; ", timeout: " &lt;&lt; timeoutMinutes &lt;&lt; " min"
+                              &lt;&lt; std::endl;
+                }
+            };
+            
+            int main() {
+                Session s1;                 // użyje "guest", 30
+                Session s2("admin");        // użyje "admin", 30
+                Session s3("user", 5);      // użyje "user", 5
+                s1.printInfo();
+                s2.printInfo();
+                s3.printInfo();
+            }
+                </code></pre>
+                        <p style="font-size:0.7em; margin-top:6px;">
+                            Wszystkie te trzy obiekty powstają z jednego konstruktora, ale z innymi danymi wejściowymi.
+                        </p>
+                    </small>
+                </section>
+
+                <!-- const przy metodach - idea -->
+                <section>
+                    <h2>Metoda jako const – idea</h2>
+                    <ul style="font-size:0.8em; line-height:1.6; margin-top: 10px;">
+                        <li>Jeśli metoda nie powinna zmieniać żadnych pól obiektu, oznaczamy ją jako <code>const</code>
+                            po
+                            nawiasach.</li>
+                        <li>Kompilator będzie pilnował, aby taka metoda nie modyfikowała stanu obiektu.</li>
+                        <li>Metody <code>const</code> można wywoływać także na obiektach zadeklarowanych jako
+                            <code>const</code>.
+                        </li>
+                        <li>Przykłady metod, które zwykle są <code>const</code>: gettery, metody obliczające, metody
+                            wyświetlające.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- const przy metodach - przykład -->
+                <section>
+                    <h2>Metody const – przykład</h2>
+                    <small>
+                        <pre><code class="hljs cpp" data-trim>
+            class Report {
+            private:
+                std::string title;
+                int pageCount;
+            
+            public:
+                Report(const std::string&amp; t, int pages)
+                    : title(t), pageCount(pages) {}
+            
+                // metoda tylko do odczytu – const
+                std::string getTitle() const {
+                    // title = "nowy tytuł";  // BŁĄD – nie wolno zmieniać w const
+                    return title;
+                }
+            
+                int getPageCount() const {
+                    return pageCount;
+                }
+            
+                void print() const {
+                    std::cout &lt;&lt; "Raport: " &lt;&lt; title
+                              &lt;&lt; " (" &lt;&lt; pageCount &lt;&lt; " stron)" &lt;&lt; std::endl;
+                }
+            };
+            
+            void showReport(const Report&amp; rep) {
+                // możemy wywołać tylko metody const
+                std::cout &lt;&lt; rep.getTitle() &lt;&lt; std::endl;
+                // rep.print(); // też OK, bo print() jest const
+                // rep.setTitle("X"); // byłby BŁĄD, gdyby istniał nie-const setter
+            }
+                </code></pre>
+                        <p style="font-size:0.75em; margin-top:8px;">
+                            Dzięki <code>const</code> mamy gwarancję, że funkcje takie jak <code>showReport</code>
+                            nie zmienią obiektu, który dostały do odczytu.
+                        </p>
+                    </small>
+                </section>
+
+                <!-- Podsumowanie kluczowych elementów klasy -->
+                <section>
+                    <h2>Podstawowe elementy klasy</h2>
+                    <ul style="font-size:0.8em; line-height:1.6; margin-top: 10px;">
+                        <li>Pola (zwykle <code>private</code>) – trzymają stan obiektu.</li>
+                        <li>Metody publiczne – tworzą interfejs klasy (co obiekt potrafi).</li>
+                        <li>Konstruktor domyślny – pozwala utworzyć obiekt bez parametrów.</li>
+                        <li>Konstruktor z parametrami – od razu ustawia konkretny stan początkowy.</li>
+                        <li>Gettery i settery – kontrolowany dostęp do pól.</li>
+                        <li>Metody obliczające/wyświetlające – operacje na danych obiektu, zwykle <code>const</code>.
+                        </li>
+                    </ul>
+                </section>
+
+            </section>
+
+            <section data-background-color="black">
+                <section data-auto-animate>
+                    <h2 style="color: white;">Zadanie PO/lab0-rectangle</h2>
+                    <a href="https://classroom.github.com/a/HgQ5yLLi">LINK</a>
+
+                </section>
+            </section>
+            <section data-background-gradient="linear-gradient(67deg, #1e5799, #7db9e8)">
+                <section data-auto-animate>
+                    <h3>Diagram klas</h3>
+                    <img style="max-height: 600px;" src="assets/class_diagram_Zad1.png">
+                </section>
+                <section data-auto-animate>
+                    <h3>Jak czytać diagramy klas?</h3>
+                    <img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
+                    <small>
+                        <ul>
+                            <li><b>Klasy</b>: Prostokąty reprezentują klasy. Nazwa klasy jest umieszczona na górze
+                                prostokąta.
+                            </li>
+                            <li><b>Atrybuty</b>: Poniżej nazwy klasy znajdują się atrybuty (pola, zmienne), które
+                                przechowują
+                                dane. Są
+                                one zazwyczaj oznaczone
+                                symbolem + dla publicznych lub - dla prywatnych.</li>
+                            <li><b>Metody</b>: Jeszcze niżej umieszczone są metody (funkcje), które definiują zachowanie
+                                klasy.
+                                Podobnie jak atrybuty, metody
+                                mogą być oznaczone jako publiczne (+) lub prywatne (-).</li>
+                        </ul>
+                    </small>
+                </section>
+                <section data-auto-animate>
+                    <h3>Jak czytać diagramy klas?</h3>
+                    <img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
+                    <small>
+                        <ul>
+                            <li><b>Relacje</b>: Linie łączące klasy reprezentują różne typy relacji między nimi. Na
+                                przykład:
+                            </li>
+                            <li><b>Asocjacja</b>: Zwykła linia oznacza, że dwie klasy są w jakiś sposób powiązane.
+                                Strzałki
+                                mogą
+                                wskazywać kierunek asocjacji,
+                                a liczby (np. "1" lub "*") określają krotność (ile obiektów jednej klasy może być
+                                powiązanych z
+                                obiektem drugiej klasy).</li>
+                        </ul>
+                    </small>
+                </section>
+                <section data-auto-animate>
+                    <h3>Jak czytać diagramy klas?</h3>
+                    <img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
+                    <small>
+                        <ul>
+                            <li><b>Dziedziczenie</b>: Linia zakończona pustym trójkątem wskazuje na dziedziczenie lub
+                                relację
+                                typu
+                                "jest rodzajem".</li>
+                            <li><b>Krotność</b>: Przy relacjach, liczby takie jak "1" lub "" określają, ile instancji
+                                jednej
+                                klasy może
+                                być powiązanych z
+                                instancją drugiej klasy. Na przykład "1" oznacza pojedynczą instancję, a "" oznacza
+                                wiele
+                                instancji.</li>
+                        </ul>
+                    </small>
+                </section>
+                <section data-auto-animate>
+                    <h3>Jak czytać diagramy klas?</h3>
+                    <img style="max-height: 400px;" src="assets/class_diagram_Zad1.png">
+                    <small>
+                        Na podstawie tego diagramu możemy zobaczyć, że klasa Article zawiera prywatne atrybuty takie jak
+                        title, author,
+                        publicationYear, journal i publiczne metody takie jak konstruktory, displayInfo(), getTitle(),
+                        getAuthor(),
+                        getPublicationYear(), getJournal(). Podobnie dla klas Author, Book i Chapter. Ponadto, relacje
+                        między klasami wskazują,
+                        że Article, Book i Chapter zawierają obiekty klasy Author, a Book zawiera również kolekcję
+                        obiektów Chapter.
+                    </small>
+                </section>
+                <section>
+                    <h3><b>&&&</b> ?</h3>
+                    <small>
+                        W języku C++ symbol <b>&</b> w kontekście parametru funkcji oznacza referencję. Referencje
+                        pozwalają funkcjom na dostęp do
+                        obiektów przekazanych do nich bez konieczności kopiowania tych obiektów. To znaczy, że funkcja
+                        może operować
+                        bezpośrednio na oryginalnym obiekcie, a nie na jego kopii, co jest wydajniejsze, szczególnie dla
+                        dużych obiektów.
+                    </small>
+                    <small>
+                        W kontekście diagramu klas UML, który przedstawiono, <b>&other</b> w konstruktorze kopiującym
+                        oznacza, że konstruktor przyjmuje
+                        referencję do innego obiektu tej samej klasy. Na przykład:
+                    </small>
+                    <pre style="font-size: 16px" data-id="code-animation">
+						<code class="hljs cpp"><script type="text/template">
+						Article::Article(const Article &other)
+						</script>
+						</code>
+						</pre>
+                    <small>
+                        Ten konstruktor kopiujący Article przyjmuje referencję do innego obiektu Article i używa jego
+                        wartości do zainicjowania
+                        nowego obiektu. To jest standardowy sposób implementacji konstruktora kopiującego w C++, który
+                        zapewnia, że nowy obiekt
+                        jest kopią istniejącego obiektu.
+                    </small>
+                </section>
+
+                <section>
+                    <h3>Referencja (&) vs Wskaźnik (*)</h3>
+                    <div class="row" style="font-size: 0.75em;">
+                        <div class="column">
+                            <h4 style="color: #3498db;">Referencja (&)</h4>
+                            <pre style="font-size: 11px;"><code class="hljs cpp" data-trim>
+void modify(Article& art) {
+    art.setTitle("Nowy tytuł");
+    // Używamy jak zwykły obiekt
+}
+
+Article a("Stary tytuł");
+modify(a);  // Przekazanie przez referencję
+// a ma teraz "Nowy tytuł"
+                            </code></pre>
+                            <ul style="font-size: 0.85em; line-height: 1.4;">
+                                <li>✅ Składnia jak zwykły obiekt</li>
+                                <li>✅ Nie może być NULL</li>
+                                <li>✅ Musi być zainicjalizowana</li>
+                                <li>✅ Nie można zmienić, na co wskazuje</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h4 style="color: #e67e22;">Wskaźnik (*)</h4>
+                            <pre style="font-size: 11px;"><code class="hljs cpp" data-trim>
+void modify(Article* art) {
+    if (art != nullptr) {
+        art->setTitle("Nowy tytuł");
+        // Używamy operator ->
+    }
+}
+
+Article a("Stary tytuł");
+modify(&a);  // Przekazanie adresu
+// a ma teraz "Nowy tytuł"
+                            </code></pre>
+                            <ul style="font-size: 0.85em; line-height: 1.4;">
+                                <li>⚠️ Składnia ze strzałką (->)</li>
+                                <li>⚠️ Może być NULL/nullptr</li>
+                                <li>⚠️ Może być niezainicjalizowany</li>
+                                <li>✅ Można zmienić, na co wskazuje</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Kiedy używać & a kiedy *?</h3>
+                    <div style="text-align: left; font-size: 0.75em;">
+                        <div
+                            style="margin: 10px 0; padding: 12px; background: rgba(52, 152, 219, 0.1); border-left: 3px solid #3498db;">
+                            <strong>Używaj referencji (&) gdy:</strong>
+                            <ul style="margin-top: 8px; line-height: 1.5;">
+                                <li>Obiekt zawsze musi istnieć (nie może być NULL)</li>
+                                <li>Chcesz prostszej składni (brak -> i *)</li>
+                                <li>Parametry funkcji (zwłaszcza const&)</li>
+                                <li>Operator przypisania i konstruktor kopiujący</li>
+                            </ul>
+                            <pre style="font-size: 10px; margin-top: 8px;"><code class="hljs cpp" data-trim>
+void display(const Article& art);  // Nie kopiujemy, tylko czytamy
+Article& operator=(const Article& other);  // Operator przypisania
+                            </code></pre>
+                        </div>
+                        <div
+                            style="margin: 10px 0; padding: 12px; background: rgba(230, 126, 34, 0.1); border-left: 3px solid #e67e22;">
+                            <strong>Używaj wskaźnika (*) gdy:</strong>
+                            <ul style="margin-top: 8px; line-height: 1.5;">
+                                <li>Obiekt może nie istnieć (opcjonalny)</li>
+                                <li>Potrzebujesz zmienić na co wskazuje</li>
+                                <li>Dynamiczna alokacja pamięci (new/delete)</li>
+                                <li>Zgodność z C lub starszym kodem</li>
+                            </ul>
+                            <pre style="font-size: 10px; margin-top: 8px;"><code class="hljs cpp" data-trim>
+Article* findArticle(const std::string& title);  // Może zwrócić nullptr
+Article* articles = new Article[10];  // Dynamiczna tablica
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Przykład porównawczy</h3>
+                    <pre style="font-size: 11px;"><code class="hljs cpp" data-trim>
+class Book {
+private:
+    Article* mainArticle;      // Wskaźnik - może być nullptr
+    std::vector<Article> articles;  // Wektor przechowuje obiekty
+
+public:
+    // Konstruktor przyjmuje referencję (obiekt musi istnieć)
+    Book(const Article& main) {
+        mainArticle = new Article(main);  // Tworzymy kopię
+    }
+    
+    // Metoda przyjmuje wskaźnik (artykuł może być opcjonalny)
+    void setMainArticle(Article* art) {
+        if (art != nullptr) {
+            delete mainArticle;
+            mainArticle = new Article(*art);
+        }
+    }
+    
+    // Metoda zwraca referencję (artykuł zawsze istnieje)
+    Article& getArticle(int index) {
+        return articles[index];
+    }
+    
+    // Metoda zwraca wskaźnik (może nie znaleźć)
+    Article* findArticle(const std::string& title) {
+        for (auto& art : articles) {
+            if (art.getTitle() == title)
+                return &art;  // Zwracamy adres
+        }
+        return nullptr;  // Nie znaleziono
+    }
+    
+    ~Book() {
+        delete mainArticle;  // Zwalniamy pamięć
+    }
+};
+                    </code></pre>
+                </section>
+            </section>
+                        <section data-background-color="black">
+                            <section data-auto-animate>
+                                <h2 style="color: white;">Zadanie PO/lab1-article</h2>
+                                <a href="https://classroom.github.com/a/4RgTCcBl">LINK</a>
+                        
+                            </section>
+                        </section>
 
         </div>
     </div>
