@@ -2667,6 +2667,7 @@ public:
 
                 </section>
             </section>
+
             <section data-background-gradient="linear-gradient(175deg, #09bc8a, #565896)" data-auto-animate>
                 <section>
                     <h2>Zarządzanie pamięcią w programowaniu obiektowym:<h2>
@@ -2925,319 +2926,484 @@ int	main() {
 
                 </section>
             </section>
-            			<section data-background-gradient="linear-gradient(175deg, #009b72, #43447b)">
+            <section data-background-gradient="linear-gradient(175deg, #08415c, #202155)">
+                <section>
+                    <h2>Pliki nagłówkowe</h2>
+                </section>
+                <section>
+                    <p>
+                        W języku C++, koncepcja podziału klasy na dwie części: plik nagłówkowy (header file) i plik
+                        źródłowy (source
+                        file) ma kilka korzyści:
+                    </p>
+                    <small>
+                        <ol>
+                            <li>
+                                <strong>Modularność:</strong> Dzięki rozdzieleniu definicji klasy (deklaracji) od jej
+                                implementacji, możliwe
+                                jest tworzenie modułów kodu, które można łatwo łączyć. Plik nagłówkowy zawiera zazwyczaj
+                                deklaracje klas,
+                                funkcji i innych elementów interfejsu, natomiast plik źródłowy zawiera implementację
+                                tych
+                                elementów.
+                            </li>
 
-				<section>
-					<h2>Polimorfizm</h2>
-					<h3>Przeciązanie funkcji i metod</h3>
-				</section>
-				<section data-auto-animate>
-					<h3>Przeciążanie funkcji</h3>
-					<small>
-						Przeciążanie funkcji to technika programowania, która pozwala na definiowanie wielu funkcji o
-						tej samej nazwie,
-						ale różniących się typami i/lub liczbą argumentów. Kompilator wybiera odpowiednią funkcję do
-						wywołania na
-						podstawie argumentów użytych podczas wywołania.
-					</small>
-					<pre>Przykład przeciążania funkcji w C++<code><script type="text/template">void print(int i) {
-				std::cout << "Here is int: " << i << std::endl;
-}
-void print(double f) {
-				std::cout << "Here is float: " << f << std::endl;
-}
-void print(char* c) {
-				std::cout << "Here is char*: " << c << std::endl;
-}</script></code></pre>
-					<small>
-						W powyższym przykładzie, funkcja <code>print</code> jest przeciążona trzy razy: raz dla
-						argumentu typu int, raz
-						dla argumentu typu double i raz dla argumentu typu char*. Kompilator wybierze odpowiednią
-						funkcję do wywołania
-						na podstawie typu argumentu użytego podczas wywołania. Dzięki temu, metoda może być wywołana w
-						różny sposób w zależności od kontekstu, co zwiększa elastyczność i czytelność
-						kodu.
-					</small>
-				</section>
+                            <li>
+                                <strong>Hermetyzacja:</strong> Dzięki rozdzieleniu interfejsu od implementacji, można
+                                ukryć
+                                szczegóły
+                                implementacyjne przed użytkownikiem klasy. Użytkownicy mogą korzystać z interfejsu
+                                dostępnego w pliku
+                                nagłówkowym, nie będąc zaznajomieni z tym, jak dokładnie działa implementacja, co
+                                ułatwia
+                                utrzymanie
+                                tajemnicy implementacyjnej (hermetyzację).
+                            </li>
 
-				<section data-auto-animate>
-					<h3>Przeciążanie funkcji a programowanie obiektowe</h3>
-					<small>
-						Przeciążanie funkcji jest kluczowym elementem programowania obiektowego. Pozwala na definiowanie
-						wielu metod o
-						tej samej nazwie w obrębie jednej klasy, które różnią się typami i/lub liczbą argumentów. Dzięki
-						temu, metoda
-						może być wywołana w różny sposób w zależności od kontekstu, co zwiększa elastyczność i
-						czytelność kodu.
-					</small>
-				</section>
-			</section>
+                            <li>
+                                <strong>Szybsze kompilacje:</strong> W przypadku zmian w implementacji klasy, konieczne
+                                jest
+                                ponowne
+                                skompilowanie tylko pliku źródłowego, co pozwala na zaoszczędzenie czasu kompilacji.
+                                Jeśli
+                                wszystko
+                                zostałoby umieszczone w jednym pliku, nawet najmniejsza zmiana wymagałaby ponownego
+                                kompilowania całego
+                                programu.
+                            </li>
+                        </ol>
+                    </small>
+
+                </section>
+
+                <section>
+                    <small>
+                        Przykładowo, rozdzielenie klasy "MojaKlasa" na plik nagłówkowy (MojaKlasa.h) i plik źródłowy
+                        (MojaKlasa.cpp)
+                        może wyglądać tak:
+                    </small>
+                    <div class="row">
+                        <div class="col" style="float: left; width: 60%;">
+                            <pre style="font-size: 16px;"><code><script type="text/template">#ifndef MOJA_KLASA_H
+                        #define MOJA_KLASA_H
+                        
+                        class MojaKlasa {
+                        public:
+                            MojaKlasa(); // deklaracja konstruktora
+                            void metoda(); // deklaracja metody
+                        private:
+                            int zmienna; // deklaracja prywatnej zmiennej
+                        };
+                        
+                        #endif // MOJA_KLASA_H</script></code></pre>
+                            <small><b>MojaKlasa.h</b></small>
+
+                        </div>
+                        <div class="col" style="float: right; width: 40%;">
+
+                            <pre style="font-size: 16px;"><code>
+                        						<script type="text/template">#include "MojaKlasa.h"
+                        
+                        MojaKlasa::MojaKlasa() {
+                            // implementacja konstruktora
+                        }
+                        
+                        void MojaKlasa::metoda() {
+                            // implementacja metody
+                        }</script></code></pre>
+                            <small><b>MojaKlasa.cpp</b></small>
+
+                        </div>
+                    </div>
+
+
+
+                    <small>
+                        Następnie, w pliku, w którym chcemy użyć klasy, importuje się plik nagłówkowy (<b>#include
+                            "MojaKlasa.h"</b>) i
+                        korzysta z
+                        zadeklarowanego interfejsu. W przypadku kompilacji, konieczne jest dostarczenie zarówno pliku
+                        nagłówkowego, jak i
+                        pliku
+                        źródłowego do kompilatora.
+                    </small>
+                </section>
+                <section>
+                    <h3>Kod preprocesora</h3>
+                    <small>
+                        W języku C++, w plikach nagłówkowych, często używa się dyrektyw preprocesora takich jak
+                        <b>#ifndef</b>,
+                        <b>#define</b> i <b>#endif</b>
+                    </small>
+                    <small>
+                        <ul>
+                            <li><b><em>#ifndef</em>(if not defined):</b> - Ten fragment kodu preprocesora sprawdza, czy
+                                dany symbol lub makro nie został wcześniej zdefiniowany. Jeśli symbol nie
+                                jest zdefiniowany, to wykonuje się kod znajdujący się między <b>#ifndef</b> a
+                                odpowiadającym mu <b>#endif</b>. Jeśli symbol jest już
+                                zdefiniowany, kod pomiędzy tymi dyrektywami jest pomijany. </li>
+                            <li><b><em>#define</em></b> - Jeśli warunek w #ifndef jest spełniony (symbol nie jest
+                                zdefiniowany), to <b>#define</b> służy do zdefiniowania tego symbolu. W
+                                praktyce jest to najczęściej używane do stworzenia tzw. "strażnika wielokrotnego
+                                dołączania" (include guard). Działa to
+                                jako swoisty klucz, który uniemożliwia wielokrotne dołączanie tego samego pliku
+                                nagłówkowego podczas kompilacji.</li>
+                            <li><b><em>#endif</em></b> - Oznacza koniec bloku warunkowego rozpoczętego przez
+                                <b>#ifndef</b>. Kody umieszczone między <b>#ifndef</b> a <b>#endif</b> są kompilowane
+                                tylko wtedy, gdy warunek nie został spełniony (symbol nie jest zdefiniowany). To zamyka
+                                blok warunkowy.
+                            </li>
+                        </ul>
+                    </small>
+                </section>
+                <section>
+                    <h3>Zadanie</h3>
+                </section>
+                <section>
+                    <h2>Implementacja Klasy Person</h2>
+                    <p style="font-size: 24px">Utworzyć klasę Person, która będzie przechowywać podstawowe informacje o
+                        osobie,
+                        takie jak imię, nazwisko i wiek. Klasa powinna zawierać metody do ustawiania i pobierania tych
+                        informacji.
+                    </p>
+                    <p style="font-size: 24px">Struktura Plików</p>
+                    <p style="font-size: 24px">Person.h: Plik nagłówkowy zawierający deklarację klasy Person.</p>
+                    <p style="font-size: 24px">Person.cpp: Plik źródłowy z definicjami metod klasy Person.</p>
+                    <p style="font-size: 24px">main.cpp: Plik źródłowy z funkcją main, w której testowana będzie klasa
+                        Person.</p>
+                </section>
+                <section>
+                    <img style="max-height: 600px;" src="assets/person.png">
+                </section>
+            </section>
+            <section data-background-gradient="linear-gradient(175deg, #009b72, #43447b)">
+
+                <section>
+                    <h2>Polimorfizm</h2>
+                    <h3>Przeciązanie funkcji i metod</h3>
+                    <h3> Dziedziczenie</h3>
+                </section>
+                <section data-auto-animate>
+                    <h3>Przeciążanie funkcji</h3>
+                    <small>
+                        Przeciążanie funkcji to technika programowania, która pozwala na definiowanie wielu funkcji o
+                        tej samej nazwie,
+                        ale różniących się typami i/lub liczbą argumentów. Kompilator wybiera odpowiednią funkcję do
+                        wywołania na
+                        podstawie argumentów użytych podczas wywołania.
+                    </small>
+                    <pre>Przykład przeciążania funkcji w C++<code><script type="text/template">void print(int i) {
+            				std::cout << "Here is int: " << i << std::endl;
+            }
+            void print(double f) {
+            				std::cout << "Here is float: " << f << std::endl;
+            }
+            void print(char* c) {
+            				std::cout << "Here is char*: " << c << std::endl;
+            }</script></code></pre>
+                    <small>
+                        W powyższym przykładzie, funkcja <code>print</code> jest przeciążona trzy razy: raz dla
+                        argumentu typu int, raz
+                        dla argumentu typu double i raz dla argumentu typu char*. Kompilator wybierze odpowiednią
+                        funkcję do wywołania
+                        na podstawie typu argumentu użytego podczas wywołania. Dzięki temu, metoda może być wywołana w
+                        różny sposób w zależności od kontekstu, co zwiększa elastyczność i czytelność
+                        kodu.
+                    </small>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Przeciążanie funkcji a programowanie obiektowe</h3>
+                    <small>
+                        Przeciążanie funkcji jest kluczowym elementem programowania obiektowego. Pozwala na definiowanie
+                        wielu metod o
+                        tej samej nazwie w obrębie jednej klasy, które różnią się typami i/lub liczbą argumentów. Dzięki
+                        temu, metoda
+                        może być wywołana w różny sposób w zależności od kontekstu, co zwiększa elastyczność i
+                        czytelność kodu.
+                    </small>
+                </section>
+
+
+                <section data-auto-animate>
+                    <h3>Dziedziczenie w programowaniu obiektowym</h3>
+                    <small>
+                        Dziedziczenie w programowaniu obiektowym to jeden z fundamentów tej paradygmatu programowania.
+                        Pozwala ono na tworzenie
+                        nowych klas na podstawie istniejących klas. Nowa klasa, zwana klasą pochodną, dziedziczy
+                        atrybuty i metody klasy bazowej, co
+                        pozwala na ponowne użycie kodu.
+                    </small>
+                    <pre style="font-size: 16px;">Przykład dziedziczenia w C++<code><script type="text/template">// Klasa bazowa
+            class Animal {
+            public:
+            		void eat() {
+            				std::cout << "I can eat!" << std::endl;
+            		}
+            };
+            
+            // Klasa pochodna
+            class Dog : public Animal {
+            public:
+            		void bark() {
+            				std::cout << "I can bark! Woof Woof!" << std::endl;
+            		}
+            };</script></code></pre>
+                    <small>
+                        W powyższym przykładzie, klasa <code>Dog</code> dziedziczy od klasy <code>Animal</code>. Oznacza
+                        to, że obiekt
+                        klasy <code>Dog</code> może używać metody <code>eat()</code> zdefiniowanej w klasie
+                        <code>Animal</code>, a także
+                        metody <code>bark()</code> zdefiniowanej w samej klasie <code>Dog</code>.
+                    </small>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Dziedziczenie w programowaniu obiektowym</h3>
+                    <pre>Użycie klasy Dog w main.cpp<code class="hljs cpp" ><script type="text/template">// main.cpp
+            int main() {
+            		Animal myAnimal;
+            		myAnimal.eat();
+            		//myAnimal.bark(); // Błąd kompilacji
+            		Dog myDog;
+            		myDog.eat();
+            		myDog.bark();
+            		return 0;
+            }</script></code></pre>
+                    <small>
+                        W powyższym przykładzie, tworzymy obiekt klasy <code>Dog</code> i <code>Animal</code> i
+                        wywołujemy metody <code>eat()</code> i
+                        <code>bark()</code>. Metoda <code>eat()</code> jest dziedziczona z klasy <code>Animal</code>, a
+                        metoda
+                        <code>bark()</code> jest zdefiniowana w klasie <code>Dog</code>. Obiekt klasy
+                        <code>Animal</code> nie posiada metody <code>bark()</code>,
+                    </small>
+
+                </section>
+                <section data-auto-animate>
+                    <h3>Poziomy dostępu do dziedziczenia w C++</h3>
+                    <ul>
+                        <li>
+                            <small>
+                                <strong>Public:</strong> Jeśli klasa jest dziedziczona publicznie, to publiczne i
+                                chronione członki
+                                klasy bazowej stają się odpowiednio publicznymi i chronionymi członkami klasy pochodnej.
+                            </small>
+                        </li>
+                        <li>
+                            <small>
+                                <strong>Protected:</strong> Jeśli klasa jest dziedziczona chronionie, to publiczne i
+                                chronione członki
+                                klasy bazowej stają się chronionymi członkami klasy pochodnej.
+                            </small>
+                        </li>
+                        <li>
+                            <small>
+                                <strong>Private:</strong> Jeśli klasa jest dziedziczona prywatnie, to publiczne i
+                                chronione członki
+                                klasy bazowej stają się prywatnymi członkami klasy pochodnej.
+                            </small>
+                        </li>
+                    </ul>
+                </section>
+
+
+
+
+                <section data-auto-animate>
+                    <h3>Metody wirtualne w C++</h3>
+                    <small>
+                        Metoda wirtualna to funkcja członkowska klasy, którą deklaruje się za pomocą słowa kluczowego
+                        <code>virtual</code> w klasie bazowej. Pozwala to na "przesłanianie" metody w klasie pochodnej.
+                        Gdy metoda
+                        wirtualna jest wywoływana przez wskaźnik lub referencję do klasę bazową, wywołanie jest
+                        rozstrzygane w czasie
+                        wykonywania, a nie w czasie kompilacji. To oznacza, że wywołana zostanie metoda zdefiniowana w
+                        klasie typu
+                        obiektu, a nie typu wskaźnika lub referencji.
+                    </small>
+
+
+                    <pre style="font-size: 16px;">Przykład metody wirtualnej w C++<code><script type="text/template">// Klasa bazowa
+            class Base {
+            public:
+            		virtual void print() {
+            				cout << "Wywołanie metody print() klasy bazowej" << endl;
+            		}
+            };
+            
+            // Klasa pochodna
+            class Derived : public Base {
+            public:
+            		// Przesłonięcie metody print()
+            		void print() override {
+            				cout << "Wywołanie metody print() klasy pochodnej" << endl;
+            		}
+            };</script></code></pre>
+                </section>
+
+
+                <section data-auto-animate>
+                    <h3>Metody abstrakcyjne w C++</h3>
+                    <small>
+                        Metoda abstrakcyjna to metoda wirtualna, która jest zadeklarowana, ale nie zdefiniowana w klasie
+                        bazowej.
+                        Deklaruje się ją, ustawiając jej definicję na 0 (np. <code>virtual void myMethod() = 0;</code>).
+                        Klasa, która
+                        zawiera co najmniej jedną metodę abstrakcyjną, jest nazywana klasą abstrakcyjną. Klasy
+                        abstrakcyjne nie mogą być
+                        instancjonowane - służą jako bazy dla klas pochodnych, które muszą zaimplementować wszystkie
+                        metody
+                        abstrakcyjne.
+                    </small>
+
+
+                    <pre style="font-size: 16px;">Przykład metody abstrakcyjnej w C++<code><script type="text/template">// Klasa bazowa (abstrakcyjna)
+            class Base {
+            public:
+            		virtual void print() = 0; // Metoda abstrakcyjna
+            };
+            
+            // Klasa pochodna
+            class Derived : public Base {
+            public:
+            		// Implementacja metody abstrakcyjnej
+            		void print() override {
+            				cout << "Wywołanie metody print() klasy pochodnej" << endl;
+            		}
+            };</script></code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Przesłanianie metod bez użycia słowa kluczowego 'virtual' w C++</h3>
+                    <small>
+                        Jeśli metoda zostanie przysłonięta bez użycia słowa kluczowego <code>virtual</code>, to
+                        zachowanie będzie
+                        zależało od typu
+                        referencji lub wskaźnika, którym wywoływania jest metoda, a nie od rzeczywistego typu obiektu.
+                        To jest
+                        znane jako
+                        "statyczne wiązanie" lub "wiązanie w czasie kompilacji".
+                    </small>
+                    <pre style="font-size: 15px;">Przykład <code><script type="text/template">// Klasa bazowa
+            class Base {
+            public:
+            		void print() {
+            				cout << "Wywołanie metody print() klasy bazowej" << endl;
+            		}
+            };
+            
+            // Klasa pochodna
+            class Derived : public Base {
+            public:
+            		void print() {
+            				cout << "Wywołanie metody print() klasy pochodnej" << endl;
+            		}
+            };
+            
+            int main() {
+            		Derived d;
+            		Base& b = d;
+            		b.print();  // Wywoła metodę print() klasy bazowej, nie pochodnej
+            		return 0;
+            }</script></code></pre>
+                    <small>
+                        W powyższym przykładzie, mimo że <code>b</code> jest referencją do obiektu klasy
+                        <code>Derived</code>, wywołanie
+                        <code>b.print()</code> wywoła metodę <code>print()</code> klasy <code>Base</code>, ponieważ
+                        metoda
+                        <code>print()</code> nie jest wirtualna.
+                    </small>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Rodzaje Dziedziczenia w Programowaniu Obiektowym</h3>
+                    <small>
+                        Dziedziczenie w programowaniu obiektowym umożliwia tworzenie nowych klas na podstawie
+                        istniejących klas, co
+                        ułatwia ponowne użycie kodu, zwiększa czytelność i ułatwia zarządzanie kodem.
+                        <ul>
+                            <li><strong>Dziedziczenie jednokrotne (single inheritance):</strong> Klasa podrzędna
+                                dziedziczy od jednej
+                                klasy nadrzędnej.</li>
+                            <li><strong>Dziedziczenie wielokrotne (multiple inheritance):</strong> Klasa podrzędna
+                                dziedziczy
+                                jednocześnie od dwóch lub więcej klas nadrzędnych.</li>
+                            <li><strong>Dziedziczenie wielostopniowe (multilevel inheritance):</strong> Jedna klasa
+                                dziedziczy od innej,
+                                a następnie inna klasa dziedziczy z powyższej klasy, tworząc hierarchię klasy.</li>
+                            <li><strong>Dziedziczenie wielopoziomowe (hierarchical inheritance):</strong> Jedna klasa
+                                nadrzędna, wiele
+                                klas podrzędnych. Klasy podrzędne mogą dziedziczyć od jednej wspólnej klasy nadrzędnej.
+                            </li>
+                            <li><strong>Dziedziczenie interfejsów (interface inheritance):</strong> Klasy mogą
+                                dziedziczyć jedynie
+                                sygnatury metod, nie ich implementacje. Jest to podobne do klas abstrakcyjnych w C++.
+                            </li>
+                        </ul>
+                    </small>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Polimorfizm w programowaniu obiektowym</h3>
+                    <small>
+                        Polimorfizm to kluczowy koncept w programowaniu obiektowym, który pozwala obiektom różnych klas
+                        działać jak
+                        obiekty innej klasy. Jest to możliwe dzięki użyciu dziedziczenia i metod wirtualnych.
+                    </small>
+                    <ul>
+                        <li>
+                            <small>
+                                <b>Polimorfizm statyczny (wczesne wiązanie):</b> Typ obiektu jest określany podczas
+                                kompilacji.
+                                Przykładem może być przeciążanie funkcji.
+                            </small>
+                        </li>
+                        <li>
+                            <small>
+                                <b>Polimorfizm dynamiczny (późne wiązanie):</b> Typ obiektu jest określany w czasie
+                                wykonywania.
+                                Przykładem może być przesłanianie funkcji.
+                            </small>
+                        </li>
+                    </ul>
+                    <small>
+                        Polimorfizm jest ważny, ponieważ pozwala na tworzenie bardziej elastycznego i łatwiejszego do
+                        zarządzania kodu,
+                        umożliwiając programistom traktowanie obiektów różnych klas w ten sam sposób.
+                    </small>
+                </section>
+
+
+                <section data-background-color="black">
+                    <section data-auto-animate>
+                        <h2 style="color: white;">PO/lab3-products</h2>
+                        <a href="xxczc">https://classroom.github.com/a/v_EI2RYb</a>
+
+                    </section>
+                </section>
+            </section>
+
             <section data-background-color="black">
                 <section data-auto-animate>
-                    <h2 style="color: white;">PO/lab3-figures-v1</h2>
+                    <h2 style="color: white;">PO/lab4-figures-v1</h2>
                     <a href="https://classroom.github.com/a/kyzvEaHt">LINK</a>
-					<p style="color: red;">Notatka dla prowadzącego: dodać wzór Herona. Poprawić equals w Lines!!</p>
-					
+                    <p style="color: red;">Notatka dla prowadzącego: dodać wzór Herona. Poprawić equals w Lines!!</p>
+
 
                 </section>
             </section>
-            			<section data-background-gradient="linear-gradient(175deg, #009b72, #43447b)">
-
-				<section>
-					<h2>Polimorfizm</h2>
-					<h3>Dziedziczenie</h3>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Dziedziczenie w programowaniu obiektowym</h3>
-					<small>
-						Dziedziczenie w programowaniu obiektowym to jeden z fundamentów tej paradygmatu programowania.
-						Pozwala ono na tworzenie
-						nowych klas na podstawie istniejących klas. Nowa klasa, zwana klasą pochodną, dziedziczy
-						atrybuty i metody klasy bazowej, co
-						pozwala na ponowne użycie kodu.
-					</small>
-					<pre style="font-size: 16px;">Przykład dziedziczenia w C++<code><script type="text/template">// Klasa bazowa
-class Animal {
-public:
-		void eat() {
-				std::cout << "I can eat!" << std::endl;
-		}
-};
-
-// Klasa pochodna
-class Dog : public Animal {
-public:
-		void bark() {
-				std::cout << "I can bark! Woof Woof!" << std::endl;
-		}
-};</script></code></pre>
-					<small>
-						W powyższym przykładzie, klasa <code>Dog</code> dziedziczy od klasy <code>Animal</code>. Oznacza
-						to, że obiekt
-						klasy <code>Dog</code> może używać metody <code>eat()</code> zdefiniowanej w klasie
-						<code>Animal</code>, a także
-						metody <code>bark()</code> zdefiniowanej w samej klasie <code>Dog</code>.
-					</small>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Dziedziczenie w programowaniu obiektowym</h3>
-					<pre>Użycie klasy Dog w main.cpp<code class="hljs cpp" ><script type="text/template">// main.cpp
-int main() {
-		Animal myAnimal;
-		myAnimal.eat();
-		//myAnimal.bark(); // Błąd kompilacji
-		Dog myDog;
-		myDog.eat();
-		myDog.bark();
-		return 0;
-}</script></code></pre>
-					<small>
-						W powyższym przykładzie, tworzymy obiekt klasy <code>Dog</code> i <code>Animal</code> i
-						wywołujemy metody <code>eat()</code> i
-						<code>bark()</code>. Metoda <code>eat()</code> jest dziedziczona z klasy <code>Animal</code>, a
-						metoda
-						<code>bark()</code> jest zdefiniowana w klasie <code>Dog</code>. Obiekt klasy
-						<code>Animal</code> nie posiada metody <code>bark()</code>,
-					</small>
-
-				</section>
-				<section data-auto-animate>
-					<h3>Poziomy dostępu do dziedziczenia w C++</h3>
-					<ul>
-						<li>
-							<small>
-								<strong>Public:</strong> Jeśli klasa jest dziedziczona publicznie, to publiczne i
-								chronione członki
-								klasy bazowej stają się odpowiednio publicznymi i chronionymi członkami klasy pochodnej.
-							</small>
-						</li>
-						<li>
-							<small>
-								<strong>Protected:</strong> Jeśli klasa jest dziedziczona chronionie, to publiczne i
-								chronione członki
-								klasy bazowej stają się chronionymi członkami klasy pochodnej.
-							</small>
-						</li>
-						<li>
-							<small>
-								<strong>Private:</strong> Jeśli klasa jest dziedziczona prywatnie, to publiczne i
-								chronione członki
-								klasy bazowej stają się prywatnymi członkami klasy pochodnej.
-							</small>
-						</li>
-					</ul>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Metody wirtualne w C++</h3>
-					<small>
-						Metoda wirtualna to funkcja członkowska klasy, którą deklaruje się za pomocą słowa kluczowego
-						<code>virtual</code> w klasie bazowej. Pozwala to na "przesłanianie" metody w klasie pochodnej.
-						Gdy metoda
-						wirtualna jest wywoływana przez wskaźnik lub referencję do klasę bazową, wywołanie jest
-						rozstrzygane w czasie
-						wykonywania, a nie w czasie kompilacji. To oznacza, że wywołana zostanie metoda zdefiniowana w
-						klasie typu
-						obiektu, a nie typu wskaźnika lub referencji.
-					</small>
-
-
-					<pre style="font-size: 16px;">Przykład metody wirtualnej w C++<code><script type="text/template">// Klasa bazowa
-class Base {
-public:
-		virtual void print() {
-				cout << "Wywołanie metody print() klasy bazowej" << endl;
-		}
-};
-
-// Klasa pochodna
-class Derived : public Base {
-public:
-		// Przesłonięcie metody print()
-		void print() override {
-				cout << "Wywołanie metody print() klasy pochodnej" << endl;
-		}
-};</script></code></pre>
-				</section>
-
-
-				<section data-auto-animate>
-					<h3>Metody abstrakcyjne w C++</h3>
-					<small>
-						Metoda abstrakcyjna to metoda wirtualna, która jest zadeklarowana, ale nie zdefiniowana w klasie
-						bazowej.
-						Deklaruje się ją, ustawiając jej definicję na 0 (np. <code>virtual void myMethod() = 0;</code>).
-						Klasa, która
-						zawiera co najmniej jedną metodę abstrakcyjną, jest nazywana klasą abstrakcyjną. Klasy
-						abstrakcyjne nie mogą być
-						instancjonowane - służą jako bazy dla klas pochodnych, które muszą zaimplementować wszystkie
-						metody
-						abstrakcyjne.
-					</small>
-
-
-					<pre style="font-size: 16px;">Przykład metody abstrakcyjnej w C++<code><script type="text/template">// Klasa bazowa (abstrakcyjna)
-class Base {
-public:
-		virtual void print() = 0; // Metoda abstrakcyjna
-};
-
-// Klasa pochodna
-class Derived : public Base {
-public:
-		// Implementacja metody abstrakcyjnej
-		void print() override {
-				cout << "Wywołanie metody print() klasy pochodnej" << endl;
-		}
-};</script></code></pre>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Przesłanianie metod bez użycia słowa kluczowego 'virtual' w C++</h3>
-					<small>
-						Jeśli metoda zostanie przysłonięta bez użycia słowa kluczowego <code>virtual</code>, to
-						zachowanie będzie
-						zależało od typu
-						referencji lub wskaźnika, którym wywoływania jest metoda, a nie od rzeczywistego typu obiektu.
-						To jest
-						znane jako
-						"statyczne wiązanie" lub "wiązanie w czasie kompilacji".
-					</small>
-					<pre style="font-size: 15px;">Przykład <code><script type="text/template">// Klasa bazowa
-class Base {
-public:
-		void print() {
-				cout << "Wywołanie metody print() klasy bazowej" << endl;
-		}
-};
-
-// Klasa pochodna
-class Derived : public Base {
-public:
-		void print() {
-				cout << "Wywołanie metody print() klasy pochodnej" << endl;
-		}
-};
-
-int main() {
-		Derived d;
-		Base& b = d;
-		b.print();  // Wywoła metodę print() klasy bazowej, nie pochodnej
-		return 0;
-}</script></code></pre>
-					<small>
-						W powyższym przykładzie, mimo że <code>b</code> jest referencją do obiektu klasy
-						<code>Derived</code>, wywołanie
-						<code>b.print()</code> wywoła metodę <code>print()</code> klasy <code>Base</code>, ponieważ
-						metoda
-						<code>print()</code> nie jest wirtualna.
-					</small>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Rodzaje Dziedziczenia w Programowaniu Obiektowym</h3>
-					<small>
-						Dziedziczenie w programowaniu obiektowym umożliwia tworzenie nowych klas na podstawie
-						istniejących klas, co
-						ułatwia ponowne użycie kodu, zwiększa czytelność i ułatwia zarządzanie kodem.
-						<ul>
-							<li><strong>Dziedziczenie jednokrotne (single inheritance):</strong> Klasa podrzędna
-								dziedziczy od jednej
-								klasy nadrzędnej.</li>
-							<li><strong>Dziedziczenie wielokrotne (multiple inheritance):</strong> Klasa podrzędna
-								dziedziczy
-								jednocześnie od dwóch lub więcej klas nadrzędnych.</li>
-							<li><strong>Dziedziczenie wielostopniowe (multilevel inheritance):</strong> Jedna klasa
-								dziedziczy od innej,
-								a następnie inna klasa dziedziczy z powyższej klasy, tworząc hierarchię klasy.</li>
-							<li><strong>Dziedziczenie wielopoziomowe (hierarchical inheritance):</strong> Jedna klasa
-								nadrzędna, wiele
-								klas podrzędnych. Klasy podrzędne mogą dziedziczyć od jednej wspólnej klasy nadrzędnej.
-							</li>
-							<li><strong>Dziedziczenie interfejsów (interface inheritance):</strong> Klasy mogą
-								dziedziczyć jedynie
-								sygnatury metod, nie ich implementacje. Jest to podobne do klas abstrakcyjnych w C++.
-							</li>
-						</ul>
-					</small>
-				</section>
-
-				<section data-auto-animate>
-					<h3>Polimorfizm w programowaniu obiektowym</h3>
-					<small>
-						Polimorfizm to kluczowy koncept w programowaniu obiektowym, który pozwala obiektom różnych klas
-						działać jak
-						obiekty innej klasy. Jest to możliwe dzięki użyciu dziedziczenia i metod wirtualnych.
-					</small>
-					<ul>
-						<li>
-							<small>
-								<b>Polimorfizm statyczny (wczesne wiązanie):</b> Typ obiektu jest określany podczas
-								kompilacji.
-								Przykładem może być przeciążanie funkcji.
-							</small>
-						</li>
-						<li>
-							<small>
-								<b>Polimorfizm dynamiczny (późne wiązanie):</b> Typ obiektu jest określany w czasie
-								wykonywania.
-								Przykładem może być przesłanianie funkcji.
-							</small>
-						</li>
-					</ul>
-					<small>
-						Polimorfizm jest ważny, ponieważ pozwala na tworzenie bardziej elastycznego i łatwiejszego do
-						zarządzania kodu,
-						umożliwiając programistom traktowanie obiektów różnych klas w ten sam sposób.
-					</small>
-				</section>
-			</section>
             <section data-background-color="black">
                 <section data-auto-animate>
-                    <h2 style="color: white;">PO/lab4-figures-v2</h2>
+                    <h2 style="color: white;">PO/lab5-figures-v2</h2>
                     <a href="https://classroom.github.com/a/vZeS1y5y">LINK</a>
+
+                </section>
+            </section>
+            <section data-background-color="black">
+                <section data-auto-animate>
+                    <h2 style="color: white;">PO/lab6-monsters</h2>
+                    <a href="https://classroom.github.com/a/8OOEAULc">LINK</a>
 
                 </section>
             </section>
